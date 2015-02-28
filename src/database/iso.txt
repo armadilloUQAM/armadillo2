@@ -1,0 +1,428 @@
+#
+# ISO AND HTML CODE OF DIFFERENT CHARACTER
+#
+#Description 	ISO Code 	Char 	HTML Equivalent (ANSI)
+Exclamation Mark	&#33;	!
+Quotation Mark	&#34;	"	&quot;
+Hash / Number	&#35;	#
+Dollar Sign	&#36;	$
+Percentage Sing	&#37;	%
+Ampersand	&#38;	&	&amp;
+Single Quote	&#39;	'
+Left Parenthasis	&#40;	(
+Right Parenthasis	&#41;	)
+Asterisk	&#42;	*
+Plus Sign	&#43;	+
+Comma	&#44;	,
+Minus Sign	&#45;	-
+Period (Fullstop)	&#46;	.
+Slash	&#47;	/
+Numeric Digit 0	&#48;	0
+Numeric Digit 1	&#49;	1
+Numeric Digit 2	&#50;	2
+Numeric Digit 3	&#51;	3
+Numeric Digit 4	&#52;	4
+Numeric Digit 5	&#53;	5
+Numeric Digit 6	&#54;	6
+Numeric Digit 7	&#55;	7
+Numeric Digit 8	&#56;	8
+Numeric Digit 9	&#57;	9
+Colon	&#58;	:
+Semi Colon	&#59;	;
+Less Than Sign	&#60;	<	&lt;
+Equals Sign	&#61;	=
+Greater Then Sign	&#62;	>	&gt;
+Question Mark	&#63;	?
+At Sign	&#64;	@
+Capital A	&#65;	A
+Capital B	&#66;	B
+Capital C	&#67;	C
+Capital D	&#68;	D
+Capital E	&#69;	E
+Capital F	&#70;	F
+Capital G	&#71;	G
+Capital H	&#72;	H
+Capital I	&#73;	I
+Capital J	&#74;	J
+Capital K	&#75;	K
+Capital L	&#76;	L
+Capital M	&#77;	M
+Capital N	&#78;	N
+Capital O	&#79;	O
+Capital P	&#80;	P
+Capital Q	&#81;	Q
+Capital R	&#82;	R
+Capital S	&#83;	S
+Capital T	&#84;	T
+Capital U	&#85;	U
+Capital V	&#86;	V
+Capital W	&#87;	W
+Capital X	&#88;	X
+Capital Y	&#89;	Y
+Capital Z	&#90;	Z
+Left Square Bracket	&#91;	[
+Backslash	&#92;	\
+Right Square Bracket	&#93;	]
+Caret	&#94;	^
+Underscore	&#95;	_
+Grave Accent	&#96;	`
+Small a	&#97;	a
+Small b	&#98;	b
+Small c	&#99;	c
+Small d	&#100;	d
+Small e	&#101;	e
+Small f	&#102;	f
+Small g	&#103;	g
+Small h	&#104;	h
+Small i	&#105;	i
+Small j	&#106;	j
+Small k	&#107;	k
+Small l	&#108;	l
+Small m	&#109;	m
+Small n	&#110;	n
+Small o	&#111;	o
+Small p	&#112;	p
+Small q	&#113;	q
+Small r	&#114;	r
+Small s	&#115;	s
+Small t	&#116;	t
+Small u	&#117;	u
+Small v	&#118;	v
+Small w	&#119;	w
+Small x	&#120;	x
+Small y	&#121;	y
+Small z	&#122;	z
+Left Curly Brace	&#123;	{
+Vertical Line	&#124;	|
+Right Curly Brace	&#125;	}
+Tilde	&#126;	~
+-	&#127;	
+-	&#128;	€
+-	&#129;	?
+Baseline Single Quote	&#130;	‚
+Florin (math funtion)	&#131;	ƒ
+Baseline Double Quote	&#132;	„
+Ellipsis	&#133;	…
+Dagger	&#134;	†
+Double Dagger	&#135;	‡
+Circumflex	&#136;	ˆ
+Per mil.	&#137;	‰
+Capital S, hacek	&#138;	Š
+Single Left Guillemet	&#139;	‹
+Capital OE ligature	&#140;	Œ
+-	&#141;	?
+Capital Z, hacek	&#142;	Ž
+-	&#143;	?
+-	&#144;	?
+Open Single Quote	&#145;	‘
+Close Single Quote	&#146;	’
+Open Double Quote	&#147;	“
+Close Double Quote	&#148;	”
+Bullet	&#149;	•
+en Dash	&#150;	–
+em Dash	&#151;	—
+Tilde	&#152;	˜
+Trademark (unregistered)	&#153;	™
+Small s, hacek	&#154;	š
+Single Right Guillemet	&#155;	›
+Small oe ligature	&#156;	œ
+-	&#157;	?
+Small z, hacek	&#158;	ž
+Capital Y, umlaut	&#159;	Ÿ
+A Space (non breaking space)	&#160;	 	&nbsp;
+Inverted Exclamation	&#161;	¡	&iexcl;
+Cent Sign	&#162;	¢	&cent;
+English Pound	&#163;	£	&pound;
+Currency Sign	&#164;	¤	&curren;
+Japanese Yen	&#165;	¥	&yen;
+Broken Vertical Line	&#166;	¦	&brkbar;
+Section Sign	&#167;	§	&sect;
+Diæresis	&#168;	¨	&die;
+Copyright Symbol	&#169;	©	&copy;
+Feminine Ordinal	&#170;	ª	&ordf;
+Left Angle Quote	&#171;	«	&laquo;
+Not Sign	&#172;	¬	&not;
+Soft Hyphen	&#173;	­	&shy;
+Registered Trade Mark Symbol	&#174;	®	&reg;
+High Horizontal Bar	&#175;	¯	&hibar;
+Degree Sign	&#176;	°	&deg;
+Plus Minus	&#177;	±	&plusmn;
+Squared (superscript 2)	&#178;	²	&sup2;
+Cubed (superscript 3)	&#179;	³	&sup3;
+Acute Accent	&#180;	´	&acute;
+Micro Sign	&#181;	µ	&micro;
+Paragraph Sign	&#182;	¶	&para;
+Dot	&#183;	·	&middot;
+Cedilla	&#184;	¸	&cedil;
+Superscript 1	&#185;	¹	&sup1;
+Masculine Ordinal	&#186;	º	&ordm;
+Right Angle Quote	&#187;	»	&raquo;
+One Quarter Fraction	&#188;	¼	&frac14;
+One Half Fraction	&#189;	½	&frac12;
+Three Quarters Fraction	&#190;	¾	&frac34;
+Inverted Question Mark	&#191;	¿	&iquest;
+Captial A, grave accent	&#192;	À	&Agrave;
+Captial A, acute accent	&#193;	Á	&Aacute;
+Captial A, circumflex	&#194;	Â	&Acirc;
+Captial A, tilde	&#195;	Ã	&Atilde;
+Captial A, umlaut	&#196;	Ä	&Auml;
+Captial A, ring	&#197;	Å	&Aring;
+Captial AE, ligature	&#198;	Æ	&AElig;
+Captial C, cedilla	&#199;	Ç	&Ccedil;
+Captial E, grave accent	&#200;	È	&Egrave;
+Captial E, acute accent	&#201;	É	&Eacute;
+Captial E, circumflex	&#202;	Ê	&Ecirc;
+Captial E, umlaut	&#203;	Ë	&Euml;
+Captial I, grave accent	&#204;	Ì	&Igrave;
+Captial I, acute accent	&#205;	Í	&Iacute;
+Captial I, circumflex	&#206;	Î	&Icirc;
+Captial I, umlaut	&#207;	Ï	&Iuml;
+Capital ETH	&#208;	Ð	&ETH;
+Capital N, tilde	&#209;	Ñ	&Ntilde;
+Capital O, grave accent	&#210;	Ò	&Ograve;
+Capital O, acute accent	&#211;	Ó	&Oacute;
+Capital O, circumflex	&#212;	Ô	&Ocirc;
+Capital O, tilde	&#213;	Õ	&Otilde;
+Capital O, umlaut	&#214;	Ö	&Ouml;
+Multiplication Sign	&#215;	×	&times;
+Capital O, slash	&#216;	Ø	&Oslash;
+Capital U, grave accent	&#217;	Ù	&Ugrave;
+Capital U, acute accent	&#218;	Ú	&Uacute;
+Capital U, circumflex	&#219;	Û	&Ucirc;
+Capital U, umlaut	&#220;	Ü	&Uuml;
+Capital Y, acute	&#221;	Ý	&Yacute;
+Capital Thorn	&#222;	Þ	&THORN;
+Small sz (sharp s)	&#223;	ß	&szlig;
+Small a, grave accent	&#224;	à	&agrave;
+Small a, acute accent	&#225;	á	&aacute;
+Small a, circumflex	&#226;	â	&acirc;
+Small a, tilde	&#227;	ã	&atilde;
+Small a, umlaut	&#228;	ä	&auml;
+Small a, ting	&#229;	å	&aring;
+Small æ, ligature	&#230;	æ	&aelig;
+Small c, cedilla	&#231;	ç	&ccedil;
+Small e, grave accent	&#232;	è	&egrave;
+Small e, acute accent	&#233;	é	&eacute;
+Small e, circumflex	&#234;	ê	&ecirc;
+Small e, umlaut	&#235;	ë	&euml;
+Small i, grave accent	&#236;	ì	&igrave;
+Small i, acute accent	&#237;	í	&iacute;
+Small i, circumflex	&#238;	î	&icirc;
+Small i, umlaut	&#239;	ï	&iuml;
+Small eth	&#240;	ð	&eth;
+Small n, tilde	&#241;	ñ	&ntilde;
+Small o, grave accent	&#242;	ò	&ograve;
+Small o, acute accent	&#243;	ó	&oacute;
+Small o, circumflex	&#244;	ô	&ocirc;
+Small o, tilde	&#245;	õ	&otilde;
+Small o, umlaut	&#246;	ö	&ouml;
+Divide Sign	&#247;	÷	&divide;
+Small o, slash	&#248;	ø	&oslash;
+Small u, grave accent	&#249;	ù	&ugrave;
+Small u, acute accent	&#250;	ú	&uacute;
+Small u, circumflex	&#251;	û	&ucirc;
+Small u, umlaut	&#252;	ü	&uuml;
+Small y, acute accent	&#253;	ý	&yacute;
+Small thorn	&#254;	þ	&thorn;
+Small y, umlaut	&#255;	ÿ	&yuml;
+-	&#256;	A
+-	&#257;	a
+-	&#258;	A
+-	&#259;	a
+-	&#260;	A
+-	&#261;	a
+-	&#262;	C
+-	&#263;	c
+-	&#264;	C
+-	&#265;	c
+-	&#266;	C
+-	&#267;	c
+-	&#268;	C
+-	&#269;	c
+-	&#270;	D
+-	&#271;	d
+-	&#272;	Ð
+-	&#273;	d
+-	&#274;	E
+-	&#275;	e
+-	&#276;	E
+-	&#277;	e
+-	&#278;	E
+-	&#279;	e
+-	&#280;	E
+-	&#281;	e
+-	&#282;	E
+-	&#283;	e
+-	&#284;	G
+-	&#285;	g
+-	&#286;	G
+-	&#287;	g
+-	&#288;	G
+-	&#289;	g
+-	&#290;	G
+-	&#291;	g
+-	&#292;	H
+-	&#293;	h
+-	&#294;	H
+-	&#295;	h
+-	&#296;	I
+-	&#297;	i
+-	&#298;	I
+-	&#299;	i
+-	&#300;	I
+-	&#301;	i
+-	&#302;	I
+-	&#303;	i
+-	&#304;	I
+-	&#305;	i
+-	&#306;	?
+-	&#307;	?
+-	&#308;	J
+-	&#309;	j
+-	&#310;	K
+-	&#311;	k
+-	&#312;	?
+-	&#313;	L
+-	&#314;	l
+-	&#315;	L
+-	&#316;	l
+-	&#317;	L
+-	&#318;	l
+-	&#319;	?
+-	&#320;	?
+-	&#321;	L
+-	&#322;	l
+-	&#323;	N
+-	&#324;	n
+-	&#325;	N
+-	&#326;	n
+-	&#327;	N
+-	&#328;	n
+-	&#329;	?
+-	&#330;	?
+-	&#331;	?
+-	&#332;	O
+-	&#333;	o
+-	&#334;	O
+-	&#335;	o
+-	&#336;	O
+-	&#337;	o
+-	&#338;	Œ
+-	&#339;	œ
+-	&#340;	R
+-	&#341;	r
+-	&#342;	R
+-	&#343;	r
+-	&#344;	R
+-	&#345;	r
+-	&#346;	S
+-	&#347;	s
+-	&#348;	S
+-	&#349;	s
+-	&#350;	S
+-	&#351;	s
+-	&#352;	Š
+-	&#353;	š
+-	&#354;	T
+-	&#355;	t
+-	&#356;	T
+-	&#357;	t
+-	&#358;	T
+-	&#359;	t
+-	&#360;	U
+-	&#361;	u
+-	&#362;	U
+-	&#363;	u
+-	&#364;	U
+-	&#365;	u
+-	&#366;	U
+-	&#367;	u
+-	&#368;	U
+-	&#369;	u
+-	&#370;	U
+-	&#371;	u
+-	&#372;	W
+-	&#373;	w
+-	&#374;	Y
+-	&#375;	y
+-	&#376;	Ÿ
+-	&#377;	Z
+-	&#378;	z
+-	&#379;	Z
+-	&#380;	z
+
+Greek Characters
+-	&#901;	?
+-	&#902;	?
+-	&#903;	?
+-	&#904;	?
+-	&#905;	?
+-	&#906;	?
+-	&#907;	?
+-	&#908;	?
+-	&#909;	?
+-	&#910;	?
+-	&#911;	?
+-	&#912;	?
+Capital alpha	&#913;	?
+Capital beta	&#914;	?
+Capital gamma	&#915;	G
+Capital delta	&#916;	?
+Capital epsilon	&#917;	?
+Capital zeta	&#918;	?
+Capital eta	&#919;	?
+Capital theta	&#920;	T
+Capital iota	&#921;	?
+Capital kappa	&#922;	?
+Capital lambda	&#923;	?
+Capital mu	&#924;	?
+Capital nu	&#925;	?
+Capital xi	&#926;	?
+Capital omicron	&#927;	?
+Capital pi	&#928;	?
+Capital rho	&#929;	?
+-	&#930;	?
+Capital sigma	&#931;	S
+Capital tau	&#932;	?
+Capital upsilon	&#933;	?
+Capital phi	&#934;	F
+Capital chi	&#935;	?
+Capital psi	&#936;	?
+Capital omega	&#937;	O
+-	&#938;	?
+-	&#939;	?
+-	&#940;	?
+-	&#941;	?
+-	&#942;	?
+-	&#943;	?
+-	&#944;	?
+Small alpha	&#945;	a
+Small beta	&#946;	ß
+Small gamma	&#947;	?
+Small delta	&#948;	d
+Small epsilon	&#949;	e
+Small zeta	&#950;	?
+Small eta	&#951;	?
+Small theta	&#952;	?
+Small iota	&#953;	?
+Small kappa	&#954;	?
+Small lambda	&#955;	?
+Small mu	&#956;	µ
+Small nu	&#957;	?
+Small xi	&#958;	?
+Small omicron	&#959;	?
+Small pi	&#960;	p
+Small rho	&#961;	?
+Small sigma (at end of word)	&#962;	?
+Small sigma	&#963;	s
+Small tau	&#964;	t
+Small upsilon	&#965;	?
+Small phi	&#966;	f
+Small chi	&#967;	?
+Small psi	&#968;	?
+Small omega	&#969;	?
+-	&#970;	?
+-	&#971;	?
+-	&#972;	?
+-	&#973;	?
+-	&#974;	?

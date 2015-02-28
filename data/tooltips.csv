@@ -1,0 +1,37 @@
+# Tooltip Messge Text;
+# Etienne Lord, Mickael Leclercq, François-Christophe Marois-Blanchet;
+#;
+#Welcome Panel;
+chooseSoft;<html> List of evolution model available for each software : <br> -  Phyml :  F84 (Default), Kimura, Jukes-Cantor, F81, HKY, GTR.    <br> -  FastDNAml : Default evolution model of this program.    <br> -  Dnapars : Default evolution model of this program.    <br> -  Dnaml : Default evolution model of this program.   <br> -  DnaDist : F84 (Default), Kimura, Jukes-Cantor.    <br> </html>
+#;
+# Kalign Tooltip;
+kalignGop;<html> You can set the penalty for opening or closing a gap here. <br/> Half of your selected value will be subtracted from the <br/> alignment score when opening, and half when closing a gap.  </html>
+kalignTgp;<html> You can set the penalty to extend gaps from the N/C terminal of protein<br/>  or 5'/3' terminal of nucleotide sequences here. When fragmented<br/>  sequences are aligned this penalty can be set to the same value <br/> as the default gap extension penalty.  </html>
+kalignGep;<html> You can set the penalty for extending a gap  <br/>within a sequence here </html>
+kalignBonus;<html> You can set a bonus score that is added to each pair of aligned residue here. <br/> A high value here can aid in aligning remote homologs but can also cause Kalign <br/> to align non-homologous sequences.</html>
+#;
+# Clustal Tooltip;
+clustalPairwiseAlnSlow;<html> The slow-accurate method is fine for short <br/> sequences but will be VERY SLOW for many <br/> (e.g. >100) long (e.g. >1000 residue) sequences. </html>
+clustalMultiAln;<html> All sequences are compared <br/> to each other </html>
+clustalMultiAlnGop;<html> The penalty for opening a gap<br/> in the alignment. Increasing the gap<br/> opening penalty will make gaps less<br/> frequent.  </html>
+clustalMultiAlnGep;<html> The penalty for extending a gap.<br/> Increasing the gap extension penalty will<br/> make gaps shorter. Terminal gaps are not<br/> penalised.  </html>
+clustalMultiAlnDnatrans;"<html>The Transitions Weight gives transitions<br/> (A <--> G or C <--> T  i.e. purine-purine or <br/> pyrimidine-pyrimidine substitutions) a weight<br/> between 0 and 1; a weight of zero means that the<br/> transitions are scored as mismatches, while a weight<br/> of 1 gives the transitions the match score. For distantly<br/> related DNA sequences, the weight should be near to<br/> zero; for closely related sequences it can be useful to<br/> assign a higher score. </html>"
+clustalPairwiseAln;<html>A distance is calculated between every pair of<br/> sequences and these are used to construct the<br/> dendrogram which guides the final multiple alignment.<br/>The scores are calculated from separate pairwise<br/> alignments. </html>
+clustalPairwiseAlnSlowGop;<html>The penalty for opening a gap in the alignment.<br/> Increasing the gap opening penalty will make gaps less frequent.</html>
+clustalPairwiseAlnSlowGep;<html>The penalty for extending a gap by 1 residue.<br/> Increasing the gap extension penalty will make gaps<br/> shorter. Terminal gaps are not penalised.</html>
+clustalPairwiseAlnFastGp;<html>This is a penalty for each gap in the fast alignments.<br/> It has little affect on the speed or sensitivity except<br/> for extreme values.</html>
+clustalPairwiseAlnFastKtuple;<html>This is the size of exactly matching fragment that<br/> is used. INCREASE for speed, DCREASE for sensitivity.</html>
+#;
+# Evolution Model;
+evolutionModelChoice;<html>F81, HKY and GTR can <br/>only be used with PhyML</html>
+findModel;<html>Need help to find an appropriate <br/>model for your model? Use ModelTest<br> At this moment, provided by the HIV sequence database<br> http://www.hiv.lanl.gov/content/sequence/findmodel/findmodel.html </html>
+#;
+# DNA Distance;
+distGamma;<html>The Jin and Nei (1990) correction for variation in rate of evolution from <br/>site to site can be adapted to all of the first three models. It assumes <br/>that the rate of substitution varies from site to site according to a gamma <br/>distribution, with a coefficient of variation that is specified by the user.</html>
+distTrans;<html>Overall preset transition/transversion ratio is used <br/> to makes the computations harder but achieves greater <br/> consistency between different comparisons. </html>
+distEmp;<html>This distance requires that the program be provided with the equilibrium <br/> frequencies of the four bases A, C, G, and T (or U). These empirical frequencies <br/> are not really the maximum likelihood estimates of the base frequencies, but they <br/> will often be close to those values. If you change the setting of the F option you will <br/> be prompted for the frequencies of the four bases. These must add to 1 and are to <br/> be typed on one line separated by blanks, not commas.</html>
+#;
+# Test tree;
+testTree;<html>Bootstrap involves creating a new data set by sampling N characters randomly <br/>with replacement, so that the resulting data set has the same size as the original, but<br/> some characters have been left out and others are duplicated. The random variation of<br/> the results from analyzing these bootstrapped data sets can be shown statistically to be<br/> typical of the variation that you would get from collecting new data sets. The method<br/> assumes that the characters evolve independently, an assumption that may not be realistic<br/> for many kinds of data.<br/> Jacknife involves sampling a random half of the characters, and including them in the data<br/> but dropping the others. The resulting data sets are half the size of the original, and no<br/> characters are duplicated. This retains too many characters and will lead to overconfidence<br/> in the resulting groups.<br/> Resampling involves permuting the columns of the data matrix separately. This produces data<br/> matrices that have the same number and kinds of characters but no taxonomic structure. It tests <br/> not the variation around an estimated tree but the hypothesis that there is no taxonomic structure<br/> in the data: if a statistic such as number of steps is significantly smaller in the actual data than<br/> it is in replicates that are permuted, then we can argue that there is some taxonomic structure in<br/> the data (though perhaps it might be just a pair of sibling species). </html>
+testTreeReplicates;<html>Most statisticians would be happiest with 1000 to 10,000 <br/>replicates in a bootstrap, but 100 gives a rough picture.</html>
+testTreeSeed;"<html>The random number seed is used to start the <br/>random number generator, there is no such thing as a <br/>""good"" seed -- the numbers produced from one seed are <br/>indistinguishable from those produced by another. The <br/>number used must be odd (impossible to evenly divide by 2)</html>"

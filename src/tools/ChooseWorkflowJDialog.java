@@ -1,0 +1,1271 @@
+/*
+ *  Armadillo Workflow Platform v1.0
+ *  A simple pipeline system for phylogenetic analysis
+ *  
+ *  Copyright (C) 2009-2011  Etienne Lord, Mickael Leclercq
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ * 
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+package tools;
+
+import biologic.Biologic;
+import biologic.Workflows;
+import biologic.Output;
+import biologic.Results;
+import biologic.Text;
+import configuration.Config;
+import configuration.Util;
+import configuration.excelAdapterTable;
+import database.AbstractTreeModel;
+import database.databaseFunction;
+import editor.EditorInterface;
+import editor.ForMutableTreeNode;
+import editor.ForTableModel;
+import editors.HelpEditor;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Frame;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Vector;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.imageio.ImageIO;
+import javax.swing.SwingWorker;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+import javax.swing.tree.TreeSelectionModel;
+import javax.swing.table.DefaultTableColumnModel;
+import program.RunProgram;
+import programs.kmeans;
+import workflows.Workbox;
+import workflows.workflow_properties;
+import workflows.armadillo_workflow;
+import workflows.armadillo_workflow.workflow_object;
+import workflows.workflow_properties_dictionnary;
+
+public class ChooseWorkflowJDialog extends javax.swing.JDialog {
+    
+    public static databaseFunction df = new databaseFunction();
+    public static Config config=new Config();
+    public static Workbox workbox=new Workbox();
+    public static Toolbox toolbox=new Toolbox();
+    public static  kmeans km=null;
+    
+    Frame frame;
+    workflow_properties properties;
+    armadillo_workflow parent_workflow;
+    workflow_properties_dictionnary dic=new workflow_properties_dictionnary();
+    ////////////////////////////////////////////////////////////////////////////
+    /// SELECTED VARIABLE
+     
+    ////////////////////////////////////////////////////////////////////////////
+    // Constante
+    // Search
+    String lastSearch="";
+    static final int MODE_ID=0;
+    static final int MODE_ACCESSION=1;
+    static final int MODE_DESC=2;
+    static final int MODE_ALIASES=3;
+    static final int MODE_ALL=4;
+    static final int MODE_LENMORE=6;
+    static final int MODE_LENLESS=7;
+
+    HashMap<String,String> OutputObjectType=new HashMap<String,String>();
+//    0	Filter Sequences	
+//1	PhyML	
+//2	HGT Detector 3.2	
+//3	LatTrans	
+//4	Seq-Gen	
+//5	Robinson&Fould	
+//6	Random Tree Generator	
+//7	MAFFT	
+//8	Muscle	
+//9	Concatenate sequences	
+//10	RAxML	
+//11	Compare Distance
+    
+   /////////////////////////////////////////////////////////////////////////////
+   /// Constructor
+
+    
+    
+    public ChooseWorkflowJDialog(java.awt.Frame parent) {
+        //--Variable
+        OutputObjectType.put("Filter Sequences", "MultipleSequences");
+        OutputObjectType.put("PhyML", "Tree");
+        OutputObjectType.put("HGT Detector 3.2", "Distance data");
+        OutputObjectType.put("LatTrans", "Distance data");
+        OutputObjectType.put("Seq-Gen", "Alignment");
+        OutputObjectType.put("Robinson&Fould", "Distance data");
+        OutputObjectType.put("Random Tree Generator", "Tree");
+        OutputObjectType.put("MAFFT", "Alignment");
+        OutputObjectType.put("Muscle", "Alignment");
+        OutputObjectType.put("Concatenate sequences", "MultipleSequences");
+        OutputObjectType.put("RAxML", "Tree");
+         OutputObjectType.put("Compare Distance", "Distance data");
+        
+        //this.parent_workflow=parent_workflow;
+        frame=parent;
+         initComponents();
+        setIconImage(Config.image);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension d = getSize();
+        setLocation((screenSize.width-d.width)/2,(screenSize.height-d.height)/2);
+        this.setAlwaysOnTop(true);
+    }
+
+    /** This method is called from within the constructor to
+     * initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is
+     * always regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jComboBox2 = new javax.swing.JComboBox();
+        jProgressBar1 = new javax.swing.JProgressBar();
+        jComboBox3 = new javax.swing.JComboBox();
+        jPanel1 = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel5 = new javax.swing.JPanel();
+        jClusterJButton = new javax.swing.JButton();
+        ClosejButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        ClusteringMode_jComboBox = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        progressBar = new javax.swing.JProgressBar();
+        progressLabel = new javax.swing.JLabel();
+        jStatusMessage = new javax.swing.JTextField();
+        SelectUnselectSequence_jButton = new javax.swing.JButton();
+        ReplicatejComboBox = new javax.swing.JComboBox();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        keyword1 = new javax.swing.JComboBox();
+        keyword2 = new javax.swing.JComboBox();
+        keyword3 = new javax.swing.JComboBox();
+        keyword4 = new javax.swing.JComboBox();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        resultsTextArea = new javax.swing.JTextArea();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        MatrixjTable = new javax.swing.JTable();
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Workflow clustering");
+        setResizable(false);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+
+        jClusterJButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jClusterJButton.setText("Cluster");
+        jClusterJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jClusterJButtonActionPerformed(evt);
+            }
+        });
+
+        ClosejButton.setText("Done");
+        ClosejButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClosejButtonActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new ChooseWorkflowTableModel());
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jTable1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTable1FocusLost(evt);
+            }
+        });
+        jTable1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jTable1PropertyChange(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        ClusteringMode_jComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Binary encoding", "Binary encoding with numbering ", "Time matrix", "Pair list" }));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel1.setText("Clustering type");
+
+        progressLabel.setText("100%");
+
+        jStatusMessage.setEditable(false);
+        jStatusMessage.setBackground(new java.awt.Color(255, 255, 255));
+        jStatusMessage.setForeground(javax.swing.UIManager.getDefaults().getColor("Desktop.background"));
+        jStatusMessage.setText(" ");
+        jStatusMessage.setBorder(null);
+        jStatusMessage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jStatusMessageActionPerformed(evt);
+            }
+        });
+
+        SelectUnselectSequence_jButton.setText("Select / Unselect");
+        SelectUnselectSequence_jButton.setToolTipText("<html>Select or Unselect the current results selection. <br>If nothing is selected, select or unselect all the results</html>");
+        SelectUnselectSequence_jButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelectUnselectSequence_jButtonActionPerformed(evt);
+            }
+        });
+
+        ReplicatejComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "10", "20", "50", "100", "200", "1000" }));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setText("K-means replicates");
+
+        jButton1.setText("Cancel");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setText("Keywords");
+
+        keyword1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        keyword2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        keyword3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        keyword4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jStatusMessage)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(SelectUnselectSequence_jButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(ReplicatejComboBox, 0, 81, Short.MAX_VALUE)
+                                    .addComponent(keyword1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(keyword2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(keyword3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(keyword4, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ClusteringMode_jComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(jClusterJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(progressLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ClosejButton)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SelectUnselectSequence_jButton)
+                    .addComponent(jLabel1)
+                    .addComponent(ClusteringMode_jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ReplicatejComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(keyword1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(keyword2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(keyword3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(keyword4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jStatusMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jClusterJButton)
+                        .addComponent(jButton1))
+                    .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(progressLabel)
+                        .addComponent(ClosejButton)))
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("K-means analysis", jPanel5);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        resultsTextArea.setColumns(20);
+        resultsTextArea.setRows(5);
+        jScrollPane2.setViewportView(resultsTextArea);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Results", jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+
+        MatrixjTable.setAutoCreateRowSorter(true);
+        MatrixjTable.setModel(new ChooseWorkflowMatrixTableModel());
+        MatrixjTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jScrollPane3.setViewportView(MatrixjTable);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 80, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Matrix", jPanel3);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (km!=null) km.KillThread();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void SelectUnselectSequence_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectUnselectSequence_jButtonActionPerformed
+        ChooseWorkflowTableModel qt = (ChooseWorkflowTableModel) this.jTable1.getModel();
+        int selected_count=0;
+        for (int i=0; i<qt.data.size();i++) {
+            Workflows w=qt.data.get(i);
+            w.setSelected(!w.isSelected());
+            if (w.isSelected()) selected_count++;
+            qt.data.set(i, w);
+        }
+        qt.fireTableDataChanged();
+        qt.fireTableStructureChanged();
+        this.jTable1.setModel(qt);
+        //        if (selected_count>0) {
+            //          this.jClusterJButton.setEnabled(true);
+            //        } else {
+            //            this.jClusterJButton.setEnabled(false);
+            //        }
+    }//GEN-LAST:event_SelectUnselectSequence_jButtonActionPerformed
+
+    private void jStatusMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jStatusMessageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jStatusMessageActionPerformed
+
+    private void jTable1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTable1PropertyChange
+
+    }//GEN-LAST:event_jTable1PropertyChange
+
+    private void jTable1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusLost
+        //      if (jTable1.getSelectedRows().length>0) {
+            //          this.jClusterJButton.setEnabled(true);
+            //      } else {
+            //          this.jClusterJButton.setEnabled(false);
+            //      }
+    }//GEN-LAST:event_jTable1FocusLost
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        //        if (jTable1.getSelectedRows().length>0) {
+            //          this.jClusterJButton.setEnabled(true);
+            //      } else {
+            //          this.jClusterJButton.setEnabled(false);
+            //      }
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void ClosejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClosejButtonActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_ClosejButtonActionPerformed
+
+    private void jClusterJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jClusterJButtonActionPerformed
+        clusterWorkflow();
+    }//GEN-LAST:event_jClusterJButtonActionPerformed
+
+     public void msg(String msg) {
+         if (workbox!=null) workbox.addOutput(msg+"\n");
+         Config.log(msg);
+    }
+   
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ClosejButton;
+    private javax.swing.JComboBox ClusteringMode_jComboBox;
+    private javax.swing.JTable MatrixjTable;
+    private javax.swing.JComboBox ReplicatejComboBox;
+    private javax.swing.JButton SelectUnselectSequence_jButton;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jClusterJButton;
+    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JComboBox jComboBox3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField jStatusMessage;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JComboBox keyword1;
+    private javax.swing.JComboBox keyword2;
+    private javax.swing.JComboBox keyword3;
+    private javax.swing.JComboBox keyword4;
+    private javax.swing.JProgressBar progressBar;
+    private javax.swing.JLabel progressLabel;
+    private javax.swing.JTextArea resultsTextArea;
+    // End of variables declaration//GEN-END:variables
+
+      ///////////////////////////////////////////////////////////////////////////
+    /// MESSAGE FONCTION
+
+    /**
+     * Affiche un message dans la status bar
+     * La provenance peut être mise dans un tooltip
+     * @param text Le texte
+     * @param tooltip Le tooltip texte
+     */
+    void Message(String text, String tooltip) {
+        this.jStatusMessage.setEnabled(true);
+        this.jStatusMessage.setForeground(new java.awt.Color(0, 51, 153));
+        this.jStatusMessage.setBackground(Color.WHITE);
+        this.jStatusMessage.setToolTipText(tooltip);
+        this.jStatusMessage.setText(text);
+    }
+
+    /**
+     * Affiche un message d'erreur en rouge dans la status bar
+     * La provenance peut être mise dans un tooltip
+     * @param text Le texte
+     * @param tooltip Le tooltip texte
+     */
+    void MessageError(String text, String tooltip) {
+        this.jStatusMessage.setEnabled(true);
+        this.jStatusMessage.setForeground(Color.RED);
+        this.jStatusMessage.setBackground(Color.WHITE);
+        this.jStatusMessage.setToolTipText(tooltip);
+        this.jStatusMessage.setText(text);
+    }
+ 
+    
+    ////////////////////////////////////////////////////////////////////////////
+    /// SET DATA TABLE
+    
+      public void refreshTable(){       
+        
+        //--Set the selected table  
+        ChooseWorkflowTableModel qt = new ChooseWorkflowTableModel();
+        Vector<Integer> workflow_ids=df.getAllWorkflowsID();
+       ArrayList<Workflows>data=new ArrayList<Workflows>();
+        for (int id:workflow_ids) {           
+           Workflows tmp=df.getWorkflows(id);
+           //--System.out.println(tmp.getName());
+           if (!tmp.getName().equals("Welcome")&&!tmp.getName().isEmpty()) data.add(tmp);           
+       }         
+        qt.setData(data);      
+        this.jTable1.setModel(qt);
+        //--Build the search keyword
+        this.keyword1.removeAllItems();
+        this.keyword2.removeAllItems();
+        this.keyword3.removeAllItems();
+        this.keyword4.removeAllItems();
+        //--
+        Message("Total workflows: "+workflow_ids.size(),"");
+    }
+      
+   /////////////////////////////////////////////////////////////////////////////
+   /// Worker   
+   private void clusterWorkflow() {
+      
+      final int mode=this.ClusteringMode_jComboBox.getSelectedIndex();
+      final int replicate=Integer.valueOf((String)this.ReplicatejComboBox.getSelectedItem());
+       ChooseWorkflowTableModel qt = (ChooseWorkflowTableModel) this.jTable1.getModel();
+      final ArrayList<Workflows> workflow_data=qt.data;
+      //--BE sure we have at least 4 workflow selected
+      int count=0;
+      for (Workflows w:workflow_data) {
+          if (w.isSelected()) count++;
+      }
+      if (count<6) {
+          MessageError("Warning, you must select at least 6 workflows.", "");
+          return;
+      }
+      Message("Clustering "+count+" workflows.","");
+      
+      
+      SwingWorker<Integer, ArrayList<Workflows>> clusterWorker=new SwingWorker<Integer, ArrayList<Workflows>>()  {
+
+         
+       @Override
+        protected Integer doInBackground() throws Exception {
+            try {
+                setProgress(2);
+                Config.library_mode=true;
+                 ////////////////////////////////////////////////////////////////////////
+                /// VARIABLES
+                 Text text=null;   //--Output file
+                 Text time_matrix=null;   //--Output file for weight matrix
+                 String note="";  //--Output text note
+                 String data="";   //--Output data
+                 String data2="";  //--Output data for weight matrix 
+                 int total_workflow=0; //--Total selected workflows
+                 HashMap<String,Integer>propertiesClassName_Number=new HashMap<String,Integer>(); //--Program and count       
+                 ArrayList<String>Ordering=new ArrayList<String>(); //--Ordering of the program
+                 ArrayList<Workflows> workflow_names=new ArrayList<Workflows>();
+                 Integer[][] matrix=null;  //--Output matrix
+                 Integer[][] before_matrix=null;  //--Output matrix
+
+                ////////////////////////////////////////////////////////////////////////
+                /// MAIN FUNCTION
+
+                note+="**************************************************************************************************************\n";
+                switch(mode) {
+                    case 0:  
+                            note+="Clustering workflow binary matrix";
+                            text=new Text("binary.txt");
+                            text.setName("Binary clustering - "+Util.returnCurrentDateAndTime());
+                            break;
+                    case 1:  note+="Clustering workflow numerical matrix";
+                            text=new Text("numerical.txt");
+                            text.setName("Numerical clustering - "+Util.returnCurrentDateAndTime());            
+                            break;
+                    case 2:  note+="Clustering workflow time matrix";
+                            text=new Text("time.txt");
+                            text.setName("Time matrix clustering - "+Util.returnCurrentDateAndTime());            
+                            break;
+                     case 3:  note+="Clustering pair list";
+                            text=new Text("pair.txt");
+                            text.setName("Pair list clustering - "+Util.returnCurrentDateAndTime());            
+                            break;    
+                }
+                note+=" - "+Util.returnCurrentDateAndTime()+"\n";
+                note+="**************************************************************************************************************\n";
+                // 1. get the model (the workflow)
+                System.out.println(text.getName());
+
+                //
+               // MODE 0 
+               // 
+               if (mode==0) {
+                      //First iteration, create the name map
+                      int cou=workflow_data.size();
+                      for (Workflows w:workflow_data) {
+                            if (w.isSelected()) {
+                                workflow_names.add(w);
+                                HashMap<String,Integer>unique_name=new HashMap<String,Integer>(); 
+                                 total_workflow++;
+                                Workflows tmp_workflow=new Workflows(new armadillo_workflow());                
+                                //--Load a copy of the workflow 
+                                tmp_workflow.StringToWorkflow(w.getWorkflow_in_txt());
+                                //--Get this workflow program 
+                                 for (workflow_object o:tmp_workflow.workflow.workflow.work) {            
+                                    //--We have a program
+                                    if (o.getProperties().isProgram()) {
+                                        //String name=o.getProperties().get("ClassName");
+                                         String name=o.getProperties().getName();
+                                        //if (name.indexOf("programs")>0) name=name.substring(9);
+
+                                        //if (name.isEmpty()) name="*"+o.getProperties().getName();
+                                        // Find unique name
+                                         if (unique_name.containsKey(name)) {
+                                            int i=1;
+                                            while(unique_name.containsKey(name+i)) i++;
+                                            name=name+i;
+                                         } 
+                                         unique_name.put(name, 1);
+                                         propertiesClassName_Number.put(name, 1);
+                                         //Ordering.add(name);
+                                    }
+                                 }        
+                                  setProgress(total_workflow*100/cou);
+                            }
+                           
+                       }
+
+                      for (String name:propertiesClassName_Number.keySet()) {
+                          Ordering.add(name);                
+                      }
+                      // Second iteration, create the matrix since we don't save the state
+
+                        matrix=new Integer[Ordering.size()+1][total_workflow+1];
+                        for (int i=0;i<total_workflow;i++) { 
+                            for (int j=0; j<Ordering.size();j++) {
+                                matrix[j][i]=new Integer(0);
+                            }
+                        }
+
+                      int index=0;
+                      for (Workflows w:workflow_data) {
+                            if (w.isSelected()) {                        
+                                 HashMap<String,Integer>unique_name=new HashMap<String,Integer>(); 
+                                  Workflows tmp_workflow=new Workflows(new armadillo_workflow());                
+                                //--Load a copy of the workflow 
+                                tmp_workflow.StringToWorkflow(w.getWorkflow_in_txt());
+                                //--Get this workflow program 
+                                 for (workflow_object o:tmp_workflow.workflow.workflow.work) {            
+                                    //--We have a program
+                                    if (o.getProperties().isProgram()) {
+                                        //String name=o.getProperties().get("ClassName");
+                                         String name=o.getProperties().getName();
+                                        //if (name.indexOf("programs")>0) name=name.substring(9);
+                                         //if (name.isEmpty()) name="*"+o.getProperties().getName();
+                                        // Find unique name
+                                         if (unique_name.containsKey(name)) {
+                                            int i=1;
+                                            while(unique_name.containsKey(name+i)) i++;  
+                                            name=name+i;
+                                         } 
+                                         // We have the name, put the data in the matrix
+                                         unique_name.put(name, 1);
+                                          Integer j=Ordering.indexOf(name);                                
+                                          matrix[j][index]++;  
+                                    }
+                                 }
+                                 index++;
+                                  setProgress((index*20)/total_workflow);
+                            }   
+                       }
+                        note+="Total workflows: "+total_workflow+"\n";                
+                        note+="Distinct program: "+propertiesClassName_Number.size()+"\n";                
+               }
+
+
+                // MODE 1
+                if (mode==1) {
+                        for (Workflows w:workflow_data) {
+                            if (w.isSelected()) {
+                                 workflow_names.add(w);
+                               total_workflow++;                     
+                                //--Get information
+                                Workflows tmp_workflow=new Workflows(new armadillo_workflow());                
+                                //--Load a copy of the workflow 
+                                tmp_workflow.StringToWorkflow(w.getWorkflow_in_txt());
+                                //--Get this workflow program 
+                                 for (workflow_object o:tmp_workflow.workflow.workflow.work) {            
+                                    //--We have a program
+                                    if (o.getProperties().isProgram()) {
+                                        String name=o.getProperties().getName();
+                                        Integer count=propertiesClassName_Number.get(name);
+                                        if (count==null) { count=1; } else { count++; }
+                                        propertiesClassName_Number.put(name, count);
+                                    }
+                                 }    
+                //                System.out.println(tmp_workflow.getStatistics());
+                //                System.out.println(tmp_workflow.number_of_object);
+                            }            
+                        }             
+
+
+                        note+="Total workflows: "+total_workflow+"\n";                
+                        note+="Distinct program: "+propertiesClassName_Number.size()+"\n";
+                        //note+="Summary:\n";
+
+                        for (String program_name:propertiesClassName_Number.keySet()) {
+                            //note+=program_name+"\t"+propertiesClassName_Number.get(program_name);
+                            Ordering.add(program_name);
+                        }
+                        //note+="Ordering:\n";
+                        //for (int i=0; i<Ordering.size();i++) note+=(i+"\t"+Ordering.get(i));
+
+                        matrix=new Integer[Ordering.size()+1][total_workflow+1];
+                        for (int i=0;i<total_workflow;i++) { 
+                            for (int j=0; j<Ordering.size();j++) {
+                                matrix[j][i]=new Integer(0);
+                            }
+                        }
+
+                        //--Create binary matrixwith count       
+                        int index=0;
+                       for (Workflows w:workflow_data) {
+                            if (w.isSelected()) {               
+                                //--Get information
+                                Workflows tmp_workflow=new Workflows(new armadillo_workflow());                
+                                //--Load a copy of the workflow 
+                                tmp_workflow.StringToWorkflow(w.getWorkflow_in_txt());
+
+                                //--Get this workflow program 
+                                 for (workflow_object o:tmp_workflow.workflow.workflow.work) {            
+                                    //--We have a program
+                                    if (o.getProperties().isProgram()) {
+                                        String name=o.getProperties().getName();
+                                        int j=Ordering.indexOf(name);
+                                        matrix[j][index]++;
+                                    }
+                                 }                 
+                                 index++;
+                                 setProgress((index*20)/total_workflow);
+                            }            
+                        }    
+                }
+
+                //
+                // MODE 2
+                //
+                if (mode==2) {
+                      //First iteration, create the name map
+
+                      for (Workflows w:workflow_data) {
+                            if (w.isSelected()) {
+                                 workflow_names.add(w);
+                                HashMap<String,Integer>unique_name=new HashMap<String,Integer>(); 
+                                 total_workflow++;
+                                     Workflows tmp_workflow=new Workflows(new armadillo_workflow());                
+                                //--Load a copy of the workflow 
+                                tmp_workflow.StringToWorkflow(w.getWorkflow_in_txt());
+                                //--Get this workflow program 
+                                 for (workflow_object o:tmp_workflow.workflow.workflow.work) {            
+                                    //--We have a program
+                                    if (o.getProperties().isProgram()) {
+                                        //String name=o.getProperties().get("ClassName");
+                                         String name=o.getProperties().getName();
+                                        //if (name.indexOf("programs")>0) name=name.substring(9);
+
+                                        //if (name.isEmpty()) name="*"+o.getProperties().getName();
+                                        // Find unique name
+                                         if (unique_name.containsKey(name)) {
+                                            int i=1;
+                                            while(unique_name.containsKey(name+i)) i++;
+                                            name=name+i;
+                                         } 
+                                         unique_name.put(name, 1);
+                                         propertiesClassName_Number.put(name, 1);
+                                         //Ordering.add(name);
+                                    }
+                                 }        
+                            }   
+                       }
+                      for (String name:propertiesClassName_Number.keySet()) {
+                          Ordering.add(name);
+                          //System.out.println(name);
+                      }
+                      // Second iteration, create the matrix since we don't save the state
+
+                        matrix=new Integer[Ordering.size()+1][total_workflow+1];
+                        before_matrix=new Integer[Ordering.size()+1][total_workflow+1];
+                        for (int i=0;i<total_workflow;i++) { 
+                            for (int j=0; j<Ordering.size();j++) {
+                                matrix[j][i]=new Integer(0);
+                                  before_matrix[j][i]=new Integer(0);
+                            }
+                        }
+
+                      int index=0;
+                      for (Workflows w:workflow_data) {
+                            if (w.isSelected()) {
+                                //System.out.println(w.getName());
+                                 HashMap<String,Integer>unique_name=new HashMap<String,Integer>(); 
+                                  Workflows tmp_workflow=new Workflows(new armadillo_workflow());                
+                                //--Load a copy of the workflow 
+                                tmp_workflow.StringToWorkflow(w.getWorkflow_in_txt());
+                                //--Get this workflow program 
+                                 for (workflow_object o:tmp_workflow.workflow.workflow.work) {            
+                                    //--We have a program
+                                    if (o.getProperties().isProgram()) {
+                                        //String name=o.getProperties().get("ClassName");
+                                         String name=o.getProperties().getName();
+                                        //if (name.indexOf("programs")>0) name=name.substring(9);
+                                         //if (name.isEmpty()) name="*"+o.getProperties().getName();
+                                        // Find unique name
+                                         if (unique_name.containsKey(name)) {
+                                            int i=1;
+                                            while(unique_name.containsKey(name+i)) i++;  
+                                            name=name+i;
+                                         } 
+                                         // We have the name, put the data in the matrix
+                                           unique_name.put(name, 1);
+                                           Integer j=Ordering.indexOf(name);
+                                              int time=o.getProperties().getInt("TimeRunning")+1;
+                                            if (time<0) time=1;
+
+                                           matrix[j][index]=time;
+                                           before_matrix[j][index]=findTimeBefore(tmp_workflow, o);                                   
+                                    }
+                                 }
+                                 index++;
+                                   setProgress((index*20)/total_workflow);
+                            }   
+                       }
+                        note+="Total workflows: "+total_workflow+"\n";                
+                        note+="Distinct program: "+propertiesClassName_Number.size()+"\n";
+                        note+="Summary:\n"; 
+               } //--End 2
+                   if (mode==3) {
+                      //First iteration, create the name map
+                       HashMap<String,Integer>unique_name=new HashMap<String,Integer>(); 
+                       for (Workflows w:workflow_data) {
+                            if (w.isSelected()) {
+                                workflow_names.add(w);                                                               
+                                total_workflow++;
+                                Workflows tmp_workflow=new Workflows(new armadillo_workflow());                
+                                //--Load a copy of the workflow 
+                                tmp_workflow.StringToWorkflow(w.getWorkflow_in_txt());     
+                                //--Get a list of input/output
+                                ArrayList<workflow_object> outputs=findWorkflowOutput(tmp_workflow);
+                                ArrayList<workflow_object> inputs=findWorkflowInput(tmp_workflow);
+                                //--Add to list the input
+                                for (workflow_object o:inputs) unique_name.put("INPUT_"+o.properties.getName(),-1);
+                                //--Add to list the output using the predefined name matrix
+                                for (workflow_object o:outputs) { 
+                                    String name=o.properties.getName();                                    
+                                    unique_name.put("OUTPUT_"+OutputObjectType.get(name),-1);
+                                }
+                                //--Get this workflow program 
+                                 for (workflow_object o:tmp_workflow.workflow.workflow.work) {            
+                                    //--We have a program
+                                    if (o.getProperties().isProgram()) {
+                                        //String name=o.getProperties().get("ClassName");
+                                        
+                                        //-- Create class parent, enfant if not exist
+                                        //--Class is concatenation of name
+                                        String name=o.getProperties().getName();
+                                        
+                                        //--get previous and following parent-child
+                                        ArrayList<workflow_object>parent=findImmediateParentDatabase(tmp_workflow,o);
+                                        ArrayList<workflow_object>child=findImmediateChildObject(tmp_workflow,o);
+                                        //--Construct
+                                        String new_name="";
+                                        for (workflow_object tm:parent) {
+                                            new_name=tm.properties.getName()+"_"+name;
+                                            if (unique_name.containsKey(new_name)) {
+                                                unique_name.put(new_name, unique_name.get(new_name)+1); 
+                                            } else {
+                                                unique_name.put(new_name, 1); 
+                                            }
+                                        }
+                                        for (workflow_object tm:child) {
+                                            new_name=name+"_"+tm.properties.getName();
+                                            if (unique_name.containsKey(new_name)) {
+                                                unique_name.put(new_name, unique_name.get(new_name)+1); 
+                                            } else {
+                                                unique_name.put(new_name, 1); 
+                                            }
+                                        }                                    
+                                    }
+                                 }        
+                            }   
+                       }
+
+                      for (String name:unique_name.keySet()) {
+                          Ordering.add(name);                
+                      }
+                      // Second iteration, create the matrix since we don't save the state
+
+                        matrix=new Integer[Ordering.size()+1][total_workflow+1];
+                        for (int i=0;i<total_workflow;i++) { 
+                            for (int j=0; j<Ordering.size();j++) {
+                                matrix[j][i]=new Integer(0);
+                            }
+                        }
+
+                      int index=0;
+                      for (Workflows w:workflow_data) {
+                            if (w.isSelected()) {                                                       
+                                 Workflows tmp_workflow=new Workflows(new armadillo_workflow());                
+                                //--Load a copy of the workflow 
+                                tmp_workflow.StringToWorkflow(w.getWorkflow_in_txt());                              
+                                //--Get a list of input/output
+                                ArrayList<workflow_object> outputs=findWorkflowOutput(tmp_workflow);
+                                ArrayList<workflow_object> inputs=findWorkflowInput(tmp_workflow);
+                                //--Add to list the input
+                                for (workflow_object o:inputs) {
+                                    String name=o.properties.getName();
+                                    Integer j=Ordering.indexOf("INPUT_"+name);                                
+                                    matrix[j][index]++;  
+                                }
+                                //--Add to list the output using the predefined name matrix
+                                for (workflow_object o:outputs) {                                    
+                                    String name=o.properties.getName();                                    
+                                    if (OutputObjectType.get(name)==null) System.out.println(name);
+                                    Integer j=Ordering.indexOf("OUTPUT_"+OutputObjectType.get(name));                                
+                                    matrix[j][index]++;  
+                                }
+                                 for (workflow_object o:tmp_workflow.workflow.workflow.work) {            
+                                    //--We have a program
+                                    if (o.getProperties().isProgram()) {
+                                        //String name=o.getProperties().get("ClassName");
+                                         String name=o.getProperties().getName();
+                                            //--get previous and following parent-child
+                                        ArrayList<workflow_object>parent=findImmediateParentDatabase(tmp_workflow,o);
+                                        ArrayList<workflow_object>child=findImmediateChildObject(tmp_workflow,o);
+                                        //--Construct
+                                        String new_name="";
+                                            for (workflow_object tm:parent) {
+                                                new_name=tm.properties.getName()+"_"+name;
+                                                Integer j=Ordering.indexOf(new_name);                                
+                                                matrix[j][index]++;  
+                                            }
+                                            for (workflow_object tm:child) {
+                                                new_name=name+"_"+tm.properties.getName();
+                                                Integer j=Ordering.indexOf(new_name);                                
+                                                matrix[j][index]++;  
+                                            }                                                    
+                                    }
+                                 }
+                                 index++;
+                                 setProgress((index*20)/total_workflow);
+                            }   
+                       }
+                        note+="Total workflows: "+total_workflow+"\n";                
+                        note+="Distinct program: "+propertiesClassName_Number.size()+"\n";                
+               }
+
+                //note+=total_workflow+"\t"+Ordering.size()+"\n";
+                //Note: 
+                data+=total_workflow+"\t"+Ordering.size()+"\n";
+                data2+=total_workflow+"\t"+Ordering.size()+"\n";
+
+                     for (int j=0; j<Ordering.size();j++) {
+                        String buffer="";   
+                        String buffer2=""; 
+                         for (int i=0;i<total_workflow;i++) {        
+                             buffer+=new Float(matrix[j][i]).toString()+"\t";                     
+                             if (mode==2) buffer2+=new Float(before_matrix[j][i]).toString()+"\t";      
+                         }
+                        data+=buffer+"\n";
+                        //msg(buffer);
+                         if (mode==2) {
+                             data2+=buffer2+"\n";
+                         }
+                      }
+                     note+="Workflows:\n";
+                  for (Workflows w:workflow_names) note+="ID"+w.getId()+" :\t"+w.getName()+"\n";
+                     note+="Programs:\n";
+                  for (int j=0; j<Ordering.size();j++) {
+                         //System.out.println(j+"\t"+Ordering.get(j)+"\t");
+                         note+=j+"\t"+Ordering.get(j)+"\t\n";
+                  }
+                 ///////////////////////////////////////////////////////////////////////
+                 /// SAVE DATA
+                 text.setNote(note);
+                 text.setText(data);
+                 text.saveToDatabase();             
+                 note+="**************************************************************************************************************\n";
+                 msg(note);
+                 if (mode==2) {
+                     time_matrix=new Text("weight.txt");
+                     time_matrix.setName("Time weight matrix - "+Util.returnCurrentDateAndTime());
+                     time_matrix.setText(data2);
+                     time_matrix.saveToDatabase();
+                 }                          
+                
+                 
+                 ///////////////////////////////////////////////////////////////////////
+                 /// Run k-means
+                 workflow_properties properties=new workflow_properties(config.propertiesPath()+File.separator+"kmeans.properties");                 
+                 properties.put("replicate", replicate);
+                 properties.setInput(text,RunProgram.PortInputDOWN);
+                 if (mode==2) {
+                     properties.setInput(time_matrix,RunProgram.PortInputUP);
+                 }
+                                  
+                 //--Execute external kmeans
+                km=new kmeans(properties);                
+                 Pattern p=Pattern.compile("Currently.working.on.random.start.no..([0-9]*)");  
+                 //--Test progress
+                 while(!km.isDone()) {                   
+                     String output = km.getOutputText();
+                     Matcher m=p.matcher(output);
+                     if (m.find()) {                         
+                         int y=Integer.valueOf(m.group(1));
+                         setProgress(y*100/replicate);
+                     }
+                 }
+                 //--Kmeans done
+                 if (km.isDone()) {                                                       
+                     setProgress(100);
+                     Results stats=new Results(Integer.valueOf(properties.getOutputID("Results")));
+                     Text groups=new Text(Integer.valueOf(properties.getOutputID("Text")));
+                     resultsTextArea.setText(stats.getText());
+                     //--Parse groups and update 
+                     Pattern best=Pattern.compile("Best.is.for.([0-9]*)",Pattern.CASE_INSENSITIVE);
+                     Matcher mbest=best.matcher(stats.getText());
+                     if (mbest.find()) {
+                         String results=mbest.group(1);
+                         //System.out.println("Best: "+results);
+                         int no_group=Integer.valueOf(results);
+                         Message("Best cluster: "+no_group+" groups","");                         
+                         //--Parse results
+                         int no_group_tabs_index=no_group-2;
+                         int index=0;
+                         HashMap<Integer,Integer>workflow_group=new HashMap<Integer,Integer>();
+                         
+                         for (String stri:groups.getText().split("\n")) {
+                             String[] tabs=stri.split("\t");                                                          
+                             if (index>0) {
+                                try {
+                                 Integer clustering_group=Integer.valueOf(tabs[no_group_tabs_index].trim());
+                                    workflow_group.put(index-1,clustering_group);
+                                } catch(Exception e) {}                                
+                             }
+                             index++;
+                         }
+                         //--Update table 
+                         ChooseWorkflowTableModel qt = (ChooseWorkflowTableModel)jTable1.getModel();
+                         index=0; 
+                         for (Workflows w:qt.data) {
+                              if (w.isSelected()) {
+                                  w.clustering_group=workflow_group.get(index);
+                                  index++;
+                              } else {
+                                   w.clustering_group=0;
+                              }                             
+                          }    
+                         qt.fireTableDataChanged();
+                         qt.fireTableStructureChanged();
+                          jTable1.setModel(qt);
+                     } else {
+                         System.out.println("not found");
+                         Message("No cluster found","");
+                     }                     
+                 } //--End update kmeans
+                 ///////////////////////////////////////////////////////////////
+                 /// PUT MATRIX IN THE TABLE
+                 ChooseWorkflowMatrixTableModel qt2=( ChooseWorkflowMatrixTableModel)MatrixjTable.getModel();
+                 qt2.setData(matrix, Ordering.size(), workflow_names, Ordering);
+                 //--Set column width                
+                 MatrixjTable.setAutoResizeMode(MatrixjTable.AUTO_RESIZE_OFF);
+                 for (int i=0; i<MatrixjTable.getColumnCount();i++) {
+                     MatrixjTable.getColumnModel().getColumn(i).setMinWidth(130);
+                     MatrixjTable.getColumnModel().getColumn(i).setPreferredWidth(130);
+                 }
+                 
+            } catch(Exception e) {e.printStackTrace();}
+                    return 0;
+                }
+
+//           @Override
+//            protected void process(List<Workflows> chunks) {
+//                
+//            }
+
+
+           @Override
+           protected void done(){
+                Config.library_mode=false;
+                 toolbox.reloadDatabaseTree();
+           }
+
+        }; //End SwingWorker declaration
+
+        clusterWorker.addPropertyChangeListener(
+                 new PropertyChangeListener() {
+                    public  void propertyChange(PropertyChangeEvent evt) {
+                     if ("progress".equals(evt.getPropertyName())) {
+                            SwingWorker o = (SwingWorker)evt.getSource();
+                            int progress=(Integer)evt.getNewValue();
+                            progressBar.setValue(progress);
+                            progressLabel.setText(progress+"%");
+                            //System.out.println(progress);
+                            if (!o.isDone()) {
+                             //
+                            }
+                            else if (o.isDone()&&!o.isCancelled()) {
+                               //Handled in done() fucntion in SwingWorker
+                            }
+                        }//End progress update
+                 } //End populateNetworkPropertyChange
+                 }); 
+         progressBar.setValue(1);
+          progressLabel.setText("1%");
+        clusterWorker.execute();
+    }   
+    
+   /////////////////////////////////////////////////////////////////////////////
+   /// Main display
+    
+    public void display() {
+       
+        refreshTable();
+        this.setVisible(true);
+    }
+    
+    public int findTimeBefore(Workflows w, workflow_object o) {
+//       int time_before=0;
+//       if (o==null) return 0;
+//        Vector<workflow_object> parents=w.workflow.workflow.findInput(o);
+//       if (parents.size()==0) return 0;
+//       int[] max=new int[parent.size()];
+//       for (workflow_object input:parents) {                             
+//           //--Find max of children          
+//           
+//           
+//           if (input.getProperties().isProgram()) {
+//            //--Note we add 1 msec to account for 0 time   
+//               int time=input.getProperties().getInt("TimeRunning")+1;
+//               if (time<0) time=1;
+//               time_before+=time;
+//          }
+//          //--Add time for this children  
+//          
+//       }
+//       int max=findTimeBefore(w, input);                    
+        //return time_before;
+        return 0;
+    }
+    
+     public ArrayList<workflow_object> findImmediateParentDatabase(Workflows w, workflow_object o) {
+        ArrayList<workflow_object>tmp=new ArrayList<workflow_object>();
+        Vector<workflow_object> parents=w.workflow.workflow.findInput(o);
+        if (parents==null||parents.size()==0) return tmp;        
+        //--CAS 1. Immediate parent
+        for (workflow_object input:parents) {         
+              if (input.getProperties().get("ObjectType").equals("OutputDatabase")) {                  
+                  tmp.add(input);
+              } 
+        }
+        //--CAS 2. Recurse one level        
+        return tmp;
+     }
+  
+     public ArrayList<workflow_object> findImmediateChildObject(Workflows w, workflow_object o) {
+        ArrayList<workflow_object>tmp=new ArrayList<workflow_object>();
+        Vector<workflow_object> childs=w.workflow.workflow.findOutput(o);
+        if (childs==null||childs.size()==0) return tmp;        
+        //--CAS 1. Immediate parent
+        for (workflow_object input:childs) {         
+              if (input.getProperties().isProgram()) {                  
+                  tmp.add(input);
+              } 
+        }
+        //--CAS 2. Recurse one level
+        if (tmp.size()==0) {
+            for (workflow_object input:childs) {
+                tmp.addAll(findImmediateChildObject(w, input));
+            }
+        }
+        return tmp;
+     }
+     
+     public ArrayList<workflow_object> findWorkflowInput(Workflows w) {
+         ArrayList<workflow_object>tmp=new ArrayList<workflow_object>();
+         //--Get all objects of type OutputDatabase
+           for (workflow_object input:w.workflow.workflow.work) {         
+              if (input.getProperties().get("ObjectType").equals("OutputDatabase")) {                  
+                  tmp.add(input);
+              } 
+        }         
+         return tmp;
+     }
+     
+      public ArrayList<workflow_object> findWorkflowOutput(Workflows w) {
+         ArrayList<workflow_object>tmp=new ArrayList<workflow_object>();         
+         //--Find all program that have no child program
+         for (workflow_object o:w.workflow.workflow.work) {
+             //--If no child, add
+             if (findImmediateChildObject(w,o).size()==0&&o.getProperties().isProgram()) {
+                 tmp.add(o);
+             }             
+         }         
+         return tmp;
+     }
+}

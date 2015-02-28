@@ -1,0 +1,10 @@
+////////////////////////////////////////////////////////////////////////////////
+/// package workflow
+/// Alix Boc, Etienne Lord, Mickael Leclercq, Abdoulaye Baniré Diallo
+/// June 2009
+
+This package contains object needed for drawing the workflow diagram only.
+
+
+
+

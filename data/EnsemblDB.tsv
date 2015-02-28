@@ -1,0 +1,55 @@
+# SimplePhylo Corrected Ensembl database - Etienne Lord 2009		
+# Edit this file in Excel to Add or Remove database
+# You can have a full list by downloading it from Ensembl
+# Warning. Currenly, we don't support variation, compara
+#Selected	Name	Description
+true	aedes_aegypti_core_53_1d	
+true	anolis_carolinensis_core_53_1	
+true	anopheles_gambiae_core_53_3k	
+true	bos_taurus_core_53_4c	
+true	caenorhabditis_elegans_core_53_190	
+true	canis_familiaris_core_53_2k	
+true	cavia_porcellus_core_53_3a	
+true	choloepus_hoffmanni_core_53_1	
+true	ciona_intestinalis_core_53_2l	
+true	ciona_savignyi_core_48_2f	
+true	ciona_savignyi_core_53_2h	
+true	danio_rerio_core_53_7e	
+true	dasypus_novemcinctus_core_53_2	
+true	dipodomys_ordii_core_53_1b	
+true	drosophila_melanogaster_core_53_54a	
+true	echinops_telfairi_core_53_1g	
+true	equus_caballus_core_53_2c	
+true	erinaceus_europaeus_core_53_1e	
+true	felis_catus_core_53_1f	
+true	gallus_gallus_core_53_2k	
+true	gasterosteus_aculeatus_core_53_1j	
+true	gorilla_gorilla_core_53_1	
+true	homo_sapiens_core_53_36o	
+true	loxodonta_africana_core_53_2	
+true	macaca_mulatta_core_53_10k	
+true	microcebus_murinus_core_53_1b	
+true	monodelphis_domestica_core_53_5h	
+true	mus_musculus_core_53_37f	
+true	myotis_lucifugus_core_53_1g	
+true	ochotona_princeps_core_53_1c	
+true	ornithorhynchus_anatinus_core_53_1j	
+true	oryctolagus_cuniculus_core_53_1h	
+true	oryzias_latipes_core_53_1i	
+true	otolemur_garnettii_core_53_1e	
+true	pan_troglodytes_core_53_21j	
+true	pongo_pygmaeus_core_53_1c	
+true	procavia_capensis_core_53_1b	
+true	pteropus_vampyrus_core_53_1b	
+true	rattus_norvegicus_core_53_34u	
+true	saccharomyces_cerevisiae_core_53_1i	
+true	sorex_araneus_core_53_1e	
+true	spermophilus_tridecemlineatus_core_53_1g	
+true	taeniopygia_guttata_core_53_1	
+true	takifugu_rubripes_core_53_4k	
+true	tarsius_syrichta_core_53_1b	
+true	tetraodon_nigroviridis_core_53_8b	
+true	tupaia_belangeri_core_53_1f	
+true	tursiops_truncatus_core_53_1b	
+true	vicugna_pacos_core_53_1b	
+true	xenopus_tropicalis_core_53_41m	

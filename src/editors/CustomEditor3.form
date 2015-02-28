@@ -1,0 +1,2197 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel2"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox3">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JPanel" name="jPanel4">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="title" type="java.lang.String" value="Properties"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jButton3" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTabbedPane1" alignment="1" pref="815" max="32767" attributes="1"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jTabbedPane1" pref="524" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+      <Events>
+        <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="jTabbedPane1ComponentShown"/>
+      </Events>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="jPanel9">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Custom Application (Beta)">
+                <Property name="tabTitle" type="java.lang.String" value="Custom Application (Beta)"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jScrollPane1" alignment="0" pref="821" max="32767" attributes="1"/>
+                          <Component id="jPanel2" alignment="0" max="32767" attributes="1"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="226" max="32767" attributes="0"/>
+                              <Component id="jButton8" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="ClosejButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jPanel5" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" pref="178" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel5" min="-2" pref="35" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ClosejButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="jPanel2">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jTextField2" alignment="0" pref="661" max="32767" attributes="1"/>
+                              <Component id="NamejTextField" alignment="0" pref="661" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="10" pref="10" max="10" attributes="0"/>
+                          <Component id="jPanel6" max="32767" attributes="0"/>
+                          <EmptySpace min="10" pref="10" max="10" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="NamejTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                          <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jLabel1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Name"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="NamejTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value=" "/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="NamejTextFieldFocusLost"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButton4">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Rename"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+                  </Events>
+                </Component>
+                <Container class="javax.swing.JPanel" name="jPanel6">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder title="Visual configuration"/>
+                      </Border>
+                    </Property>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="ColorModejComboBox" pref="121" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel36" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="InputNbjComboBox" pref="82" max="32767" attributes="1"/>
+                              <EmptySpace min="-2" pref="415" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="ConnectorNamejCheckBox1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="ConnectorjComboBox" min="-2" pref="115" max="-2" attributes="1"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="ConnectorNamejTextField" pref="481" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ColorModejComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel36" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="InputNbjComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="ConnectorNamejCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ConnectorjComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ConnectorNamejTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="jLabel37">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Color"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="ColorModejComboBox">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="6">
+                            <StringItem index="0" value="BLUE"/>
+                            <StringItem index="1" value="RED"/>
+                            <StringItem index="2" value="GREEN"/>
+                            <StringItem index="3" value="ORANGE"/>
+                            <StringItem index="4" value="PURPLE"/>
+                            <StringItem index="5" value="CYAN"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="ColorModejComboBoxjComboBox4ItemStateChanged"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ColorModejComboBoxActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel36">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Number of input"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="InputNbjComboBox">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="3">
+                            <StringItem index="0" value="No Input"/>
+                            <StringItem index="1" value="1 Input (default)"/>
+                            <StringItem index="2" value="2 Inputs"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="InputNbjComboBoxItemStateChanged"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InputNbjComboBoxActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="ConnectorNamejCheckBox1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Rename connector"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConnectorNamejCheckBox1ActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="ConnectorjComboBox">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="3">
+                            <StringItem index="0" value="Input UP"/>
+                            <StringItem index="1" value="Input DOWN"/>
+                            <StringItem index="2" value="Output"/>
+                          </StringArray>
+                        </Property>
+                        <Property name="toolTipText" type="java.lang.String" value=""/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConnectorjComboBoxActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="ConnectorNamejTextField">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="ConnectorNamejTextFieldFocusLost"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JTextField" name="jTextField2">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="c0" green="c0" id="lightGray" palette="1" red="c0" type="palette"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value=" Description"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField2FocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField2FocusLost"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField2KeyPressed"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField2KeyTyped"/>
+                  </Events>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="jPanel3">
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jSeparator3" alignment="0" pref="822" max="32767" attributes="0"/>
+                                  <Component id="jSeparator1" alignment="0" pref="822" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jSeparator2" alignment="0" pref="822" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="ProgramjTextField" alignment="1" pref="728" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="CommandLinejTextField" alignment="0" pref="728" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="refresh_jButton" min="-2" pref="24" max="-2" attributes="0"/>
+                                          <Component id="LocatejButton" alignment="0" min="-2" max="-2" attributes="1"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="input1" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
+                                                  <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="type1" pref="297" max="32767" attributes="1"/>
+                                                  <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                              <Group type="102" alignment="0" attributes="1">
+                                                  <Component id="input7" min="-2" pref="201" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="type7" min="0" pref="0" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="1">
+                                                  <Component id="input6" min="-2" pref="201" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="type6" min="0" pref="0" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="1">
+                                                  <Component id="input5" min="-2" pref="201" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="type5" min="0" pref="0" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="1">
+                                                  <Component id="input4" min="-2" pref="201" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="type4" min="0" pref="0" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="1">
+                                                  <Component id="input3" min="-2" pref="201" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="type3" min="0" pref="0" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="input2" min="-2" pref="201" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="type2" min="-2" pref="291" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="Port4" pref="64" max="32767" attributes="0"/>
+                                          <Component id="Port5" pref="64" max="32767" attributes="0"/>
+                                          <Component id="Port6" pref="64" max="32767" attributes="0"/>
+                                          <Component id="Port7" alignment="0" pref="64" max="32767" attributes="0"/>
+                                          <Component id="Port3" alignment="1" pref="64" max="32767" attributes="1"/>
+                                          <Component id="jLabel34" alignment="1" min="-2" max="-2" attributes="1"/>
+                                          <Component id="Port2" alignment="1" pref="64" max="32767" attributes="1"/>
+                                          <Component id="Port1" alignment="0" pref="64" max="32767" attributes="1"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="DeleteInput1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jCheckBox6" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="DeleteInput6" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jCheckBox7" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="DeleteInput7" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="DeleteInput5" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="DeleteInput4" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="DeleteInput3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="DeleteInput2" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jLabel35" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="output2" min="-2" pref="201" max="-2" attributes="0"/>
+                                                  <Component id="output3" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
+                                                  <Component id="output4" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
+                                                  <Component id="output5" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
+                                                  <Component id="output6" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
+                                                  <Component id="output7" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Component id="OutputType2" alignment="1" pref="347" max="32767" attributes="0"/>
+                                                  <Component id="OutputType3" alignment="1" pref="347" max="32767" attributes="0"/>
+                                                  <Component id="OutputType4" alignment="1" pref="347" max="32767" attributes="0"/>
+                                                  <Component id="OutputType5" alignment="1" pref="347" max="32767" attributes="0"/>
+                                                  <Component id="OutputType6" alignment="1" pref="347" max="32767" attributes="0"/>
+                                                  <Component id="OutputType7" alignment="1" pref="347" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="DeleteOutput7" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="DeleteOutput6" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="DeleteOutput5" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="DeleteOutput4" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="DeleteOutput3" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="DeleteOutput2" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="output1" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
+                                                  <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="OutputType1" pref="344" max="32767" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="DeleteOutput1" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="argv8" min="-2" pref="288" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="argv9" min="-2" pref="288" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="argv10" min="-2" pref="288" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="argv11" min="-2" pref="288" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="argv12" min="-2" pref="288" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="argv13" min="-2" pref="288" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="argv14" min="-2" pref="288" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="argv15" min="-2" pref="288" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="argv16" min="-2" pref="288" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="argv17" min="-2" pref="288" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="argv18" min="-2" pref="288" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="argv19" min="-2" pref="288" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="argv20" min="-2" pref="288" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="argv1" min="-2" pref="288" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="argv2" min="-2" pref="288" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="argv3" min="-2" pref="288" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="argv4" min="-2" pref="288" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="argv5" min="-2" pref="288" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="argv6" min="-2" pref="288" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="argv7" min="-2" pref="288" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                                      <Component id="jPanel13" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="input1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="type1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Port1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DeleteInput1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="input2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="type2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Port2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DeleteInput2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="input3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="type3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Port3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DeleteInput3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="input4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="type4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Port4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DeleteInput4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="input5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="type5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Port5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBox5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DeleteInput5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="input6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="type6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Port6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBox6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DeleteInput6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="input7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="type7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Port7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBox7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DeleteInput7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="output1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="OutputType1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DeleteOutput1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="OutputType2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DeleteOutput2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="output2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="OutputType3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DeleteOutput3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="output3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="OutputType4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DeleteOutput4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="output4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="OutputType5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DeleteOutput5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="output5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="OutputType6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DeleteOutput6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="output6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="OutputType7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DeleteOutput7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="output7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="refresh_jButton" max="32767" attributes="1"/>
+                                  <Component id="CommandLinejTextField" alignment="0" max="32767" attributes="1"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="ProgramjTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LocatejButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                              <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="argv1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="argv2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="argv3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="argv4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="argv5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="argv6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="argv7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="argv8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="argv9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="argv10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="argv11" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="argv12" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="argv13" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel29" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="argv14" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="argv15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="argv16" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="argv17" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="argv18" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="argv19" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="argv20" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="jPanel13" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="jLabel3">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Input"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JSeparator" name="jSeparator1">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel5">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="(this represent the files that need to be created for the program)"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel6">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Filenames"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="input1">
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="type1">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="52">
+                            <StringItem index="0" value="--Sequence--"/>
+                            <StringItem index="1" value="Sequence - Fasta format - Use sequence name"/>
+                            <StringItem index="2" value="Sequence - Fasta format - Use internal sequence id"/>
+                            <StringItem index="3" value="Sequence - Fasta format - Use abbreviation"/>
+                            <StringItem index="4" value="Sequence - Phylip format - Use sequence name"/>
+                            <StringItem index="5" value="Sequence - Phylip format - Use internal sequence id"/>
+                            <StringItem index="6" value="Sequence - Phylip format - Use abbreviation"/>
+                            <StringItem index="7" value="--MultipleSequences--"/>
+                            <StringItem index="8" value="MultipleSequences - Fasta format - Use sequence name"/>
+                            <StringItem index="9" value="MultipleSequences - Fasta format - Use internal sequence id"/>
+                            <StringItem index="10" value="MultipleSequences - Fasta format - Use abbreviation"/>
+                            <StringItem index="11" value="MultipleSequences - Phylip format - Use sequence name"/>
+                            <StringItem index="12" value="MultipleSequences - Phylip format - Use internal sequence id"/>
+                            <StringItem index="13" value="MultipleSequences - Phylip format - Use abbreviation"/>
+                            <StringItem index="14" value="--Alignment--"/>
+                            <StringItem index="15" value="Alignment - Fasta format - Use sequence name"/>
+                            <StringItem index="16" value="Alignment - Fasta format - Use internal sequence id"/>
+                            <StringItem index="17" value="Alignment - Fasta format - Use abbreviation"/>
+                            <StringItem index="18" value="Alignment - Phylip format - Use sequence name"/>
+                            <StringItem index="19" value="Alignment - Phylip format - Use internal sequence id"/>
+                            <StringItem index="20" value="Alignment - Phylip format - Use abbreviation"/>
+                            <StringItem index="21" value="--Ancestor--"/>
+                            <StringItem index="22" value="Ancestor - Fasta format - Use sequence name"/>
+                            <StringItem index="23" value="Ancestor - Fasta format - Use internal sequence id"/>
+                            <StringItem index="24" value="Ancestor - Fasta format - Use abbreviation"/>
+                            <StringItem index="25" value="Ancestor - Phylip format - Use sequence name"/>
+                            <StringItem index="26" value="Ancestor - Phylip format - Use internal sequence id"/>
+                            <StringItem index="27" value="Ancestor - Phylip format - Use abbreviation"/>
+                            <StringItem index="28" value="--Matrix--"/>
+                            <StringItem index="29" value="Matrix"/>
+                            <StringItem index="30" value="--Tree--"/>
+                            <StringItem index="31" value="Tree - Newick format - Use original tree"/>
+                            <StringItem index="32" value="Tree - Newick format - Use sequence_id"/>
+                            <StringItem index="33" value="Tree - Newick format - Use abbreviation"/>
+                            <StringItem index="34" value="--MultipleTrees--"/>
+                            <StringItem index="35" value="MultipleTrees - Newick format - Use original tree"/>
+                            <StringItem index="36" value="MultipleTrees - Newick format - Use sequence_id"/>
+                            <StringItem index="37" value="MultipleTrees - Newick format - Use abbreviation"/>
+                            <StringItem index="38" value="--Phylip--"/>
+                            <StringItem index="39" value="Phylip"/>
+                            <StringItem index="40" value="Phylip_Distance"/>
+                            <StringItem index="41" value="Phylip_Seqboot"/>
+                            <StringItem index="42" value="--Results--"/>
+                            <StringItem index="43" value="Results text"/>
+                            <StringItem index="44" value="--Unknown--"/>
+                            <StringItem index="45" value="Unknown"/>
+                            <StringItem index="46" value="--Text--"/>
+                            <StringItem index="47" value="Text"/>
+                            <StringItem index="48" value="--File type (this will not load the file into the database)--"/>
+                            <StringItem index="49" value="TextFile"/>
+                            <StringItem index="50" value="FastaFile"/>
+                            <StringItem index="51" value="SOLIDFile"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="type1ActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="input2">
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="type2">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="52">
+                            <StringItem index="0" value="--Sequence--"/>
+                            <StringItem index="1" value="Sequence - Fasta format - Use sequence name"/>
+                            <StringItem index="2" value="Sequence - Fasta format - Use internal sequence id"/>
+                            <StringItem index="3" value="Sequence - Fasta format - Use abbreviation"/>
+                            <StringItem index="4" value="Sequence - Phylip format - Use sequence name"/>
+                            <StringItem index="5" value="Sequence - Phylip format - Use internal sequence id"/>
+                            <StringItem index="6" value="Sequence - Phylip format - Use abbreviation"/>
+                            <StringItem index="7" value="--MultipleSequences--"/>
+                            <StringItem index="8" value="MultipleSequences - Fasta format - Use sequence name"/>
+                            <StringItem index="9" value="MultipleSequences - Fasta format - Use internal sequence id"/>
+                            <StringItem index="10" value="MultipleSequences - Fasta format - Use abbreviation"/>
+                            <StringItem index="11" value="MultipleSequences - Phylip format - Use sequence name"/>
+                            <StringItem index="12" value="MultipleSequences - Phylip format - Use internal sequence id"/>
+                            <StringItem index="13" value="MultipleSequences - Phylip format - Use abbreviation"/>
+                            <StringItem index="14" value="--Alignment--"/>
+                            <StringItem index="15" value="Alignment - Fasta format - Use sequence name"/>
+                            <StringItem index="16" value="Alignment - Fasta format - Use internal sequence id"/>
+                            <StringItem index="17" value="Alignment - Fasta format - Use abbreviation"/>
+                            <StringItem index="18" value="Alignment - Phylip format - Use sequence name"/>
+                            <StringItem index="19" value="Alignment - Phylip format - Use internal sequence id"/>
+                            <StringItem index="20" value="Alignment - Phylip format - Use abbreviation"/>
+                            <StringItem index="21" value="--Ancestor--"/>
+                            <StringItem index="22" value="Ancestor - Fasta format - Use sequence name"/>
+                            <StringItem index="23" value="Ancestor - Fasta format - Use internal sequence id"/>
+                            <StringItem index="24" value="Ancestor - Fasta format - Use abbreviation"/>
+                            <StringItem index="25" value="Ancestor - Phylip format - Use sequence name"/>
+                            <StringItem index="26" value="Ancestor - Phylip format - Use internal sequence id"/>
+                            <StringItem index="27" value="Ancestor - Phylip format - Use abbreviation"/>
+                            <StringItem index="28" value="--Matrix--"/>
+                            <StringItem index="29" value="Matrix"/>
+                            <StringItem index="30" value="--Tree--"/>
+                            <StringItem index="31" value="Tree - Newick format - Use original tree"/>
+                            <StringItem index="32" value="Tree - Newick format - Use sequence_id"/>
+                            <StringItem index="33" value="Tree - Newick format - Use abbreviation"/>
+                            <StringItem index="34" value="--MultipleTrees--"/>
+                            <StringItem index="35" value="MultipleTrees - Newick format - Use original tree"/>
+                            <StringItem index="36" value="MultipleTrees - Newick format - Use sequence_id"/>
+                            <StringItem index="37" value="MultipleTrees - Newick format - Use abbreviation"/>
+                            <StringItem index="38" value="--Phylip--"/>
+                            <StringItem index="39" value="Phylip"/>
+                            <StringItem index="40" value="Phylip_Distance"/>
+                            <StringItem index="41" value="Phylip_Seqboot"/>
+                            <StringItem index="42" value="--Results--"/>
+                            <StringItem index="43" value="Results text"/>
+                            <StringItem index="44" value="--Unknown--"/>
+                            <StringItem index="45" value="Unknown"/>
+                            <StringItem index="46" value="--Text--"/>
+                            <StringItem index="47" value="Text"/>
+                            <StringItem index="48" value="--File type (this will not load the file into the database)--"/>
+                            <StringItem index="49" value="TextFile"/>
+                            <StringItem index="50" value="FastaFile"/>
+                            <StringItem index="51" value="SOLIDFile"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="input3">
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="type3">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="52">
+                            <StringItem index="0" value="--Sequence--"/>
+                            <StringItem index="1" value="Sequence - Fasta format - Use sequence name"/>
+                            <StringItem index="2" value="Sequence - Fasta format - Use internal sequence id"/>
+                            <StringItem index="3" value="Sequence - Fasta format - Use abbreviation"/>
+                            <StringItem index="4" value="Sequence - Phylip format - Use sequence name"/>
+                            <StringItem index="5" value="Sequence - Phylip format - Use internal sequence id"/>
+                            <StringItem index="6" value="Sequence - Phylip format - Use abbreviation"/>
+                            <StringItem index="7" value="--MultipleSequences--"/>
+                            <StringItem index="8" value="MultipleSequences - Fasta format - Use sequence name"/>
+                            <StringItem index="9" value="MultipleSequences - Fasta format - Use internal sequence id"/>
+                            <StringItem index="10" value="MultipleSequences - Fasta format - Use abbreviation"/>
+                            <StringItem index="11" value="MultipleSequences - Phylip format - Use sequence name"/>
+                            <StringItem index="12" value="MultipleSequences - Phylip format - Use internal sequence id"/>
+                            <StringItem index="13" value="MultipleSequences - Phylip format - Use abbreviation"/>
+                            <StringItem index="14" value="--Alignment--"/>
+                            <StringItem index="15" value="Alignment - Fasta format - Use sequence name"/>
+                            <StringItem index="16" value="Alignment - Fasta format - Use internal sequence id"/>
+                            <StringItem index="17" value="Alignment - Fasta format - Use abbreviation"/>
+                            <StringItem index="18" value="Alignment - Phylip format - Use sequence name"/>
+                            <StringItem index="19" value="Alignment - Phylip format - Use internal sequence id"/>
+                            <StringItem index="20" value="Alignment - Phylip format - Use abbreviation"/>
+                            <StringItem index="21" value="--Ancestor--"/>
+                            <StringItem index="22" value="Ancestor - Fasta format - Use sequence name"/>
+                            <StringItem index="23" value="Ancestor - Fasta format - Use internal sequence id"/>
+                            <StringItem index="24" value="Ancestor - Fasta format - Use abbreviation"/>
+                            <StringItem index="25" value="Ancestor - Phylip format - Use sequence name"/>
+                            <StringItem index="26" value="Ancestor - Phylip format - Use internal sequence id"/>
+                            <StringItem index="27" value="Ancestor - Phylip format - Use abbreviation"/>
+                            <StringItem index="28" value="--Matrix--"/>
+                            <StringItem index="29" value="Matrix"/>
+                            <StringItem index="30" value="--Tree--"/>
+                            <StringItem index="31" value="Tree - Newick format - Use original tree"/>
+                            <StringItem index="32" value="Tree - Newick format - Use sequence_id"/>
+                            <StringItem index="33" value="Tree - Newick format - Use abbreviation"/>
+                            <StringItem index="34" value="--MultipleTrees--"/>
+                            <StringItem index="35" value="MultipleTrees - Newick format - Use original tree"/>
+                            <StringItem index="36" value="MultipleTrees - Newick format - Use sequence_id"/>
+                            <StringItem index="37" value="MultipleTrees - Newick format - Use abbreviation"/>
+                            <StringItem index="38" value="--Phylip--"/>
+                            <StringItem index="39" value="Phylip"/>
+                            <StringItem index="40" value="Phylip_Distance"/>
+                            <StringItem index="41" value="Phylip_Seqboot"/>
+                            <StringItem index="42" value="--Results--"/>
+                            <StringItem index="43" value="Results text"/>
+                            <StringItem index="44" value="--Unknown--"/>
+                            <StringItem index="45" value="Unknown"/>
+                            <StringItem index="46" value="--Text--"/>
+                            <StringItem index="47" value="Text"/>
+                            <StringItem index="48" value="--File type (this will not load the file into the database)--"/>
+                            <StringItem index="49" value="TextFile"/>
+                            <StringItem index="50" value="FastaFile"/>
+                            <StringItem index="51" value="SOLIDFile"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="input4">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="input4ActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="type4">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="52">
+                            <StringItem index="0" value="--Sequence--"/>
+                            <StringItem index="1" value="Sequence - Fasta format - Use sequence name"/>
+                            <StringItem index="2" value="Sequence - Fasta format - Use internal sequence id"/>
+                            <StringItem index="3" value="Sequence - Fasta format - Use abbreviation"/>
+                            <StringItem index="4" value="Sequence - Phylip format - Use sequence name"/>
+                            <StringItem index="5" value="Sequence - Phylip format - Use internal sequence id"/>
+                            <StringItem index="6" value="Sequence - Phylip format - Use abbreviation"/>
+                            <StringItem index="7" value="--MultipleSequences--"/>
+                            <StringItem index="8" value="MultipleSequences - Fasta format - Use sequence name"/>
+                            <StringItem index="9" value="MultipleSequences - Fasta format - Use internal sequence id"/>
+                            <StringItem index="10" value="MultipleSequences - Fasta format - Use abbreviation"/>
+                            <StringItem index="11" value="MultipleSequences - Phylip format - Use sequence name"/>
+                            <StringItem index="12" value="MultipleSequences - Phylip format - Use internal sequence id"/>
+                            <StringItem index="13" value="MultipleSequences - Phylip format - Use abbreviation"/>
+                            <StringItem index="14" value="--Alignment--"/>
+                            <StringItem index="15" value="Alignment - Fasta format - Use sequence name"/>
+                            <StringItem index="16" value="Alignment - Fasta format - Use internal sequence id"/>
+                            <StringItem index="17" value="Alignment - Fasta format - Use abbreviation"/>
+                            <StringItem index="18" value="Alignment - Phylip format - Use sequence name"/>
+                            <StringItem index="19" value="Alignment - Phylip format - Use internal sequence id"/>
+                            <StringItem index="20" value="Alignment - Phylip format - Use abbreviation"/>
+                            <StringItem index="21" value="--Ancestor--"/>
+                            <StringItem index="22" value="Ancestor - Fasta format - Use sequence name"/>
+                            <StringItem index="23" value="Ancestor - Fasta format - Use internal sequence id"/>
+                            <StringItem index="24" value="Ancestor - Fasta format - Use abbreviation"/>
+                            <StringItem index="25" value="Ancestor - Phylip format - Use sequence name"/>
+                            <StringItem index="26" value="Ancestor - Phylip format - Use internal sequence id"/>
+                            <StringItem index="27" value="Ancestor - Phylip format - Use abbreviation"/>
+                            <StringItem index="28" value="--Matrix--"/>
+                            <StringItem index="29" value="Matrix"/>
+                            <StringItem index="30" value="--Tree--"/>
+                            <StringItem index="31" value="Tree - Newick format - Use original tree"/>
+                            <StringItem index="32" value="Tree - Newick format - Use sequence_id"/>
+                            <StringItem index="33" value="Tree - Newick format - Use abbreviation"/>
+                            <StringItem index="34" value="--MultipleTrees--"/>
+                            <StringItem index="35" value="MultipleTrees - Newick format - Use original tree"/>
+                            <StringItem index="36" value="MultipleTrees - Newick format - Use sequence_id"/>
+                            <StringItem index="37" value="MultipleTrees - Newick format - Use abbreviation"/>
+                            <StringItem index="38" value="--Phylip--"/>
+                            <StringItem index="39" value="Phylip"/>
+                            <StringItem index="40" value="Phylip_Distance"/>
+                            <StringItem index="41" value="Phylip_Seqboot"/>
+                            <StringItem index="42" value="--Results--"/>
+                            <StringItem index="43" value="Results text"/>
+                            <StringItem index="44" value="--Unknown--"/>
+                            <StringItem index="45" value="Unknown"/>
+                            <StringItem index="46" value="--Text--"/>
+                            <StringItem index="47" value="Text"/>
+                            <StringItem index="48" value="--File type (this will not load the file into the database)--"/>
+                            <StringItem index="49" value="TextFile"/>
+                            <StringItem index="50" value="FastaFile"/>
+                            <StringItem index="51" value="SOLIDFile"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="input5">
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="type5">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="52">
+                            <StringItem index="0" value="--Sequence--"/>
+                            <StringItem index="1" value="Sequence - Fasta format - Use sequence name"/>
+                            <StringItem index="2" value="Sequence - Fasta format - Use internal sequence id"/>
+                            <StringItem index="3" value="Sequence - Fasta format - Use abbreviation"/>
+                            <StringItem index="4" value="Sequence - Phylip format - Use sequence name"/>
+                            <StringItem index="5" value="Sequence - Phylip format - Use internal sequence id"/>
+                            <StringItem index="6" value="Sequence - Phylip format - Use abbreviation"/>
+                            <StringItem index="7" value="--MultipleSequences--"/>
+                            <StringItem index="8" value="MultipleSequences - Fasta format - Use sequence name"/>
+                            <StringItem index="9" value="MultipleSequences - Fasta format - Use internal sequence id"/>
+                            <StringItem index="10" value="MultipleSequences - Fasta format - Use abbreviation"/>
+                            <StringItem index="11" value="MultipleSequences - Phylip format - Use sequence name"/>
+                            <StringItem index="12" value="MultipleSequences - Phylip format - Use internal sequence id"/>
+                            <StringItem index="13" value="MultipleSequences - Phylip format - Use abbreviation"/>
+                            <StringItem index="14" value="--Alignment--"/>
+                            <StringItem index="15" value="Alignment - Fasta format - Use sequence name"/>
+                            <StringItem index="16" value="Alignment - Fasta format - Use internal sequence id"/>
+                            <StringItem index="17" value="Alignment - Fasta format - Use abbreviation"/>
+                            <StringItem index="18" value="Alignment - Phylip format - Use sequence name"/>
+                            <StringItem index="19" value="Alignment - Phylip format - Use internal sequence id"/>
+                            <StringItem index="20" value="Alignment - Phylip format - Use abbreviation"/>
+                            <StringItem index="21" value="--Ancestor--"/>
+                            <StringItem index="22" value="Ancestor - Fasta format - Use sequence name"/>
+                            <StringItem index="23" value="Ancestor - Fasta format - Use internal sequence id"/>
+                            <StringItem index="24" value="Ancestor - Fasta format - Use abbreviation"/>
+                            <StringItem index="25" value="Ancestor - Phylip format - Use sequence name"/>
+                            <StringItem index="26" value="Ancestor - Phylip format - Use internal sequence id"/>
+                            <StringItem index="27" value="Ancestor - Phylip format - Use abbreviation"/>
+                            <StringItem index="28" value="--Matrix--"/>
+                            <StringItem index="29" value="Matrix"/>
+                            <StringItem index="30" value="--Tree--"/>
+                            <StringItem index="31" value="Tree - Newick format - Use original tree"/>
+                            <StringItem index="32" value="Tree - Newick format - Use sequence_id"/>
+                            <StringItem index="33" value="Tree - Newick format - Use abbreviation"/>
+                            <StringItem index="34" value="--MultipleTrees--"/>
+                            <StringItem index="35" value="MultipleTrees - Newick format - Use original tree"/>
+                            <StringItem index="36" value="MultipleTrees - Newick format - Use sequence_id"/>
+                            <StringItem index="37" value="MultipleTrees - Newick format - Use abbreviation"/>
+                            <StringItem index="38" value="--Phylip--"/>
+                            <StringItem index="39" value="Phylip"/>
+                            <StringItem index="40" value="Phylip_Distance"/>
+                            <StringItem index="41" value="Phylip_Seqboot"/>
+                            <StringItem index="42" value="--Results--"/>
+                            <StringItem index="43" value="Results text"/>
+                            <StringItem index="44" value="--Unknown--"/>
+                            <StringItem index="45" value="Unknown"/>
+                            <StringItem index="46" value="--Text--"/>
+                            <StringItem index="47" value="Text"/>
+                            <StringItem index="48" value="--File type (this will not load the file into the database)--"/>
+                            <StringItem index="49" value="TextFile"/>
+                            <StringItem index="50" value="FastaFile"/>
+                            <StringItem index="51" value="SOLIDFile"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="input6">
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="type6">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="52">
+                            <StringItem index="0" value="--Sequence--"/>
+                            <StringItem index="1" value="Sequence - Fasta format - Use sequence name"/>
+                            <StringItem index="2" value="Sequence - Fasta format - Use internal sequence id"/>
+                            <StringItem index="3" value="Sequence - Fasta format - Use abbreviation"/>
+                            <StringItem index="4" value="Sequence - Phylip format - Use sequence name"/>
+                            <StringItem index="5" value="Sequence - Phylip format - Use internal sequence id"/>
+                            <StringItem index="6" value="Sequence - Phylip format - Use abbreviation"/>
+                            <StringItem index="7" value="--MultipleSequences--"/>
+                            <StringItem index="8" value="MultipleSequences - Fasta format - Use sequence name"/>
+                            <StringItem index="9" value="MultipleSequences - Fasta format - Use internal sequence id"/>
+                            <StringItem index="10" value="MultipleSequences - Fasta format - Use abbreviation"/>
+                            <StringItem index="11" value="MultipleSequences - Phylip format - Use sequence name"/>
+                            <StringItem index="12" value="MultipleSequences - Phylip format - Use internal sequence id"/>
+                            <StringItem index="13" value="MultipleSequences - Phylip format - Use abbreviation"/>
+                            <StringItem index="14" value="--Alignment--"/>
+                            <StringItem index="15" value="Alignment - Fasta format - Use sequence name"/>
+                            <StringItem index="16" value="Alignment - Fasta format - Use internal sequence id"/>
+                            <StringItem index="17" value="Alignment - Fasta format - Use abbreviation"/>
+                            <StringItem index="18" value="Alignment - Phylip format - Use sequence name"/>
+                            <StringItem index="19" value="Alignment - Phylip format - Use internal sequence id"/>
+                            <StringItem index="20" value="Alignment - Phylip format - Use abbreviation"/>
+                            <StringItem index="21" value="--Ancestor--"/>
+                            <StringItem index="22" value="Ancestor - Fasta format - Use sequence name"/>
+                            <StringItem index="23" value="Ancestor - Fasta format - Use internal sequence id"/>
+                            <StringItem index="24" value="Ancestor - Fasta format - Use abbreviation"/>
+                            <StringItem index="25" value="Ancestor - Phylip format - Use sequence name"/>
+                            <StringItem index="26" value="Ancestor - Phylip format - Use internal sequence id"/>
+                            <StringItem index="27" value="Ancestor - Phylip format - Use abbreviation"/>
+                            <StringItem index="28" value="--Matrix--"/>
+                            <StringItem index="29" value="Matrix"/>
+                            <StringItem index="30" value="--Tree--"/>
+                            <StringItem index="31" value="Tree - Newick format - Use original tree"/>
+                            <StringItem index="32" value="Tree - Newick format - Use sequence_id"/>
+                            <StringItem index="33" value="Tree - Newick format - Use abbreviation"/>
+                            <StringItem index="34" value="--MultipleTrees--"/>
+                            <StringItem index="35" value="MultipleTrees - Newick format - Use original tree"/>
+                            <StringItem index="36" value="MultipleTrees - Newick format - Use sequence_id"/>
+                            <StringItem index="37" value="MultipleTrees - Newick format - Use abbreviation"/>
+                            <StringItem index="38" value="--Phylip--"/>
+                            <StringItem index="39" value="Phylip"/>
+                            <StringItem index="40" value="Phylip_Distance"/>
+                            <StringItem index="41" value="Phylip_Seqboot"/>
+                            <StringItem index="42" value="--Results--"/>
+                            <StringItem index="43" value="Results text"/>
+                            <StringItem index="44" value="--Unknown--"/>
+                            <StringItem index="45" value="Unknown"/>
+                            <StringItem index="46" value="--Text--"/>
+                            <StringItem index="47" value="Text"/>
+                            <StringItem index="48" value="--File type (this will not load the file into the database)--"/>
+                            <StringItem index="49" value="TextFile"/>
+                            <StringItem index="50" value="FastaFile"/>
+                            <StringItem index="51" value="SOLIDFile"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="input7">
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="type7">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="52">
+                            <StringItem index="0" value="--Sequence--"/>
+                            <StringItem index="1" value="Sequence - Fasta format - Use sequence name"/>
+                            <StringItem index="2" value="Sequence - Fasta format - Use internal sequence id"/>
+                            <StringItem index="3" value="Sequence - Fasta format - Use abbreviation"/>
+                            <StringItem index="4" value="Sequence - Phylip format - Use sequence name"/>
+                            <StringItem index="5" value="Sequence - Phylip format - Use internal sequence id"/>
+                            <StringItem index="6" value="Sequence - Phylip format - Use abbreviation"/>
+                            <StringItem index="7" value="--MultipleSequences--"/>
+                            <StringItem index="8" value="MultipleSequences - Fasta format - Use sequence name"/>
+                            <StringItem index="9" value="MultipleSequences - Fasta format - Use internal sequence id"/>
+                            <StringItem index="10" value="MultipleSequences - Fasta format - Use abbreviation"/>
+                            <StringItem index="11" value="MultipleSequences - Phylip format - Use sequence name"/>
+                            <StringItem index="12" value="MultipleSequences - Phylip format - Use internal sequence id"/>
+                            <StringItem index="13" value="MultipleSequences - Phylip format - Use abbreviation"/>
+                            <StringItem index="14" value="--Alignment--"/>
+                            <StringItem index="15" value="Alignment - Fasta format - Use sequence name"/>
+                            <StringItem index="16" value="Alignment - Fasta format - Use internal sequence id"/>
+                            <StringItem index="17" value="Alignment - Fasta format - Use abbreviation"/>
+                            <StringItem index="18" value="Alignment - Phylip format - Use sequence name"/>
+                            <StringItem index="19" value="Alignment - Phylip format - Use internal sequence id"/>
+                            <StringItem index="20" value="Alignment - Phylip format - Use abbreviation"/>
+                            <StringItem index="21" value="--Ancestor--"/>
+                            <StringItem index="22" value="Ancestor - Fasta format - Use sequence name"/>
+                            <StringItem index="23" value="Ancestor - Fasta format - Use internal sequence id"/>
+                            <StringItem index="24" value="Ancestor - Fasta format - Use abbreviation"/>
+                            <StringItem index="25" value="Ancestor - Phylip format - Use sequence name"/>
+                            <StringItem index="26" value="Ancestor - Phylip format - Use internal sequence id"/>
+                            <StringItem index="27" value="Ancestor - Phylip format - Use abbreviation"/>
+                            <StringItem index="28" value="--Matrix--"/>
+                            <StringItem index="29" value="Matrix"/>
+                            <StringItem index="30" value="--Tree--"/>
+                            <StringItem index="31" value="Tree - Newick format - Use original tree"/>
+                            <StringItem index="32" value="Tree - Newick format - Use sequence_id"/>
+                            <StringItem index="33" value="Tree - Newick format - Use abbreviation"/>
+                            <StringItem index="34" value="--MultipleTrees--"/>
+                            <StringItem index="35" value="MultipleTrees - Newick format - Use original tree"/>
+                            <StringItem index="36" value="MultipleTrees - Newick format - Use sequence_id"/>
+                            <StringItem index="37" value="MultipleTrees - Newick format - Use abbreviation"/>
+                            <StringItem index="38" value="--Phylip--"/>
+                            <StringItem index="39" value="Phylip"/>
+                            <StringItem index="40" value="Phylip_Distance"/>
+                            <StringItem index="41" value="Phylip_Seqboot"/>
+                            <StringItem index="42" value="--Results--"/>
+                            <StringItem index="43" value="Results text"/>
+                            <StringItem index="44" value="--Unknown--"/>
+                            <StringItem index="45" value="Unknown"/>
+                            <StringItem index="46" value="--Text--"/>
+                            <StringItem index="47" value="Text"/>
+                            <StringItem index="48" value="--File type (this will not load the file into the database)--"/>
+                            <StringItem index="49" value="TextFile"/>
+                            <StringItem index="50" value="FastaFile"/>
+                            <StringItem index="51" value="SOLIDFile"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JSeparator" name="jSeparator2">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel7">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="(this represent the files that need to be parsed after the program execution)"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel4">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Output"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel8">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Type"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel9">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Filenames"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel10">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Type"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="output1">
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="OutputType1">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="12">
+                            <StringItem index="0" value="Sequence"/>
+                            <StringItem index="1" value="MultipleSequences"/>
+                            <StringItem index="2" value="Alignment"/>
+                            <StringItem index="3" value="Ancestor"/>
+                            <StringItem index="4" value="Tree"/>
+                            <StringItem index="5" value="MultipleTrees"/>
+                            <StringItem index="6" value="Results"/>
+                            <StringItem index="7" value="Text"/>
+                            <StringItem index="8" value="Matrix"/>
+                            <StringItem index="9" value="Unknown"/>
+                            <StringItem index="10" value="TextFile"/>
+                            <StringItem index="11" value="FastaFile"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OutputType1ActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="output2">
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="OutputType2">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="12">
+                            <StringItem index="0" value="Sequence"/>
+                            <StringItem index="1" value="MultipleSequences"/>
+                            <StringItem index="2" value="Alignment"/>
+                            <StringItem index="3" value="Ancestor"/>
+                            <StringItem index="4" value="Tree"/>
+                            <StringItem index="5" value="MultipleTrees"/>
+                            <StringItem index="6" value="Results"/>
+                            <StringItem index="7" value="Text"/>
+                            <StringItem index="8" value="Matrix"/>
+                            <StringItem index="9" value="Unknown"/>
+                            <StringItem index="10" value="TextFile"/>
+                            <StringItem index="11" value="FastaFile"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="output3">
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="OutputType3">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="12">
+                            <StringItem index="0" value="Sequence"/>
+                            <StringItem index="1" value="MultipleSequences"/>
+                            <StringItem index="2" value="Alignment"/>
+                            <StringItem index="3" value="Ancestor"/>
+                            <StringItem index="4" value="Tree"/>
+                            <StringItem index="5" value="MultipleTrees"/>
+                            <StringItem index="6" value="Results"/>
+                            <StringItem index="7" value="Text"/>
+                            <StringItem index="8" value="Matrix"/>
+                            <StringItem index="9" value="Unknown"/>
+                            <StringItem index="10" value="TextFile"/>
+                            <StringItem index="11" value="FastaFile"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="output4">
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="OutputType4">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="12">
+                            <StringItem index="0" value="Sequence"/>
+                            <StringItem index="1" value="MultipleSequences"/>
+                            <StringItem index="2" value="Alignment"/>
+                            <StringItem index="3" value="Ancestor"/>
+                            <StringItem index="4" value="Tree"/>
+                            <StringItem index="5" value="MultipleTrees"/>
+                            <StringItem index="6" value="Results"/>
+                            <StringItem index="7" value="Text"/>
+                            <StringItem index="8" value="Matrix"/>
+                            <StringItem index="9" value="Unknown"/>
+                            <StringItem index="10" value="TextFile"/>
+                            <StringItem index="11" value="FastaFile"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="output5">
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="OutputType5">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="12">
+                            <StringItem index="0" value="Sequence"/>
+                            <StringItem index="1" value="MultipleSequences"/>
+                            <StringItem index="2" value="Alignment"/>
+                            <StringItem index="3" value="Ancestor"/>
+                            <StringItem index="4" value="Tree"/>
+                            <StringItem index="5" value="MultipleTrees"/>
+                            <StringItem index="6" value="Results"/>
+                            <StringItem index="7" value="Text"/>
+                            <StringItem index="8" value="Matrix"/>
+                            <StringItem index="9" value="Unknown"/>
+                            <StringItem index="10" value="TextFile"/>
+                            <StringItem index="11" value="FastaFile"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="output6">
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="OutputType6">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="12">
+                            <StringItem index="0" value="Sequence"/>
+                            <StringItem index="1" value="MultipleSequences"/>
+                            <StringItem index="2" value="Alignment"/>
+                            <StringItem index="3" value="Ancestor"/>
+                            <StringItem index="4" value="Tree"/>
+                            <StringItem index="5" value="MultipleTrees"/>
+                            <StringItem index="6" value="Results"/>
+                            <StringItem index="7" value="Text"/>
+                            <StringItem index="8" value="Matrix"/>
+                            <StringItem index="9" value="Unknown"/>
+                            <StringItem index="10" value="TextFile"/>
+                            <StringItem index="11" value="FastaFile"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="output7">
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="OutputType7">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="12">
+                            <StringItem index="0" value="Sequence"/>
+                            <StringItem index="1" value="MultipleSequences"/>
+                            <StringItem index="2" value="Alignment"/>
+                            <StringItem index="3" value="Ancestor"/>
+                            <StringItem index="4" value="Tree"/>
+                            <StringItem index="5" value="MultipleTrees"/>
+                            <StringItem index="6" value="Results"/>
+                            <StringItem index="7" value="Text"/>
+                            <StringItem index="8" value="Matrix"/>
+                            <StringItem index="9" value="Unknown"/>
+                            <StringItem index="10" value="TextFile"/>
+                            <StringItem index="11" value="FastaFile"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel11">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="(this represent each arguments that will be executed - Press the refresh button for update)"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JSeparator" name="jSeparator3">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel12">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Command Line"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="CommandLinejTextField">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="argv1">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel14">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="1"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="argv2">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel15">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="2"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="argv3">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel16">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="4"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="argv4">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel17">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="3"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="argv8">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel18">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="8"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="argv7">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel19">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="7"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="argv6">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel20">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="6"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="argv5">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel21">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="5"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="argv12">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel22">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="12"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="argv11">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel23">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="11"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="argv10">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel24">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="10"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="argv9">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="argv9ActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel25">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="9"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="argv16">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel26">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="16"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="argv15">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel27">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="15"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="argv14">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel28">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="14"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="argv13">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="argv13ActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel29">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="13"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="argv20">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel30">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="20"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="argv19">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel31">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="19"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="argv18">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel32">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="18"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="argv17">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel33">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="17"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="ProgramjTextField">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ProgramjTextFieldActionPerformed"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="ProgramjTextFieldFocusLost"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="LocatejButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Locate"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LocatejButtonActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="refresh_jButton">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="new javax.swing.ImageIcon(config.imagePath()+&quot;//reload.png&quot;)" type="code"/>
+                        </Property>
+                        <Property name="toolTipText" type="java.lang.String" value="Reload the database"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="refresh_jButtonActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Required"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Required"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="jCheckBox3">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Required"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="jCheckBox4">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Required"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="jCheckBox5">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Required"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="jCheckBox6">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Required"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="jCheckBox7">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Required"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="Port1">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="3">
+                            <StringItem index="0" value="Both"/>
+                            <StringItem index="1" value="Up"/>
+                            <StringItem index="2" value="Down"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="Port2">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="3">
+                            <StringItem index="0" value="Both"/>
+                            <StringItem index="1" value="Up"/>
+                            <StringItem index="2" value="Down"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="Port3">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="3">
+                            <StringItem index="0" value="Both"/>
+                            <StringItem index="1" value="Up"/>
+                            <StringItem index="2" value="Down"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="Port4">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="3">
+                            <StringItem index="0" value="Both"/>
+                            <StringItem index="1" value="Up"/>
+                            <StringItem index="2" value="Down"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="Port5">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="3">
+                            <StringItem index="0" value="Both"/>
+                            <StringItem index="1" value="Up"/>
+                            <StringItem index="2" value="Down"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="Port6">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="3">
+                            <StringItem index="0" value="Both"/>
+                            <StringItem index="1" value="Up"/>
+                            <StringItem index="2" value="Down"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="Port7">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="3">
+                            <StringItem index="0" value="Both"/>
+                            <StringItem index="1" value="Up"/>
+                            <StringItem index="2" value="Down"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel34">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Input Port"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel35">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Arguments (note: you must separate each one ex. java.exe -jar xyz.jar must be :1 java.exe 2: -jar 3:xyz.jar)"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="DeleteOutput1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Delete file after use"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="DeleteOutput2">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Delete file after use"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="DeleteOutput3">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Delete file after use"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="DeleteOutput4">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Delete file after use"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="DeleteOutput5">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Delete file after use"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="DeleteOutput6">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Delete file after use"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="DeleteOutput7">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Delete file after use"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="DeleteInput7">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Delete file after use"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="DeleteInput6">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Delete file after use"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="DeleteInput5">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Delete file after use"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="DeleteInput4">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Delete file after use"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="DeleteInput3">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Delete file after use"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="DeleteInput2">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Delete file after use"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="DeleteInput1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Delete file after use"/>
+                      </Properties>
+                    </Component>
+                    <Container class="javax.swing.JPanel" name="jPanel13">
+                      <Properties>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                            <TitledBorder title="Help"/>
+                          </Border>
+                        </Property>
+                      </Properties>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jScrollPane6" alignment="0" pref="412" max="32767" attributes="0"/>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jScrollPane6" pref="660" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Container class="javax.swing.JScrollPane" name="jScrollPane6">
+                          <AuxValues>
+                            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                          </AuxValues>
+
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                          <SubComponents>
+                            <Component class="javax.swing.JTextArea" name="jTextArea1">
+                              <Properties>
+                                <Property name="columns" type="int" value="20"/>
+                                <Property name="rows" type="int" value="5"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextArea1FocusLost"/>
+                              </Events>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                        <Component class="javax.swing.JLabel" name="jLabel38">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Help text or URL (starting with http://)"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="jPanel5">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="VerifyExitValuejCheckBox" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="NormalExitValuejTextField" min="-2" pref="58" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="VerifyExitValuejCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="NormalExitValuejTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JCheckBox" name="VerifyExitValuejCheckBox">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Verify program exit value :"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="VerifyExitValuejCheckBoxItemStateChanged"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VerifyExitValuejCheckBoxActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JTextField" name="NormalExitValuejTextField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="0"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="NormalExitValuejTextFieldFocusLost"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel13">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="(Note: Normal program exit value is 0, but not always. Check Armadillo output)"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="ClosejButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;b&gt;Close&lt;/b&gt;&lt;/html&gt;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ClosejButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton5">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Run"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton8">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Stop"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton6">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reset default values"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Save as New Program"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JButton" name="jButton3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="?"/>
+        <Property name="toolTipText" type="java.lang.String" value="Help / Informations"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>

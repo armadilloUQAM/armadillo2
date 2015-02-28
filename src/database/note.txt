@@ -1,0 +1,16 @@
+﻿////////////////////////////////////////////////////////////////////////////////
+/// package database
+/// Alix Boc, Etienne Lord, Mickael Leclercq, Abdoulaye Baniré Diallo
+/// June 2009
+
+This package contains the database functions
+
+MultipleSequences->MultipleSequences
+Sequences->Sequence
+Alignment->Alignment
+Ancestor->Ancestor
+Tree->Tree
+
+Aussi pour les ID
+
+mafft-20090911-1459506343

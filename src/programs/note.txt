@@ -1,0 +1,11 @@
+////////////////////////////////////////////////////////////////////////////////
+/// package programs
+/// Alix Boc, Etienne Lord, Mickael Leclercq, Abdoulaye Baniré Diallo
+/// June 2009
+
+This package contains class used to Run a particular program.
+
+ex. We have programs.CLUSTALW, programs.ANCESTORCC
+
+NOTE: REALLY IMPORTANT! THE PROGRAM NAME MUST BE UPPERCASE!
+

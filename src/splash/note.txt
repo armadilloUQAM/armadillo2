@@ -1,0 +1,7 @@
+////////////////////////////////////////////////////////////////////////////////
+/// package splash
+/// Alix Boc, Etienne Lord, Mickael Leclercq, Abdoulaye Baniré Diallo
+/// June 2009
+
+This package contains a splash screen displayed at program startup by the
+MainFrame.

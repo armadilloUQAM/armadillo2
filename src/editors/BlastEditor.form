@@ -1,0 +1,1231 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup2">
+    </Component>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="title" type="java.lang.String" value="Properties"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jButton3" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTabbedPane1" alignment="0" pref="537" max="32767" attributes="1"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jTabbedPane1" pref="496" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+      <Events>
+        <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="jTabbedPane1ComponentShown"/>
+      </Events>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="jPanel9">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Blast Ncbi">
+                <Property name="tabTitle" type="java.lang.String" value="Blast Ncbi"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jScrollPane3" alignment="0" pref="512" max="32767" attributes="0"/>
+                          <Component id="jPanel2" alignment="0" max="32767" attributes="1"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="200" max="32767" attributes="0"/>
+                              <Component id="jButton8" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="run_jButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="ClosejButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" pref="372" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ClosejButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="run_jButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="jPanel2">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="NamejTextField" pref="388" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="NamejTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jLabel1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Name"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="NamejTextField">
+                </Component>
+                <Component class="javax.swing.JButton" name="jButton4">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Rename"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+                  </Events>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="jPanel3">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder/>
+                      </Border>
+                    </Property>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jPanel7" alignment="0" max="32767" attributes="1"/>
+                          <Component id="jPanel5" alignment="0" max="32767" attributes="1"/>
+                          <Component id="jPanel6" alignment="0" max="32767" attributes="3"/>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" max="-2" attributes="0">
+                              <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                              <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jPanel6" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Container class="javax.swing.JPanel" name="jPanel7">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                            <TitledBorder/>
+                          </Border>
+                        </Property>
+                      </Properties>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                                  <Component id="blastProgram_jComboBox" pref="512" max="32767" attributes="1"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="SubBlastnjComboBox" pref="491" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="449" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="blastProgram_jComboBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="SubBlastnjComboBox" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="jLabel2">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="BLAST Type"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JComboBox" name="blastProgram_jComboBox">
+                          <Properties>
+                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                              <StringArray count="6">
+                                <StringItem index="0" value="blastn (Search a DNA sequence against a DNA databank)"/>
+                                <StringItem index="1" value="blastp (Search a protein sequence against a protein databank)"/>
+                                <StringItem index="2" value="blastx (Search protein database using a translated nucleotide query)"/>
+                                <StringItem index="3" value="tblastn (Search translated nucleotide database using a protein query)"/>
+                                <StringItem index="4" value="tblastx (Search translated nucleotide database using a translated nucleotide query)"/>
+                                <StringItem index="5" value="psiblast "/>
+                              </StringArray>
+                            </Property>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="blastProgram_jComboBoxActionPerformed"/>
+                            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="blastProgram_jComboBoxFocusLost"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JComboBox" name="SubBlastnjComboBox">
+                          <Properties>
+                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                              <StringArray count="5">
+                                <StringItem index="0" value="blastn"/>
+                                <StringItem index="1" value="blastn-short"/>
+                                <StringItem index="2" value="dc-megablast"/>
+                                <StringItem index="3" value="megablast"/>
+                                <StringItem index="4" value="vecscreen"/>
+                              </StringArray>
+                            </Property>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SubBlastnjComboBoxActionPerformed"/>
+                          </Events>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel6">
+                      <Properties>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                            <TitledBorder title="Advanced options"/>
+                          </Border>
+                        </Property>
+                      </Properties>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jPanel8" alignment="0" max="32767" attributes="1"/>
+                                      <Component id="jPanel10" alignment="0" max="32767" attributes="1"/>
+                                      <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="database_jComboBox" pref="463" max="32767" attributes="1"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jPanel4" alignment="0" min="-2" max="-2" attributes="1"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="database_jComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jButton5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                                  <Component id="jPanel4" min="-2" pref="197" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Container class="javax.swing.JPanel" name="jPanel4">
+                          <Properties>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                                <TitledBorder title="Penalty and Reward"/>
+                              </Border>
+                            </Property>
+                          </Properties>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="1">
+                                              <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="gop_jComboBox" alignment="0" pref="93" max="32767" attributes="1"/>
+                                          <Component id="gep_jComboBox" alignment="1" pref="93" max="32767" attributes="1"/>
+                                          <Component id="reward_jComboBox1" alignment="0" pref="93" max="32767" attributes="1"/>
+                                          <Component id="percent_jComboBox4" alignment="0" pref="93" max="32767" attributes="1"/>
+                                          <Component id="penalty_jComboBox2" alignment="0" pref="93" max="32767" attributes="1"/>
+                                          <Component id="wordsize_jComboBox3" alignment="0" pref="93" max="32767" attributes="1"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="gop_jComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="gep_jComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="reward_jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="penalty_jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="wordsize_jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="percent_jComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="javax.swing.JLabel" name="jLabel16">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Penalty for a nucleotide"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel15">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Reward for a nucleotide"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel11">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Gap open penalty"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="gop_jComboBox">
+                              <Properties>
+                                <Property name="editable" type="boolean" value="true"/>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="14">
+                                    <StringItem index="0" value="Default"/>
+                                    <StringItem index="1" value="1"/>
+                                    <StringItem index="2" value="3"/>
+                                    <StringItem index="3" value="5"/>
+                                    <StringItem index="4" value="7"/>
+                                    <StringItem index="5" value="9"/>
+                                    <StringItem index="6" value="10"/>
+                                    <StringItem index="7" value="11"/>
+                                    <StringItem index="8" value="12"/>
+                                    <StringItem index="9" value="13"/>
+                                    <StringItem index="10" value="14"/>
+                                    <StringItem index="11" value="15"/>
+                                    <StringItem index="12" value="16"/>
+                                    <StringItem index="13" value="17"/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gop_jComboBoxActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel12">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Gap extension penalty"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="gep_jComboBox">
+                              <Properties>
+                                <Property name="editable" type="boolean" value="true"/>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="6">
+                                    <StringItem index="0" value="Default"/>
+                                    <StringItem index="1" value="1"/>
+                                    <StringItem index="2" value="2"/>
+                                    <StringItem index="3" value="3"/>
+                                    <StringItem index="4" value="4"/>
+                                    <StringItem index="5" value=" "/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gep_jComboBoxActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="reward_jComboBox1">
+                              <Properties>
+                                <Property name="editable" type="boolean" value="true"/>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="14">
+                                    <StringItem index="0" value="Default"/>
+                                    <StringItem index="1" value="1"/>
+                                    <StringItem index="2" value="3"/>
+                                    <StringItem index="3" value="5"/>
+                                    <StringItem index="4" value="7"/>
+                                    <StringItem index="5" value="9"/>
+                                    <StringItem index="6" value="10"/>
+                                    <StringItem index="7" value="11"/>
+                                    <StringItem index="8" value="12"/>
+                                    <StringItem index="9" value="13"/>
+                                    <StringItem index="10" value="14"/>
+                                    <StringItem index="11" value="15"/>
+                                    <StringItem index="12" value="16"/>
+                                    <StringItem index="13" value="17"/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reward_jComboBox1ActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="penalty_jComboBox2">
+                              <Properties>
+                                <Property name="editable" type="boolean" value="true"/>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="14">
+                                    <StringItem index="0" value="Default"/>
+                                    <StringItem index="1" value="1"/>
+                                    <StringItem index="2" value="3"/>
+                                    <StringItem index="3" value="5"/>
+                                    <StringItem index="4" value="7"/>
+                                    <StringItem index="5" value="9"/>
+                                    <StringItem index="6" value="10"/>
+                                    <StringItem index="7" value="11"/>
+                                    <StringItem index="8" value="12"/>
+                                    <StringItem index="9" value="13"/>
+                                    <StringItem index="10" value="14"/>
+                                    <StringItem index="11" value="15"/>
+                                    <StringItem index="12" value="16"/>
+                                    <StringItem index="13" value="17"/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="penalty_jComboBox2ActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="wordsize_jComboBox3">
+                              <Properties>
+                                <Property name="editable" type="boolean" value="true"/>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="14">
+                                    <StringItem index="0" value="Default"/>
+                                    <StringItem index="1" value="4"/>
+                                    <StringItem index="2" value="5"/>
+                                    <StringItem index="3" value="7"/>
+                                    <StringItem index="4" value="9"/>
+                                    <StringItem index="5" value="10"/>
+                                    <StringItem index="6" value="11"/>
+                                    <StringItem index="7" value="12"/>
+                                    <StringItem index="8" value="13"/>
+                                    <StringItem index="9" value="14"/>
+                                    <StringItem index="10" value="15"/>
+                                    <StringItem index="11" value="16"/>
+                                    <StringItem index="12" value="17"/>
+                                    <StringItem index="13" value="20"/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="wordsize_jComboBox3ActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel17">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Wordsize"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="percent_jComboBox4">
+                              <Properties>
+                                <Property name="editable" type="boolean" value="true"/>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="14">
+                                    <StringItem index="0" value="Default"/>
+                                    <StringItem index="1" value="4"/>
+                                    <StringItem index="2" value="5"/>
+                                    <StringItem index="3" value="7"/>
+                                    <StringItem index="4" value="9"/>
+                                    <StringItem index="5" value="10"/>
+                                    <StringItem index="6" value="11"/>
+                                    <StringItem index="7" value="12"/>
+                                    <StringItem index="8" value="13"/>
+                                    <StringItem index="9" value="14"/>
+                                    <StringItem index="10" value="15"/>
+                                    <StringItem index="11" value="16"/>
+                                    <StringItem index="12" value="17"/>
+                                    <StringItem index="13" value="20"/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="percent_jComboBox4ActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel18">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Percent Identity (minimum)"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="jButton1">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="View info"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                              </Events>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="jPanel8">
+                          <Properties>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                                <TitledBorder/>
+                              </Border>
+                            </Property>
+                          </Properties>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="ResultsjComboBox" pref="226" max="32767" attributes="0"/>
+                                                  <Component id="StrandjComboBox" alignment="0" pref="226" max="32767" attributes="1"/>
+                                                  <Component id="ExpectedTresholdjComboBox" alignment="1" pref="226" max="32767" attributes="1"/>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="DUSTjCheckBox" max="32767" attributes="1"/>
+                                                  <Component id="jCheckBox1" alignment="1" max="32767" attributes="1"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="outfmt_jComboBox" pref="351" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="outformat_jTextField1" pref="480" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="ResultsjComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="StrandjComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="DUSTjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="ExpectedTresholdjComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="outfmt_jComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="outformat_jTextField1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="javax.swing.JLabel" name="jLabel4">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Strand to search"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="StrandjComboBox">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="3">
+                                    <StringItem index="0" value="both (Default)"/>
+                                    <StringItem index="1" value="plus"/>
+                                    <StringItem index="2" value="minus"/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StrandjComboBoxActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel3">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Expected threshold "/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="ExpectedTresholdjComboBox">
+                              <Properties>
+                                <Property name="editable" type="boolean" value="true"/>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="0"/>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExpectedTresholdjComboBoxActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel5">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Number of results"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="ResultsjComboBox">
+                              <Properties>
+                                <Property name="editable" type="boolean" value="true"/>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="8">
+                                    <StringItem index="0" value="Default"/>
+                                    <StringItem index="1" value="20"/>
+                                    <StringItem index="2" value="50"/>
+                                    <StringItem index="3" value="100"/>
+                                    <StringItem index="4" value="250"/>
+                                    <StringItem index="5" value="500"/>
+                                    <StringItem index="6" value="1000"/>
+                                    <StringItem index="7" value="2000"/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ResultsjComboBoxActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Ungapped only"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox1ActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JCheckBox" name="DUSTjCheckBox">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="DUST Filter"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DUSTjCheckBoxActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel7">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Output"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="outfmt_jComboBox">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="12">
+                                    <StringItem index="0" value="Default"/>
+                                    <StringItem index="1" value=" 0 = pairwise"/>
+                                    <StringItem index="2" value=" 1 = query-anchored showing identities"/>
+                                    <StringItem index="3" value=" 2 = query-anchored no identities"/>
+                                    <StringItem index="4" value=" 3 = flat query-anchored, show identities"/>
+                                    <StringItem index="5" value=" 4 = flat query-anchored, no identities"/>
+                                    <StringItem index="6" value=" 5 = XML Blast output"/>
+                                    <StringItem index="7" value=" 6 = tabular"/>
+                                    <StringItem index="8" value=" 7 = tabular with comment lines"/>
+                                    <StringItem index="9" value=" 8 = Text ASN.1"/>
+                                    <StringItem index="10" value=" 9 = Binary ASN.1"/>
+                                    <StringItem index="11" value="10 = Comma-separated values"/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="outfmt_jComboBoxActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="outformat_jTextField1">
+                              <Properties>
+                                <Property name="enabled" type="boolean" value="false"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="outformat_jTextField1FocusLost"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="jButton2">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="View info"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                              </Events>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                        <Component class="javax.swing.JComboBox" name="database_jComboBox">
+                          <Properties>
+                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                              <StringArray count="191">
+                                <StringItem index="0" value="-NCBI Nucleotide Sequence Databases-"/>
+                                <StringItem index="1" value="nr"/>
+                                <StringItem index="2" value="refseq_rna"/>
+                                <StringItem index="3" value="refseq_genomic"/>
+                                <StringItem index="4" value="est"/>
+                                <StringItem index="5" value="est_human"/>
+                                <StringItem index="6" value="est_mouse"/>
+                                <StringItem index="7" value="est_others"/>
+                                <StringItem index="8" value="gss"/>
+                                <StringItem index="9" value="htgs"/>
+                                <StringItem index="10" value="pat"/>
+                                <StringItem index="11" value="pdb"/>
+                                <StringItem index="12" value="month"/>
+                                <StringItem index="13" value="dbsts"/>
+                                <StringItem index="14" value="chromosome"/>
+                                <StringItem index="15" value="wgs"/>
+                                <StringItem index="16" value="env_nt"/>
+                                <StringItem index="17" value=" "/>
+                                <StringItem index="18" value="-NCBI Protein Sequence Databases-"/>
+                                <StringItem index="19" value="nr"/>
+                                <StringItem index="20" value="refseq"/>
+                                <StringItem index="21" value="swissprot"/>
+                                <StringItem index="22" value="pat"/>
+                                <StringItem index="23" value="pdb"/>
+                                <StringItem index="24" value="month"/>
+                                <StringItem index="25" value="env_nr"/>
+                                <StringItem index="26" value=" "/>
+                                <StringItem index="27" value="-EMBL databases-"/>
+                                <StringItem index="28" value=" "/>
+                                <StringItem index="29" value="- See Nucleotide : http://www.ebi.ac.uk/Tools/sss/ncbiblast/help/index-nucleotide.html#database"/>
+                                <StringItem index="30" value="embl"/>
+                                <StringItem index="31" value="em_rel"/>
+                                <StringItem index="32" value="emnew"/>
+                                <StringItem index="33" value="emcds"/>
+                                <StringItem index="34" value="em_rel_env"/>
+                                <StringItem index="35" value="em_rel_est_env"/>
+                                <StringItem index="36" value="em_rel_gss_env"/>
+                                <StringItem index="37" value="em_rel_htg_env"/>
+                                <StringItem index="38" value="em_rel_pat_env"/>
+                                <StringItem index="39" value="em_rel_std_env"/>
+                                <StringItem index="40" value="em_rel_fun"/>
+                                <StringItem index="41" value="em_rel_est_fun"/>
+                                <StringItem index="42" value="em_rel_gss_fun"/>
+                                <StringItem index="43" value="em_rel_htc_fun"/>
+                                <StringItem index="44" value="em_rel_htg_fun"/>
+                                <StringItem index="45" value="em_rel_pat_fun"/>
+                                <StringItem index="46" value="em_rel_std_fun"/>
+                                <StringItem index="47" value="em_rel_sts_fun"/>
+                                <StringItem index="48" value="em_rel_tpa_fun"/>
+                                <StringItem index="49" value="em_rel_hum"/>
+                                <StringItem index="50" value="em_rel_est_hum"/>
+                                <StringItem index="51" value="em_rel_gss_hum"/>
+                                <StringItem index="52" value="em_rel_htc_hum"/>
+                                <StringItem index="53" value="em_rel_htg_hum"/>
+                                <StringItem index="54" value="em_rel_pat_hum"/>
+                                <StringItem index="55" value="em_rel_std_hum"/>
+                                <StringItem index="56" value="em_rel_sts_hum"/>
+                                <StringItem index="57" value="em_rel_tpa_hum"/>
+                                <StringItem index="58" value="em_rel_inv"/>
+                                <StringItem index="59" value="em_rel_est_inv"/>
+                                <StringItem index="60" value="em_rel_gss_inv"/>
+                                <StringItem index="61" value="em_rel_htc_inv"/>
+                                <StringItem index="62" value="em_rel_htg_inv"/>
+                                <StringItem index="63" value="em_rel_pat_inv"/>
+                                <StringItem index="64" value="em_rel_std_inv"/>
+                                <StringItem index="65" value="em_rel_sts_inv"/>
+                                <StringItem index="66" value="em_rel_tpa_inv"/>
+                                <StringItem index="67" value="em_rel_mam"/>
+                                <StringItem index="68" value="em_rel_est_mam"/>
+                                <StringItem index="69" value="em_rel_gss_mam"/>
+                                <StringItem index="70" value="em_rel_htc_mam"/>
+                                <StringItem index="71" value="em_rel_htg_mam"/>
+                                <StringItem index="72" value="em_rel_pat_mam"/>
+                                <StringItem index="73" value="em_rel_std_mam"/>
+                                <StringItem index="74" value="em_rel_sts_mam"/>
+                                <StringItem index="75" value="em_rel_tpa_mam"/>
+                                <StringItem index="76" value="em_rel_mus"/>
+                                <StringItem index="77" value="em_rel_est_mus"/>
+                                <StringItem index="78" value="em_rel_gss_mus"/>
+                                <StringItem index="79" value="em_rel_htc_mus"/>
+                                <StringItem index="80" value="em_rel_htg_mus"/>
+                                <StringItem index="81" value="em_rel_pat_mus"/>
+                                <StringItem index="82" value="em_rel_std_mus"/>
+                                <StringItem index="83" value="em_rel_sts_mus"/>
+                                <StringItem index="84" value="em_rel_tpa_mus"/>
+                                <StringItem index="85" value="em_rel_phg"/>
+                                <StringItem index="86" value="em_rel_gss_phg"/>
+                                <StringItem index="87" value="em_rel_htg_phg"/>
+                                <StringItem index="88" value="em_rel_pat_phg"/>
+                                <StringItem index="89" value="em_rel_std_phg"/>
+                                <StringItem index="90" value="em_rel_tpa_phg"/>
+                                <StringItem index="91" value="em_rel_pln"/>
+                                <StringItem index="92" value="em_rel_est_pln"/>
+                                <StringItem index="93" value="em_rel_gss_pln"/>
+                                <StringItem index="94" value="em_rel_htc_pln"/>
+                                <StringItem index="95" value="em_rel_htg_pln"/>
+                                <StringItem index="96" value="em_rel_pat_pln"/>
+                                <StringItem index="97" value="em_rel_std_pln"/>
+                                <StringItem index="98" value="em_rel_sts_pln"/>
+                                <StringItem index="99" value="em_rel_tpa_pln"/>
+                                <StringItem index="100" value="em_rel_pro"/>
+                                <StringItem index="101" value="em_rel_est_pro"/>
+                                <StringItem index="102" value="em_rel_gss_pro"/>
+                                <StringItem index="103" value="em_rel_htc_pro"/>
+                                <StringItem index="104" value="em_rel_htg_pro"/>
+                                <StringItem index="105" value="em_rel_pat_pro"/>
+                                <StringItem index="106" value="em_rel_std_pro"/>
+                                <StringItem index="107" value="em_rel_sts_pro"/>
+                                <StringItem index="108" value="em_rel_tpa_pro"/>
+                                <StringItem index="109" value="em_rel_rod"/>
+                                <StringItem index="110" value="em_rel_est_rod"/>
+                                <StringItem index="111" value="em_rel_gss_rod"/>
+                                <StringItem index="112" value="em_rel_htc_rod"/>
+                                <StringItem index="113" value="em_rel_htg_rod"/>
+                                <StringItem index="114" value="em_rel_pat_rod"/>
+                                <StringItem index="115" value="em_rel_std_rod"/>
+                                <StringItem index="116" value="em_rel_sts_rod"/>
+                                <StringItem index="117" value="em_rel_tpa_rod"/>
+                                <StringItem index="118" value="em_rel_syn"/>
+                                <StringItem index="119" value="em_rel_pat_syn"/>
+                                <StringItem index="120" value="em_rel_std_syn"/>
+                                <StringItem index="121" value="em_rel_tpa_syn"/>
+                                <StringItem index="122" value="em_rel_tgn"/>
+                                <StringItem index="123" value="em_rel_std_tgn"/>
+                                <StringItem index="124" value="em_rel_unc"/>
+                                <StringItem index="125" value="em_rel_pat_unc"/>
+                                <StringItem index="126" value="em_rel_std_unc"/>
+                                <StringItem index="127" value="em_rel_vrl"/>
+                                <StringItem index="128" value="em_rel_gss_vrl"/>
+                                <StringItem index="129" value="em_rel_htg_vrl"/>
+                                <StringItem index="130" value="em_rel_pat_vrl"/>
+                                <StringItem index="131" value="em_rel_std_vrl"/>
+                                <StringItem index="132" value="em_rel_tpa_vrl"/>
+                                <StringItem index="133" value="em_rel_vrt"/>
+                                <StringItem index="134" value="em_rel_est_vrt"/>
+                                <StringItem index="135" value="em_rel_gss_vrt"/>
+                                <StringItem index="136" value="em_rel_htc_vrt"/>
+                                <StringItem index="137" value="em_rel_htg_vrt"/>
+                                <StringItem index="138" value="em_rel_pat_vrt"/>
+                                <StringItem index="139" value="em_rel_std_vrt"/>
+                                <StringItem index="140" value="em_rel_sts_vrt"/>
+                                <StringItem index="141" value="em_rel_tpa_vrt"/>
+                                <StringItem index="142" value="em_rel_est"/>
+                                <StringItem index="143" value="em_rel_gss"/>
+                                <StringItem index="144" value="em_rel_htc"/>
+                                <StringItem index="145" value="em_rel_htg"/>
+                                <StringItem index="146" value="em_rel_pat"/>
+                                <StringItem index="147" value="em_rel_std"/>
+                                <StringItem index="148" value="em_rel_sts"/>
+                                <StringItem index="149" value="em_rel_tpa"/>
+                                <StringItem index="150" value="emall"/>
+                                <StringItem index="151" value="evec"/>
+                                <StringItem index="152" value="imgtligm"/>
+                                <StringItem index="153" value="imgthla"/>
+                                <StringItem index="154" value=" "/>
+                                <StringItem index="155" value="- See Protein : http://www.ebi.ac.uk/Tools/sss/ncbiblast/help/index-protein.html#database"/>
+                                <StringItem index="156" value=" "/>
+                                <StringItem index="157" value="uniprotkb_swissprot"/>
+                                <StringItem index="158" value="uniprotkb_trembl"/>
+                                <StringItem index="159" value="uniprotkb_archaea"/>
+                                <StringItem index="160" value="uniprotkb_arthropoda"/>
+                                <StringItem index="161" value="uniprotkb_bacteria"/>
+                                <StringItem index="162" value="uniprotkb_complete_microbial_proteomes"/>
+                                <StringItem index="163" value="uniprotkb_fungi"/>
+                                <StringItem index="164" value="uniprotkb_human"/>
+                                <StringItem index="165" value="uniprotkb_mammals"/>
+                                <StringItem index="166" value="uniprotkb_nematoda"/>
+                                <StringItem index="167" value="uniprotkb_rodents"/>
+                                <StringItem index="168" value="uniprotkb_vertebrates"/>
+                                <StringItem index="169" value="uniprotkb_viridiplantae"/>
+                                <StringItem index="170" value="uniprotkb_viruses"/>
+                                <StringItem index="171" value="uniref100"/>
+                                <StringItem index="172" value="uniref100_seg"/>
+                                <StringItem index="173" value="uniref90"/>
+                                <StringItem index="174" value="uniref50"/>
+                                <StringItem index="175" value="epop"/>
+                                <StringItem index="176" value="jpop"/>
+                                <StringItem index="177" value="kpop"/>
+                                <StringItem index="178" value="uspop"/>
+                                <StringItem index="179" value="nrpl1"/>
+                                <StringItem index="180" value="nrpl2"/>
+                                <StringItem index="181" value="pdb"/>
+                                <StringItem index="182" value="sgt"/>
+                                <StringItem index="183" value="uniparc"/>
+                                <StringItem index="184" value="ipi"/>
+                                <StringItem index="185" value="intact"/>
+                                <StringItem index="186" value="imgthlap"/>
+                                <StringItem index="187" value=" "/>
+                                <StringItem index="188" value="- See Vector : http://www.ebi.ac.uk/Tools/sss/ncbiblast/help/index-vectors.html#database"/>
+                                <StringItem index="189" value=" "/>
+                                <StringItem index="190" value="emvec"/>
+                              </StringArray>
+                            </Property>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="database_jComboBoxActionPerformed"/>
+                            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="database_jComboBoxFocusLost"/>
+                          </Events>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="//database_jComboBox.setRenderer(new BlastDBComboBoxCellRenderer());"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLabel6">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Database"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="jButton5">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="?"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Container class="javax.swing.JPanel" name="jPanel10">
+                          <Properties>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                                <TitledBorder title="Others"/>
+                              </Border>
+                            </Property>
+                          </Properties>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="379" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="463" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace pref="139" max="32767" attributes="0"/>
+                                      <Component id="db_genetic_code_jComboBox1" min="-2" pref="341" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace pref="141" max="32767" attributes="0"/>
+                                      <Component id="query_genetic_codejComboBox2" min="-2" pref="339" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace pref="139" max="32767" attributes="0"/>
+                                      <Component id="Filter_jComboBox3" min="-2" pref="341" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="db_genetic_code_jComboBox1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="query_genetic_codejComboBox2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="Filter_jComboBox3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="javax.swing.JLabel" name="jLabel8">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Database Genetic code"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="db_genetic_code_jComboBox1">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                  <Connection code="new DefaultComboBoxModel()" type="code"/>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="db_genetic_code_jComboBox1ActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="query_genetic_codejComboBox2">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                  <Connection code="new DefaultComboBoxModel()" type="code"/>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="query_genetic_codejComboBox2ActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel9">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Query Genetic code"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel10">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Filter "/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="Filter_jComboBox3">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="4">
+                                    <StringItem index="0" value="Default"/>
+                                    <StringItem index="1" value="L Low,"/>
+                                    <StringItem index="2" value="R Human repeat, "/>
+                                    <StringItem index="3" value="M Mask for Lookup"/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Filter_jComboBox3ActionPerformed"/>
+                              </Events>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel5">
+                      <Properties>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                            <TitledBorder title="Blast output filename"/>
+                          </Border>
+                        </Property>
+                      </Properties>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="Filename_jTextField" pref="487" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jButton10" min="-2" pref="23" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="Filename_jTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButton10" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JTextField" name="Filename_jTextField">
+                        </Component>
+                        <Component class="javax.swing.JButton" name="jButton10">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="..."/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton10ActionPerformed"/>
+                          </Events>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="ClosejButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;b&gt;Close&lt;/b&gt;&lt;/html&gt;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ClosejButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="run_jButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Run"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="run_jButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton8">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Stop"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton6">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reset default values"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JButton" name="jButton3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="?"/>
+        <Property name="toolTipText" type="java.lang.String" value="Help / Informations"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>

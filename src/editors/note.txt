@@ -1,0 +1,23 @@
+////////////////////////////////////////////////////////////////////////////////
+/// package editors
+/// Alix Boc, Etienne Lord, Mickael Leclercq, Abdoulaye Baniré Diallo
+/// June 2009
+
+This package contains JDialog used to interact with each programs properties.
+
+Warning: These JDialog MUST implements editor.EditorInterface
+
+Note: These JDialog MUST HAVE ONLY ONE CONSTRUCTOR IN THE FORM:
+
+	for(java.awt.Frame frame) {
+	
+	}
+	
+	Also, the MAIN METHOD TO DISPLAY THOSE JDialog IS THROUGH:
+	
+	public void display(workflow_properties properties) {}
+	
+	Where the properties MUST BE the object that we must update!
+	
+
+

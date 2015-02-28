@@ -1,0 +1,24 @@
+////////////////////////////////////////////////////////////////////////////////
+/// package Tools
+/// Alix Boc, Etienne Lord, Mickael Leclercq, Abdoulaye Baniré Diallo
+/// June 2009
+
+Note:  Possible extras:
+[Note this list will be objects]
+-- Files --
+Load Files (List)
+Load All Files in directory
+-- Download --
+Download From Ncbi
+Download From Ensembl
+Download From UCSC
+-- Search --
+Search Ncbi
+Search HGNC
+Search Ensembl
+--  Filter --
+Text Mining
+Minimum-Maximum Size
+If
+Start
+End

@@ -1,0 +1,50 @@
+//Main
+static final String PRIMER_SEQUENCE_ID="primer3";
+static final String SEQUENCE=""; 
+static final String EXCLUDED_REGION="";
+static final String TARGET="";
+static final String INCLUDED_REGION="";
+static final String PRIMER_LEFT_INPUT="";
+static final String PRIMER_INTERNAL_OLIGO_INPUT="";
+static final String PRIMER_RIGHT_INPUT="";
+
+
+static final String PRIMER_COMMENT="";
+static final String COMMENT="";
+static final String PRIMER_SEQUENCE_QUALITY="";
+
+//General settings
+static final String PRIMER_PRODUCT_SIZE_RANGE="";
+static final String PRIMER_MIN_SIZE="";
+static final String PRIMER_OPT_SIZE="";
+static final String PRIMER_MAX_SIZE="";
+static final String PRIMER_MIN_TM="";
+static final String PRIMER_OPT_TM="";
+static final String PRIMER_MAX_TM="";
+static final String PRIMER_MAX_DIFF_TM="";
+static final String PRIMER_MIN_GC="";
+static final String PRIMER_OPT_GC_PERCENT="";
+static final String PRIMER_MAX_GC="";
+static final String
+static final String PRIMER_MISPRIMING_LIBRARY="";
+static final String PRIMER_SALT_CONC="";
+static final String PRIMER_DNA_CONC="";
+static final String PRIMER_DIVALENT_CONC="";
+static final String PRIMER_DNTP_CONC="";
+static final String PRIMER_MISPRIMING_LIBRARY="";
+
+//Advanced settings
+static final String TARGET="";
+static final String TARGET="";
+static final String TARGET="";
+static final String TARGET="";
+static final String TARGET="";
+static final String TARGET="";
+static final String TARGET="";
+static final String TARGET="";
+static final String TARGET="";
+static final String TARGET="";
+static final String TARGET="";
+static final String TARGET="";
+static final String TARGET="";
+static final String TARGET="";
