@@ -4,36 +4,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/armadillo2/armadillo/src/biologic/ListSequence.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/programs/rf.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/programs/jModelTest.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/biologic/seqclasses/esearch.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/workflows/armadillo_workflow.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/editors/MaqEditors.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/results/report.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/programs/splitSequencesGroup.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/programs/IfProgramClassLight.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/programs/scriptree.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/programs/oblong.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/programs/kmeans.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/editors/splitSequencesGroupEditor.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/biologic/seqclasses/RapidLoad.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/biologic/seqclasses/Downloader.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/programs/fasttree2.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/editors/IfEditorLight.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/editors/EEEPEditor.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/programs/Maq.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/programs/bionj.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/editor/propertiesEditorJDialog.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/demo/Demo.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/editors/FastTreeEditor.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/workflows/Workbox.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/editors/loadGenomeEditor.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/programs/ninja.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/editors/rfEditor.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/biologic/seqclasses/SearchGenbank.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/programs/weighbor.java</file>
-            <file>file:/C:/armadillo2/armadillo/src/editors/PhymlEditor.java</file>
+            <file>file:/C:/Users/etienne/Documents/GitHub/armadillo2/src/editors/ConsenseEditor.java</file>
+            <file>file:/C:/Users/etienne/Documents/GitHub/armadillo2/src/workflows/workflow_properties.java</file>
+            <file>file:/C:/Users/etienne/Documents/GitHub/armadillo2/src/programs/consense.java</file>
+            <file>file:/C:/Users/etienne/Documents/GitHub/armadillo2/src/configuration/Config.java</file>
+            <file>file:/C:/Users/etienne/Documents/GitHub/armadillo2/src/editors/DnaDistEditor.java</file>
+            <file>file:/C:/Users/etienne/Documents/GitHub/armadillo2/src/configuration/Util.java</file>
+            <file>file:/C:/Users/etienne/Documents/GitHub/armadillo2/src/biologic/Tree.java</file>
+            <file>file:/C:/Users/etienne/Documents/GitHub/armadillo2/src/programs/dnadist.java</file>
+            <file>file:/C:/Users/etienne/Documents/GitHub/armadillo2/src/biologic/MultipleTrees.java</file>
         </group>
     </open-files>
 </project-private>
