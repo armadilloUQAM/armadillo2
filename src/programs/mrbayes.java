@@ -150,11 +150,13 @@ public class mrbayes extends RunProgram {
             mtree.setNote("MrBayes at " + Util.returnCurrentDateAndTime() + "");
             mtree.setRunProgram_id(this.getId());
             //--2 case since MacOSX file is not the same as windows
-            if (properties.get("Version").startsWith("3.2")) {
-                mtree.readNewickTreeFromMrBayes("sequences.nex1.con.tre");
-            } else {
+            if (Util.FileExists("sequences.nex1.con.tre")) {
+                 mtree.readNewickTreeFromMrBayes("sequences.nex1.con.tre");
+            } else if (Util.FileExists("sequences.nex.con.tre")) {
                 mtree.readNewickTreeFromMrBayes("sequences.nex.con.tre");
-            }
+            }   else if (Util.FileExists("sequences.nex1.con")) {
+                 mtree.readNewickTreeFromMrBayes("sequences.nex1.con");
+            }         
             mtree.setAlignment_id(properties.getInputID("input_alignment_id"));
             mtree.replaceSequenceIDwithNames();
             //--MrBayes, replace sequence name
@@ -214,9 +216,9 @@ public class mrbayes extends RunProgram {
             PrintWriter pw = new PrintWriter(new FileWriter(new File(filename)));
             pw.println("begin mrbayes;");
             pw.println("set autoclose=yes;");
-            pw.println("set nowarn=yes;");
+            pw.println("set nowarn=yes;");            
             pw.println("execute "+infile+";");
-
+            //pw.println("set quitonerror=no;");
             //--outgroup <number>/<taxon name>
 
             if (properties.isSet("outgroup")){
@@ -314,7 +316,7 @@ public class mrbayes extends RunProgram {
             pw.println("sumt burnin="+sumt+";");
             //Output the replicate 
           
-            pw.println("set quitonerror=no;");
+           //  pw.println("set quitonerror=no;");
             //--(Not needed in MacOSX) Removed on 14 March 2012
             pw.println("quit;");
             pw.println("end;");
