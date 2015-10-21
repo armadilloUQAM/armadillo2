@@ -84,7 +84,7 @@ public class Workflows implements Biologic, Iterator, Serializable, Comparator {
     
     ////////////////////////////////////////////////////////////////////////////
     /// LOCAL OBJECT VARIABLES
-    private StringBuilder workflows_outputText=new StringBuilder();
+    public StringBuilder workflows_outputText=new StringBuilder();
     //--Note: needed for convertion... we can have multiple armadillo
     public armadillo_workflow workflow=null;
     public static Config config=new Config();
@@ -692,7 +692,9 @@ public class Workflows implements Biologic, Iterator, Serializable, Comparator {
      * @return the workflows_outputText
      */
     public String getWorkflows_outputText() {
+        //--Read from file here, if we need
         return workflows_outputText.toString();
+        
     }
 
     /**
@@ -700,6 +702,8 @@ public class Workflows implements Biologic, Iterator, Serializable, Comparator {
      */
     public void setWorkflows_outputText(String workflows_outputText) {
         this.workflows_outputText=new StringBuilder();
+        Util.CleanMemory();
+        //--Output to file instead here- October 2015        
         this.workflows_outputText.append(workflows_outputText);
     }
 
@@ -707,6 +711,32 @@ public class Workflows implements Biologic, Iterator, Serializable, Comparator {
      * @param workflows_outputText the workflows_outputText to set
      */
     public void appendWorkflows_outputText(String workflows_outputText) {     
+        //--Output to file instead here- October 2015        
+        //--Prevent overflow and out of memory        
+        int total_line_to_add=0;      
+        int buffer_total_line=0;
+        for (int i=0; i<workflows_outputText.length();i++) {
+               if (workflows_outputText.charAt(i)=='\n') total_line_to_add++;
+        }
+       
+        for (int i=0; i<this.workflows_outputText.length();i++) {
+               if (this.workflows_outputText.charAt(i)=='\n') buffer_total_line++;
+        }
+        
+        if (buffer_total_line>4000) {
+            //Remove some line 
+            int tfind=0;
+            for (int i=0; i<this.workflows_outputText.length();i++) {
+               if (this.workflows_outputText.charAt(i)=='\n') tfind++;
+               if (tfind==(total_line_to_add+(buffer_total_line-4000))) {
+                   tfind=i;
+                   break;
+               }
+            }
+            String buffer=this.workflows_outputText.substring(tfind);
+            this.workflows_outputText=new StringBuilder(buffer);
+        }
+        
         this.workflows_outputText.append(workflows_outputText);
     }
 
