@@ -4,15 +4,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/etienne/Documents/GitHub/armadillo2/src/editors/ConsenseEditor.java</file>
-            <file>file:/C:/Users/etienne/Documents/GitHub/armadillo2/src/workflows/workflow_properties.java</file>
-            <file>file:/C:/Users/etienne/Documents/GitHub/armadillo2/src/programs/consense.java</file>
-            <file>file:/C:/Users/etienne/Documents/GitHub/armadillo2/src/configuration/Config.java</file>
-            <file>file:/C:/Users/etienne/Documents/GitHub/armadillo2/src/editors/DnaDistEditor.java</file>
-            <file>file:/C:/Users/etienne/Documents/GitHub/armadillo2/src/configuration/Util.java</file>
-            <file>file:/C:/Users/etienne/Documents/GitHub/armadillo2/src/biologic/Tree.java</file>
-            <file>file:/C:/Users/etienne/Documents/GitHub/armadillo2/src/programs/dnadist.java</file>
-            <file>file:/C:/Users/etienne/Documents/GitHub/armadillo2/src/biologic/MultipleTrees.java</file>
+            <file>file:/C:/Users/etienne/Documents/GitHub/armadillo2/src/biologic/MultipleSequences.java</file>
         </group>
     </open-files>
 </project-private>
