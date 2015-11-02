@@ -49,6 +49,10 @@ import workflows.armadillo_workflow.Workflow;
 public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
 
     ////////////////////////////////////////////////////////////////////////////
+    /// Constants
+    public int MAX_SAVE_TEXT=2000; //--Maximum displayed text
+    
+    ////////////////////////////////////////////////////////////////////////////
     /// Variables
     private armadillo_workflow work;
     private Workflows database_workflow; 
@@ -485,10 +489,27 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
 
     public void appendOutput(String t) {
         try {
+          //--Only display the last 500 lines
             //--Refactoring needed here - Etienne June 2010
             this.database_workflow.appendWorkflows_outputText(t);
-            //--
-            this.Output_jTextArea.append(t);
+           String buffer=database_workflow.workflows_outputText.toString();
+           int buffer_total_line=0;
+           int current_index=0;
+           for (int i=0; i<buffer.length();i++) {
+               if (buffer.charAt(i)=='\n') buffer_total_line++;               
+            }   
+
+           int tfind=0;
+            for (int i=0; i<buffer.length();i++) {
+               if (buffer.charAt(i)=='\n') tfind++;
+               if (tfind==(buffer_total_line-250)) {
+                   tfind=i;
+                   break;
+               }
+            }            
+           String str="";
+           if (buffer_total_line>250) str+="... ("+(buffer_total_line-250)+" ommited lines) ...\n";
+            this.Output_jTextArea.setText(str+buffer.substring(tfind));
         } catch(Exception e){}
     }
     

@@ -248,7 +248,9 @@ public class programs implements ActionListener {
                    } else {
                       armadillo.workbox.Message(s, "");
                    }
-                    workflows.setWorkflows_outputText(armadillo.workbox.getOutput());
+                    
+                   //--Here too much info...
+                   //workflows.setWorkflows_outputText(armadillo.workbox.getOutput());
                    // June 2010
                     //armadillo.workbox.getCurrentWorkflows().setWorkflows_outputText(armadillo.workbox.getOutput());
                }
