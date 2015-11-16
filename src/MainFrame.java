@@ -44,6 +44,7 @@ import biologic.seqclasses.StandardInputSequenceJDialog;
 import configuration.SequenceFilter;
 import configuration.TreeFilter;
 import configuration.WorkflowImportExportFilter;
+import editor.WorkflowExplorerJFrame;
 import editors.HelpEditor;
 import iubio.readseq.BioseqFormats;
 import iubio.readseq.BioseqWriterIface;
@@ -94,6 +95,7 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
         LoadTreeFrame loadTree;         // Note: LoadTree Popup
         LoadAlignmentFrame loadAlignment; //Note:LoadAlingment Popup 
         ChooseWorkflowJDialog chooseWorkflowJDialog;
+        WorkflowExplorerJFrame workflowexplorer;
         
         //--Tutorial
          Ancestrale_Sequence_JIternalFrame tutorial_ancestrale_sequence;
@@ -175,6 +177,7 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
         Config.log("Creating Main Armadillo Workflow.");
         editor=new editor.MainFrame();
         this.jDesktopPane.setDesktopManager(new armadilloDesktopManager());
+        workflowexplorer=new WorkflowExplorerJFrame(frame);
         this.jDesktopPane.add(toolbox.getJInternalFrame());
 //        this.jDesktopPane.add(filebox);
 //        this.jDesktopPane.add(databasebox.getJFrame());
@@ -328,6 +331,7 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
         SequenceManagerjMenuItem = new javax.swing.JMenuItem();
         TreeManagerjMenuItem = new javax.swing.JMenuItem();
         AlignmentManagerjMenuItem = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         Run_jMenuItem = new javax.swing.JMenuItem();
         RunSelected_jMenuItem7 = new javax.swing.JMenuItem();
@@ -703,6 +707,15 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
             }
         });
         jMenu3.add(AlignmentManagerjMenuItem);
+
+        jMenuItem7.setText("Workflows");
+        jMenuItem7.setName("jMenuItem7"); // NOI18N
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem7);
 
         jMenuBar1.add(jMenu3);
 
@@ -1367,6 +1380,10 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
     private void ImportMatrix_jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMatrix_jMenuItem7ActionPerformed
        this.importMatrixFromDisk();
     }//GEN-LAST:event_ImportMatrix_jMenuItem7ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+       this.workflowexplorer.display();
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
     
     ////////////////////////////////////////////////////////////////////////////
     /// Generate Application report
@@ -2457,6 +2474,7 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
