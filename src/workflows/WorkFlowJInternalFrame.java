@@ -62,7 +62,7 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
 
     private String defaultNoteString=" Note";
 
-    programs program;
+    public programs program;
     Config config=new Config();
     Frame frame;
     CancelJDialog cancel;
@@ -641,6 +641,14 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
          program.Run();
     }
 
+     /**
+     * Execute a "Run" of the current workflow
+     */
+    public void Run(int start,int end) {
+         program=new programs(database_workflow);
+         program.Run(start,end);
+    }
+    
     /**
      * Run a particular program of the workflow
      * @param properties

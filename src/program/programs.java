@@ -340,6 +340,226 @@ public class programs implements ActionListener {
          } catch(Exception e7) {Config.log("Error : in runthread (7) "+e7.getMessage());}
     }
 
+      private void runthread(int start, int end) {
+
+      done=false;          //reset state
+      //--1. creation of the running list
+       final List<workflow_properties> queue=(List<workflow_properties>) Collections.synchronizedList(new LinkedList<workflow_properties>());
+       for (workflow_properties tmp:run_workflow.getList()) queue.add(tmp);
+       
+     
+       final int sstart=start-1;
+       final int send=end-1;
+       final int totalToRun=queue.size();
+       timerunning=System.currentTimeMillis();
+       running=true;
+       //--2. Clean Running Vector
+       //--Update every 10 sec...
+       armadillo.startAutoUpdate();
+
+       RunningSwingWorker=new SwingWorker<Integer, String>()  {
+
+       @Override
+        protected Integer doInBackground() throws Exception {
+            int current=0;
+           while (!isCancelled()&&!cancel&&(queue.size()>0||isRunning())) {
+                    //CASE 1: Running queue object if no Running object
+
+                   if (runningObject==null&&queue.size()>0) {
+                       try {
+                       //Build a search String
+                        if (!cancel) runningProperties=queue.remove(0);
+                        if (current>=sstart&&current<=send) {
+                            publish("Running "+runningProperties.getName()+"...\n");                        
+                            if (Running(runningProperties)) {
+                                armadillo.workbox.addOutput("Running "+runningProperties.getName()+"...\n");
+                            } else {
+                               if (armadillo.workflow.updateDependance()) {
+                                //DO NOTHING BUT WAIT SHYNCHRONISATION...
+                                };
+                               //armadillo.force_redraw=true;
+                               armadillo.redraw();
+                            }
+                            
+                        } else {
+                              publish("Skipping "+runningProperties.getName()+"...\n");   
+                        }
+                        if (runningProperties.isSet("Reset")||runningProperties.isSet("SaveAndReset")) current+=1;
+                       } catch(Exception e1) {Config.log("Error : Program run unable to create >Running object (1) "+e1.getMessage());}
+                    }
+
+                    //CASE 2: Running the current object...
+                    if (runningObject!=null&&runningObject.isDone()) {
+                            try {
+                                setProgress((totalToRun-queue.size())*100/totalToRun);
+                                //runningObject.setWorkflows_id(programs.armadillo.workbox.getCurrentWorkflows().getId());
+                                runningObject.setWorkflows_id(programs.workflows.getId());
+                                // Test June 2010
+                                //runningObject.setWorkflows_id(programs.armadillo.workbox.getCurrentWorkflows().getId());
+                                runningObject.setRunProgramOutput(runningObject.getOutputText());
+                                //--Test to see if it work...
+                                //armadillo.workbox.addOutput(runningObject.getOutputText());
+                                publish("Done "+runningObject.getName()+" in "+Util.msToString(runningObject.getRunningTime()));
+                                runningObject.properties.put("TimeRunning",runningObject.getRunningTime());
+                                if (armadillo.workflow.updateDependance()) {
+                                     //DO NOTHING BUT WAIT SHYNCHRONISATION...
+                                    };
+                                //armadillo.force_redraw=true;
+                                armadillo.redraw();
+                                setProgress((totalToRun-queue.size())*100/totalToRun);
+                                if (runningObject.getId()!=0) {
+                                    runningObject.update();
+                                } else {
+                                    runningObject.saveToDatabase();
+                                }
+                            } catch(Exception e2) {Config.log("Error : Program Run Module unable to save to workflow (2) "+e2.getMessage());}
+                            runningObject=null;
+                    }
+                    //CASE 3: Normal operation, update the workflow if we just finish a step
+                   if (runningObject==null) {
+                        try {
+                        if (armadillo.workflow.updateDependance()) {
+                            //DO NOTHING BUT WAIT SHYNCHRONISATION...
+                        };
+                        //armadillo.force_redraw=true;
+                        armadillo.redraw();
+                        setProgress((totalToRun-queue.size())*100/totalToRun);
+                        } catch(Exception e3) {Config.log("Error : Program run unable to normal update (3) "+e3.getMessage());}
+                   }
+                  //CASE 4: Workflow is done
+                  if (queue.size()==0&&runningObject==null) {
+                      running=false;
+                  }
+                  //CASE 5: We receive a  cancel call!
+                   if (cancel) {
+                           try {
+                               queue.clear();
+                               if (runningObject!=null) {
+                                   runningObject.KillThread();
+                                   runningObject=null;
+                                    if (armadillo.workflow.updateDependance()) {
+                                        //DO NOTHING BUT WAIT SHYNCHRONISATION...
+                                     };
+                                   //armadillo.force_redraw=true;
+                                   armadillo.redraw();
+                               }
+                           } catch(Exception e5) {Config.log("Error : Program run unable to cancel (5) "+e5.getMessage());}
+                     } //--End cancel
+                   //CASE 6: Update of the workflow receive (currently not active)
+                   if (update) {
+                       update=false;
+                       try {
+                           if (runningProperties!=null&&runningProperties!=null) {
+                               publish("Running "+runningProperties.getName()+" (elapsed time: "+Util.msToString(runningObject.getRunningTime())+")\n");
+                               armadillo.redraw();
+                           }
+                       } catch(Exception e6) {Config.log("Error : Program run unable to update (6) "+e6.getMessage());}
+                   }//--End update
+               } //--End while
+               return 0;
+            }
+
+            //On update notre Table avec les resultats partiels
+            @Override
+            protected void process(List<String> chunks) {
+               for(String s:chunks) {
+                   if (s.startsWith("Error")||s.startsWith("Cancelled")) {
+                      armadillo.workbox.MessageError(s, "");
+                   } else {
+                      armadillo.workbox.Message(s, "");
+                   }
+                    
+                   //--Here too much info...
+                   //workflows.setWorkflows_outputText(armadillo.workbox.getOutput());
+                   // June 2010
+                    //armadillo.workbox.getCurrentWorkflows().setWorkflows_outputText(armadillo.workbox.getOutput());
+               }
+            }
+
+
+           @Override
+           protected void done(){
+               //--Replace sequence name...
+                //--TO DO...workflows.ReplaceResultsWithSequenceName();               
+               
+               //--Do any more work...
+               if (isCancelled()||cancel) {
+                   queue.clear();
+                   if (runningObject!=null) {
+                       runningObject.KillThread();
+                   }
+                        armadillo.workflow.updateDependance();
+                        //Save what was done to date...
+                        //work.saveWorkflowToDatabaseWOSW(work.getCurrentWorkflows().getName()+" - Cancelled at "+Util.returnCurrentDateAndTime());
+                        work.saveWorkflowToDatabaseWOSW(workflows.getName()+" - Cancelled at "+Util.returnCurrentDateAndTime());
+                        run_workflow.getExecution_workflow_id().add(workflows.getId());
+                        //
+                        armadillo.workbox.setProgress(0);
+                        run_workflow.setName(workflows.getName()+" - Cancelled at "+Util.returnCurrentDateAndTime());
+                        run_workflow.setCompleted(false);
+                        run_workflow.saveToDatabase();
+                        armadillo.workbox.addOutput("**************************************************************************************************************\n");
+                        armadillo.workbox.addOutput(" Cancelled at "+Util.returnCurrentDateAndTime()+"\n");
+                        armadillo.workbox.addOutput("**************************************************************************************************************\n");
+                        Config.log("**************************************************************************************************************");
+                        Config.log(" Cancelled at "+Util.returnCurrentDateAndTime()+"");
+                        Config.log("**************************************************************************************************************");
+                       runningObject=null;
+                       armadillo.workflow.updateDependance();
+                       running=false;
+                       tool.reloadDatabaseTree();
+                   publish("Cancelled at "+Util.returnCurrentDateAndTime());
+                    armadillo.stopAutoUpdate();
+                    armadillo.force_redraw=true;
+                    armadillo.redraw();
+               setDone(true);
+               } else {
+                   timerunning=System.currentTimeMillis()-timerunning;
+                   armadillo.workbox.setProgress(100);
+                   armadillo.workbox.addOutput("**************************************************************************************************************\n");
+                   armadillo.workbox.Message("Computation finished in "+Util.msToString(timerunning),"");
+                   armadillo.workbox.addOutput("Computation finished in "+Util.msToString(timerunning));
+                   armadillo.workbox.addOutput("Ended at "+Util.returnCurrentDateAndTime()+"\n");
+                   armadillo.workbox.addOutput("**************************************************************************************************************\n");
+                   Config.log("**************************************************************************************************************");
+                   Config.log("Computation finished in "+timerunning+" s.");
+                   Config.log("Ended at "+Util.returnCurrentDateAndTime()+"");
+                   Config.log("**************************************************************************************************************");
+                   run_workflow.setCompleted(true);
+                   run_workflow.setNote("Done "+armadillo.getName()+" in "+Util.msToString(timerunning)+"\n");
+                   run_workflow.saveToDatabase();                 
+                   armadillo.stopAutoUpdate();
+                   armadillo.force_redraw=true;
+                   armadillo.redraw();
+                     tool.reloadDatabaseTree();
+               setDone(true);
+               }
+
+           }
+
+        }; //End SwingWorker declaration
+
+        RunningSwingWorker.addPropertyChangeListener(
+                 new PropertyChangeListener() {
+                    public  void propertyChange(PropertyChangeEvent evt) {
+                  if ("progress".equals(evt.getPropertyName())) {
+                            SwingWorker o = (SwingWorker)evt.getSource();
+                            if (!o.isDone()) {
+                                int progress=(Integer)evt.getNewValue();
+                                armadillo.workbox.setProgress(progress);
+                                ////armadillo.force_redraw=true;
+                                armadillo.redraw();
+                            }
+                     } //End populateNetworkPropertyChange
+                    }
+                 });
+         armadillo.workbox.Message("Starting...", "");
+         armadillo.workbox.setProgress(0); //Put 0% as the start progress
+         try {
+         RunningSwingWorker.execute();
+         } catch(Exception e7) {Config.log("Error : in runthread (7) "+e7.getMessage());}
+    } 
+      
      /**
       * This start a thread to run the current workflow_properties
       */
@@ -416,6 +636,28 @@ public class programs implements ActionListener {
         }
     }
 
+     public void Run(int start,int end) {
+        if (armadillo!=null&&armadillo.isInitialized()) {
+            armadillo.workflow.updateDependance();
+            armadillo.redraw();
+        } else {            
+            armadillo.workflow.updateDependance();            
+        }
+        if (!isRunning()&&isValidWorkflow()) {
+           publish_text("Creating runnning workflow...");
+           if (createWorkflows()) {
+               execute(start,end);
+           } else {
+               publish_text("Error in creating running workflow - stoppping execution.");
+               this.setDone(true);
+               return;
+           }
+        } else {
+            if (isRunning()) Config.log("Workflow already running: "+running);
+            if (!isValidWorkflow()) Config.log("Invalid workflow... Please restart the application.");
+        }
+    }
+    
     public void execute() {
          if (armadillo.isInitialized()) {
                 armadillo.workbox.ClearOutput();
@@ -454,6 +696,31 @@ public class programs implements ActionListener {
 
     }
 
+     public void execute(int start, int end) {
+         if (armadillo.isInitialized()) {
+                armadillo.workbox.ClearOutput();
+                armadillo.workbox.addOutput("**************************************************************************************************************\n");
+                armadillo.workbox.addOutput(" Armadillo v"+config.get("version")+"\n");
+                armadillo.workbox.addOutput(" New Execution started \n");
+                armadillo.workbox.addOutput(" -Total iteration to perform: "+armadillo.workbox.getCurrentRunWorkflow().getFor_list().size());
+                armadillo.workbox.addOutput(" -Running iteration From : "+start);
+                armadillo.workbox.addOutput(" -Running iteration To : "+end);      
+                armadillo.workbox.addOutput(" -Running "+armadillo.getName()+" workflow.\n");
+                armadillo.workbox.addOutput(" -Started at "+Util.returnCurrentDateAndTime()+"\n");
+                armadillo.workbox.addOutput("**************************************************************************************************************\n");
+                Config.log("**************************************************************************************************************");
+                Config.log(" Armadillo v"+config.get("version"));
+                Config.log(" New Execution started ");
+                Config.log(" -Running "+armadillo.getName()+" workflow.");
+                Config.log(" -Total iteration to perform: "+armadillo.workbox.getCurrentRunWorkflow().getFor_list().size());
+                Config.log(" -Running iteration From : "+start);
+                Config.log(" -Running iteration To : "+end);                
+                Config.log(" -Started at "+Util.returnCurrentDateAndTime()+"\n");
+                Config.log("**************************************************************************************************************");
+                runthread(start,end);
+        } 
+    }
+    
     /**
      * Main procedure to create workflow EXECUTION LIST
      * Not. This is a FIFO file.
@@ -466,7 +733,7 @@ public class programs implements ActionListener {
             workflow_properties save=new workflow_properties();
            //--Create a new list
            run_workflow=new RunWorkflow();
-         
+                    
            //--Remove any programs output before we start...
            //--Note: should not be done for program already done...
            //--A test is made in this function to be certains...

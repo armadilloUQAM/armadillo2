@@ -1048,8 +1048,17 @@ public class Workbox {
            workbox.preferences.display();
        }
 
+       
+    public boolean isRunning() {
+        return workbox.program.running;
+    }   
+       
      public void Run() {
        workbox.Run();
+    }
+     
+      public void Run(int start, int end) {
+       workbox.Run(start,end);
     }
 
     public void Run(workflow_properties properties) {

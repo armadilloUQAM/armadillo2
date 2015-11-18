@@ -1377,28 +1377,28 @@ public class report {
                             tree.parseNewick(t.getTree());
                             printInFile.println("Total species : "+tree.getTotalLeaf());
                         } catch(Exception e){}
-                        ImageFile img=scr.scriptree(t, tree.getTotalLeaf());
-                        String imgfilename=config.resultsDir()+File.separator+projectName+File.separator+"tree_"+img.hashCode()+".svg";                                                
-                        img.Output(config.resultsDir()+File.separator+projectName+File.separator+"tree_"+img.hashCode()+".svg");
-                        cct.convert(imgfilename);
-                        printInFile.println("<a href='tree_"+img.hashCode()+".svg.png'>Tree in PNG format</a><div style=\"border-top: 0px solid rgb(255, 255, 255); border-left: 0em solid rgb(170, 170, 170); border-bottom: 1px solid rgb(170, 170, 170); padding: 0px 0px 0px 0em; white-space: nowrap; font-weight: normal; font-size: 1.2em; margin-top: 2em; margin-bottom: 1em; color: rgb(51, 51, 51);\">Input tree</div>");
-                        printInFile.println("<br>Created with ScripTree v1.7 <a href=\"http://phylo.lirmm.fr/scriptree/\">Website</a>");
-                        printInFile.println("<embed id='svg' src=\"tree_"+img.hashCode()+".svg"+"\" width=\"600\" height=\"1200\" type=\"image/svg+xml\" pluginspage=\"http://www.adobe.com/svg/viewer/install/\" />");                       
+//                        ImageFile img=scr.scriptree(t, tree.getTotalLeaf());
+//                        String imgfilename=config.resultsDir()+File.separator+projectName+File.separator+"tree_"+img.hashCode()+".svg";                                                
+//                        img.Output(config.resultsDir()+File.separator+projectName+File.separator+"tree_"+img.hashCode()+".svg");
+//                        cct.convert(imgfilename);
+//                        printInFile.println("<a href='tree_"+img.hashCode()+".svg.png'>Tree in PNG format</a><div style=\"border-top: 0px solid rgb(255, 255, 255); border-left: 0em solid rgb(170, 170, 170); border-bottom: 1px solid rgb(170, 170, 170); padding: 0px 0px 0px 0em; white-space: nowrap; font-weight: normal; font-size: 1.2em; margin-top: 2em; margin-bottom: 1em; color: rgb(51, 51, 51);\">Input tree</div>");
+//                        printInFile.println("<br>Created with ScripTree v1.7 <a href=\"http://phylo.lirmm.fr/scriptree/\">Website</a>");
+//                        printInFile.println("<embed id='svg' src=\"tree_"+img.hashCode()+".svg"+"\" width=\"600\" height=\"1200\" type=\"image/svg+xml\" pluginspage=\"http://www.adobe.com/svg/viewer/install/\" />");                       
                         
                     }
                     if (type.equalsIgnoreCase("MultipleTrees")) {
                         for (Tree t:((MultipleTrees)((Biologic)obj)).getTree()) {
-                            scriptree scr=new scriptree();
-                            ImageFile img=scr.scriptree(t);
+//                            scriptree scr=new scriptree();
+//                            ImageFile img=scr.scriptree(t);
                               newick_tree tree=new newick_tree();
                             try {
                                 tree.parseNewick(t.getTree());
                                 printInFile.println(tree.PrintOut());
                             } catch(Exception e){}
-                            img.Output(config.resultsDir()+File.separator+projectName+File.separator+"tree_"+img.hashCode()+".svg");
-                            printInFile.println("<div style=\"border-top: 0px solid rgb(255, 255, 255); border-left: 0em solid rgb(170, 170, 170); border-bottom: 1px solid rgb(170, 170, 170); padding: 0px 0px 0px 0em; white-space: nowrap; font-weight: normal; font-size: 1.2em; margin-top: 2em; margin-bottom: 1em; color: rgb(51, 51, 51);\">Input tree</div>");
-                            printInFile.println("<br>Created with ScripTree v1.7 <a href=\"http://phylo.lirmm.fr/scriptree/\">Website</a>");
-                            printInFile.println("<embed src=\""+config.resultsDir()+File.separator+projectName+File.separator+"tree_"+img.hashCode()+".svg"+"\" width=\"600\" height=\"1200\" type=\"image/svg+xml\" pluginspage=\"http://www.adobe.com/svg/viewer/install/\" />");
+                            //mg.Output(config.resultsDir()+File.separator+projectName+File.separator+"tree_"+img.hashCode()+".svg");
+                            //printInFile.println("<div style=\"border-top: 0px solid rgb(255, 255, 255); border-left: 0em solid rgb(170, 170, 170); border-bottom: 1px solid rgb(170, 170, 170); padding: 0px 0px 0px 0em; white-space: nowrap; font-weight: normal; font-size: 1.2em; margin-top: 2em; margin-bottom: 1em; color: rgb(51, 51, 51);\">Input tree</div>");
+                            //printInFile.println("<br>Created with ScripTree v1.7 <a href=\"http://phylo.lirmm.fr/scriptree/\">Website</a>");
+                            //printInFile.println("<embed src=\""+config.resultsDir()+File.separator+projectName+File.separator+"tree_"+img.hashCode()+".svg"+"\" width=\"600\" height=\"1200\" type=\"image/svg+xml\" pluginspage=\"http://www.adobe.com/svg/viewer/install/\" />");
                         }
                     }
 

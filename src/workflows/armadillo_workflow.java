@@ -596,6 +596,10 @@ public void setup() {
                 mi = new MenuItem("Save Workflow image");
                 mi.addActionListener((ActionListener) this);
                 popupObject.add(mi);
+               if (config.isDevelopperMode()) {
+              
+               }
+                
             }
             //--Show Software's ouput log if found
             if (selection!=null&&selection.getProperties().isSet("output_outputtext_id")&&selection.getProperties().getInt("output_outputtext_id")!=0) {
@@ -610,8 +614,14 @@ public void setup() {
                 popupObject.addSeparator();
                 mi = new MenuItem("Object Properties");
                 mi.addActionListener((ActionListener) this);
+                popupObject.add(mi);                
+            }
+            if (config.isDevelopperMode()) {                
+                mi = new MenuItem("Info. Workflow");
+                mi.addActionListener((ActionListener) this);
                 popupObject.add(mi);
             }
+           
             
             add(popupObject); // add popup menu to applet
             
@@ -640,6 +650,7 @@ public void setup() {
                   popupObject.add(mi);
             }
            
+             
         
             add(popupObject); // add popup menu to applet
            
@@ -885,7 +896,22 @@ public void setup() {
             propertiesEditorJDialog pro=new propertiesEditorJDialog(this.frame, this.Popup_selection.getProperties(),"Object Properties");
             pro.setVisible(true);
             workflow.resetSelected();
-        } else
+        } 
+        else
+        if (ac.equals("Info. Workflow")) {
+           Workflows winfo=new Workflows();
+           winfo.setWorkflow_in_txt(workbox.getCurrentWorkflows().workflowToString());
+           workbox.addOutput("\n=== Information about workflow ===\n");
+           for (workflow_properties prop:winfo.output_workflows()) {
+               //System.out.println(prop.get("ObjectType")+":"+prop.getID());
+               String par="";
+               if (prop.isSet("parent")) {
+                   par=" ["+prop.get("parent")+"]";
+               }
+               workbox.addOutput(prop.get("ObjectType")+":"+prop.getID()+par+"\n");
+           } 
+           workbox.addOutput("==================================\n");
+        }else
         if (ac.equals("Redraw")) {
             redraw();
         } else
@@ -1697,6 +1723,10 @@ DropTarget dt = new DropTarget(this, new DropTargetListener() {
   public void dragOver(DropTargetDragEvent event) {event.acceptDrag(DnDConstants.ACTION_COPY);}
   public void dropActionChanged(DropTargetDragEvent event) {}
   public void drop(DropTargetDropEvent event) {
+      if (workbox.isRunning()) {          
+        //TO DO add box to stop...
+          return;
+      }
       event.acceptDrop(DnDConstants.ACTION_COPY);
       Transferable transferable = event.getTransferable();
      

@@ -302,6 +302,9 @@ public class WorkflowExplorerJFrame extends javax.swing.JFrame {
         });
     }
 
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList RunWorkflowjList;
     private javax.swing.JPanel jPanel1;

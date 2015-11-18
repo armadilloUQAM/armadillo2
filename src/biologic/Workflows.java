@@ -46,6 +46,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -244,7 +245,13 @@ public class Workflows implements Biologic, Iterator, Serializable, Comparator {
 
     ////////////////////////////////////////////////////////////////////////////
     /// Output execution
-
+  public static Comparator<workflow_object> BYTYPE = new Comparator<workflow_object>() {
+            @Override
+            public int compare(workflow_object o1, workflow_object o2) {
+                return o1.properties.get("ObjectType").compareTo(o2.properties.get("ObjectType"));
+            }
+        };
+    
     public LinkedList<workflow_properties> output_execution() {
         try {
         //--Initialize a workflow if the current is null
@@ -255,9 +262,9 @@ public class Workflows implements Biologic, Iterator, Serializable, Comparator {
         //--Execute
         program.programs to_run=new program.programs(this);
         to_run.createWorkflows();
-         for (workflow_properties obj:to_run.run_workflow.getList()) {
-                System.out.println(obj.getName());
-            }
+//         for (workflow_properties obj:to_run.run_workflow.getList()) {
+//                System.out.println(obj.getName());
+//            }
         return to_run.run_workflow.getList();
          //for (workflow_object obj:to_run.run_workflow.)
         } catch(Exception e) {
@@ -266,6 +273,68 @@ public class Workflows implements Biologic, Iterator, Serializable, Comparator {
         }
     }
 
+    /**
+     * This will output the all workflow object linked to this workflows
+     * @return 
+     */
+     public LinkedList<workflow_properties> output_workflows() {
+        LinkedList<workflow_properties> tmp=new LinkedList<workflow_properties>();
+         try {
+        //--Initialize a workflow if the current is null
+        if (this.getWorkflow()==null) {
+              this.workflow=new armadillo_workflow();
+              this.StringToWorkflow();
+        }        
+       LinkedList<workflow_object> exe=this.workflow.workflow.outputExecution();
+       //--Order by type
+     
+       Collections.sort(exe,BYTYPE);
+       
+         for (workflow_object obj:exe) {
+             
+            workflow_properties properties=obj.getProperties();        
+            if (properties.get("ObjectType").equals("Output")) {
+                String oid="output_"+properties.get("outputType").toLowerCase()+"_id";
+                for (workflow_object obj2:exe) {
+                   workflow_properties properties2=obj2.getProperties();    
+                    if (properties.getInt(oid)==properties2.getInt(oid)&&!properties.getID().equals(properties2.getID())) {
+                        String par="";
+                        if (!properties.isSet("parent")) {
+                            par=properties2.getID();
+                        } else {
+                            par+=","+properties2.getID();
+                        }
+                        
+                        properties.put("parent", par);
+                    }
+                    
+                    //if (properties2.get(properties.get("output_"+))
+                }  
+            }            
+            tmp.add(properties);
+            
+            
+            
+              for (String output_type:properties.Outputed()) {
+                        Vector<Integer> ids=properties.getOutputID(output_type, null);
+//                        for (int id:ids) {
+//                                Output output=new Output();
+//                                 output.setType(output_type);
+//                                 output.setTypeid(id);
+//                                 Object bio=output.getBiologic();
+//                             workflow_properties properties2=((Biologic)bio).returnProperties();
+//                             tmp.add(properties2);
+//                        }
+              }
+         }
+        //--Execute
+        return tmp;
+         //for (workflow_object obj:to_run.run_workflow.)
+        } catch(Exception e) {
+             //Config.log("Error in Running workflow : "+this.getName()+"\n"+e.getMessage());
+            return tmp;
+        }
+    }
     ////////////////////////////////////////////////////////////////////////////
     /// Saving / Loading function
 

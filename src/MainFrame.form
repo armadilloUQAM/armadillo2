@@ -324,6 +324,15 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RunSelected_jMenuItem7ActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="RunIterationjMenuItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Run (from iteration)"/>
+                <Property name="name" type="java.lang.String" value="RunIterationjMenuItem" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RunIterationjMenuItemActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="Stop_jMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Stop"/>

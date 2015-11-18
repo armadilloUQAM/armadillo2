@@ -68,6 +68,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JTree;
 import javax.swing.Timer;
 import javax.swing.tree.DefaultTreeModel;
+import program.StartIterationJDialog;
 import results.report;
 import results.report_list_workflows;
 import workflows.*;
@@ -335,6 +336,7 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
         jMenu1 = new javax.swing.JMenu();
         Run_jMenuItem = new javax.swing.JMenuItem();
         RunSelected_jMenuItem7 = new javax.swing.JMenuItem();
+        RunIterationjMenuItem = new javax.swing.JMenuItem();
         Stop_jMenuItem = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -741,6 +743,15 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
             }
         });
         jMenu1.add(RunSelected_jMenuItem7);
+
+        RunIterationjMenuItem.setText("Run (from iteration)");
+        RunIterationjMenuItem.setName("RunIterationjMenuItem"); // NOI18N
+        RunIterationjMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RunIterationjMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu1.add(RunIterationjMenuItem);
 
         Stop_jMenuItem.setText("Stop");
         Stop_jMenuItem.setToolTipText("Stop the currently executing workflow. Note that some errors might occur if you stop some programs before the end of their normal execution.");
@@ -1384,6 +1395,12 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
        this.workflowexplorer.display();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void RunIterationjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RunIterationjMenuItemActionPerformed
+        StartIterationJDialog dialog=new StartIterationJDialog(this.frame,true,"");
+        dialog.setVisible(true);
+        
+    }//GEN-LAST:event_RunIterationjMenuItemActionPerformed
     
     ////////////////////////////////////////////////////////////////////////////
     /// Generate Application report
@@ -2442,6 +2459,7 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
     private javax.swing.JMenuItem OpenWorkflow_jMenuItem;
     private javax.swing.JMenuItem ReportjMenuItem14;
     private javax.swing.JMenuItem ResetDevelopperStatejMenuItem5;
+    private javax.swing.JMenuItem RunIterationjMenuItem;
     private javax.swing.JMenuItem RunSelected_jMenuItem7;
     private javax.swing.JMenuItem Run_jMenuItem;
     private javax.swing.JMenu Sample_jMenu;
