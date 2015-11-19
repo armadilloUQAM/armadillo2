@@ -1474,7 +1474,7 @@ public class report {
         }
     }
 
-    public void generateBiologicalContentFile(String filename, Biologic obj){
+    public static void generateBiologicalContentFile(String filename, Biologic obj){
         filename = filename.replaceAll(" ", "_");
         
         File f2 = new File (filename);

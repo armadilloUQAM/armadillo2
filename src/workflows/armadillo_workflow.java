@@ -48,6 +48,7 @@ import processing.core.*;
 import processing.pdf.*;
 import editor.propertiesEditorJDialog;
 import biologic.seqclasses.CommentsSequenceJDialog;
+import database.databaseFunction;
 
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
@@ -70,7 +71,10 @@ import editors.SimplePhyloEditor;
 import java.awt.image.BufferedImage;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import javax.swing.BoxLayout;
 import javax.swing.JFileChooser;
 import javax.swing.JInternalFrame;
@@ -701,6 +705,74 @@ public void setup() {
        for (Menu lnode:list) menu.add(lnode);        
        return menu;
     }
+     
+      public static void generateContentFile(String filename, Biologic obj){
+        filename = filename.replaceAll(" ", "_");
+        
+        File f2 = new File (filename);
+        try{
+            PrintWriter printInFile = new PrintWriter(new BufferedWriter(new FileWriter (f2,false)));
+            printInFile.print(obj.toString()); //Mettre contenu ici
+            printInFile.close();
+        }
+        catch (java.io.IOException e){
+            Config.log("Unable to write in file");
+        }
+
+    }
+     
+     public void infonetwork() {
+         databaseFunction df=new databaseFunction();
+         workbox.addOutput("\n=== Information about workflow ===\n");
+         Util u=new Util();
+         u.open("workflows.id.txt");
+         int total=df.getAllWorkflowsID().size();
+         workbox.addOutput("Total workflow..."+total+"\n");
+         int i=0;
+         
+         for (int id:df.getAllWorkflowsID()) {
+             Workflows w=new Workflows(id);
+             w.workflow=new armadillo_workflow();             
+             w.StringToWorkflow();
+            workbox.addOutput("Processing "+i+" of "+total+"\t"+w.getId()+"\t"+w.getName()+"\n");
+            //--Get each type and save them... 
+              for (workflow_properties prop:w.output_workflows()) {
+               //System.out.println(prop.get("ObjectType")+":"+prop.getID());
+               String par="";
+               if (prop.isSet("parent")) {
+                   par=" ["+prop.get("parent")+"]";
+               }
+               //--output
+                Output output=new Output();
+                                output.setType(prop.get("outputType"));
+                                output.setTypeid(prop.getInt("output_"+prop.get("outputType").toLowerCase()+"_id"));
+                                Biologic bio=output.getBiologic();
+                                String filename2=config.resultsDir()+File.separator+id+"_"+prop.get("ObjectType")+"_"+File.separator+prop.getID()+".txt";
+                                generateContentFile(filename2, bio);
+               
+                            //workbox.addOutput(prop.get("ObjectType")+":"+prop.getID()+par+"\n");
+           } 
+            
+            
+            u.println(w.getId()+"\t"+w.getName());
+             i++;
+             
+         }
+         u.close();
+         
+         Workflows winfo=new Workflows();
+           winfo.setWorkflow_in_txt(workbox.getCurrentWorkflows().workflowToString());
+           workbox.addOutput("\n=== Information about current workflow ===\n");
+           for (workflow_properties prop:winfo.output_workflows()) {
+               //System.out.println(prop.get("ObjectType")+":"+prop.getID());
+               String par="";
+               if (prop.isSet("parent")) {
+                   par=" ["+prop.get("parent")+"]";
+               }
+               workbox.addOutput(prop.get("ObjectType")+":"+prop.getID()+par+"\n");
+           } 
+           workbox.addOutput("==================================\n");
+     }
 
 
     @Override
@@ -899,18 +971,8 @@ public void setup() {
         } 
         else
         if (ac.equals("Info. Workflow")) {
-           Workflows winfo=new Workflows();
-           winfo.setWorkflow_in_txt(workbox.getCurrentWorkflows().workflowToString());
-           workbox.addOutput("\n=== Information about workflow ===\n");
-           for (workflow_properties prop:winfo.output_workflows()) {
-               //System.out.println(prop.get("ObjectType")+":"+prop.getID());
-               String par="";
-               if (prop.isSet("parent")) {
-                   par=" ["+prop.get("parent")+"]";
-               }
-               workbox.addOutput(prop.get("ObjectType")+":"+prop.getID()+par+"\n");
-           } 
-           workbox.addOutput("==================================\n");
+           infonetwork();
+            
         }else
         if (ac.equals("Redraw")) {
             redraw();
