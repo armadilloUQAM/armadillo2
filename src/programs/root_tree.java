@@ -67,8 +67,8 @@ public class root_tree extends RunProgram {
     @Override
     public void init_createInput() {
         //--Pre-Run initialization
-       this.deleteFile(infile);
-       this.deleteFile(outfile);      
+       Util.deleteFile(infile);
+       Util.deleteFile(outfile);      
        //--Create infile
        int tree_id=properties.getInputID("tree");
     
@@ -113,8 +113,8 @@ public class root_tree extends RunProgram {
             }
         }
             //--delete not needed files
-            deleteFile(infile);
-            deleteFile(outfile);
+            Util.deleteFile(infile);
+            Util.deleteFile(outfile);
     }
 
 }

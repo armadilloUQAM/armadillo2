@@ -27,13 +27,9 @@ import java.io.Serializable;
  */
 public class ProteinAlignment extends Alignment implements Serializable {
 
-    public ProteinAlignment () {
-        super();
-    }
-
-    public ProteinAlignment (int id) { super(id); }
-
-    public ProteinAlignment (String filename) { super(filename); }
+    public ProteinAlignment ()                {super();}
+    public ProteinAlignment (int id)          {super(id);}
+    public ProteinAlignment (String filename) {super(filename);}
 
     @Override
     public boolean loadFromDatabase(int id) {
@@ -48,7 +44,4 @@ public class ProteinAlignment extends Alignment implements Serializable {
         }
         return true;
     }
-
-
-
 }

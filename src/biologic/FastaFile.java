@@ -21,11 +21,17 @@
 package biologic;
 
 import configuration.Util;
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.Vector;
+import workflows.workflow_properties;
 
 /**
  *
  * @author Etienne Lord
+ * @author JG 2016
+ * 
  */
 public class FastaFile extends Text implements Serializable {
 
@@ -33,22 +39,13 @@ public class FastaFile extends Text implements Serializable {
     public FastaFile(int id) {super(id);}
     public FastaFile(String filename) {super(filename);}
 
+    public String[] getExtensionTab() {
+        String[] t = {".fasta",".fa",".fna",".csfasta",".csfa",".gifasta"};
+        return t;
+    }
+    
     @Override
     public String getBiologicType() {
         return "FastaFile";
-    }
-
-    public void setFastaFile(String filename) {
-        this.setFilename(filename);
-        this.setUnknownType("Fasta");
-        this.setText("Fasta : "+filename+"\nSelected on: "+Util.returnCurrentDateAndTime());
-    }
-
-    public String getFastaFile() {
-        return this.getFilename();
-    }
-
-    public String getExtendedString() {
-        return toString();
     }
 }

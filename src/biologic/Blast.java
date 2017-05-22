@@ -171,7 +171,7 @@ public class Blast extends Text implements Serializable{
 
     @Override
     public String toString() {
-            return super.toString();
+        return super.toString();
     }
 
     @Override

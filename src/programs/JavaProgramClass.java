@@ -153,9 +153,9 @@ public class JavaProgramClass extends RunProgram {
             addOutput(text);
             text.saveToDatabase();
             properties.put("output_results_id", text.getId());
-            deleteFile(output);
+            Util.deleteFile(output);
         }
-        deleteFile("source.class");
+        Util.deleteFile("source.class");
     }
 
     protected URI toURI(String filename) {

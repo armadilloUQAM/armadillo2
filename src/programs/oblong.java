@@ -194,12 +194,12 @@ public class oblong extends RunProgram {
        addOutput(text);
        properties.put("output_results_id",text.getId());
 
-       deleteFile(infile);
-       deleteFile(infile+"_phyml_stats.txt");
-       deleteFile(infile+"_phyml_tree.txt");
-       deleteFile(infile+"_phyml_boot_stats.txt");
-       deleteFile(infile+"_phyml_boot_trees.txt");
-       deleteFile(infile+"_phyml_lk.txt");
+       Util.deleteFile(infile);
+       Util.deleteFile(infile+"_phyml_stats.txt");
+       Util.deleteFile(infile+"_phyml_tree.txt");
+       Util.deleteFile(infile+"_phyml_boot_stats.txt");
+       Util.deleteFile(infile+"_phyml_boot_trees.txt");
+       Util.deleteFile(infile+"_phyml_lk.txt");
     }
 
 }

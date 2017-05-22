@@ -148,7 +148,7 @@ public class BlastExtractSequence extends RunProgram {
                     if (properties.getBoolean("DevelopperMode")) {
                         Config.log(Util.toString(Util.InputFile("esearch.txt")));
                     }
-                    deleteFile("esearch.txt");
+                    Util.deleteFile("esearch.txt");
         }
         //--Verify queue->if
        //--Set filename

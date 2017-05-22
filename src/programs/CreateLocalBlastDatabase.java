@@ -104,10 +104,7 @@ public class CreateLocalBlastDatabase extends RunProgram {
 
     @Override
     public void post_parseOutput() {
-        BlastDB db=new BlastDB();
-        db.setBlastDB(properties.get("outputfilename"));
-        db.saveToDatabase();
-        properties.put("output_blastdb_id", db.getId());
+        BlastDB.saveFile(properties,properties.get("outputfilename"),"BlastDBEditor","BlastDB");
     }
 
 

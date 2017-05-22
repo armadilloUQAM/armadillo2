@@ -168,7 +168,7 @@ public class WublastWebEBI extends RunProgram {
                             properties.put("output_blast_id", unknown.getId());
                         }
                         Config.log(filename);
-                        if (!properties.getBoolean("debug")) deleteFile(filename);
+                        if (!properties.getBoolean("debug")) Util.deleteFile(filename);
                     }
                 }               
                 wsdone=true;
@@ -237,7 +237,7 @@ public class WublastWebEBI extends RunProgram {
                                                 properties.put("output_text_id", unknown.getId());
                                                 addOutput(unknown);
                                             }
-                                            if (!properties.getBoolean("debug")) deleteFile(filename);
+                                            if (!properties.getBoolean("debug")) Util.deleteFile(filename);
                                         }
                                     }
                                 }

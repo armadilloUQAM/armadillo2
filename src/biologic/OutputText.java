@@ -32,10 +32,8 @@ import java.util.Vector;
  */
 public class OutputText extends Unknown implements Serializable {
 
-    public OutputText() {super();}
-
-    public OutputText(int id) {super(id);}
-
+    public OutputText()                {super();}
+    public OutputText(int id)          {super(id);}
     public OutputText(String filename) {super(filename);}
 
     public void setText(String txt) {
@@ -91,17 +89,9 @@ public class OutputText extends Unknown implements Serializable {
         this.setNote("Software output ("+Util.returnCurrentDateAndTime()+")");
         
     }
-
-  
     
     @Override
     public String getBiologicType() {
         return "OutputText";
     }
-
-    public String getExtendedString() {
-        return toString();
-    }
-
-
 }

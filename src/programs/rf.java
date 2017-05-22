@@ -166,10 +166,10 @@ public class rf extends RunProgram {
             properties.put("output_multipletrees_id", multi.getId());
         } catch(Exception e) {}
         //
-        deleteFile("input.txt");
-        deleteFile("output1.txt");
-        deleteFile("tmp.txt");
-        deleteFile("matrix.txt");
+        Util.deleteFile("input.txt");
+        Util.deleteFile("output1.txt");
+        Util.deleteFile("tmp.txt");
+        Util.deleteFile("matrix.txt");
     }
 
 }

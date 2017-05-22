@@ -1,22 +1,22 @@
 /*
- *  Armadillo Workflow Platform v1.0
- *  A simple pipeline system for phylogenetic analysis
- *  
- *  Copyright (C) 2009-2011  Etienne Lord, Mickael Leclercq
- *
- *  This program is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- * 
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+*  Armadillo Workflow Platform v1.0
+*  A simple pipeline system for phylogenetic analysis
+*
+*  Copyright (C) 2009-2011  Etienne Lord, Mickael Leclercq
+*
+*  This program is free software: you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License as published by
+*  the Free Software Foundation, either version 3 of the License, or
+*  (at your option) any later version.
+*
+*  This program is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*  GNU General Public License for more details.
+*
+*  You should have received a copy of the GNU General Public License
+*  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
 package editors;
 
@@ -60,10 +60,10 @@ import workflows.workflow_properties_dictionnary;
  * @since July 2009
  */
 public class loadBlastDBEditor extends javax.swing.JDialog implements EditorInterface {
-
+    
     ////////////////////////////////////////////////////////////////////////////
     /// VARIABLES
-
+    
     Config config=new Config();
     //ConnectorInfoBox connectorinfobox;
     workflow_properties_dictionnary dict=new workflow_properties_dictionnary();
@@ -79,9 +79,9 @@ public class loadBlastDBEditor extends javax.swing.JDialog implements EditorInte
     String old_filename="";
     ////////////////////////////////////////////////////////////////////////////
     /// CONSTANT
-
+    
     public final String defaultNameString="Name";
-
+    
     /** Creates new form propertiesJDialog */
     public loadBlastDBEditor(java.awt.Frame parent, armadillo_workflow parent_workflow) {
         super(parent, false);
@@ -90,9 +90,9 @@ public class loadBlastDBEditor extends javax.swing.JDialog implements EditorInte
         frame=parent;
         //connectorinfobox=new ConnectorInfoBox(parent); //--Used to display Connector info
         //--Initialize component
-       
+        
     }
-
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -269,11 +269,11 @@ public class loadBlastDBEditor extends javax.swing.JDialog implements EditorInte
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jTabbedPane1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTabbedPane1ComponentShown
-      
+        
 }//GEN-LAST:event_jTabbedPane1ComponentShown
-
+    
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         JFileChooser jf;
         if (this.Filename_jTextField.getText().isEmpty()) {
@@ -284,98 +284,93 @@ public class loadBlastDBEditor extends javax.swing.JDialog implements EditorInte
         jf.setFileFilter(new BlastDBFilter());
         int result=jf.showOpenDialog(this);
         //CAS 1: On reussi a choisir un fichier
-        if (result==JFileChooser.APPROVE_OPTION) {           
-               //--Save new filepath
-              String path=jf.getSelectedFile().getPath();
-              config.setExplorerPath(path);
-              config.Save();
-               //--Save BlastDB
-               String filename=jf.getSelectedFile().getAbsolutePath().toLowerCase();
-               filename=filename.substring(0, filename.length()-4);                
-               this.Filename_jTextField.setText(filename);
-               properties.put("Description", filename);
-               BlastDB db=new BlastDB();
-               db.setBlastDB(filename);
-               db.setName("BlastDB filename:"+filename);
-               db.setNote("BlastDB filename:"+filename+"\nSelected on "+Util.returnCurrentDateAndTime());
-               db.saveToDatabase();
-               properties.put("output_blastdb_id", db.getId());
-               this.parent_workflow.workflow.updateDependance();
-               this.parent_workflow.force_redraw=true;
-               this.parent_workflow.redraw();
+        if (result==JFileChooser.APPROVE_OPTION) {
+            //--Save new filepath
+            String path=jf.getSelectedFile().getPath();
+            config.setExplorerPath(path);
+            config.Save();
+            //--Save BlastDB
+            String filename=jf.getSelectedFile().getAbsolutePath().toLowerCase();
+            filename=filename.substring(0, filename.length()-4);
+            this.Filename_jTextField.setText(filename);
+            properties.put("Description", filename);
+            BlastDB.saveFile(properties,filename,"BlastDBEditor","BlastDB");
+            this.parent_workflow.workflow.updateDependance();
+            this.parent_workflow.force_redraw=true;
+            this.parent_workflow.redraw();
         }
     }//GEN-LAST:event_jButton6ActionPerformed
-
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-      HelpEditor help = new HelpEditor(this.frame, false, properties);
+        HelpEditor help = new HelpEditor(this.frame, false, properties);
         help.setVisible(true);
 }//GEN-LAST:event_jButton3ActionPerformed
-
+    
     private void OkjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkjButtonActionPerformed
         //properties.put("Filename", this.Filename_jTextField.getText());
         this.setVisible(false);
     }//GEN-LAST:event_OkjButtonActionPerformed
-
+    
     private void CanceljButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CanceljButtonActionPerformed
         properties.put("Filename", this.old_filename);
         this.setVisible(false);
     }//GEN-LAST:event_CanceljButtonActionPerformed
-
+    
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         properties.put("Name", this.NamejTextField.getText());
         parent_workflow.updateCurrentWorkflow(properties);
 }//GEN-LAST:event_jButton4ActionPerformed
-
-
-      
-
+    
+    
+    
+    
     /**
      * This set the different setting corresponding to the current properties
      */
     public void setSettingForProperties() {
-           this.NamejTextField.setText(properties.getName());
-     }
-
+        this.NamejTextField.setText(properties.getName());
+    }
+    
     ///////////////////////////////////////////////////////////////////////////
     /// DISPLAY MAIN FUNCTION
-
+    
     public void display(workflow_properties properties) {
         this.properties=properties;
         initComponents();
         setIconImage(Config.image);
         setTitle(properties.getName());
         this.NamejTextField.setText(properties.getName());
-
+        
         //--Load properties
         //this.Message("Please choose a local Blast database file (.nsd)...", "");
-       // if (properties.isSet("Description")) this.Notice.setText(properties.get("Description"));
+        // if (properties.isSet("Description")) this.Notice.setText(properties.get("Description"));
         int id=properties.getOutputID("BlastDB");
         if (id>0) {
             BlastDB db=new BlastDB(id);
-             this.Filename_jTextField.setText(db.getBlastDB());
+            this.Filename_jTextField.setText(db.getFile());
         }
-
-        // Set position 
+        
+        // Set position
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension d = getSize();
         setLocation((screenSize.width-d.width)/2,
-					(screenSize.height-d.height)/2);
-         this.setAlwaysOnTop(true);
+                (screenSize.height-d.height)/2);
+        this.setAlwaysOnTop(true);
         this.setVisible(true);
     }
     
-     public void saveImage(String filename) {
+    public void saveImage(String filename) {
         BufferedImage bi;
         try {
-            bi = new Robot().createScreenCapture(this.getBounds()); 
+            bi = new Robot().createScreenCapture(this.getBounds());
             ImageIO.write(bi, "png", new File(filename));
             this.setVisible(false);
         } catch (Exception ex) {
-           Config.log("Unable to save "+filename+" dialog image");
-        }            
+            Config.log("Unable to save "+filename+" dialog image");
+        }
     }
-            
-
+    
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CanceljButton;
@@ -394,7 +389,5 @@ public class loadBlastDBEditor extends javax.swing.JDialog implements EditorInte
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
-
-
-
+   
 }

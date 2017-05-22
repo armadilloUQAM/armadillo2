@@ -49,6 +49,7 @@ public interface Biologic extends Iterator {
     public int getRunProgram_id();
     public Vector<Integer>getAllId();
     public String getNameId(int id);
+    public String getFileNameId(int id);
     public void setName(String name);
     public void setNote(String note);
     public void setData(String data);

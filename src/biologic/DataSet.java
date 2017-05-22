@@ -32,8 +32,8 @@ import java.io.Serializable;
  */
 public class DataSet extends Text implements Serializable {
 
-    public DataSet() {super();}
-    public DataSet(int id) {super(id);}
+    public DataSet()                {super();}
+    public DataSet(int id)          {super(id);}
     public DataSet(String filename) {super(filename);}
 
     @Override
@@ -46,13 +46,4 @@ public class DataSet extends Text implements Serializable {
         this.setUnknownType("Solid Reads File");
         this.setText("Solid Reads File : "+filename+"\nSelected on: "+Util.returnCurrentDateAndTime());
     }
-
-    public String getGenomeFile() {
-        return this.getFilename();
-    }
-
-    public String getExtendedString() {
-        return toString();
-    }
-    
 }

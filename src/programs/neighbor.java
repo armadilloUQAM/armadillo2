@@ -200,10 +200,10 @@ public class neighbor extends RunProgram {
       // for (Tree t:tree.getTree()) properties.put("output_tree_id", t.getId());
       properties.put("output_multipletrees_id",tree.getId());
         if (!properties.getBoolean("debug")) {
-            deleteFile("neighbor.params");
-            deleteFile("outtree");
-            deleteFile("outfile");
-            deleteFile("infile");
+            Util.deleteFile("neighbor.params");
+            Util.deleteFile("outtree");
+            Util.deleteFile("outfile");
+            Util.deleteFile("infile");
         }
     }
   

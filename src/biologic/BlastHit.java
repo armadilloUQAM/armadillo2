@@ -128,27 +128,32 @@ public class BlastHit extends Text implements Comparable, Serializable  {
 //        s.removeFromDatabase();
 //    }
   
-  
-
-
-
-
-
-
-
-
-
-
-  
   public static String getToStringParam() {
         return "qstrand"+"\t"+"sstrand"+"\t"+"evalue"+"\t"+"bitscore"+"\t"+"subject_accession_referree"+"\t"+"subject_accession"+"\t"+"subject_name"+"\t"+"identity"+"\t"+
                 "alignment_length"+"\t"+"query_length"+"\t"+"subject_length"+"\t"+"missmatches"+"\t"+"gap"+"\t"+"qstart"+"\t"+"query"+"\t"+"qend"+"\t"+"sstart"+"\t"+"subject"+"\t"+"send";
     }
   
-  public String getString() {
-    String stri=getQstrand()+"\t"+getSstrand()+"\t"+getEvalue()+"\t"+getBitscore()+"\t"+getSubject_accession_referree()+"\t"+getSubject_accession()+"\t"+getSubject_name()+"\t"+getIdentity()+"\t"+
-                getAlignment_length()+"\t"+getQuery_length()+"\t"+getSubject_length()+"\t"+getMissmatches()+"\t"+getGap()+"\t"+getQstart()+"\t"+query_sequence+"\t"+getQend()+"\t"+getSstart()+"\t"+subject_sequence+"\t"+getSend();
-    return stri;
+    public String getString() {
+        String stri=getQstrand()+"\t"+
+                getSstrand()+"\t"+
+                getEvalue()+"\t"+
+                getBitscore()+"\t"+
+                getSubject_accession_referree()+"\t"+
+                getSubject_accession()+"\t"+
+                getSubject_name()+"\t"+
+                getIdentity()+"\t"+
+                getAlignment_length()+"\t"+
+                getQuery_length()+"\t"+
+                getSubject_length()+"\t"+
+                getMissmatches()+"\t"+
+                getGap()+"\t"+
+                getQstart()+"\t"+
+                query_sequence+"\t"+
+                getQend()+"\t"+
+                getSstart()+"\t"+
+                subject_sequence+"\t"+
+                getSend();
+        return stri;
     }
 
     public int compareTo(Object o) {
@@ -603,8 +608,4 @@ public class BlastHit extends Text implements Comparable, Serializable  {
     public String getBiologicType() {
         return "BlastHit";
     }
-
-
-
-
   }

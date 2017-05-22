@@ -88,7 +88,7 @@ public class download extends RunProgram {
         outputtext.setNote("Results from "+properties.getName()+" at "+Util.returnCurrentDateAndTime());
         outputtext.saveToDatabase();        
         properties.put("output_results_id", outputtext.getId());
-        deleteFile(outfile);
+        Util.deleteFile(outfile);
     }
 
     ////////////////////////////////////////////////////////////////////////////

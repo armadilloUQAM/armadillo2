@@ -139,8 +139,8 @@ public class Varna extends RunProgram {
             loadModelTest();
             //--CheckPoint
             if (!properties.getBoolean(debug)) {
-               deleteFile(infile);
-               deleteFile(outfile);             
+               Util.deleteFile(infile);
+               Util.deleteFile(outfile);             
             }
     }
 

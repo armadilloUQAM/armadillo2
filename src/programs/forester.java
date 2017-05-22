@@ -46,7 +46,6 @@ public class forester extends RunProgram {
     // Debug and programming variables
     public static boolean debug=true;
     
-    
     public forester (workflow_properties properties) {
         super(properties);
         //--Load the forester properties file
@@ -87,7 +86,7 @@ public class forester extends RunProgram {
     @Override
     public void init_createInput() {
          //--Pre-Run initialization
-       this.deleteFile(infile);
+       Util.deleteFile(infile);
        int tree_id=properties.getInputID("input_tree_id");
        if (tree_id==0) tree_id=properties.getOutputID("tree");
        Tree tree=new Tree(tree_id);

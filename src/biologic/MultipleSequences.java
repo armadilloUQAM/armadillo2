@@ -636,6 +636,10 @@ public class MultipleSequences extends ListSequence implements Serializable, Bio
         return df.getMultipleSequencesName(id);
     }
 
+    public String getFileNameId(int id) {
+        return "";
+    }
+    
      
 
       public void setData(String data) {

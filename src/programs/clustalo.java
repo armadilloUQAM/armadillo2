@@ -165,9 +165,9 @@ public class clustalo extends RunProgram {
              
              for (Tree tree:multi.getTree()) properties.put("output_tree_id", tree.getId());
              //--Clean UP
-             deleteFile(outfile+".tre");
-             //deleteFile(outfile);
-             deleteFile(infile);
+             Util.deleteFile(outfile+".tre");
+             //Util.deleteFile(outfile);
+             Util.deleteFile(infile);
     }
 
  

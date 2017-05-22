@@ -68,8 +68,8 @@ public class retree extends RunProgram {
     @Override
     public void init_createInput() {
         //--Pre-Run initialization
-       this.deleteFile(infile);
-       this.deleteFile(outfile);      
+       Util.deleteFile(infile);
+       Util.deleteFile(outfile);      
        //--Create infile
        int tree_id=properties.getInputID("tree");
     
@@ -110,10 +110,10 @@ public class retree extends RunProgram {
                 properties.put("output_tree_id", tree.getId());
             }            
             //--delete not needed files
-            deleteFile(infile);
-            deleteFile(outfile);
-            deleteFile("outtree");
-            deleteFile("retree.params");
+            Util.deleteFile(infile);
+            Util.deleteFile(outfile);
+            Util.deleteFile("outtree");
+            Util.deleteFile("retree.params");
 
     }
 

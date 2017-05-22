@@ -32,8 +32,8 @@ import java.io.Serializable;
  */
 public class Genome extends Text implements Serializable {
 
-    public Genome() {super();}
-    public Genome(int id) {super(id);}
+    public Genome()                {super();}
+    public Genome(int id)          {super(id);}
     public Genome(String filename) {super(filename);}
 
     @Override
@@ -47,13 +47,4 @@ public class Genome extends Text implements Serializable {
         //--Note: now we have a properties in the genome...
         //this.setnOte("File : "+filename+"\nSelected on: "+Util.returnCurrentDateAndTime());
     }
-
-    public String getGenomeFile() {
-        return this.getFilename();
-    }
-
-    public String getExtendedString() {
-        return toString();
-    }
-    
 }

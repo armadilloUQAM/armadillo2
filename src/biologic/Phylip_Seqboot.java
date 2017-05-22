@@ -46,7 +46,7 @@ public class Phylip_Seqboot extends Phylip implements Serializable {
         return "Phylip_Seqboot";
     }
 
-public String getExtendedString() {
+    public String getExtendedString() {
         return toString();
     }
 

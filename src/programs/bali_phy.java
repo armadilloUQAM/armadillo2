@@ -132,8 +132,8 @@ public class bali_phy extends RunProgram {
             alignment.saveToDatabase();
             properties.put("output_alignment_id", alignment.getId());           
         }
-        deleteFile(infile);
-        deleteFile(outfile);
+        Util.deleteFile(infile);
+        Util.deleteFile(outfile);
     }
 
     @Override

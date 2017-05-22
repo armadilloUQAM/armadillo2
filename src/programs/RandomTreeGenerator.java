@@ -78,7 +78,7 @@ public class RandomTreeGenerator extends RunProgram {
             properties.put("output_tree_id", trees.getTree().get(0).getId());
             addOutput(trees);        
         }
-        deleteFile(outfile);
+        Util.deleteFile(outfile);
     }
 
     @Override

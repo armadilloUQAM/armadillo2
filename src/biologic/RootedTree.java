@@ -27,9 +27,7 @@ package biologic;
  */
 public class RootedTree extends Tree {
 
-    
-    public RootedTree() {super();}
-    
+    public RootedTree()       {super();}
     public RootedTree(int id) {super(id);}
     
     @Override

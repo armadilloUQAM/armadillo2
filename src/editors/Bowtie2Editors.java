@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 
 package editors;
 
@@ -25,11 +25,11 @@ import workflows.workflow_properties_dictionnary;
  * @author Brisée-pas-morte
  */
 public class Bowtie2Editors extends javax.swing.JDialog implements EditorInterface  {
-
+    
     /**
      * Creates new form MaqEditors
      */
-     Config config=new Config();
+    Config config=new Config();
     //ConnectorInfoBox connectorinfobox;
     workflow_properties_dictionnary dict=new workflow_properties_dictionnary();
     String selected="";             // Selected properties
@@ -38,16 +38,16 @@ public class Bowtie2Editors extends javax.swing.JDialog implements EditorInterfa
     armadillo_workflow parent_workflow;
     
     public final String defaultNameString=" Name";
-     static final boolean default_map=true;
-     
+    static final boolean default_map=true;
+    
     public Bowtie2Editors(java.awt.Frame parent, armadillo_workflow parent_workflow) {
-       super(parent, false);
+        super(parent, false);
         this.parent_workflow=parent_workflow;
         //--Set variables and init
         frame=parent;
     }
- 
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -219,96 +219,96 @@ public class Bowtie2Editors extends javax.swing.JDialog implements EditorInterfa
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
- 
+    
+    
     private void BwaEditorComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_BwaEditorComponentShown
         // TODO add your handling code here:
     }//GEN-LAST:event_BwaEditorComponentShown
-
+    
     private void ClosejButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClosejButton6ActionPerformed
         // TODO add your handling code here:
-         this.setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_ClosejButton6ActionPerformed
-
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-          HelpEditor help = new HelpEditor(this.frame, false, properties);
+        HelpEditor help = new HelpEditor(this.frame, false, properties);
         help.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     private void reset_jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reset_jButton3ActionPerformed
         // TODO add your handling code here:
-         properties.load();             //--reload current properties from file
+        properties.load();             //--reload current properties from file
         this.setProperties(properties);//--Update current field
     }//GEN-LAST:event_reset_jButton3ActionPerformed
-
+    
     private void stop_jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stop_jButton4ActionPerformed
         // TODO add your handling code here:
         properties.put("Status", Config.status_nothing);
         properties.killThread();
     }//GEN-LAST:event_stop_jButton4ActionPerformed
-
+    
     private void run_jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_run_jButton5ActionPerformed
         // TODO add your handling code here:
-           if(properties.isSet("ClassName")) {
-           this.parent_workflow.workflow.updateDependance();
-           programs prog=new programs(parent_workflow.workbox.getCurrentWorkflows());
-           prog.Run(properties);
+        if(properties.isSet("ClassName")) {
+            this.parent_workflow.workflow.updateDependance();
+            programs prog=new programs(parent_workflow.workbox.getCurrentWorkflows());
+            prog.Run(properties);
     }//GEN-LAST:event_run_jButton5ActionPerformed
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         properties.put("Name", this.name_jTextField1.getText());
     }//GEN-LAST:event_jButton2ActionPerformed
-
     
     
     
-       public void setProperties(workflow_properties properties) {
+    
+    public void setProperties(workflow_properties properties) {
         this.properties=properties;
-        setTitle(properties.getName());      
+        setTitle(properties.getName());
         //if (properties.isSet("Description")) this.Notice.setText(properties.get("Description"));
-     
+        
         
     }
-     public void setProperties(String filename, String path) {
+    public void setProperties(String filename, String path) {
         workflow_properties tmp=new workflow_properties();
         tmp.load(filename, path);
         this.properties=tmp;
         setTitle(properties.getName());
-     
-     
+        
+        
     }
-     /**
-      * Set the configuration properties for this object
-      */
-  
-     
+    /**
+     * Set the configuration properties for this object
+     */
     
-       public void display(workflow_properties properties) {
+    
+    
+    public void display(workflow_properties properties) {
         this.properties=properties;
         initComponents();
-        setIconImage(Config.image);      
-        // Set position 
+        setIconImage(Config.image);
+        // Set position
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension d = getSize();
         setLocation((screenSize.width-d.width)/2,
-					(screenSize.height-d.height)/2);
+                (screenSize.height-d.height)/2);
         this.setProperties(properties);
         this.setAlwaysOnTop(true);
         this.setVisible(true);
     }
-     public void saveImage(String filename) {
+    public void saveImage(String filename) {
         BufferedImage bi;
         try {
-            bi = new Robot().createScreenCapture(this.getBounds()); 
+            bi = new Robot().createScreenCapture(this.getBounds());
             ImageIO.write(bi, "png", new File(filename));
             this.setVisible(false);
         } catch (Exception ex) {
-           Config.log("Unable to save "+filename+" dialog image");
-        }            
+            Config.log("Unable to save "+filename+" dialog image");
+        }
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane BwaEditor;
     private javax.swing.JButton ClosejButton6;

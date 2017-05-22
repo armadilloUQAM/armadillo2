@@ -175,7 +175,7 @@ public class ClustalW2WebEBI extends RunProgram {
                             unknown.saveToDatabase();
                             properties.put("output_text_id", unknown.getId());
                         }
-                        if (!properties.getBoolean("debug")) deleteFile(filename);
+                        if (!properties.getBoolean("debug")) Util.deleteFile(filename);
                     }
                 }               
                 wsdone=true;
@@ -244,7 +244,7 @@ public class ClustalW2WebEBI extends RunProgram {
                                                 properties.put("output_text_id", unknown.getId());
                                                 addOutput(unknown);
                                             }
-                                            if (!properties.getBoolean("debug")) deleteFile(filename);
+                                            if (!properties.getBoolean("debug")) Util.deleteFile(filename);
                                         }
                                     }
                                 }

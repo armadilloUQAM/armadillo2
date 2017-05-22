@@ -1,0 +1,912 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="Menu_Buttons">
+    </Component>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <Component id="close_jButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="how_jButton" min="-2" max="-2" attributes="0"/>
+          </Group>
+          <Component id="RepeatMasker_tab" min="-2" max="-2" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="close_jButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="how_jButton" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="RepeatMasker_tab" min="-2" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="close_jButton">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="0" red="0" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Close"/>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[91, 29]"/>
+        </Property>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[91, 29]"/>
+        </Property>
+        <Property name="name" type="java.lang.String" value="close_jButton" noResource="true"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[91, 29]"/>
+        </Property>
+      </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Close this box"/>
+      </AccessibilityProperties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="close_jButton_ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="how_jButton">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="?"/>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[51, 29]"/>
+        </Property>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[51, 29]"/>
+        </Property>
+        <Property name="name" type="java.lang.String" value="how_jButton" noResource="true"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[51, 29]"/>
+        </Property>
+      </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="About this box"/>
+      </AccessibilityProperties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="how_jButton_ActionPerformed"/>
+      </Events>
+    </Component>
+    <Container class="javax.swing.JTabbedPane" name="RepeatMasker_tab">
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="RepeatMasker"/>
+      </AccessibilityProperties>
+      <Events>
+        <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="RepeatMasker_tab_ComponentShown"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="RepeatMasker"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="general_jPanel1">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="general_jPanel1" noResource="true"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[459, 400]"/>
+            </Property>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="RepeatMasker">
+                <Property name="tabTitle" type="java.lang.String" value="RepeatMasker"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="main_jScroll" pref="447" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="reset_jButton" min="-2" pref="95" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="stop_jButton" min="-2" pref="95" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="run_jButton" min="-2" pref="95" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="name_jLabel" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="name_jTextField" alignment="0" min="-2" pref="204" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="Default_Options" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="Advanced_Options" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="stop_jButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="reset_jButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="run_jButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="name_jLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="name_jTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="Default_Options" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Advanced_Options" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="main_jScroll" min="-2" pref="266" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="stop_jButton">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="0" red="0" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Stop"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[91, 29]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[91, 29]"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="stop_jButton" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[91, 29]"/>
+                </Property>
+              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Stop this box"/>
+              </AccessibilityProperties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stop_jButton_ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="reset_jButton">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="74" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Reset"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[91, 29]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[91, 29]"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="reset_jButton" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[91, 29]"/>
+                </Property>
+              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Reset to default values"/>
+              </AccessibilityProperties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reset_jButton_ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="run_jButton">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="74" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="RUN"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[91, 29]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[91, 29]"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="run_jButton" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[91, 29]"/>
+                </Property>
+              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Run this box"/>
+              </AccessibilityProperties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="run_jButton_ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="name_jLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Ubuntu" size="15" style="3"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="(re)Name"/>
+                <Property name="name" type="java.lang.String" value="name_jLabel" noResource="true"/>
+              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Name Box"/>
+              </AccessibilityProperties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="name_jTextField">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Ubuntu" size="15" style="3"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Name"/>
+                <Property name="name" type="java.lang.String" value="name_jTextField" noResource="true"/>
+              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Rename the box here"/>
+              </AccessibilityProperties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="name_jTextField_ActionPerformed"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="name_jTextField_FocusLost"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="Default_Options">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="Menu_Buttons"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Default Options"/>
+                <Property name="name" type="java.lang.String" value="Default_Options" noResource="true"/>
+              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Default Options"/>
+              </AccessibilityProperties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Default_Options_ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="Advanced_Options">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="Menu_Buttons"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Advanced Options"/>
+                <Property name="name" type="java.lang.String" value="Advanced_Options" noResource="true"/>
+              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Advanced Options"/>
+              </AccessibilityProperties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Advanced_Options_ActionPerformed"/>
+              </Events>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="main_jScroll">
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Container class="javax.swing.JTabbedPane" name="options_tab_panel">
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+                  <SubComponents>
+                    <Container class="javax.swing.JPanel" name="AO_jPanel">
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                          <JTabbedPaneConstraints tabName="Advanced Options">
+                            <Property name="tabTitle" type="java.lang.String" value="Advanced Options"/>
+                          </JTabbedPaneConstraints>
+                        </Constraint>
+                      </Constraints>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                      <Component id="AO_OSAS_JLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_OSAS_engine_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_OSAS_parallel_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_OSAS_s_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_OSAS_q_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_OSAS_qq_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_SO_JLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_SO_lib_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_SO_species_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_MO_JLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_MO_cutoff_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_MO_nolow_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_MO_low_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_MO_noint_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_MO_int_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_MO_norna_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_MO_alu_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_MO_div_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_CO_JLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_CO_is_Only_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_CO_is_Clip_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_CO_no_Is_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_RO_JLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_RO_gc_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_RO_gccalc_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_RO_frag_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_RO_nocut_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_RO_noisy_box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_RO_nopost_box" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                      <Component id="AO_OSAS_engine_JComboBoxValue" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_OSAS_parallel_JSpinnerValue" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_OSAS_s_JSpinnerValue" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_OSAS_q_JSpinnerValue" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_OSAS_qq_JSpinnerValue" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_SO_species_JComboBoxValue" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_MO_cutoff_JSpinnerValue" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_MO_div_JSpinnerValue" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_RO_gc_JSpinnerValue" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_RO_frag_JSpinnerValue" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_OSAS_JLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_OSAS_engine_box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_OSAS_engine_JComboBoxValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_OSAS_parallel_box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_OSAS_parallel_JSpinnerValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_OSAS_s_box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_OSAS_s_JSpinnerValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_OSAS_q_box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_OSAS_q_JSpinnerValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_OSAS_qq_box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_OSAS_qq_JSpinnerValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_SO_JLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_SO_lib_box" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_SO_species_box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_SO_species_JComboBoxValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_MO_JLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_MO_cutoff_box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_MO_cutoff_JSpinnerValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_MO_nolow_box" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_MO_low_box" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_MO_noint_box" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_MO_int_box" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_MO_norna_box" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_MO_alu_box" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_MO_div_box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_MO_div_JSpinnerValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_CO_JLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_CO_is_Only_box" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_CO_is_Clip_box" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_CO_no_Is_box" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_RO_JLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_RO_gc_box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_RO_gc_JSpinnerValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_RO_gccalc_box" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_RO_frag_box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_RO_frag_JSpinnerValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_RO_nocut_box" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_RO_noisy_box" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_RO_nopost_box" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="AO_OSAS_JLabel">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Ubuntu" size="15" style="3"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Options speed and search"/>
+                            <Property name="name" type="java.lang.String" value="AO_OSAS_JLabel" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Sub Items"/>
+                          </AccessibilityProperties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_OSAS_engine_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-engine"/>
+                            <Property name="name" type="java.lang.String" value="AO_OSAS_engine_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_OSAS_engine_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JComboBox" name="AO_OSAS_engine_JComboBoxValue">
+                          <Properties>
+                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                              <StringArray count="6">
+                                <StringItem index="0" value="crossmatch"/>
+                                <StringItem index="1" value="wublast"/>
+                                <StringItem index="2" value="bblast"/>
+                                <StringItem index="3" value="ncbi"/>
+                                <StringItem index="4" value="hmmer"/>
+                                <StringItem index="5" value="decypher"/>
+                              </StringArray>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="AO_OSAS_engine_JComboBoxValue" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_OSAS_engine_JComboBoxValue_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_OSAS_parallel_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-parallel"/>
+                            <Property name="name" type="java.lang.String" value="AO_OSAS_parallel_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_OSAS_parallel_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JSpinner" name="AO_OSAS_parallel_JSpinnerValue">
+                          <Properties>
+                            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                              <SpinnerModel initial="1" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="AO_OSAS_parallel_JSpinnerValue" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[115, 28]"/>
+                            </Property>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_OSAS_s_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-s"/>
+                            <Property name="name" type="java.lang.String" value="AO_OSAS_s_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_OSAS_s_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JSpinner" name="AO_OSAS_s_JSpinnerValue">
+                          <Properties>
+                            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                              <SpinnerModel initial="0" maximum="1" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="AO_OSAS_s_JSpinnerValue" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[115, 28]"/>
+                            </Property>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_OSAS_q_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-q"/>
+                            <Property name="name" type="java.lang.String" value="AO_OSAS_q_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_OSAS_q_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JSpinner" name="AO_OSAS_q_JSpinnerValue">
+                          <Properties>
+                            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                              <SpinnerModel initial="0" maximum="1" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="AO_OSAS_q_JSpinnerValue" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[115, 28]"/>
+                            </Property>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_OSAS_qq_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-qq"/>
+                            <Property name="name" type="java.lang.String" value="AO_OSAS_qq_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_OSAS_qq_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JSpinner" name="AO_OSAS_qq_JSpinnerValue">
+                          <Properties>
+                            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                              <SpinnerModel initial="0" maximum="1" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="AO_OSAS_qq_JSpinnerValue" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[115, 28]"/>
+                            </Property>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="AO_SO_JLabel">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Ubuntu" size="15" style="3"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Species options"/>
+                            <Property name="name" type="java.lang.String" value="AO_SO_JLabel" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Sub Items"/>
+                          </AccessibilityProperties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_SO_lib_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-lib"/>
+                            <Property name="name" type="java.lang.String" value="AO_SO_lib_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_SO_lib_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_SO_species_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-species"/>
+                            <Property name="name" type="java.lang.String" value="AO_SO_species_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_SO_species_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JComboBox" name="AO_SO_species_JComboBoxValue">
+                          <Properties>
+                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                              <StringArray count="26">
+                                <StringItem index="0" value="Vertebrate (other than below)"/>
+                                <StringItem index="1" value="Mammal (other than below)"/>
+                                <StringItem index="2" value="Human"/>
+                                <StringItem index="3" value="Rodent"/>
+                                <StringItem index="4" value="Mouse"/>
+                                <StringItem index="5" value="Rat"/>
+                                <StringItem index="6" value="Artiodactyls and whales"/>
+                                <StringItem index="7" value="Cow"/>
+                                <StringItem index="8" value="Pig"/>
+                                <StringItem index="9" value="Carnivore"/>
+                                <StringItem index="10" value="Cat"/>
+                                <StringItem index="11" value="Dog"/>
+                                <StringItem index="12" value="Chicken"/>
+                                <StringItem index="13" value="Xenopus (African clawed frog)"/>
+                                <StringItem index="14" value="Fugu (pufferfish)"/>
+                                <StringItem index="15" value="Danio (zebra fish)"/>
+                                <StringItem index="16" value="Ciona savigny"/>
+                                <StringItem index="17" value="Ciona intestinalis"/>
+                                <StringItem index="18" value="Fruit fly (Drosophila melanogaster)"/>
+                                <StringItem index="19" value="Malaria mosquito (Anopheles gambiae)"/>
+                                <StringItem index="20" value="Caenorhabditis elegans (nematode)"/>
+                                <StringItem index="21" value="Diatom (Thalassiosira pseudonana)"/>
+                                <StringItem index="22" value="Arabidopsis thaliana (thale cress)"/>
+                                <StringItem index="23" value="Triticae (ryes, barleys, wheats)"/>
+                                <StringItem index="24" value="Panicoid (maize, sugar cane, sorghum, millet)"/>
+                                <StringItem index="25" value="Rice"/>
+                              </StringArray>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="AO_SO_species_JComboBoxValue" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_SO_species_JComboBoxValue_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="AO_MO_JLabel">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Ubuntu" size="15" style="3"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Masking options"/>
+                            <Property name="name" type="java.lang.String" value="AO_MO_JLabel" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Sub Items"/>
+                          </AccessibilityProperties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_MO_cutoff_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-cutoff"/>
+                            <Property name="name" type="java.lang.String" value="AO_MO_cutoff_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_MO_cutoff_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JSpinner" name="AO_MO_cutoff_JSpinnerValue">
+                          <Properties>
+                            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                              <SpinnerModel initial="225" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="AO_MO_cutoff_JSpinnerValue" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[115, 28]"/>
+                            </Property>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_MO_nolow_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-nolow"/>
+                            <Property name="name" type="java.lang.String" value="AO_MO_nolow_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_MO_nolow_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_MO_low_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-low"/>
+                            <Property name="name" type="java.lang.String" value="AO_MO_low_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_MO_low_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_MO_noint_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-noint"/>
+                            <Property name="name" type="java.lang.String" value="AO_MO_noint_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_MO_noint_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_MO_int_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-int"/>
+                            <Property name="name" type="java.lang.String" value="AO_MO_int_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_MO_int_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_MO_norna_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-norna"/>
+                            <Property name="name" type="java.lang.String" value="AO_MO_norna_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_MO_norna_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_MO_alu_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-alu"/>
+                            <Property name="name" type="java.lang.String" value="AO_MO_alu_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_MO_alu_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_MO_div_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-div"/>
+                            <Property name="name" type="java.lang.String" value="AO_MO_div_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_MO_div_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JSpinner" name="AO_MO_div_JSpinnerValue">
+                          <Properties>
+                            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                              <SpinnerModel initial="10" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="AO_MO_div_JSpinnerValue" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[115, 28]"/>
+                            </Property>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="AO_CO_JLabel">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Ubuntu" size="15" style="3"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Contamination options"/>
+                            <Property name="name" type="java.lang.String" value="AO_CO_JLabel" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Sub Items"/>
+                          </AccessibilityProperties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_CO_is_Only_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-is_only"/>
+                            <Property name="name" type="java.lang.String" value="AO_CO_is_Only_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_CO_is_Only_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_CO_is_Clip_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-is_clip"/>
+                            <Property name="name" type="java.lang.String" value="AO_CO_is_Clip_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_CO_is_Clip_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_CO_no_Is_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-no_is"/>
+                            <Property name="name" type="java.lang.String" value="AO_CO_no_Is_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_CO_no_Is_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="AO_RO_JLabel">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Ubuntu" size="15" style="3"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Running options"/>
+                            <Property name="name" type="java.lang.String" value="AO_RO_JLabel" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Sub Items"/>
+                          </AccessibilityProperties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_RO_gc_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-gc"/>
+                            <Property name="name" type="java.lang.String" value="AO_RO_gc_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_RO_gc_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JSpinner" name="AO_RO_gc_JSpinnerValue">
+                          <Properties>
+                            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                              <SpinnerModel initial="10" maximum="100" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="AO_RO_gc_JSpinnerValue" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[115, 28]"/>
+                            </Property>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_RO_gccalc_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-gccalc"/>
+                            <Property name="name" type="java.lang.String" value="AO_RO_gccalc_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_RO_gccalc_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_RO_frag_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-frag"/>
+                            <Property name="name" type="java.lang.String" value="AO_RO_frag_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_RO_frag_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JSpinner" name="AO_RO_frag_JSpinnerValue">
+                          <Properties>
+                            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                              <SpinnerModel initial="60000" minimum="0" numberType="java.lang.Integer" stepSize="10000" type="number"/>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="AO_RO_frag_JSpinnerValue" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[115, 28]"/>
+                            </Property>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_RO_nocut_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-nocut"/>
+                            <Property name="name" type="java.lang.String" value="AO_RO_nocut_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_RO_nocut_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_RO_noisy_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-noisy"/>
+                            <Property name="name" type="java.lang.String" value="AO_RO_noisy_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_RO_noisy_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_RO_nopost_box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="-nopost"/>
+                            <Property name="name" type="java.lang.String" value="AO_RO_nopost_box" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_RO_nopost_box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

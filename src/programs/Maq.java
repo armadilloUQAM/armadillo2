@@ -128,7 +128,7 @@ public class Maq extends RunProgram{
                             this.setStatus(status_error, "Unable to convert reads to MAQ format for "+inputfilename1);
                         } else {
                            //--Update the name 
-                            inputfilename1=reads1.getGenomeFile();                            
+                            inputfilename1=reads1.getFile();                            
                         }              
                     }
            //--Check for input 2

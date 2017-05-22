@@ -216,14 +216,14 @@ public class ancestorcc2011 extends RunProgram {
         confidence2.setNote("Created on "+Util.returnCurrentDateAndTime());
         confidence2.saveToDatabase();      
         //--Delete not needed files
-        deleteFile("outfile.seq.post_CC");
-        deleteFile("outfile.seq");
-        deleteFile("outfile.seq.nucConf_CC");
-        deleteFile("outfile.sta");
-        deleteFile("outfile.seq.edge");
-        deleteFile("outfile.seq.anc");
-        deleteFile("infile.seq");
-        deleteFile("infile.tre");
+        Util.deleteFile("outfile.seq.post_CC");
+        Util.deleteFile("outfile.seq");
+        Util.deleteFile("outfile.seq.nucConf_CC");
+        Util.deleteFile("outfile.sta");
+        Util.deleteFile("outfile.seq.edge");
+        Util.deleteFile("outfile.seq.anc");
+        Util.deleteFile("infile.seq");
+        Util.deleteFile("infile.tre");
         } //--End outfile.seq.nucConf_CC
     } //--End parse output
 

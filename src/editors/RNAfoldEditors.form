@@ -1,0 +1,1238 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="Menu_Buttons">
+    </Component>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="docker_jButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="how_jButton" min="-2" max="-2" attributes="0"/>
+          </Group>
+          <Component id="RNAfoldEditors2" min="-2" max="-2" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="docker_jButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="how_jButton" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="RNAfoldEditors2" min="-2" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="docker_jButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Docker Editor"/>
+        <Property name="name" type="java.lang.String" value="docker_jButton" noResource="true"/>
+      </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Access to the docker editor"/>
+      </AccessibilityProperties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="docker_jButton_ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="how_jButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="?"/>
+        <Property name="name" type="java.lang.String" value="how_jButton" noResource="true"/>
+      </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="."/>
+      </AccessibilityProperties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="how_jButton_ActionPerformed"/>
+      </Events>
+    </Component>
+    <Container class="javax.swing.JTabbedPane" name="RNAfoldEditors2">
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="RNAfoldEditors"/>
+      </AccessibilityProperties>
+      <Events>
+        <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="RNAfoldEditors2ComponentShown"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="RNAfoldEditors"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="general_jPanel1">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="general_jPanel1" noResource="true"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[459, 640]"/>
+            </Property>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="RNAfoldEditors">
+                <Property name="tabTitle" type="java.lang.String" value="RNAfoldEditors"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="name_jLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="name_jTextField" min="-2" pref="248" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="rename_jButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="Default_Options_RButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="Advanced_Options_RButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="AO_panel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="reset_jButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="stop_jButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="run_jButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="close_jButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="name_jLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="name_jTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rename_jButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="Default_Options_RButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Advanced_Options_RButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="AO_panel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="reset_jButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="stop_jButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="run_jButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="close_jButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="name_jLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Ubuntu" size="15" style="3"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Name"/>
+                <Property name="name" type="java.lang.String" value="name_jLabel" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="name_jTextField">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="RNAfold"/>
+                <Property name="name" type="java.lang.String" value="name_jTextField" noResource="true"/>
+              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+              </AccessibilityProperties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="name_jTextField_ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="rename_jButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Rename"/>
+                <Property name="name" type="java.lang.String" value="rename_jButton" noResource="true"/>
+              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+              </AccessibilityProperties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rename_jButton_ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="reset_jButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reset"/>
+                <Property name="name" type="java.lang.String" value="reset_jButton" noResource="true"/>
+              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+              </AccessibilityProperties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reset_jButton_ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="close_jButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Close"/>
+                <Property name="name" type="java.lang.String" value="close_jButton" noResource="true"/>
+              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+              </AccessibilityProperties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="close_jButton_ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="stop_jButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Stop"/>
+                <Property name="name" type="java.lang.String" value="stop_jButton" noResource="true"/>
+              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+              </AccessibilityProperties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stop_jButton_ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="run_jButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Run"/>
+                <Property name="name" type="java.lang.String" value="run_jButton" noResource="true"/>
+              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+              </AccessibilityProperties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="run_jButton_ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="Default_Options_RButton">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="Menu_Buttons"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Default Options"/>
+                <Property name="name" type="java.lang.String" value="Default_Options_RButton" noResource="true"/>
+              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+              </AccessibilityProperties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Default_Options_RButton_ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="Advanced_Options_RButton">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="Menu_Buttons"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Advanced Options"/>
+                <Property name="name" type="java.lang.String" value="Advanced_Options_RButton" noResource="true"/>
+              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+              </AccessibilityProperties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Advanced_Options_RButton_ActionPerformed"/>
+              </Events>
+            </Component>
+            <Container class="javax.swing.JPanel" name="AO_panel">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Advanced_Options"/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="AO_tabpanel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="AO_tabpanel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JTabbedPane" name="AO_tabpanel">
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+                  <SubComponents>
+                    <Container class="javax.swing.JPanel" name="AO_G_Spanel">
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                          <JTabbedPaneConstraints tabName="General">
+                            <Property name="tabTitle" type="java.lang.String" value="General"/>
+                          </JTabbedPaneConstraints>
+                        </Constraint>
+                      </Constraints>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="AO_G__noPS_Box" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="AO_G__layoutType_EQUALSYMBOL_Box" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="AO_G__layoutType_EQUALSYMBOL_Box_BooValue" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="AO_G__noconv_Box" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_G__noPS_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_G__layoutType_EQUALSYMBOL_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_G__layoutType_EQUALSYMBOL_Box_BooValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_G__noconv_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JCheckBox" name="AO_G__noPS_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--noPS"/>
+                            <Property name="name" type="java.lang.String" value="AO_G__noPS_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Do not produce postscript drawing of the mfe structure."/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_G__noPS_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_G__layoutType_EQUALSYMBOL_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--layoutType=/-t"/>
+                            <Property name="name" type="java.lang.String" value="AO_G__layoutType_EQUALSYMBOL_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Choose the layout algorithm. Simple radial layout if 0, or naview if 1"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_G__layoutType_EQUALSYMBOL_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JSpinner" name="AO_G__layoutType_EQUALSYMBOL_Box_BooValue">
+                          <Properties>
+                            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                              <SpinnerModel initial="1" maximum="1" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="AO_G__layoutType_EQUALSYMBOL_Box_BooValue" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[115, 28]"/>
+                            </Property>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Choose the layout algorithm. Simple radial layout if 0, or naview if 1"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="AO_G__layoutType_EQUALSYMBOL_Box_BooValue_StateChanged"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_G__noconv_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--noconv"/>
+                            <Property name="name" type="java.lang.String" value="AO_G__noconv_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Do not automatically substitude nucleotide T with U"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_G__noconv_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="AO_S_Spanel">
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                          <JTabbedPaneConstraints tabName="Struct">
+                            <Property name="tabTitle" type="java.lang.String" value="Struct"/>
+                          </JTabbedPaneConstraints>
+                        </Constraint>
+                      </Constraints>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="AO_S__maxBPspan_EQUALSYMBOL_Box" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="AO_S__maxBPspan_EQUALSYMBOL_Box_IntValue" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="AO_S__constraint_Box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_S__canonicalBPonly_Box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_S__enforceConstraint_Box" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="AO_S__shape_EQUALSYMBOL_Box" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="AO_S__shape_EQUALSYMBOL_Box_Text" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="AO_S__shape_EQUALSYMBOL_Box_DirFile" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="AO_S__shapeMethod_EQUALSYMBOL_Box" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="AO_S__shapeMethod_EQUALSYMBOL_Box_Text" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="AO_S__shapeConversion_EQUALSYMBOL_Box" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="AO_S__shapeConversion_EQUALSYMBOL_Box_List" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="AO_S__motif_EQUALSYMBOL_Box" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="AO_S__motif_EQUALSYMBOL_Box_Text" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_S__maxBPspan_EQUALSYMBOL_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_S__maxBPspan_EQUALSYMBOL_Box_IntValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_S__constraint_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_S__canonicalBPonly_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_S__enforceConstraint_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_S__shape_EQUALSYMBOL_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_S__shape_EQUALSYMBOL_Box_Text" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_S__shape_EQUALSYMBOL_Box_DirFile" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_S__shapeMethod_EQUALSYMBOL_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_S__shapeMethod_EQUALSYMBOL_Box_Text" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_S__shapeConversion_EQUALSYMBOL_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_S__shapeConversion_EQUALSYMBOL_Box_List" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_S__motif_EQUALSYMBOL_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_S__motif_EQUALSYMBOL_Box_Text" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JCheckBox" name="AO_S__maxBPspan_EQUALSYMBOL_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--maxBPspan="/>
+                            <Property name="name" type="java.lang.String" value="AO_S__maxBPspan_EQUALSYMBOL_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Set the maximum base pair span"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_S__maxBPspan_EQUALSYMBOL_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JSpinner" name="AO_S__maxBPspan_EQUALSYMBOL_Box_IntValue">
+                          <Properties>
+                            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                              <SpinnerModel initial="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="AO_S__maxBPspan_EQUALSYMBOL_Box_IntValue" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[115, 28]"/>
+                            </Property>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Set the maximum base pair span"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="AO_S__maxBPspan_EQUALSYMBOL_Box_IntValue_StateChanged"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_S__constraint_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--constraint/-C"/>
+                            <Property name="name" type="java.lang.String" value="AO_S__constraint_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Calculate structures subject to constraints."/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_S__constraint_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_S__canonicalBPonly_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--canonicalBPonly"/>
+                            <Property name="name" type="java.lang.String" value="AO_S__canonicalBPonly_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Remove non-canonical base pairs from the structure constraint"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_S__canonicalBPonly_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_S__enforceConstraint_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--enforceConstraint"/>
+                            <Property name="name" type="java.lang.String" value="AO_S__enforceConstraint_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Enforce base pairs given by round brackets in structure constraint"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_S__enforceConstraint_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_S__shape_EQUALSYMBOL_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--shape="/>
+                            <Property name="name" type="java.lang.String" value="AO_S__shape_EQUALSYMBOL_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Use SHAPE reactivity data to guide structure predictions"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_S__shape_EQUALSYMBOL_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="AO_S__shape_EQUALSYMBOL_Box_Text">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="..."/>
+                            <Property name="name" type="java.lang.String" value="AO_S__shape_EQUALSYMBOL_Box_Text" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[220, 27]"/>
+                            </Property>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Use SHAPE reactivity data to guide structure predictions"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="AO_S__shape_EQUALSYMBOL_Box_Text_FocusLost"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="AO_S__shape_EQUALSYMBOL_Box_DirFile">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--shape="/>
+                            <Property name="name" type="java.lang.String" value="AO_S__shape_EQUALSYMBOL_Box_DirFile" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Use SHAPE reactivity data to guide structure predictions"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_S__shape_EQUALSYMBOL_Box_DirFile_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_S__shapeMethod_EQUALSYMBOL_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--shapeMethod=/-k"/>
+                            <Property name="name" type="java.lang.String" value="AO_S__shapeMethod_EQUALSYMBOL_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Specify the method how to convert SHAPE reactivity data to pseudo energy contributions"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_S__shapeMethod_EQUALSYMBOL_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="AO_S__shapeMethod_EQUALSYMBOL_Box_Text">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="..."/>
+                            <Property name="name" type="java.lang.String" value="AO_S__shapeMethod_EQUALSYMBOL_Box_Text" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[220, 27]"/>
+                            </Property>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Specify the method how to convert SHAPE reactivity data to pseudo energy contributions"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="AO_S__shapeMethod_EQUALSYMBOL_Box_Text_FocusLost"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_S__shapeConversion_EQUALSYMBOL_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--shapeConversion="/>
+                            <Property name="name" type="java.lang.String" value="AO_S__shapeConversion_EQUALSYMBOL_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Specify the method used to convert SHAPE reactivities to pairing probabilities when using the SHAPE approach of Zarringhalam et al."/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_S__shapeConversion_EQUALSYMBOL_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JComboBox" name="AO_S__shapeConversion_EQUALSYMBOL_Box_List">
+                          <Properties>
+                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                              <StringArray count="5">
+                                <StringItem index="0" value="O"/>
+                                <StringItem index="1" value="C"/>
+                                <StringItem index="2" value="S"/>
+                                <StringItem index="3" value="L"/>
+                                <StringItem index="4" value="M"/>
+                              </StringArray>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="AO_S__shapeConversion_EQUALSYMBOL_Box_List" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Specify the method used to convert SHAPE reactivities to pairing probabilities when using the SHAPE approach of Zarringhalam et al."/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_S__shapeConversion_EQUALSYMBOL_Box_List_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_S__motif_EQUALSYMBOL_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--motif="/>
+                            <Property name="name" type="java.lang.String" value="AO_S__motif_EQUALSYMBOL_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Specify stabilizing effect of ligand binding to a particular sequence/structure motif."/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_S__motif_EQUALSYMBOL_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="AO_S__motif_EQUALSYMBOL_Box_Text">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="SEQUENCE,STRUCTURE,ENERGY"/>
+                            <Property name="name" type="java.lang.String" value="AO_S__motif_EQUALSYMBOL_Box_Text" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[220, 27]"/>
+                            </Property>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Specify stabilizing effect of ligand binding to a particular sequence/structure motif."/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="AO_S__motif_EQUALSYMBOL_Box_Text_FocusLost"/>
+                          </Events>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="AO_A_Spanel">
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                          <JTabbedPaneConstraints tabName="Algo">
+                            <Property name="tabTitle" type="java.lang.String" value="Algo"/>
+                          </JTabbedPaneConstraints>
+                        </Constraint>
+                      </Constraints>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="AO_A__partfunc_Box" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="AO_A__partfunc_Box_IntValue" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="AO_A__MEA_Box" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="AO_A__MEA_Box_IntValue" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="AO_A__pfScale_EQUALSYMBOL_Box" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="AO_A__pfScale_EQUALSYMBOL_Box_DouValue" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="AO_A__circ_Box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_A__ImFeelingLucky_Box" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="AO_A__bppmThreshold_EQUALSYMBOL_Box" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="AO_A__bppmThreshold_EQUALSYMBOL_Box_Text" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="AO_A__gquad_Box" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_A__partfunc_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_A__partfunc_Box_IntValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_A__MEA_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_A__MEA_Box_IntValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_A__pfScale_EQUALSYMBOL_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_A__pfScale_EQUALSYMBOL_Box_DouValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_A__circ_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_A__ImFeelingLucky_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_A__bppmThreshold_EQUALSYMBOL_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_A__bppmThreshold_EQUALSYMBOL_Box_Text" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_A__gquad_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JCheckBox" name="AO_A__partfunc_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--partfunc/-p"/>
+                            <Property name="name" type="java.lang.String" value="AO_A__partfunc_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Calculate the partition function and base pairing probability matrix."/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_A__partfunc_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JSpinner" name="AO_A__partfunc_Box_IntValue">
+                          <Properties>
+                            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                              <SpinnerModel initial="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="AO_A__partfunc_Box_IntValue" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[115, 28]"/>
+                            </Property>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Calculate the partition function and base pairing probability matrix."/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="AO_A__partfunc_Box_IntValue_StateChanged"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_A__MEA_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--MEA"/>
+                            <Property name="name" type="java.lang.String" value="AO_A__MEA_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Calculate an MEA (maximum expected accuracy) structure, where the expected accuracy is computed from the pair probabilities: each base pair (i,j) gets a score 2*gamma*p_ij and the score of an unpaired base is given by the probability of not forming a pair."/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_A__MEA_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JSpinner" name="AO_A__MEA_Box_IntValue">
+                          <Properties>
+                            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                              <SpinnerModel initial="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="AO_A__MEA_Box_IntValue" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[115, 28]"/>
+                            </Property>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Calculate an MEA (maximum expected accuracy) structure, where the expected accuracy is computed from the pair probabilities: each base pair (i,j) gets a score 2*gamma*p_ij and the score of an unpaired base is given by the probability of not forming a pair."/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="AO_A__MEA_Box_IntValue_StateChanged"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_A__pfScale_EQUALSYMBOL_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--pfScale=/-S"/>
+                            <Property name="name" type="java.lang.String" value="AO_A__pfScale_EQUALSYMBOL_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="In the calculation of the pf use scale*mfe as an estimate for the ensemble free energy (used to avoid overflows)."/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_A__pfScale_EQUALSYMBOL_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JSpinner" name="AO_A__pfScale_EQUALSYMBOL_Box_DouValue">
+                          <Properties>
+                            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                              <SpinnerModel initial="1.07" maximum="1.2" minimum="1.0" numberType="java.lang.Double" stepSize="0.1" type="number"/>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="AO_A__pfScale_EQUALSYMBOL_Box_DouValue" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[115, 28]"/>
+                            </Property>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="In the calculation of the pf use scale*mfe as an estimate for the ensemble free energy (used to avoid overflows)."/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="AO_A__pfScale_EQUALSYMBOL_Box_DouValue_StateChanged"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_A__circ_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--circ/-c"/>
+                            <Property name="name" type="java.lang.String" value="AO_A__circ_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Assume a circular (instead of linear) RNA molecule."/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_A__circ_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_A__ImFeelingLucky_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--ImFeelingLucky"/>
+                            <Property name="name" type="java.lang.String" value="AO_A__ImFeelingLucky_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Return exactly one stochastically backtracked structure"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_A__ImFeelingLucky_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_A__bppmThreshold_EQUALSYMBOL_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--bppmThreshold="/>
+                            <Property name="name" type="java.lang.String" value="AO_A__bppmThreshold_EQUALSYMBOL_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Set the threshold for base pair probabilities included in the postscript output"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_A__bppmThreshold_EQUALSYMBOL_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="AO_A__bppmThreshold_EQUALSYMBOL_Box_Text">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="1e-5"/>
+                            <Property name="name" type="java.lang.String" value="AO_A__bppmThreshold_EQUALSYMBOL_Box_Text" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[220, 27]"/>
+                            </Property>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Set the threshold for base pair probabilities included in the postscript output"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="AO_A__bppmThreshold_EQUALSYMBOL_Box_Text_FocusLost"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_A__gquad_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--gquad/-g"/>
+                            <Property name="name" type="java.lang.String" value="AO_A__gquad_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Incoorporate G-Quadruplex formation into the structure prediction algorithm"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_A__gquad_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="AO_M_Spanel">
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                          <JTabbedPaneConstraints tabName="Model">
+                            <Property name="tabTitle" type="java.lang.String" value="Model"/>
+                          </JTabbedPaneConstraints>
+                        </Constraint>
+                      </Constraints>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="AO_M__temp_Box" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="AO_M__temp_Box_DouValue" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="AO_M__temp_Box_Label" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="AO_M__noTetra_Box" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="AO_M__dangles_Box" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="AO_M__dangles_Box_IntValue" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="AO_M__noLP_Box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_M__noGU_Box" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_M__noClosingGU_Box" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="AO_M__paramFile_EQUALSYMBOL_Box" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="AO_M__paramFile_EQUALSYMBOL_Box_Text" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="AO_M__paramFile_EQUALSYMBOL_Box_DirFile" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="AO_M__energyModel_EQUALSYMBOL_Box" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="AO_M__energyModel_EQUALSYMBOL_Box_IntValue" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="AO_M__betaScale_EQUALSYMBOL_Box" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="AO_M__betaScale_EQUALSYMBOL_Box_DouValue" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_M__temp_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_M__temp_Box_DouValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_M__temp_Box_Label" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_M__noTetra_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_M__dangles_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_M__dangles_Box_IntValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_M__noLP_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_M__noGU_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AO_M__noClosingGU_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_M__paramFile_EQUALSYMBOL_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_M__paramFile_EQUALSYMBOL_Box_Text" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_M__paramFile_EQUALSYMBOL_Box_DirFile" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_M__energyModel_EQUALSYMBOL_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_M__energyModel_EQUALSYMBOL_Box_IntValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="AO_M__betaScale_EQUALSYMBOL_Box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="AO_M__betaScale_EQUALSYMBOL_Box_DouValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JCheckBox" name="AO_M__temp_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--temp/-T"/>
+                            <Property name="name" type="java.lang.String" value="AO_M__temp_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Rescale energy parameters to a temperature of temp C."/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_M__temp_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JSpinner" name="AO_M__temp_Box_DouValue">
+                          <Properties>
+                            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                              <SpinnerModel initial="37.0" maximum="250.0" minimum="-200.0" numberType="java.lang.Double" stepSize="1.0" type="number"/>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="AO_M__temp_Box_DouValue" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[115, 28]"/>
+                            </Property>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Rescale energy parameters to a temperature of temp C."/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="AO_M__temp_Box_DouValue_StateChanged"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="AO_M__temp_Box_Label">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Ubuntu" size="15" style="3"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Default is 37C. DOUBLE"/>
+                            <Property name="name" type="java.lang.String" value="AO_M__temp_Box_Label" noResource="true"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_M__noTetra_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--noTetra/-4"/>
+                            <Property name="name" type="java.lang.String" value="AO_M__noTetra_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Do not include special tabulated stabilizing energies for tri-, tetra- and hexaloop hairpins. Mostly for testing."/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_M__noTetra_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_M__dangles_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--dangles/-d"/>
+                            <Property name="name" type="java.lang.String" value="AO_M__dangles_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="How to treat dangling end energies for bases adjacent to helices in free ends and multi-loops"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_M__dangles_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JSpinner" name="AO_M__dangles_Box_IntValue">
+                          <Properties>
+                            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                              <SpinnerModel initial="2" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="AO_M__dangles_Box_IntValue" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[115, 28]"/>
+                            </Property>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="How to treat dangling end energies for bases adjacent to helices in free ends and multi-loops"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="AO_M__dangles_Box_IntValue_StateChanged"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_M__noLP_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--noLP"/>
+                            <Property name="name" type="java.lang.String" value="AO_M__noLP_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Produce structures without lonely pairs (helices of length 1)."/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_M__noLP_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_M__noGU_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--noGU"/>
+                            <Property name="name" type="java.lang.String" value="AO_M__noGU_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Do not allow GU pairs"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_M__noGU_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_M__noClosingGU_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--noClosingGU"/>
+                            <Property name="name" type="java.lang.String" value="AO_M__noClosingGU_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Do not allow GU pairs at the end of helices"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_M__noClosingGU_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_M__paramFile_EQUALSYMBOL_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--paramFile=/-P"/>
+                            <Property name="name" type="java.lang.String" value="AO_M__paramFile_EQUALSYMBOL_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Read energy parameters from paramfile, instead of using the default parameter set."/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_M__paramFile_EQUALSYMBOL_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="AO_M__paramFile_EQUALSYMBOL_Box_Text">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="paramfile"/>
+                            <Property name="name" type="java.lang.String" value="AO_M__paramFile_EQUALSYMBOL_Box_Text" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[220, 27]"/>
+                            </Property>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Read energy parameters from paramfile, instead of using the default parameter set."/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="AO_M__paramFile_EQUALSYMBOL_Box_Text_FocusLost"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="AO_M__paramFile_EQUALSYMBOL_Box_DirFile">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--paramFile=/-P"/>
+                            <Property name="name" type="java.lang.String" value="AO_M__paramFile_EQUALSYMBOL_Box_DirFile" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Read energy parameters from paramfile, instead of using the default parameter set."/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_M__paramFile_EQUALSYMBOL_Box_DirFile_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_M__energyModel_EQUALSYMBOL_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--energyModel=/-e"/>
+                            <Property name="name" type="java.lang.String" value="AO_M__energyModel_EQUALSYMBOL_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Rarely used option to fold sequences from the artificial ABCD... alphabet, where A pairs B, C&#x2212;D etc. Use the energy parameters for GC (&#x2212;e 1) or AU (&#x2212;e 2) pairs."/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_M__energyModel_EQUALSYMBOL_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JSpinner" name="AO_M__energyModel_EQUALSYMBOL_Box_IntValue">
+                          <Properties>
+                            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                              <SpinnerModel initial="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="AO_M__energyModel_EQUALSYMBOL_Box_IntValue" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[115, 28]"/>
+                            </Property>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Rarely used option to fold sequences from the artificial ABCD... alphabet, where A pairs B, C&#x2212;D etc. Use the energy parameters for GC (&#x2212;e 1) or AU (&#x2212;e 2) pairs."/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="AO_M__energyModel_EQUALSYMBOL_Box_IntValue_StateChanged"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="AO_M__betaScale_EQUALSYMBOL_Box">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="--betaScale=/-e"/>
+                            <Property name="name" type="java.lang.String" value="AO_M__betaScale_EQUALSYMBOL_Box" noResource="true"/>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Set the scaling of the Boltzmann factors"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AO_M__betaScale_EQUALSYMBOL_Box_ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JSpinner" name="AO_M__betaScale_EQUALSYMBOL_Box_DouValue">
+                          <Properties>
+                            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                              <SpinnerModel initial="1.0" numberType="java.lang.Double" stepSize="1.0" type="number"/>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="AO_M__betaScale_EQUALSYMBOL_Box_DouValue" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[115, 28]"/>
+                            </Property>
+                          </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Set the scaling of the Boltzmann factors"/>
+                          </AccessibilityProperties>
+                          <Events>
+                            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="AO_M__betaScale_EQUALSYMBOL_Box_DouValue_StateChanged"/>
+                          </Events>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

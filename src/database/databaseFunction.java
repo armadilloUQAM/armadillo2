@@ -543,6 +543,19 @@ public class databaseFunction {
        return "";
     }
     
+    public String getUnknownFileName(int id) {
+       try {
+            String query = String.format("SELECT filename FROM Unknown WHERE Unknown_id='%d';", id);
+            ResultSet rs = db.executeQuery(query);
+            if (rs!=null&&rs.next()) {                  
+                String name=decode(rs.getString(1));
+                rs.close();
+                return name;
+            }
+         } catch(Exception e) {Config.log("Error DB : "+e.getMessage());return "";}
+       return "";
+    }
+    
      public Unknown getUnknown(int unknown_id) {
          Unknown unknown=new Unknown();
          try {

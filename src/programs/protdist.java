@@ -137,9 +137,9 @@ public class protdist extends RunProgram {
             properties.put("output_matrix_id", matrix.getId());
         }
         if (!properties.getBoolean("debug")) {
-            deleteFile("protdist.params");
-            deleteFile("outfile");
-            deleteFile("infile");
+            Util.deleteFile("protdist.params");
+            Util.deleteFile("outfile");
+            Util.deleteFile("infile");
         }
     }
 

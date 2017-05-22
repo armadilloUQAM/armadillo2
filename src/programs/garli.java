@@ -98,12 +98,12 @@ public class garli extends RunProgram {
         
         ////////////////////////////////////////////////////////////////////////
         /// Delete all files...
-        deleteFile(infile);
-        deleteFile("outfile.best.tre");
-        deleteFile("outfile.best.all.tre");
-        deleteFile("outfile.log00.log");
-        deleteFile("outfile.screen.log");
-        deleteFile(outfile);
+        Util.deleteFile(infile);
+        Util.deleteFile("outfile.best.tre");
+        Util.deleteFile("outfile.best.all.tre");
+        Util.deleteFile("outfile.log00.log");
+        Util.deleteFile("outfile.screen.log");
+        Util.deleteFile(outfile);
         
         ////////////////////////////////////////////////////////////////////////
         /// Create new configuration and input files...
@@ -448,13 +448,13 @@ public class garli extends RunProgram {
         }
         ////////////////////////////////////////////////////////////////////////
         /// Clean up
-        deleteFile(infile);
-        deleteFile("garli.conf");
-        deleteFile("outfile.best.tre");
-        deleteFile("outfile.best.all.tre");
-        deleteFile("outfile.log00.log");
-        deleteFile("outfile.screen.log");
-        deleteFile(outfile);
+        Util.deleteFile(infile);
+        Util.deleteFile("garli.conf");
+        Util.deleteFile("outfile.best.tre");
+        Util.deleteFile("outfile.best.all.tre");
+        Util.deleteFile("outfile.log00.log");
+        Util.deleteFile("outfile.screen.log");
+        Util.deleteFile(outfile);
     }
 
     @Override
