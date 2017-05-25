@@ -1076,7 +1076,7 @@ public class Workbox {
     }
     
     public boolean isRunning() {
-        return workbox.program.running;
+        return workflow_int_frame.program.running;
     }   
        
     public void Run() {

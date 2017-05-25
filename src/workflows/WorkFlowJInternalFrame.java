@@ -62,7 +62,7 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
     public WorkFlowPreferenceJDialog preferences;                    //Workflows and Program preferences
     
     private String defaultNoteString=" Note";
-
+    
     public programs program;
     Config config=new Config();
     Frame frame;
@@ -117,7 +117,7 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
 //        model.fireTableDataChanged();
 //        model.fireTableStructureChanged();
 //        this.jTable1.setModel(model);
-        
+
     }
     
     /**
@@ -452,27 +452,27 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
     
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
     }//GEN-LAST:event_formComponentResized
-
+    
     private void Workflow_jTabbedPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Workflow_jTabbedPaneMouseClicked
         // TODO add your handling code here:
         //this.Output_jTextArea.setText(Scripts_conversion.workflowToScript(work.workflow));
     }//GEN-LAST:event_Workflow_jTabbedPaneMouseClicked
-
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         StopSW();
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     private void ExecuteAllWorkflow_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExecuteAllWorkflow_jButtonActionPerformed
         //--Note: To execute only the non-finished object
         //--      Do not reset the state
         work.resetState();
         this.Run();
     }//GEN-LAST:event_ExecuteAllWorkflow_jButtonActionPerformed
-
+    
     private void ClearjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearjButtonActionPerformed
         ClearOuput();
     }//GEN-LAST:event_ClearjButtonActionPerformed
-
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         JFileChooser jf=new JFileChooser(config.getExplorerPath());
         jf.setName("Saving as text file to ...");
@@ -489,13 +489,13 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
             Message("Successfull saving to "+filename,"");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    
     private void WorkflowsNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_WorkflowsNameFocusLost
-       
+        
     }//GEN-LAST:event_WorkflowsNameFocusLost
-
+    
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
+        
         //--Update this Workflow name
         String newname=this.WorkflowsName.getText();
         if (!newname.equals(this.database_workflow.getName())) {
@@ -504,21 +504,21 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
             Workbox.toolbox.reloadDatabaseTree();
         }
 }//GEN-LAST:event_jButton4ActionPerformed
-
+    
     private void AddNotejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddNotejButtonActionPerformed
         //--Hack, because we don't want duplicate code
         ExplorerTreeMutableTreeNode this_workflow=new ExplorerTreeMutableTreeNode(this.database_workflow.getName(), "Workflows",this.database_workflow.getId());
         AddCommentsBiologicJDialog d=new AddCommentsBiologicJDialog(frame, this_workflow, "Add Comments");
     }//GEN-LAST:event_AddNotejButtonActionPerformed
-
+    
     private void RunOptions_jComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RunOptions_jComboBoxActionPerformed
         getSelectedWay(RunOptions_jComboBox);
     }//GEN-LAST:event_RunOptions_jComboBoxActionPerformed
-
+    
     private void jStatusMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jStatusMessageActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jStatusMessageActionPerformed
-
+    
     /**
      * This set the workflow output in the correct JTextArea
      * @param t
@@ -528,29 +528,29 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
             this.Output_jTextArea.setText(t);
         } catch(Exception e){}
     }
-
+    
     public void appendOutput(String t) {
         try {
-          //--Only display the last 500 lines
+            //--Only display the last 500 lines
             //--Refactoring needed here - Etienne June 2010
             this.database_workflow.appendWorkflows_outputText(t);
-           String buffer=database_workflow.workflows_outputText.toString();
-           int buffer_total_line=0;
-           int current_index=0;
-           for (int i=0; i<buffer.length();i++) {
-               if (buffer.charAt(i)=='\n') buffer_total_line++;               
-            }   
-
-           int tfind=0;
+            String buffer=database_workflow.workflows_outputText.toString();
+            int buffer_total_line=0;
+            int current_index=0;
             for (int i=0; i<buffer.length();i++) {
-               if (buffer.charAt(i)=='\n') tfind++;
-               if (tfind==(buffer_total_line-250)) {
-                   tfind=i;
-                   break;
-               }
-            }            
-           String str="";
-           if (buffer_total_line>250) str+="... ("+(buffer_total_line-250)+" ommited lines) ...\n";
+                if (buffer.charAt(i)=='\n') buffer_total_line++;
+            }
+            
+            int tfind=0;
+            for (int i=0; i<buffer.length();i++) {
+                if (buffer.charAt(i)=='\n') tfind++;
+                if (tfind==(buffer_total_line-250)) {
+                    tfind=i;
+                    break;
+                }
+            }
+            String str="";
+            if (buffer_total_line>250) str+="... ("+(buffer_total_line-250)+" ommited lines) ...\n";
             this.Output_jTextArea.setText(str+buffer.substring(tfind));
         } catch(Exception e){}
     }
@@ -561,7 +561,7 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
         this.jStatusMessage.setToolTipText(tooltip);
         this.jStatusMessage.setText(text);
     }
-
+    
     
     void MessageError(String text, String tooltip) {
         this.jStatusMessage.setEnabled(true);
@@ -569,7 +569,7 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
         this.jStatusMessage.setToolTipText(tooltip);
         this.jStatusMessage.setText(text);
     }
-
+    
     public void setProgress(int progress) {
         if (progress>100) progress=100;
         if (progress<0) progress=0;
@@ -601,7 +601,7 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField1;
     private java.awt.ScrollPane scrollPane1;
     // End of variables declaration//GEN-END:variables
-
+    
     
     public void setWorkflowName(String name,String tooltip) {
         this.WorkflowsName.setText(name);
@@ -684,16 +684,16 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
         program=new programs(database_workflow);
         program.Run();
     }
-
-     /**
+    
+    /**
      * Execute a "Run" of the current workflow
      */
     public void Run(int start,int end) {
-         getSelectedWay(RunOptions_jComboBox);
-         program=new programs(database_workflow);
-         program.Run(start,end);
+        getSelectedWay(RunOptions_jComboBox);
+        program=new programs(database_workflow);
+        program.Run(start,end);
     }
-
+    
     public void getSelectedWay(javax.swing.JComboBox j) {
         String s = (String)j.getModel().getElementAt(j.getSelectedIndex());
         if (s.equalsIgnoreCase("local")) {
@@ -708,12 +708,12 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
 //            String sb = "./tmp/cluster/export_num_workflow_before"+wid+".txt";
 //            database_workflow.updateCurrentWorkflow();
 //            database_workflow.saveWorkflow(sb);
-            selection.put("WF_tested",true);
-            insertClusterObject();
+selection.put("WF_tested",true);
+insertClusterObject();
         }
         updateClusterObject();
     }
-        
+    
     public void insertClusterObject() {
         boolean b = work.getWorkFlow().testClusterPresence();
         if (!b) {
@@ -753,7 +753,7 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
         work.force_redraw=true;
         work.redraw();
     }
-
+    
     public void updateClusterObject(){
         boolean b = work.getWorkFlow().testClusterPresence();
         if (b) {
@@ -776,7 +776,7 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
         work.force_redraw=true;
         work.redraw();
     }
-
+    
     
     public void setSelectedWay(javax.swing.JComboBox j) {
         if (selection.isSet("WF_tested")){
@@ -808,7 +808,7 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
         work.force_redraw=true;
         work.redraw();
     }
-
+    
     /**
      * Run a particular program of the workflow
      * @param properties
@@ -826,12 +826,12 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
         database_workflow.setWorkflows_outputText("");
         this.Output_jTextArea.setText("");
     }
-
+    
     /**
      * Clear the Ouput Text of the current Workflow
      */
     public workflow_properties getProperties() {
         return selection;
     }
-
+    
 }

@@ -629,7 +629,7 @@ public class armadillo_workflow extends PApplet implements ActionListener {
         
         for (int id:df.getAllWorkflowsID()) {
             Workflows w=new Workflows(id);
-            w.workflow=new ArmadilloWorkflow();
+            w.workflow=new armadillo_workflow();
             w.StringToWorkflow();
             workbox.addOutput("Processing "+i+" of "+total+"\t"+w.getId()+"\t"+w.getName()+"\n");
             //--Get each type and save them...
@@ -2448,6 +2448,33 @@ public class armadillo_workflow extends PApplet implements ActionListener {
 //             };
 //             System.out.println ("Starting thread");
 //             thread.start();
+    }
+    
+    /**
+        saveasjpg taken from http://wiki.processing.org/index.php/Save_as_JPEG
+        @author Yonas Sandbæk
+    */ 
+    byte[] bufferImage(PImage srcimg) {
+    //  ByteArrayOutputStream out = new ByteArrayOutputStream();
+    //  BufferedImage img = new BufferedImage(srcimg.width, srcimg.height, 2);
+    //  img = (BufferedImage) createImage(srcimg.width,srcimg.height);
+    //  for (int i = 0; i < srcimg.width; i++)
+    //    for (int j = 0; j < srcimg.height; j++)
+    //      img.setRGB(i, j, srcimg.pixels[j * srcimg.width + i]);
+    //  try {
+    //    JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
+    //    JPEGEncodeParam encpar = encoder.getDefaultJPEGEncodeParam(img);
+    //
+    //    encpar.setQuality(1.0f, false);
+    //    encoder.setJPEGEncodeParam(encpar);
+    //    encoder.encode(img);
+    //  }
+    //  catch (Exception ie) {
+    //    System.out.println(ie);
+    //  }
+    //  return out.toByteArray();
+        System.out.println("Deprecated save to jpeg");
+        return null;
     }
     
     ////////////////////////////////////////////////////////////////////////////

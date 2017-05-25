@@ -46,6 +46,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -84,7 +85,7 @@ public class Workflows implements Biologic, Iterator, Serializable, Comparator {
     
     ////////////////////////////////////////////////////////////////////////////
     /// LOCAL OBJECT VARIABLES
-    private StringBuilder workflows_outputText=new StringBuilder();
+    public StringBuilder workflows_outputText=new StringBuilder();
     //--Note: needed for convertion... we can have multiple armadillo
     public armadillo_workflow workflow=null;
     public static Config config=new Config();
@@ -244,6 +245,12 @@ public class Workflows implements Biologic, Iterator, Serializable, Comparator {
     
     ////////////////////////////////////////////////////////////////////////////
     /// Output execution
+  public static Comparator<workflow_object> BYTYPE = new Comparator<workflow_object>() {
+            @Override
+            public int compare(workflow_object o1, workflow_object o2) {
+                return o1.properties.get("ObjectType").compareTo(o2.properties.get("ObjectType"));
+            }
+        };
     
     public LinkedList<workflow_properties> output_execution() {
         try {
@@ -265,7 +272,69 @@ public class Workflows implements Biologic, Iterator, Serializable, Comparator {
             return new LinkedList<workflow_properties>();
         }
     }
-    
+
+    /**
+     * This will output the all workflow object linked to this workflows
+     * @return 
+     */
+     public LinkedList<workflow_properties> output_workflows() {
+        LinkedList<workflow_properties> tmp=new LinkedList<workflow_properties>();
+         try {
+        //--Initialize a workflow if the current is null
+        if (this.getWorkflow()==null) {
+              this.workflow=new armadillo_workflow();
+              this.StringToWorkflow();
+        }        
+       LinkedList<workflow_object> exe=this.workflow.workflow.outputExecution();
+       //--Order by type
+     
+       Collections.sort(exe,BYTYPE);
+       
+         for (workflow_object obj:exe) {
+             
+            workflow_properties properties=obj.getProperties();        
+            if (properties.get("ObjectType").equals("Output")) {
+                String oid="output_"+properties.get("outputType").toLowerCase()+"_id";
+                for (workflow_object obj2:exe) {
+                   workflow_properties properties2=obj2.getProperties();    
+                    if (properties.getInt(oid)==properties2.getInt(oid)&&!properties.getID().equals(properties2.getID())) {
+                        String par="";
+                        if (!properties.isSet("parent")) {
+                            par=properties2.getID();
+                        } else {
+                            par+=","+properties2.getID();
+                        }
+                        
+                        properties.put("parent", par);
+                    }
+                    
+                    //if (properties2.get(properties.get("output_"+))
+                }  
+            }            
+            tmp.add(properties);
+            
+            
+            
+              for (String output_type:properties.Outputed()) {
+                        Vector<Integer> ids=properties.getOutputID(output_type, null);
+//                        for (int id:ids) {
+//                                Output output=new Output();
+//                                 output.setType(output_type);
+//                                 output.setTypeid(id);
+//                                 Object bio=output.getBiologic();
+//                             workflow_properties properties2=((Biologic)bio).returnProperties();
+//                             tmp.add(properties2);
+//                        }
+              }
+         }
+        //--Execute
+        return tmp;
+         //for (workflow_object obj:to_run.run_workflow.)
+        } catch(Exception e) {
+             //Config.log("Error in Running workflow : "+this.getName()+"\n"+e.getMessage());
+            return tmp;
+        }
+    }
     ////////////////////////////////////////////////////////////////////////////
     /// Saving / Loading function
     
@@ -692,7 +761,9 @@ public class Workflows implements Biologic, Iterator, Serializable, Comparator {
      * @return the workflows_outputText
      */
     public String getWorkflows_outputText() {
+        //--Read from file here, if we need
         return workflows_outputText.toString();
+        
     }
     
     /**
@@ -700,13 +771,41 @@ public class Workflows implements Biologic, Iterator, Serializable, Comparator {
      */
     public void setWorkflows_outputText(String workflows_outputText) {
         this.workflows_outputText=new StringBuilder();
+        Util.CleanMemory();
+        //--Output to file instead here- October 2015        
         this.workflows_outputText.append(workflows_outputText);
     }
     
     /**
      * @param workflows_outputText the workflows_outputText to set
      */
-    public void appendWorkflows_outputText(String workflows_outputText) {
+    public void appendWorkflows_outputText(String workflows_outputText) {     
+        //--Output to file instead here- October 2015        
+        //--Prevent overflow and out of memory        
+        int total_line_to_add=0;      
+        int buffer_total_line=0;
+        for (int i=0; i<workflows_outputText.length();i++) {
+               if (workflows_outputText.charAt(i)=='\n') total_line_to_add++;
+        }
+       
+        for (int i=0; i<this.workflows_outputText.length();i++) {
+               if (this.workflows_outputText.charAt(i)=='\n') buffer_total_line++;
+        }
+        
+        if (buffer_total_line>4000) {
+            //Remove some line 
+            int tfind=0;
+            for (int i=0; i<this.workflows_outputText.length();i++) {
+               if (this.workflows_outputText.charAt(i)=='\n') tfind++;
+               if (tfind==(total_line_to_add+(buffer_total_line-4000))) {
+                   tfind=i;
+                   break;
+               }
+            }
+            String buffer=this.workflows_outputText.substring(tfind);
+            this.workflows_outputText=new StringBuilder(buffer);
+        }
+        
         this.workflows_outputText.append(workflows_outputText);
     }
     
