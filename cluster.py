@@ -90,7 +90,7 @@ def Main():
 
 # Create regex for good lines
 def good_Lines():
-    goodLine  = ["^Name","^Version","^Commandline_Running","^input_[a-z]_id\d+",'^FileNameFromId','^Order','^output_([a-z]+)_fileName','^input_\w+_id\d+_properties',"^Executable.*","^ClusterPgrmName.*","^ClusterPWD.*"]
+    goodLine  = ["^Name","^Version","^Commandline_Running","^input_[a-z]_id\d+",'^FileNameFromId','^Order','^output_([a-z]+)_fileName','^inputObject_\w+_id\d+_properties',"^Executable.*","^ClusterPgrmName.*","^ClusterPWD.*"]
     gL = "(" + ")|(".join(goodLine) + ")"
     return gL
 
@@ -248,7 +248,7 @@ def hash_Info(cObj):
     gL = good_Lines();
     m1 = re.compile("^(\w*)->(.*)$", re.IGNORECASE)
     m2 = re.compile(gL, re.IGNORECASE)
-    m3 = re.compile('^input_\w+_id\d+_properties', re.IGNORECASE)
+    m3 = re.compile('^inputObject_\w+_id\d+_properties', re.IGNORECASE)
     m4 = re.compile('FileNameFromId\-\>((\.?\/\w+)+(\.\w+)?)', re.IGNORECASE)
     tab = cObj.split('\n');
     for t in tab:

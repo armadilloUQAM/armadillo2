@@ -3167,7 +3167,7 @@ public class armadillo_workflow extends PApplet implements ActionListener {
                                         for (workflow_connector c:findConnection(o,obj)) {
                                             int num = (connector_next_indice[c.number]++);
                                             obj.getProperties().put("input_"+type+"_id"+c.number+num,id);
-                                            obj.getProperties().put("input_"+type+"_id"+c.number+num+"_properties",st);
+                                            obj.getProperties().put("inputObject_"+type+"_id"+c.number+num+"_properties",st);
                                         }
                                     }
                                 } else {
@@ -3176,7 +3176,7 @@ public class armadillo_workflow extends PApplet implements ActionListener {
                                     for (workflow_connector c:findConnection(o,obj)) {
                                         int num = (connector_next_indice[c.number]++);
                                         obj.getProperties().put("input_"+type+"_id"+c.number+num,id);
-                                        obj.getProperties().put("input_"+type+"_id"+c.number+num+"_properties",st);
+                                        obj.getProperties().put("inputObject_"+type+"_id"+c.number+num+"_properties",st);
                                         //Config.log(o+"UpdateDependance : "+id+c);
                                         //--delete next input
                                         //obj.getProperties().remove("input_"+type+"_id"+c.number+(connector_next_indice[c.number]));
