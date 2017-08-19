@@ -1014,6 +1014,12 @@ public class Util {
                 if (t.matches(".*HYPHENSYMBOL.*")) // MINUS - is back
                     t = t.replaceAll("HYPHENSYMBOL","_");
                 
+                if (t.matches(".*PLUS.*")) // MINUS - is back
+                    t = t.replaceAll("PLUS","_");
+                
+                if (t.matches(".*DOT.*")) // MINUS - is back
+                    t = t.replaceAll("DOT","_");
+                
                 if (t.length()>1 && !t.matches("^[A-Z].*")) // Composed command is back
                     t = t.replaceAll("([A-Z])","-$1");
                 

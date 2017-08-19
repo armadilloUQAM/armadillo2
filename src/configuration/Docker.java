@@ -147,7 +147,7 @@ public class Docker {
      */
     public static String getContainersNextVal(String name, int i) {
         if (i>100) {
-            //System.out.println("Warnings already 1000 containers have been send with this name. Please remove few of them to continue");
+            //System.out.println("Warnings already 100 containers have been send with this name. Please remove few of them to continue");
             return name+"_OUT";
         } else {
             if (!isContainersAlreadyUsed(name+i)) {
