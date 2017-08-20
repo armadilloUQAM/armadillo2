@@ -13,21 +13,21 @@ import java.util.Vector;
 import workflows.workflow_properties;
 
 /**
- * @author JG 2016
+ * @author JG 2017
  */
-public class BamFile extends Text implements Serializable{
+public class BCFFile extends Text implements Serializable{
     
-    public BamFile()                  {super();}
-    public BamFile(int id)            {super(id);}
-    public BamFile(String filename)   {super(filename);}
+    public BCFFile()                  {super();}
+    public BCFFile(int id)            {super(id);}
+    public BCFFile(String filename)   {super(filename);}
     
     public String[] getExtensionTab() {
-        String[] t = {".bam"};
+        String[] t = {".bcf"};
         return t;
     }
     
     @Override
     public String getBiologicType() {
-        return "BamFile";
+        return "BCFFile";
     }
 }
