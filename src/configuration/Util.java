@@ -38,6 +38,10 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.UserPrincipal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -241,46 +245,6 @@ public class Util {
     }
     
     /**
-     * Delete a directory
-     * @param directory (to delete)
-     * @return true if success
-     */
-    
-    public static boolean deleteDir(String directory) {
-        try {
-            File outtree=new File(directory);
-            if (outtree.exists()&&outtree.isDirectory()) {
-                for (String file:Config.listDir(directory)) {
-                    deleteFile(directory+File.separator+file);
-                }
-                return outtree.delete();
-            }
-        } catch(Exception e) {
-            System.out.println("Can't Delete "+directory);
-            return false;
-        }
-        return false;
-    }
-    
-    /*
-    * http://www.tutorialspoint.com/javaexamples/dir_delete.htm
-    */
-    public static boolean deleteDir(File dir) {
-        if (dir.isDirectory()) {
-            String[] children = dir.list();
-            for (int i = 0; i < children.length; i++) {
-                boolean success = deleteDir
-                        (new File(dir, children[i]));
-                if (!success) {
-                    return false;
-                }
-            }
-        }
-        //System.out.println("The directory is deleted.");
-        return dir.delete();
-    }
-    
-    /**
      * Return a unique filename
      * @param filename
      * @return
@@ -360,6 +324,247 @@ public class Util {
     }
     
     /**
+     * Test if a file exists...
+     * @param filename
+     * @return true if file Exists
+     */
+    public static boolean CreateFile(String path) {
+        // Use relative path for Unix systems
+        File f = new File(path);
+        f.getParentFile().mkdirs(); 
+        try {
+            return f.createNewFile();
+        } catch (IOException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+    /**
+     * List the files in directory and return filename with the full path
+     * @return
+     */
+    public static Vector<String> listDirWithFullPath(String dir) {
+        Vector<String> tmp=new Vector<String>();
+        try {
+            File f=new File(dir);
+            if (!f.isDirectory()) {
+                dir+=File.separator;
+                f=new File(dir);
+            }
+            for (String filename:f.list()) tmp.add(f.getAbsolutePath()+File.separator+filename);
+        } catch(Exception ex) {
+            System.out.println("Directory File Failed!");
+            System.out.println(ex);
+        }
+        return tmp;
+    }
+    
+    
+    
+    /**
+     * Recursive fonction to list a directory
+     * Note: Use the Config.listDirFullPath function
+     * @param path
+     * @return an ArrayList of the full file path
+     */
+    public static ArrayList<String> recursive_list_dir(String path) {
+        ArrayList<String>filenames = new ArrayList<String>();
+        Vector<String>  filename_tmp=listDirWithFullPath(path);
+        for (String fi:filename_tmp)
+        {
+            File f=new File(fi);
+            if (f.isDirectory()) {
+                filenames.addAll(recursive_list_dir(f.getAbsolutePath()));
+            } else {
+                filenames.add(fi);
+            }
+        }
+        return filenames;
+    }
+    
+    /**
+     * Return the file size of a file or 0 if error or directory
+     * @param filename
+     * @return
+     */
+    public static long FileSize(String filename) {
+        File f = new File(filename);
+        if (f==null||f.isDirectory()) return 0;
+        return f.length();
+    }
+
+    /**
+     * Added by JG 2016
+     * @param s path ex: ./path/to/file/file.f
+     * @return CanonicalPath ex: /home/user/path/to/file/file.f
+     */
+    public static String getCanonicalPath(String s) {
+        File f= new File(s);
+        try {
+            s = f.getCanonicalPath();
+        }catch (IOException ex) {
+            System.out.println("Error cananical path!");
+            System.out.println(ex);
+        }
+        return s;
+    }
+    
+    /**
+     * Added by JG 2015
+     * @param  s a path ex: ./path/to/file/file.f
+     * @return absolute (kind of cannonical) path ex: /home/user/path/to/file/file.f
+     */
+    public static String relativeToAbsoluteFilePath(String s) {
+        if (s.matches("^\\.\\/.*")) {
+            File f = new File(s);
+            s = f.getAbsolutePath();
+            s = s.replaceAll(File.separator+"\\."+File.separator,File.separator);
+        }
+        return s;
+    }
+    
+    /**
+     * Added by JG 2015
+     * @in string path ex: ./path/to/file/file.f
+     * @return file name ex: file
+     */
+    public static String getFileName(String s){
+        String name = s;
+        
+        // Test for several input name
+        String sFirstName = name;
+        if (s.contains(",")) {
+            String[] tab = s.split(",");
+            sFirstName = tab[0];
+        }
+        if (!name.equals(sFirstName)) name = sFirstName;
+        
+        // Find the name
+        int pos1 = name.lastIndexOf(File.separator);
+        int pos2 = name.lastIndexOf(".");
+        int pos3 = name.length();
+        if (pos1 > 0 && pos2>pos1) name = name.substring(pos1+1,pos2);
+        else if (pos1 > 0 && pos2<pos1) name = name.substring(pos1+1,pos3);
+        else return s;
+        
+        return name;
+    }
+    
+    /**
+     * Added by JG 2015
+     * @in string path ex: ./path/to/file/file.f
+     * @return file name ex: file.f
+     */
+    public static String getFileNameAndExt(String s){
+        String name = s;
+        
+        // Test for several input name
+        String sFirstName = name;
+        if (s.contains(",")) {
+            String[] tab = s.split(",");
+            sFirstName = tab[0];
+        }
+        if (!name.equals(sFirstName)) name = sFirstName;
+        
+        // Find the name
+        int pos1 = name.lastIndexOf(File.separator);
+        int pos2 = name.length();
+        if (pos1 > 0 && pos2>pos1) name = name.substring(pos1+1,pos2);
+        else return s;
+        
+        return name;
+    }
+    
+        /**
+     * Added by JG 2015
+     * @in string path ex: ./path/to/file/file.f
+     * @return file name ex: file.f
+     */
+    public static String getFileExt(String s){
+        String name = s;
+        
+        // Test for several input name
+        String sFirstName = name;
+        if (s.contains(",")) {
+            String[] tab = s.split(",");
+            sFirstName = tab[0];
+        }
+        if (!name.equals(sFirstName)) name = sFirstName;
+        
+        // Find the extension
+        int pos1 = name.lastIndexOf(".");
+        int pos2 = name.length();
+        if (pos1 > 0 && pos2>pos1) name = name.substring(pos1,pos2);
+        else return s;
+        
+        return name;
+    }
+    
+    /**
+     * Get the current jar path
+     * @param
+     * @return current jar path
+     */
+
+    public static String getCurrentJarPath(){
+        File jarDir = new File(ClassLoader.getSystemClassLoader().getResource(".").getPath());
+        return jarDir.getAbsolutePath();
+    }
+    
+    /**
+     * Change owner of a directory
+     * @param filepath
+     * @return true if dir owner is changed
+     */
+    public static boolean changeOwnerDir(String filepath) {
+        Path jpath = Paths.get(getCurrentJarPath());
+        Path dpath = Paths.get(filepath);
+        UserPrincipal owner;
+        try {
+            owner = Files.getOwner(jpath);
+            Files.setOwner(dpath, owner);
+            return true;
+        } catch (IOException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Directory Owner change Failed!");
+            System.out.println(ex);
+            return false;
+        }
+    }
+    
+    /**
+     * Change owner of a file
+     * @param filepath
+     * @return true if file is changed
+     */
+    public static boolean changeOwnerFile(String filepath) {
+        Path jpath = Paths.get(getCurrentJarPath());
+        Path fpath = Paths.get(filepath);
+        UserPrincipal owner;
+        try {
+            owner = Files.getOwner(jpath);
+            Files.setOwner(fpath, owner);
+            return true;
+        } catch (IOException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("File Owner change Failed!");
+            System.out.println(ex);
+            return false;
+        }
+    }
+
+    /**
+     * Change owner of a path recursively
+     * @param filename
+     * @return true if file Exists
+     */
+    public static boolean changeOwnerPath(String filename) {
+        
+        return true;
+    }
+
+    /**
      * Test if a directory exists
      * @param filename
      * @return true if file Exists
@@ -437,14 +642,43 @@ public class Util {
     }
     
     /**
-     * Return the file size of a file or 0 if error or directory
-     * @param filename
-     * @return
+     * Delete a directory
+     * @param directory (to delete)
+     * @return true if success
      */
-    public static long FileSize(String filename) {
-        File f = new File(filename);
-        if (f==null||f.isDirectory()) return 0;
-        return f.length();
+    
+    public static boolean deleteDir(String directory) {
+        try {
+            File outtree=new File(directory);
+            if (outtree.exists()&&outtree.isDirectory()) {
+                for (String file:Config.listDir(directory)) {
+                    deleteFile(directory+File.separator+file);
+                }
+                return outtree.delete();
+            }
+        } catch(Exception e) {
+            System.out.println("Can't Delete "+directory);
+            return false;
+        }
+        return false;
+    }
+    
+    /*
+    * http://www.tutorialspoint.com/javaexamples/dir_delete.htm
+    */
+    public static boolean deleteDir(File dir) {
+        if (dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i = 0; i < children.length; i++) {
+                boolean success = deleteDir
+                        (new File(dir, children[i]));
+                if (!success) {
+                    return false;
+                }
+            }
+        }
+        //System.out.println("The directory is deleted.");
+        return dir.delete();
     }
     
     ////////////////////////////////////////////////////////////////////////////
@@ -655,49 +889,6 @@ public class Util {
     
     
     /**
-     * List the files in directory and return filename with the full path
-     * @return
-     */
-    public static Vector<String> listDirWithFullPath(String dir) {
-        Vector<String> tmp=new Vector<String>();
-        try {
-            File f=new File(dir);
-            if (!f.isDirectory()) {
-                dir+=File.separator;
-                f=new File(dir);
-            }
-            for (String filename:f.list()) tmp.add(f.getAbsolutePath()+File.separator+filename);
-        } catch(Exception e) {
-            System.out.println("Directory File Failed!");
-            System.out.println(e);
-        }
-        return tmp;
-    }
-    
-    
-    
-    /**
-     * Recursive fonction to list a directory
-     * Note: Use the Config.listDirFullPath function
-     * @param path
-     * @return an ArrayList of the full file path
-     */
-    public static ArrayList<String> recursive_list_dir(String path) {
-        ArrayList<String>filenames = new ArrayList<String>();
-        Vector<String>  filename_tmp=listDirWithFullPath(path);
-        for (String fi:filename_tmp)
-        {
-            File f=new File(fi);
-            if (f.isDirectory()) {
-                filenames.addAll(recursive_list_dir(f.getAbsolutePath()));
-            } else {
-                filenames.add(fi);
-            }
-        }
-        return filenames;
-    }
-    
-    /**
      * From : http://www.jeffreythompson.org/blog/2012/05/29/easy-processing-illustrator-export-bonus-svg-export/
      * Small function to execute external code
      * @param commandToRun
@@ -833,89 +1024,6 @@ public class Util {
     }
     
     
-    /**
-     * Added by JG 2016
-     * @param s path ex: ./path/to/file/file.f
-     * @return CanonicalPath ex: /home/user/path/to/file/file.f
-     */
-    public static String getCanonicalPath(String s) {
-        File f= new File(s);
-        try {
-            s = f.getCanonicalPath();
-        }catch (IOException ex) {
-            System.out.println("Error cananical path!");
-            System.out.println(ex);
-        }
-        return s;
-    }
-    
-    /**
-     * Added by JG 2015
-     * @param  s a path ex: ./path/to/file/file.f
-     * @return absolute (kind of cannonical) path ex: /home/user/path/to/file/file.f
-     */
-    public static String relativeToAbsoluteFilePath(String s) {
-        if (s.matches("^\\.\\/.*")) {
-            File f = new File(s);
-            s = f.getAbsolutePath();
-            s = s.replaceAll(File.separator+"\\."+File.separator,File.separator);
-        }
-        return s;
-    }
-    
-    /**
-     * Added by JG 2015
-     * @in string path ex: ./path/to/file/file.f
-     * @return file name ex: file
-     */
-    public static String getFileName(String s){
-        String name = s;
-        
-        // Test for several input name
-        String sFirstName = name;
-        if (s.contains(",")) {
-            String[] tab = s.split(",");
-            sFirstName = tab[0];
-        }
-        if (!name.equals(sFirstName)) name = sFirstName;
-        
-        // Find the name
-        int pos1 = name.lastIndexOf(File.separator);
-        int pos2 = name.lastIndexOf(".");
-        int pos3 = name.length();
-        if (pos1 > 0 && pos2>pos1) name = name.substring(pos1+1,pos2);
-        else if (pos1 > 0 && pos2<pos1) name = name.substring(pos1+1,pos3);
-        else return s;
-        
-        return name;
-    }
-    
-    /**
-     * Added by JG 2015
-     * @in string path ex: ./path/to/file/file.f
-     * @return file name ex: file.f
-     */
-    public static String getFileNameAndExt(String s){
-        String name = s;
-        
-        // Test for several input name
-        String sFirstName = name;
-        if (s.contains(",")) {
-            String[] tab = s.split(",");
-            sFirstName = tab[0];
-        }
-        if (!name.equals(sFirstName)) name = sFirstName;
-        
-        // Find the name
-        int pos1 = name.lastIndexOf(File.separator);
-        int pos2 = name.length();
-        if (pos1 > 0 && pos2>pos1) name = name.substring(pos1+1,pos2);
-        else return s;
-        
-        return name;
-    }
-    
-    
     /*
     * From stackoverflow.com
     * http://stackoverflow.com/questions/13501142/java-arraylist-how-can-i-tell-if-two-lists-are-equal-order-not-mattering
@@ -953,7 +1061,7 @@ public class Util {
     
     // Old
     // Obsolet do not take care of the -- or - it consider multiple text as -- and single lettre as -
-    public static String findOptions(String[] tab,workflow_properties properties) {
+    public static String findOptions(String[] tab, workflow_properties properties) {
         String s = ""; // Final string
         String t = ""; // Box type or option
         for (String op:tab){
