@@ -42,6 +42,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -700,8 +701,8 @@ public class RunProgram implements runningThreadInterface {
 //                 u.close();
 //                 p=r.exec("sh "+u.log_filename);
 //                 Util.deleteFile(u.log_filename);
-            p=r.exec(Util.toString(commandline)); // JG 2015
-            
+            String cli = Util.toString(commandline).replace("\\s+"," ");
+            p=r.exec(cli); // JG 2015
         }
         else {
             p = pb.start();
