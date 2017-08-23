@@ -1161,7 +1161,7 @@ public class Util {
     // Added by JG 2016
     public static void boxEventComboBox(workflow_properties properties,javax.swing.JCheckBox b,javax.swing.JComboBox s){
         if (b == null) {
-            properties.put(b.getName(),s);
+            properties.put(s.getName(),s);
         } else {
             if (b.isSelected()==true){
                 String i = (String)s.getSelectedItem();
@@ -1185,7 +1185,7 @@ public class Util {
     // Added by JG 2015
     public static void boxEventSpinner(workflow_properties properties,javax.swing.JCheckBox b,javax.swing.JSpinner s){
         if (b == null) {
-            properties.put(b.getName(),s.getValue());
+            properties.put(s.getName(),s.getValue());
         } else {
             if (b.isSelected()==true){
                 if (s == null) {
@@ -1208,7 +1208,7 @@ public class Util {
     // Added by JG 2015
     public static void buttonEventSpinner (workflow_properties properties, javax.swing.JRadioButton b,javax.swing.JSpinner s){
         if (b == null) {
-            properties.put(b.getName(),s.getValue());
+            properties.put(s.getName(),s.getValue());
         } else {
             if (b.isSelected()==true){
                 if (s == null) {
