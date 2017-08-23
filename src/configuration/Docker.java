@@ -50,7 +50,11 @@ import java.util.logging.Logger;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipInputStream;
 import workflows.workflow_properties;
-
+import configuration.Util;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.UserPrincipal;
 
 /**
  * Collection of util command
@@ -123,6 +127,31 @@ public class Docker {
         if (sl.size()==1 && sl.get(0).matches("\\w+")) {
             return true;
         } else if (sl.size()>1 && sl.get(sl.size()-1).matches("\\w+")){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Launch and set docker image with shared folder
+     */
+    public static boolean launchDockerImgAndSharedFolder(String inputsPath, String outputPath, String doName, String doImg) {
+        File f= new File(inputsPath);
+        try {
+            inputsPath = f.getCanonicalPath();
+            if (Util.DirExists(inputsPath)) Util.CreateDir(inputsPath);
+        }catch (IOException e) {
+            System.out.println("Get Canonical Path Failed!");
+            System.out.println(e);
+            e.printStackTrace();
+        }
+        String c = "docker run -v "+inputsPath+":/data/inputs "
+                + "-v "+outputPath+":/data/outputs "
+                + "--name "+doName+" -dit "+doImg;
+        
+        ArrayList<String> sl = Util.runSilentUnixCommand(c,"./");
+        if ((sl.size()==1 && sl.get(0).matches("\\w+"))||
+            (sl.size()> 1 && sl.get(sl.size()-1).matches("\\w+"))) {
             return true;
         }
         return false;
@@ -349,11 +378,24 @@ public class Docker {
         }
     }
     
+    /**
+     * Clean A specific container name
+     */
+    public static boolean CleanContainerName(workflow_properties properties) {
+        if (properties.isSet("DOCKERName")) {
+            return cleanContainer(properties.get("DOCKERName"));
+        }
+        return true;
+    }
     
     /*
-            String sd, // Shared directory
-            String dd, // Docker directory
-            String doName // Docker name
+    @obsolete : instead use -v and double exchange folders
+                one for inputs, one for outputs
+                then run changeOwnerOutputDir()
+    
+    String sd, // Shared directory
+    String dd, // Docker directory
+    String doName // Docker name
     */
     public static boolean copyDockerDirToSharedDir (String sd, String dd, String doName) {
         String s = "docker exec -ti "+doName+" mkdir "+sd+" "
@@ -372,11 +414,26 @@ public class Docker {
         return b;
     }
     
-    public static boolean CleanContainerName(workflow_properties properties) {
-        if (properties.isSet("DOCKERName")) {
-            return cleanContainer(properties.get("DOCKERName"));
+    /*
+        Change output directory owner files
+    */
+    public static boolean changeOwnerOutputDir(String doName) {
+        Path jpath = Paths.get(Util.getCurrentJarPath());
+        try {
+            UserPrincipal owner = Files.getOwner(jpath);
+            String userName = owner.getName();
+            String s = "docker exec -ti "+doName+""
+                    + "sh -c \"chown -R "+userName+" /data/output/ \"";
+            ArrayList<String> v = Util.runSilentUnixCommand(s,"./");
+            if (v.isEmpty()){
+                return false;
+            }
+            return true;
+        } catch (IOException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Directory Owner change Failed!");
+            System.out.println(ex);
+            return false;
         }
-        return true;
     }
-    
 }
