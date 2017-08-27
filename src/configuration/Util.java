@@ -39,15 +39,20 @@ import java.net.URLConnection;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.file.Files;
+import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.attribute.GroupPrincipal;
+import java.nio.file.attribute.PosixFileAttributes;
 import java.nio.file.attribute.UserPrincipal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -146,10 +151,13 @@ public class Util {
         String yyyy=String.valueOf(today.get(Calendar.YEAR));
         Random r=new Random();
         StringBuilder s=new StringBuilder();
-        s.append(dd);
-        s.append(mm);
         s.append(yyyy);
-        s.append(count);
+        s.append("-");
+        s.append(mm);
+        s.append("-");
+        s.append(dd);
+        s.append("_");
+        s.append(Long.toString(r.nextLong()).replaceAll("-",""));
         return s.toString();
     }
     
@@ -174,7 +182,6 @@ public class Util {
     public static String returnCurrentDateAndTime() {
         Calendar today=Calendar.getInstance();
         return dateformat.format(today.getTime());
-        
     }
     
     /**
@@ -233,7 +240,7 @@ public class Util {
      * @return true if success
      */
     public static boolean deleteFile(String filename) {
-        System.out.println("Deleting "+filename);
+        //System.out.println("Deleting "+filename);
         try {
             File outtree=new File(filename);
             if (outtree.exists()) outtree.delete();
@@ -395,6 +402,7 @@ public class Util {
     }
 
     /**
+     * Get the canonical path from string
      * Added by JG 2016
      * @param s path ex: ./path/to/file/file.f
      * @return CanonicalPath ex: /home/user/path/to/file/file.f
@@ -404,16 +412,118 @@ public class Util {
         try {
             s = f.getCanonicalPath();
         }catch (IOException ex) {
-            System.out.println("Error cananical path!");
+            System.out.println("Get Canonical Path Failed!");
             System.out.println(ex);
+            ex.printStackTrace();
         }
         return s;
     }
+
     
     /**
+     * IN TEST
+     * Try to insert escape for space in canonical path
+     * Used with docker
+     * Added by JG 2017
+     * @param s path ex: ./path/to/file/file.f
+     * @return CanonicalPath ex: /home/user/path/to/file/
+     */
+    public static String escapeSpace4CanonicalPath(String s){
+        //pl("s>"+s);
+        String p = s.replaceAll("\\s","\\\\ ");
+        //pl("p>"+p);
+        return p;
+    }
+    /**
+     * Get the directory path of a file from String
+     * Added by JG 2017
+     * @param s path ex: ./path/to/file/file.f
+     * @return path ex: ./path/to/file/
+     */
+    public static String getParentOfFile(String s) {
+        String c = getCanonicalPath(s);
+        int pos1 = c.lastIndexOf(File.separator);
+        c = c.substring(0,pos1);
+        return c;
+    }
+    
+    /**
+     * Compare to path to get the minimum path between two string
+     * Added by JG 2017
+     * @param s path ex: ./path/to/file/file1.f ./another/path/to/file/file2.f
+     * @return CanonicalPath ex: /home/user/path/to/file/
+     */
+    public static String[] compareTwoFilePath(String p1,String p2) {
+        p1 = getCanonicalPath(p1);
+        p2 = getCanonicalPath(p2);
+        if (p2.startsWith(p1)){
+            String[] tab = {p1,p2};
+            return tab;
+        }
+        if (p1.startsWith(p2)) {
+            String[] tab = {p1,p2};
+            return tab;
+        }
+        String[] tab = {"",""};
+        return tab;
+    }
+    
+    /**
+     * IN TEST for Docker
+     * Compare a table of path from inputs files and return an hashmap of string local<>string in docker
+     * Problem1 to compare canonical path the minimum path is the root and it's useless
+     * Problem2 it probably not the best way to share
+     * => we have choosed to share a folder per inputs connected to a folder in Docker
+     * Added by JG 2017
+     * @param tab a table of string for files
+     * @param doinputs the inputs path in docker container
+     * @return string of inputs files and the string in docker
+     * 
+     */
+    public static HashMap<String,String> compareTabFilePath(String[] tab, String doInputs) {
+        HashMap<String,Integer> finalFilesPath = new HashMap<String,Integer>();
+        HashMap<String,String> filesPathName = new HashMap<String,String>();
+        String[] tabTmp = tab;
+        for (String p: tabTmp){
+            if (p!="") {
+                String path = getParentOfFile(p);
+                String name = getFileName(p);
+                filesPathName.put(path, name);
+                p = path;
+            }
+        }
+        for(int i = 0; i < tabTmp.length-1; i++) {
+            for (String path : filesPathName.keySet()){
+                if (tab[i] != "" && path != "") {
+                    String[] r = compareTwoFilePath(tabTmp[i],path);
+                    if (r[0] != ""){
+                        if (finalFilesPath.isEmpty()){
+                            finalFilesPath.put(r[0],0);
+                        }
+                        for (String p:finalFilesPath.keySet()){
+                            String[] r2 = compareTwoFilePath(r[0],p);
+                            if (r2[0]!=r[0]){
+                                finalFilesPath.remove(r[0]);
+                                finalFilesPath.put(r2[0],0);
+                            }
+                        }
+                        
+                    }
+                }
+            }
+        }
+        HashMap<String,String> inputsFilesPath = new HashMap<String,String>();
+        for (String k:finalFilesPath.keySet()){
+            inputsFilesPath.put(k,doInputs+Integer.toString(finalFilesPath.get(k))+"/");
+        }
+        return inputsFilesPath;
+    }
+    
+    /**
+     * From relative path to a like canonical path
      * Added by JG 2015
      * @param  s a path ex: ./path/to/file/file.f
-     * @return absolute (kind of cannonical) path ex: /home/user/path/to/file/file.f
+     * @return absolute (changed in cannonical) path ex: /home/user/path/to/file/file.f
      */
     public static String relativeToAbsoluteFilePath(String s) {
         if (s.matches("^\\.\\/.*")) {
@@ -425,13 +535,61 @@ public class Util {
     }
     
     /**
-     * Added by JG 2015
-     * @in string path ex: ./path/to/file/file.f
-     * @return file name ex: file
+     * Get the name of a file without extension from a string
+     * Added by JG 2017
+     * @param  s a path ex: ./path/to/file/file.f
+     * @return the file name
      */
     public static String getFileName(String s){
+        if (s != "") {
+            File f = new File(s);
+            String name = f.getName();
+            int p = name.lastIndexOf(".");
+            return name.substring(0,p);
+        }
+        return s;
+    }
+    /**
+     * Get the file name with it's extension from a string
+     * Added by JG 2017
+     * @in string path ex: ./path/to/file/file.f
+     * @return file name ex: file.f
+     */
+    public static String getFileNameAndExt(String s){
+        if (s != "") {
+            File f = new File(s);
+            return f.getName();
+        }
+        return s;
+    }
+    
+    /**
+     * Get the extension of a file from a string
+     * Added by JG 2017
+     * @in string path ex: ./path/to/file/file.f
+     * @return file name ex: file.f
+     */
+    public static String getFileExt(String s){
+        String name = getFileNameAndExt(s);
+        if (name != ""){
+            int pos1 = name.lastIndexOf(".");
+            int pos2 = name.length();
+            if (pos1 > 0 && pos2>pos1)
+                return name.substring(pos1,pos2);
+            else
+                return s;
+        }
+        return s;
+    }
+    
+    /**
+     * Get the name of the first file from several path in a string with comma separation
+     * Added by JG 2015
+     * @in string path ex: ./path/to/file/file.f,./path/to/another/file/file.f,.path...
+     * @return file name ex: file
+     */
+    public static String get1FileName4Inputs(String s){
         String name = s;
-        
         // Test for several input name
         String sFirstName = name;
         if (s.contains(",")) {
@@ -452,13 +610,13 @@ public class Util {
     }
     
     /**
+     * Get the name and extension of the first file from several path in a string with comma separation
      * Added by JG 2015
      * @in string path ex: ./path/to/file/file.f
      * @return file name ex: file.f
      */
-    public static String getFileNameAndExt(String s){
+    public static String get1FileNameAndExt4Inputs(String s){
         String name = s;
-        
         // Test for several input name
         String sFirstName = name;
         if (s.contains(",")) {
@@ -476,12 +634,13 @@ public class Util {
         return name;
     }
     
-        /**
+    /**
+     * Get the extension of the first file from several path in a string with comma separation
      * Added by JG 2015
      * @in string path ex: ./path/to/file/file.f
      * @return file name ex: file.f
      */
-    public static String getFileExt(String s){
+    public static String get1FileExt4Inputs(String s){
         String name = s;
         
         // Test for several input name
@@ -503,15 +662,47 @@ public class Util {
     
     /**
      * Get the current jar path
-     * @param
+     * Added by JG 2017
      * @return current jar path
      */
 
     public static String getCurrentJarPath(){
-        File jarDir = new File(ClassLoader.getSystemClassLoader().getResource(".").getPath());
-        return jarDir.getAbsolutePath();
+        return  System.getProperty("user.dir");
     }
     
+    /**
+     * Get the owner's name of the current jar file
+     * @return the owner's name of the current jar file
+     */
+    public static String getOwnerJar() {
+        Path jpath = Paths.get(getCurrentJarPath());
+        try {
+            return Files.getOwner(jpath).getName();
+        } catch (IOException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Can't get Owner or the jar file");
+            System.out.println(ex);
+            return "";
+        }
+    }
+
+    /**
+     * Get the owner's group of the current jar file
+     * @return the owner's group of the  current jar file
+     */
+    public static String getGroupJar() {
+        Path jpath = Paths.get(getCurrentJarPath());
+        try {
+            GroupPrincipal group = Files.readAttributes(jpath, PosixFileAttributes.class, LinkOption.NOFOLLOW_LINKS).group();
+            return group.getName();
+        } catch (IOException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Can't get Owner or the jar file");
+            System.out.println(ex);
+            return "";
+        }
+    }
+
     /**
      * Change owner of a directory
      * @param filepath
@@ -954,7 +1145,7 @@ public class Util {
                 BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
                 while ( (returnedValues = stdInput.readLine ()) != null) {
                     str.add(returnedValues);
-                    //println(returnedValues);
+                    //Util.pl(returnedValues);
                 }
             }
             else {
@@ -1120,18 +1311,18 @@ public class Util {
                     t = t.replaceAll("UNDERSCORESYMBOL","_");
                 
                 if (t.matches(".*HYPHENSYMBOL.*")) // MINUS - is back
-                    t = t.replaceAll("HYPHENSYMBOL","_");
+                    t = t.replaceAll("HYPHENSYMBOL","-");
                 
                 if (t.matches(".*PLUS.*")) // MINUS - is back
-                    t = t.replaceAll("PLUS","_");
+                    t = t.replaceAll("PLUS","+");
                 
                 if (t.matches(".*DOT.*")) // MINUS - is back
-                    t = t.replaceAll("DOT","_");
+                    t = t.replaceAll("DOT",".");
                 
                 if (t.length()>1 && !t.matches("^[A-Z].*")) // Composed command is back
                     t = t.replaceAll("([A-Z])","-$1");
                 
-                t = t.toLowerCase();
+                //t = t.toLowerCase();
                 t = prefix+t;
                 
                 if (!properties.get(op).equals("true")) {
@@ -1673,4 +1864,49 @@ public class Util {
         listDicts.add(DictRadioButtonTextField);
     }
 
+    // Replace space by underscore in a string
+    // Added by JG 2017
+    public static String replaceSpaceByUnderscore(String s){
+        return s.replaceAll(" ","_");
+    }
+    
+    /**
+     * Source https://stackoverflow.com/questions/16520046/how-to-merge-two-arraylists-without-duplicates
+     * Added by JG 2017
+     * @param t1 first table
+     * @param t2 second table
+     * @return merged table of string without duplicates from two tables
+     */
+    public static String[] merge2TablesWithoutDup(String[] t1, String[] t2){
+        List<String> sL1 = new ArrayList<String>(Arrays.asList(t1));
+        for (int i = 0; i < t2.length ; i ++){
+            if (!sL1.contains(t2[i]))
+                sL1.add(t2[i]);
+        }
+        String[] f = sL1.toArray(new String[0]);
+        return f;
+    }
+    
+    /**
+     * Added by JG 2017
+     * @param s a string from outputs program
+     * @return the same string but without a duplication of OutputOf_
+     */
+    public static String onlyOneOutputOf(String s) {
+        while (s.contains("OutputOf_OutputOf_")){
+            s = s.replace("OutputOf_OutputOf_","OutputOf_");
+        }
+        return s;
+    }
+    
+    /**
+     * A fastest way to print in the terminal
+     * Added by JG 2017
+     * @param s a string you want to print in the terminal
+     * @return None it's printed in the terminal
+     */
+    public static void pl(String s){
+        System.out.println(s);
+    }
+    
 }
