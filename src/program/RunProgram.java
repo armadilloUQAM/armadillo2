@@ -31,6 +31,7 @@ import biologic.Sequence;
 import biologic.Tree;
 import biologic.Unknown;
 import configuration.Config;
+import static configuration.Docker.kword;
 import configuration.Docker;
 import configuration.Util;
 import database.databaseFunction;
@@ -40,6 +41,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
@@ -415,7 +417,11 @@ public class RunProgram implements runningThreadInterface {
                         //--actual run
                         setStatus(status_running, "\tRunning program...");
                         // Print the command line
-                        //String s = Util.toString(commandline);
+                        String s = Util.toString(commandline);
+                        
+                        Util.pl(s);
+                                
+                                
                         //if (!s.contains("Not Set")) System.out.println(s);
                         
                         setStatus(status_running,"<-Program Output->");
@@ -654,7 +660,7 @@ public class RunProgram implements runningThreadInterface {
         if (properties.isSet("RunningDirectory")) {
             pb.directory(new File(properties.get("RunningDirectory")));
         }
-        
+
         r = Runtime.getRuntime();
         //--Test August 2011 - For Mac OS X
         if ((config.getBoolean("MacOSX")||SystemUtils.IS_OS_MAC_OSX)) {
@@ -691,6 +697,17 @@ public class RunProgram implements runningThreadInterface {
                 }
             } //--End RuntimeMacOSX
             //--Run time
+            else {
+                //--Create a new bash file
+                Util u = new Util("RunProgram.sh");
+                u.println("#!/bin/sh");
+                u.println("echo \"Executing by bash command: "+properties.getName()+"\"");
+                u.println(Util.toString(commandline));
+                //--Return the application error code
+                u.println("exit $?");
+                u.close();
+                p=r.exec("sh RunProgram.sh");
+            }
         } else  if ((config.getBoolean("Linux")||SystemUtils.IS_OS_LINUX)) {
 //                 Util u = new Util("RunProgram"+Util.returnTimeCode()+".sh");
 //                 u.println("#!/bin/sh");
@@ -707,11 +724,11 @@ public class RunProgram implements runningThreadInterface {
         else {
             p = pb.start();
         }
-        
+
         //pb.redirectErrorStream(true)
         InputStreamThread stderr = new InputStreamThread(p.getErrorStream());
         InputStreamThread stdout = new InputStreamThread(p.getInputStream());
-        
+
         int exitvalue=p.waitFor();
         properties.put("ExitValue", exitvalue);
         
@@ -1669,33 +1686,5 @@ public class RunProgram implements runningThreadInterface {
         return tab;
     }
     
-    ////////////////////////////////////////////////////////////////////////////
-    /// Docker
-    /*
-    * Docker initialisation
-    */
-    public boolean dockerInit(String localpath, String dockerpath, String name, String img) {
-        if (Docker.isDockerHere()) {
-            if (Docker.isNameWellWritten(name)) {
-                if (name.contains("_OUT")) {
-                    setStatus(status_BadRequirements,"Warnings already 1000 containers have been send with this name. Please remove few of them to continue");
-                    return false;
-                } else {
-                    boolean b = Docker.launchDockerImage(localpath,dockerpath,name,img);
-                    if (!b) {
-                        setStatus(status_BadRequirements,"Not able to launch the docker image");
-                        return false;
-                    }
-                }
-            } else {
-                setStatus(status_BadRequirements,"Warnings the name is not written well");
-                return false;
-            }
-        } else {
-            setStatus(status_BadRequirements,"Docker is not found. Please install docker");
-            return false;
-        }
-        return true;
-    }
-    
+
 }
