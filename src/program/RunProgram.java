@@ -353,7 +353,7 @@ public class RunProgram implements runningThreadInterface {
                     //setStatus(getStatus(), "Total running time: "+Util.msToString(getRunningTime()));
                     if ((properties.getBoolean("VerifyExitValue")&&getExitVal()!=properties.getInt("NormalExitValue"))) {
                         setStatus(status_error,"***Error with at "+getRunningTime()+" ms ExitValue: "+properties.get("ExitValue")+"\n");
-                        Docker.CleanContainerName(properties);
+                        Docker.cleanContainer(properties);
                         post_run_clean();
                     }  else {
                         if (getStatus()!=status_error&&getStatus()!=status_BadRequirements&&getStatus()!=status_runningclassnotfound&&getStatus()!=status_programnotfound) {
@@ -373,7 +373,7 @@ public class RunProgram implements runningThreadInterface {
                     if (properties.getBoolean("debug")) ex.printStackTrace();
                     if (!cancel) {
                         setStatus(status_error,"Error in running... \n"+ex.getMessage());
-                        Docker.CleanContainerName(properties);
+                        Docker.cleanContainer(properties);
                     }
                 }
                 programTimeEnd=Util.returnCurrentDateAndTime();
@@ -434,7 +434,7 @@ public class RunProgram implements runningThreadInterface {
                     //setStatus(getStatus(), "Total running time: "+Util.msToString(getRunningTime()));
                     if (properties.getBoolean("VerifyExitValue")&&getExitVal()!=properties.getInt("NormalExitValue")) {
                         setStatus(status_error,"***Error with at "+getRunningTime()+" ms ExitValue: "+properties.get("ExitValue")+"\n");
-                        Docker.CleanContainerName(properties);
+                        Docker.cleanContainer(properties);
                         post_run_clean();
                     } else {
                         if (getStatus()!=status_error&&getStatus()!=status_BadRequirements&&getStatus()!=status_runningclassnotfound&&getStatus()!=status_programnotfound) {

@@ -79,12 +79,11 @@ public class Docker {
      * DOCKER FUNCTIONS
      **************************************************************************/
     
-    ////////////////////////////////////////////////////////////////////////////
-
-    
-    public static boolean isDockerHereStatic(workflow_properties properties) {
-        String dockerCommand = getOSCommandLine(properties);
-        ArrayList<String> s = Util.runSilentUnixCommand(dockerCommand+" --version","./");
+    /**
+     * Test if docker program is installed
+     */
+    public static boolean isDockerHere() {
+        ArrayList<String> s = Util.runSilentUnixCommand("docker --version","./");
         for (String st:s)
             if (st.contains("Docker version")) {
                 return true;
@@ -103,9 +102,54 @@ public class Docker {
         return true;
     }
 
-    ////////////////////////////////////////////////////////////////////////////
-    /// Docker launchers
+    /**
+     * Test if docker image is already present in docker
+     */
+    public static boolean isDockerNameWellWritten(String name) {
+        if (name.contains(kword) && name.matches("\\w*_"+kword+"_\\d+")) {
+            if (name.contains("_OUT")) {
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
 
+    /**
+     * Get the container name
+     */
+    public static String getContainerName(workflow_properties properties, String name) {
+        if (isContainersAlreadyUsed(properties,name)) {
+            String si = name;
+            si = si.replaceAll(".*_(\\d+)$","$1");
+            int i = Integer.parseInt(si);
+            si = name.replaceAll("(.*_)\\d+$","$1");
+            name = getContainerNextName(properties,si,i);
+            return name;
+        } else 
+            return name;
+    }
+    
+    /**
+     * Get the container next name available
+     */
+    public static String getContainerNextName(workflow_properties properties, String name, int i) {
+        if (i>100) {
+            //System.out.println("Warnings already 100 containers have been send with this name. Please remove few of them to continue");
+            return name+"_OUT";
+        } else {
+            if (!isContainersAlreadyUsed(properties,name+i)) {
+                return name+Integer.toString(i);
+            } else {
+                i=i+1;
+                return getContainerNextName(properties,name,i);
+            }
+        }
+    }
+    
+    /**
+     * Get the OS executable for docker
+     */
     public static String getOSCommandLine(workflow_properties properties) {
         if (config.getBoolean("MacOSX")||SystemUtils.IS_OS_MAC_OSX) {
             return properties.getExecutableMacOSX();
@@ -117,7 +161,7 @@ public class Docker {
     
     
     /**
-     * Launch and set docker image
+     * Prepare the docker bash file
      */
     public static void prepareDockerBashFile(workflow_properties properties, String doName, String dockerCli) {
         String dockerCommand = getOSCommandLine(properties);
@@ -159,6 +203,7 @@ public class Docker {
     }
 
     /**
+     * @TEST
      * Launch and set docker image with shared folder
      */
     public static boolean launchDockerContainerTest(workflow_properties properties, HashMap<String,String> sharedFolders, String doName, String doImg) {
@@ -193,7 +238,7 @@ public class Docker {
     }
     
     /**
-     * Launch and set docker image with shared folder
+     * Launch and set docker container with shared forlder
      */
     public static boolean launchDockerContainer(workflow_properties properties,HashMap<String,String> sharedFolders, String doName, String doImg) {
         String dockerCommand = getOSCommandLine(properties);
@@ -236,38 +281,6 @@ public class Docker {
         return false;
     }
 
-    /**
-     * Get the container name value
-     */
-    public static String getContainersVal(workflow_properties properties, String name) {
-        if (isContainersAlreadyUsed(properties,name)) {
-            String si = name;
-            si = si.replaceAll(".*_(\\d+)$","$1");
-            int i = Integer.parseInt(si);
-            si = name.replaceAll("(.*_)\\d+$","$1");
-            name = getContainersNextVal(properties,si,i);
-            return name;
-        } else 
-            return name;
-    }
-    
-    /**
-     * Get the container name next value
-     */
-    public static String getContainersNextVal(workflow_properties properties, String name, int i) {
-        if (i>100) {
-            //System.out.println("Warnings already 100 containers have been send with this name. Please remove few of them to continue");
-            return name+"_OUT";
-        } else {
-            if (!isContainersAlreadyUsed(properties,name+i)) {
-                return name+Integer.toString(i);
-            } else {
-                i=i+1;
-                return getContainersNextVal(properties,name,i);
-            }
-        }
-    }
-    
     /**
      * Get docker images
      */
@@ -338,7 +351,7 @@ public class Docker {
     }
 
     /**
-     * Get all docker containers infos ID
+     * Get all docker containers infos ID Names
      */
     public static ArrayList<String> getAllContainersID(workflow_properties properties) {
         String dockerCommand = getOSCommandLine(properties);
@@ -352,7 +365,7 @@ public class Docker {
     }
 
     /**
-     * Get all docker containers infos ID
+     * Get all docker containers infos Name
      */
     public static ArrayList<String> getAllContainersName(workflow_properties properties) {
         String dockerCommand = getOSCommandLine(properties);
@@ -366,12 +379,23 @@ public class Docker {
     }
 
     /**
-     * Clean (stop and remove) Docker Containers List
+     * Clean (stop and remove) a Docker Container
      */
     public static boolean cleanContainer(workflow_properties properties, String s) {
         ArrayList<String> a = new ArrayList<String>();
         a.add(s);
         return cleanContainers(properties, a);
+    }
+    
+    /**
+     * Clean a container name from properties
+     * Mstly used in src/program/RunProgram.java
+     */
+    public static boolean cleanContainer(workflow_properties properties) {
+        if (properties.isSet("DOCKERName")) {
+            return cleanContainer(properties,properties.get("DOCKERName"));
+        }
+        return true;
     }
     
     /**
@@ -404,7 +428,7 @@ public class Docker {
     }
     
     /**
-     * Stop docker Container List
+     * Stop docker Containers List
      */
     private static boolean stopContainers(workflow_properties properties, ArrayList<String> l) {
         
@@ -456,7 +480,7 @@ public class Docker {
     
     
     /**
-     * Clean Inactives Armadillo containers
+     * Clean Inactives Armadillo images
      */
     public static void removeImages(workflow_properties properties, ArrayList<String> l) {
         //Find container which used image names and stop, remove them
@@ -480,24 +504,14 @@ public class Docker {
     }
     
     /**
-     * Clean A specific container name
+     * @obsolete : instead use -v and double exchange folders
+     *             one for inputs, one for outputs
+     *             then run changeOwnerOutputDir()
+     *
+     * String sd, // Shared directory
+     * String dd, // Docker directory
+     * String doName // Docker name
      */
-    public static boolean CleanContainerName(workflow_properties properties) {
-        if (properties.isSet("DOCKERName")) {
-            return cleanContainer(properties,properties.get("DOCKERName"));
-        }
-        return true;
-    }
-    
-    /*
-    @obsolete : instead use -v and double exchange folders
-                one for inputs, one for outputs
-                then run changeOwnerOutputDir()
-    
-    String sd, // Shared directory
-    String dd, // Docker directory
-    String doName // Docker name
-    */
     public static boolean copyDockerDirToSharedDir (workflow_properties properties, String sd, String dd, String doName) {
         String dockerCommand = getOSCommandLine(properties);
         String s = dockerCommand+" exec -ti "+doName+" mkdir "+sd+" "
@@ -516,9 +530,9 @@ public class Docker {
         return b;
     }
     
-    /*
-        Change output directory owner files
-    */
+    /**
+     *  Change output directory owner files
+     */
     public static boolean changeOwnerOutputDir(workflow_properties properties, String doName) {
         String userName = Util.getOwnerJar();
         String s = "docker exec -i "+doName+""
@@ -530,22 +544,7 @@ public class Docker {
         return true;
     }
     
-    public static boolean runCommand4Docker(String[] commandline) throws Exception {
-        //--Run the thread and catch stdout and stderr
-        ProcessBuilder pb=new ProcessBuilder(commandline);
-        Runtime r = Runtime.getRuntime();
-        Process p;
-        p = r.exec(Util.toString(commandline));
-        int exitvalue=p.waitFor();
-        Util.pl("int>"+p.getInputStream().toString());
-        Util.pl("int>"+p.getErrorStream().toString());
-        Util.pl("int>"+p.getOutputStream().toString());
-        Util.pl("int>"+Integer.toString(exitvalue));
-        return true;
-    }
-    
     /**
-     * Used by docker
      * It's the way to share files from local to docker
      * Added by JG 2017
      * @param tab it's a tab of local path to files
@@ -602,7 +601,6 @@ public class Docker {
     }
     
     /**
-     * Used in docker command line creation
      * It's the way to add all inputs and their arguments in a single string
      * Added by JG 2017
      * @param pathAndArg it's a map of paths and arg local to docker
@@ -632,7 +630,7 @@ public class Docker {
      * 
      * @return CanonicalPath ex: /home/user/path/to/file/
      */
-    public static String createDockerInputs(HashMap<String,String> pathAndArg,HashMap<String,String> sharedFolders) {
+    public static String createAllDockerInputs(HashMap<String,String> pathAndArg,HashMap<String,String> sharedFolders) {
         String allDockerInputs = "";
         for (String s : pathAndArg.keySet()){
             String dir   = Util.getParentOfFile(s);
@@ -645,5 +643,25 @@ public class Docker {
         }
         return allDockerInputs;
     }
+
+    /**
+     * In Test
+     * equivalent of Util.runSilentUnixCommand
+     * The main idea is to test the space in shared path files
+     */
+    public static boolean runCommand4Docker(String[] commandline) throws Exception {
+        //--Run the thread and catch stdout and stderr
+        ProcessBuilder pb=new ProcessBuilder(commandline);
+        Runtime r = Runtime.getRuntime();
+        Process p;
+        p = r.exec(Util.toString(commandline));
+        int exitvalue=p.waitFor();
+        Util.pl("int>"+p.getInputStream().toString());
+        Util.pl("int>"+p.getErrorStream().toString());
+        Util.pl("int>"+p.getOutputStream().toString());
+        Util.pl("int>"+Integer.toString(exitvalue));
+        return true;
+    }
     
+
 }
