@@ -71,14 +71,14 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
     ////////////////////////////////////////////////////////////////////////////////
     /// WorkFlowJInternalFrame tested JG 2016
     
-    private boolean tested;
+    private boolean cluster;
     
     //Tested Functions
-    public boolean isATest() {
-        return tested;
+    public boolean isCluster() {
+        return cluster;
     }
-    public void setTested(boolean tested) {
-        this.tested = tested;
+    public void setCluster(boolean clustured) {
+        this.cluster = clustured;
     }
     
     ////////////////////////////////////////////////////////////////////////////
@@ -697,10 +697,10 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
     public void getSelectedWay(javax.swing.JComboBox j) {
         String s = (String)j.getModel().getElementAt(j.getSelectedIndex());
         if (s.equalsIgnoreCase("local")) {
-            tested = false;
+            cluster = false;
             selection.put("WF_tested",false);
         } else if (s.equalsIgnoreCase("cluster")) {
-            tested = true;
+            cluster = true;
             File dir = new File("./tmp/cluster/");
             if (!dir.exists())
                 dir.mkdir();
@@ -740,11 +740,11 @@ insertClusterObject();
                 if (b1){
                     RunOptions_jComboBox.setSelectedIndex(1);
                     selection.put("WF_tested",true);
-                    tested=true;
+                    cluster=true;
                 } else {
                     RunOptions_jComboBox.setSelectedIndex(0);
                     selection.put("WF_tested",false);
-                    tested=false;
+                    cluster=false;
                 }
             } else {
                 System.out.println("Impossible to load Cluster object");

@@ -304,14 +304,14 @@ public class Workbox {
     public boolean saveWorkflowToDatabaseWOSW(String WorkflowName) {
         //--TO DO: Find why it bug!
         database_workflow.setName(WorkflowName);
-        if (!workflow_int_frame.isATest()){
+        if (!workflow_int_frame.isCluster()){
             workflow_int_frame.Message("Saving workflow "+WorkflowName+" to database...","");
         }
         //workflow_int_frame.database_workflow.updateCurrentWorkflow();
         database_workflow.setId(0); //--Reset ID for a new workflow
         boolean saved=database_workflow.saveToDatabase();
         if (saved) {
-            if (workflow_int_frame.isATest()){
+            if (workflow_int_frame.isCluster()){
                 //workflow_int_frame.Message("PreRun1 Successfully saved workflow to database ("+Util.returnCurrentDateAndTime()+")","");
             } else {
                 workflow_int_frame.Message("Successfully saved workflow to database ("+Util.returnCurrentDateAndTime()+")","");
@@ -763,7 +763,7 @@ public class Workbox {
                     saved=database_workflow.saveToDatabase();
                     setProgress(75);
                     if (saved) {
-                        if (workflow_int_frame.isATest()) {
+                        if (workflow_int_frame.isCluster()) {
                             publish("PreRun2 Successfully saved workflow to database ("+Util.returnCurrentDateAndTime()+")");
                         } else {
                             publish("Successfully saved workflow to database ("+Util.returnCurrentDateAndTime()+")");
@@ -1124,15 +1124,15 @@ public class Workbox {
     /**
      * @return the workflow test status
      */
-    public boolean isWorkboxATest() {
-        return workflow_int_frame.isATest();
+    public boolean isWorkboxOnCLuster() {
+        return workflow_int_frame.isCluster();
     }
     
     /**
      * @param initialized the initialized to set
      */
     public void setWorkboxAsTest(boolean tested) {
-        workflow_int_frame.setTested(tested);
+        workflow_int_frame.setCluster(tested);
     }
     
     public WorkFlowJInternalFrame getWorkFlowJInternalFrame(){

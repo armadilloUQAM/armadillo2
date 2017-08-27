@@ -337,9 +337,8 @@ public class RunProgram implements runningThreadInterface {
                     setStatus(status_running,"Initialization...");
                     if (init_run()&&!isInterrupted()) {
                         // JG 2015 Start
-                        boolean test = workbox.isWorkboxATest();
-                        if (test) {
-                            if (do_runTest()&&!isInterrupted()) {
+                        if (workbox.isWorkboxOnCLuster()) {
+                            if (do_runOnCluster()&&!isInterrupted()) {
                                 // JG 2015 Start
                                 setStatus(status_running,"<-End Program Output ->");
                                 msg("\tProgram Exit Value: "+getExitVal());
@@ -1486,7 +1485,7 @@ public class RunProgram implements runningThreadInterface {
     /*
      * Test ZONE
      */
-    public boolean do_runTest() throws IOException, InterruptedException {
+    public boolean do_runOnCluster() throws IOException, InterruptedException {
         //--Test August 2011 - For Mac OS X
         if ((config.getBoolean("MacOSX")||SystemUtils.IS_OS_MAC_OSX)) {
             macOSX_cmd_Modifications();
@@ -1686,5 +1685,40 @@ public class RunProgram implements runningThreadInterface {
         return tab;
     }
     
+    /*
+    * Docker initialisation
+    * @Obsolete Prefer using dockerInitContainer
+    */
+    public boolean dockerInit(String localpath, String dockerpath, String name, String img) {
+        if (Docker.isDockerHere() && Docker.isDockerNameWellWritten(name)) {
+            boolean b = Docker.launchDockerImage(properties,localpath,dockerpath,name,img);
+            if (!b) {
+                setStatus(status_BadRequirements,"Not able to initiate the docker container");
+                return false;
+            }
+        }
+        return true;
+    }
 
+    /*
+    * Docker Container initialisation
+    * Use -v to share files
+    */
+    public boolean dockerInitContainer(workflow_properties properties, HashMap<String,String> sharedFolders, String doName, String doImage) {
+        if (Docker.isDockerNameWellWritten(doName)){
+            if (Docker.launchDockerContainer(properties,sharedFolders,doName,doImage)){
+                if (properties.isSet("CliDockerInit"))
+                    setStatus(status_running,"DockerInitCommandLine: $\n "+properties.get("CliDockerInit"));
+                properties.put("DOCKERName",doName);
+                return true;
+            } else {
+                Docker.cleanContainer(properties,doName);
+                setStatus(status_BadRequirements,"Not able to initiate the docker container");
+            }
+        } else {
+            setStatus(status_BadRequirements,"Bad Requirement, Already 100 containers have been send with this name. Please remove few of them to continue");
+            setStatus(status_BadRequirements,"Or the name is not written well");
+        }
+        return false;
+    }
 }
