@@ -27,7 +27,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -380,6 +382,22 @@ public class Unknown implements Biologic, Iterator, Serializable {
                 s = fas.getFilename();
             }
         }
+        return s;
+    }
+    
+    public static String[] getAllVectorFilePath(Vector<Integer> f){
+        List<String> l = new ArrayList<String>();
+        String[] s = {};
+        for (int ids:f) {
+            if (ids!=0) {
+                Unknown fas =new Unknown(ids);
+                l.add(fas.getFilename());
+            }
+        }
+        if (l.isEmpty())
+            return s;
+        else
+            s = l.toArray(new String[l.size()]);
         return s;
     }
     
