@@ -544,4 +544,106 @@ public class Docker {
         return true;
     }
     
+    /**
+     * Used by docker
+     * It's the way to share files from local to docker
+     * Added by JG 2017
+     * @param tab it's a tab of local path to files
+     * @param doInputs it's the path of inputs in docker
+     * @return a map of local folders and their mirror in docker
+     */
+    public static HashMap<String,String> createSharedFolders(String[] tab, String doInputs) {
+        HashMap<String,String> sharedFolders = new HashMap<String,String>();
+        for(int i = 0; i < tab.length; i++) {
+            if (tab[i]!="") {
+                String dir = Util.getParentOfFile(tab[i]);
+                sharedFolders.put(dir, doInputs+i+"/");
+            }
+        }
+        return sharedFolders;
+    }
+    
+    /**
+     * 
+     * @deprecated Be cause we merge the two tables before create the shared folder
+     * See merge2TablesWithoutDup
+     * 
+     * Used in docker
+     * It's the way to share files from local to docker with a multiple inputs
+     * Added by JG 2017
+     * @param tab it's a tab of local path to files
+     * @param doInputs it's the path of inputs in docker
+     * @param multi it's a tab of a multiple local path to files
+     * @return a map of local folders and their mirror in docker
+     */
+    public static HashMap<String,String> createSharedFoldersMultiple(String[] tab, String doInputs,String[] multi) {
+        HashMap<String,String> sharedFolders = new HashMap<String,String>();
+        int y = 0;
+        for(int i = 0; i < tab.length; i++) {
+            boolean b = true;
+            for (String st:multi){
+                if (tab[i]==st)
+                    b = false;
+            }
+            if (tab[i]!=""&&b) {
+                String dir = Util.getParentOfFile(tab[i]);
+                sharedFolders.put(dir, doInputs+i+"/");
+            }
+            y = i;
+        }
+        for(int i = 0; i < multi.length; i++) {
+            if (tab[i]!="") {
+                String dir = Util.getParentOfFile(multi[i]);
+                sharedFolders.put(dir, doInputs+y+"/");
+            }
+            y+=1;
+        }
+        return sharedFolders;
+    }
+    
+    /**
+     * Used in docker command line creation
+     * It's the way to add all inputs and their arguments in a single string
+     * Added by JG 2017
+     * @param pathAndArg it's a map of paths and arg local to docker
+     * @param tab it's a tab of local path to files
+     * 
+     * @return CanonicalPath ex: /home/user/path/to/file/
+     */
+    public static String createAllDockerInputs(HashMap<String,String> pathAndArg,String[] tab, String doInputs) {
+        String allDockerInputs = "";
+        for(int i = 0; i < tab.length; i++) {
+            if (tab[i]!="") {
+                String v = pathAndArg.get(tab[i]);
+                String c = Util.getCanonicalPath(tab[i]);
+                String name = Util.getFileNameAndExt(c);
+                allDockerInputs += " "+v+" "+doInputs+i+"/"+name+" ";
+            }
+        }
+        return allDockerInputs;
+    }
+    
+    /**
+     * Used in docker command line creation
+     * It's the way to add all inputs and their arguments in a single string
+     * Added by JG 2017
+     * @param pathAndArg it's a map of paths and arg local to docker
+     * @param tab it's a tab of local path to files
+     * 
+     * @return CanonicalPath ex: /home/user/path/to/file/
+     */
+    public static String createDockerInputs(HashMap<String,String> pathAndArg,HashMap<String,String> sharedFolders) {
+        String allDockerInputs = "";
+        for (String s : pathAndArg.keySet()){
+            String dir   = Util.getParentOfFile(s);
+            if (sharedFolders.containsKey(dir)){
+                String name  = Util.getFileNameAndExt(s);
+                String doDir = sharedFolders.get(dir);
+                String arg   = pathAndArg.get(s);
+                allDockerInputs += " "+arg+" "+doDir+""+name+" ";
+            }
+        }
+        return allDockerInputs;
+    }
+    
 }
