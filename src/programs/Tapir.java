@@ -169,6 +169,6 @@ public class Tapir extends RunProgram {
         Util.deleteDir(outputPath+File.separator+"INPUTS");
         ArrayList<String> a = new ArrayList<String>();
         a.add(doName);
-        Docker.cleanContainers(a);
+        Docker.cleanContainers(properties,a);
     }
 }

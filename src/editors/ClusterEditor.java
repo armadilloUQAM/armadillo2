@@ -460,7 +460,7 @@ public class ClusterEditor extends javax.swing.JDialog implements EditorInterfac
         Workbox workbox = parent_workflow.getWorkbox();
         workflow_properties selection = workbox.getWorkFlowJInternalFrame().getProperties();
         selection.put("ClusterAccessAddress",properties.get("Description"));
-        boolean b = workbox.isWorkboxATest();
+        boolean b = workbox.isWorkboxOnCLuster();
         if (b) {
             clusterEnabled.setSelected(true);
             properties.put(clusterEnabled.getName(),true);

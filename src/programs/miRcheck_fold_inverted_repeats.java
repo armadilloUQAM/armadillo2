@@ -114,16 +114,15 @@ public class miRcheck_fold_inverted_repeats extends RunProgram{
         inputInDo2 = doSharedFolder+inputsdir+File.separator+input2;
         input2 = Util.getFileName(inputPath2);
 
-        // TEST Docker initialisation
-        doName = Docker.getContainersVal(doName);
-        if (!dockerInit(outputPath,doSharedFolder,doName,doImage)) {
-            Docker.cleanContainer(doName);
-            setStatus(status_BadRequirements,"Not able to initiate docker container");
-            return false;
+        // Launch Docker
+        if (Docker.isDockerHere(properties)){
+            doName = Docker.getContainerName(properties,doName);
+            if (!dockerInit(outputPath,doSharedFolder,doName,doImage))
+                return false;
         } else {
-            properties.put("DOCKERName",doName);
+            setStatus(status_BadRequirements,"Docker is not found. Please install docker");
+            return false;
         }
-
         return true;
 
     }
@@ -169,7 +168,7 @@ public class miRcheck_fold_inverted_repeats extends RunProgram{
     @Override
     public void post_parseOutput() {
         Util.deleteDir(inputPath);
-        Docker.cleanContainer(doName);
+        Docker.cleanContainer(properties,doName);
         RNAFoldFile.saveFile(properties,output1,"MIRCHECK_fold_inverted_repeats","RNAFoldFile");
         Results.saveResultsPgrmOutput(properties,this.getPgrmOutput(),"MIRCHECK_fold_inverted_repeats");
     }

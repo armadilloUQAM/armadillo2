@@ -97,13 +97,28 @@ public class EMBOSS_chips extends RunProgram {
         inputInDo1 = doSharedFolder+File.separator+"INPUTS"+File.separator+input1;
         input1 = Util.getFileName(inputPath1);
 
-        // TEST Docker initialisation
-        doName = Docker.getContainersVal(doName);
-        if (!dockerInit(outputPath,doSharedFolder,doName,doImage)) {
-            Docker.cleanContainer(doName);
-            return false;
+        if (Docker.isDockerHere(properties)){
+            // Launch Docker
+            doName = Docker.getContainerName(properties,doName);
+            
+            if (Docker.isDockerNameWellWritten(doName)){
+                if (Docker.launchDockerImage(properties,outputPath,doSharedFolder,doName,doImage)){
+                    if (properties.isSet("CliDockerInit"))
+                        setStatus(status_running,"DockerInitCommandLine: $\n "+properties.get("CliDockerInit"));
+                    properties.put("DOCKERName",doName);
+                } else {
+                    Docker.cleanContainer(properties,doName);
+                    setStatus(status_BadRequirements,"Not able to initiate the docker container");
+                    return false;
+                }
+            } else {
+                setStatus(status_BadRequirements,"Bad Requirement, Already 100 containers have been send with this name. Please remove few of them to continue");
+                setStatus(status_BadRequirements,"Or the name is not written well");
+                return false;
+            }
         } else {
-            properties.put("DOCKERName",doName);
+            setStatus(status_BadRequirements,"Docker is not found. Please install docker");
+            return false;
         }
 
         return true;
@@ -125,17 +140,18 @@ public class EMBOSS_chips extends RunProgram {
             options += Util.findOptionsNew(Sq_panel,properties);
         }
         
+        String dockerCli = "exec sh -c \""+doName+" "+doPgrmPath+" "+options
+                +" --seqall "+inputInDo1+" -outfile "+outputInDo1+"\"";
+        
         // Command line creation
-        String[] com = new String[30];
+        String[] com = new String[3];
         for (int i=0; i<com.length;i++) com[i]="";
         
-        com[0]="cmd.exe"; // Windows will de remove if another os is used
-        com[1]="/C";      // Windows will de remove if another os is used
-        com[2]=properties.getExecutable();
-        com[3]= "exec "+doName+" "+doPgrmPath ;
-        com[4]=options;
-        com[5]= "--seqall "+inputInDo1;
-        com[6]= "-outfile "+outputInDo1;
+        com[0]= "cmd.exe"; // Windows will de remove if another os is used
+        com[1]= "/C";      // Windows will de remove if another os is used
+        com[2]= properties.getExecutable();
+        com[3]= dockerCli;
+        
         return com;
     }
 
@@ -155,8 +171,7 @@ public class EMBOSS_chips extends RunProgram {
 
     @Override
     public void post_parseOutput() {
-        Util.deleteDir(inputPath);
-        Docker.cleanContainer(doName);
+        Docker.cleanContainer(properties,doName);
         ChipsFile.saveFile(properties,output1,"EMBOSS_chips","ChipsFile");
         Results.saveResultsPgrmOutput(properties,this.getPgrmOutput(),"EMBOSS_chips");
     }

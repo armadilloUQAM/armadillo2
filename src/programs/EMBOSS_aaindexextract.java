@@ -91,15 +91,15 @@ public class EMBOSS_aaindexextract extends RunProgram {
         inputInDo1 = doSharedFolder+File.separator+"INPUTS"+File.separator+input1;
         input1 = Util.getFileName(inputPath1);
 
-        // TEST Docker initialisation
-        doName = Docker.getContainersVal(doName);
-        if (!dockerInit(outputPath,doSharedFolder,doName,doImage)) {
-            Docker.cleanContainer(doName);
-            return false;
+        // Launch Docker
+        if (Docker.isDockerHere(properties)){
+            doName = Docker.getContainerName(properties,doName);
+            if (!dockerInit(outputPath,doSharedFolder,doName,doImage))
+                return false;
         } else {
-            properties.put("DOCKERName",doName);
+            setStatus(status_BadRequirements,"Docker is not found. Please install docker");
+            return false;
         }
-
         return true;
     }
 
@@ -143,12 +143,12 @@ public class EMBOSS_aaindexextract extends RunProgram {
 
     @Override
     public void post_parseOutput() {
-        boolean b1 = Docker.copyDockerDirToSharedDir("/usr/share/EMBOSS/data/",doSharedFolder+"EMBOSS_aaindexextract",doName);
+        boolean b1 = Docker.copyDockerDirToSharedDir(properties,"/usr/share/EMBOSS/data/",doSharedFolder+"EMBOSS_aaindexextract",doName);
         if (!b1) setStatus(status_BadRequirements,"Docker Files Copy Failed");
         boolean b2 = Util.copyDirectory(doSharedFolder+"EMBOSS_aaindexextract","./results/EMBOSS/data/EMBOSS_aaindexextract");
         if (!b2) setStatus(status_BadRequirements,"Saved Files Copy Failed");
         Util.deleteDir(inputPath);
-        Docker.cleanContainer(doName);
+        Docker.cleanContainer(properties,doName);
         Results.saveResultsPgrmOutput(properties,this.getPgrmOutput(),"EMBOSS_aaindexextract");
     }
 }

@@ -124,11 +124,38 @@ public class BwaMap extends RunProgram {
         
         pgrmStartWithoutEdition();
         boolean bGen = checkGenomeRequirements();
-        if (checkFastqRequirements()&&bGen)
-            return true;
-        else if (checkBamRequirements()&&bGen)
-            return true;
+        if (checkFastqRequirements()&&bGen){
+            return createAndValidateOutputFile();
+        }
+        else if (checkBamRequirements()&&bGen){
+            return createAndValidateOutputFile();
+        }
         // In case program is started without edition
+        return false;
+    }
+    
+    private boolean createAndValidateOutputFile() {
+        // Get Name to create ouput
+        file1Name        = Util.getFileName(fastqFile1);
+        String file2Name = Util.getFileName(fastqFile2);
+        genomeFileName   = Util.getFileName(genomeFile);
+        if (!properties.isSet("O_aln_button")) {
+            outputFile = outPutPath+File.separator+file1Name+"_"+genomeFileName+".sam";
+            setStatus(status_BadRequirements,"No sequence found.");
+            if (!Util.CreateFile(outputFile) && !Util.FileExists(outputFile))
+                return false;
+            return true;
+        } else if  (properties.isSet("O_aln_button")){
+            outputFileSE = outPutPath+File.separator+file1Name+"_"+genomeFileName+".sai";
+            if (properties.isSet("ALN_PT_sampe_button"))
+                outputFilePE = outPutPath+File.separator+file2Name+"_"+genomeFileName+".sai";
+            if (!Util.CreateFile(outputFileSE) && !Util.FileExists(outputFileSE))
+                return false;
+            if (outputFilePE!="")
+                if (!Util.CreateFile(outputFileSE) && !Util.FileExists(outputFileSE))
+                    return false;
+            return true;
+        }
         return false;
     }
     
@@ -164,6 +191,17 @@ public class BwaMap extends RunProgram {
             setStatus(status_BadRequirements,"Choose a Genome Reference");
             return false;
         }
+        
+        // Genome File source
+        if (!GenomeRef.isEmpty()){
+            genomeFile = GenomeFile.getVectorFilePath(GenomeRef);
+            //genomeFile = genomeFile.replaceAll("(\\.fa|\\.fasta)$","");
+        } else {
+            String genomeChoosed = properties.get("IDG_selected_ComboBox");
+            String genomePath    = properties.get("IDG_r_text");
+            genomeFile = genomePath+File.separator+genomeChoosed+".fa";
+        }
+        
         return true;
     }
     
@@ -184,6 +222,8 @@ public class BwaMap extends RunProgram {
             properties.put("ALN_PT_samse_button","true");
             setStatus(status_BadRequirements,"If bwa aln is choosen, the program will work with single end option.");
         }
+        fastqFile1 = FastqFile.getVectorFilePath(Fastq1);
+        if (!Fastq2.isEmpty()) fastqFile2 = FastqFile.getVectorFilePath(Fastq2);
         return true;
     }
     
@@ -208,46 +248,13 @@ public class BwaMap extends RunProgram {
             setStatus(status_BadRequirements,"If bwa aln is choosen and you use a BAM file, Please select a b option.");
             return false;
         }
+        bamFile1 = BamFile.getVectorFilePath(Bam1);
+        if (!Bam2.isEmpty()) bamFile2 = BamFile.getVectorFilePath(Bam2);
         return true;
     }
     
     @Override
     public String[] init_createCommandLine() {
-        
-        // Inputs
-        Vector<Integer>Fastq1    = properties.getInputID("FastqFile",PortInputUP);
-        Vector<Integer>Fastq2    = properties.getInputID("FastqFile",PortInputDOWN);
-        Vector<Integer>Bam1      = properties.getInputID("BamFile",PortInputUP);
-        Vector<Integer>Bam2      = properties.getInputID("BamFile",PortInputDOWN);
-        Vector<Integer>GenomeRef = properties.getInputID("GenomeFile",PortInputDOWN2);
-        
-        fastqFile1 = FastqFile.getVectorFilePath(Fastq1);
-        if (!Fastq2.isEmpty()) fastqFile2 = FastqFile.getVectorFilePath(Fastq2);
-        
-        bamFile1 = BamFile.getVectorFilePath(Bam1);
-        if (!Bam2.isEmpty()) bamFile2 = BamFile.getVectorFilePath(Bam2);
-        
-        // Genome File source
-        if (!GenomeRef.isEmpty()){
-            genomeFile = GenomeFile.getVectorFilePath(GenomeRef);
-            genomeFile = genomeFile.replaceAll("(\\.fa|\\.fasta)$","");
-        } else {
-            String genomeChoosed = properties.get("IDG_selected_ComboBox");
-            String genomePath    = properties.get("IDG_r_text");
-            genomeFile = genomePath+File.separator+genomeChoosed+".fa";
-        }
-        
-        // Get Name to create ouput
-        file1Name        = Util.getFileName(fastqFile1);
-        String file2Name = Util.getFileName(fastqFile2);
-        genomeFileName   = Util.getFileName(genomeFile);
-        if (!properties.isSet("O_aln_button")) {
-            outputFile = outPutPath+File.separator+file1Name+"_"+genomeFileName+".sam";
-        } else if  (properties.isSet("O_aln_button")){
-            outputFileSE = outPutPath+File.separator+file1Name+"_"+genomeFileName+".sai";
-            if (properties.isSet("ALN_PT_sampe_button"))
-                outputFilePE = outPutPath+File.separator+file2Name+"_"+genomeFileName+".sai";
-        }
         
         // Programme et options
         String options = "";
@@ -272,11 +279,11 @@ public class BwaMap extends RunProgram {
         com[1]="/C";
         com[2]=properties.getExecutable();
         com[3]=options;
-        com[4]="\""+genomeFile+"\"";
-        com[5]="\""+fastqFile1+"\"";
+        com[4]=""+genomeFile+"";
+        com[5]=""+fastqFile1+"";
         if (properties.isSet("O_mem_button")||properties.isSet("O_bwasw_button")) {
             if (!fastqFile2.equals("")) {
-                com[6]="\""+fastqFile2+"\"";
+                com[6]=""+fastqFile2+"";
             }
             com[7]="> "+outputFile+"";
         }

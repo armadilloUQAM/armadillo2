@@ -313,7 +313,7 @@ public class dockerEditor extends javax.swing.JDialog implements EditorInterface
                 s = s.replaceAll("^(\\w+), \\w+, .*","$1");
                 cont.add(s);
             }
-            if (Docker.cleanContainers(cont))
+            if (Docker.cleanContainers(properties,cont))
                 System.out.print("None or Few containers hadn't been stopped. Docker Editor will be updated.");
             updateLists();
         }
@@ -321,8 +321,8 @@ public class dockerEditor extends javax.swing.JDialog implements EditorInterface
 
     private void DAC_StopAllCont_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DAC_StopAllCont_buttonActionPerformed
         // TODO add your handling code here:
-        ArrayList<String> cont = Docker.getAllContainersID();
-        if (!Docker.cleanContainers(cont))
+        ArrayList<String> cont = Docker.getAllContainersID(properties);
+        if (!Docker.cleanContainers(properties,cont))
             System.out.print("None or Few containers hadn't been stopped. Docker Editor will be updated.");
         updateLists();
     }//GEN-LAST:event_DAC_StopAllCont_buttonActionPerformed
@@ -337,7 +337,7 @@ public class dockerEditor extends javax.swing.JDialog implements EditorInterface
                 String[] tp = s.split(", ");
                 l.add(tp[0]);
             }
-            Docker.removeImages(l);
+            Docker.removeImages(properties,l);
             updateLists();
         }
     }//GEN-LAST:event_D_UI_deleteSelectedImagesActionPerformed
@@ -360,14 +360,14 @@ public class dockerEditor extends javax.swing.JDialog implements EditorInterface
      */
     private String[] getDockerLists(javax.swing.JList list) {
         ArrayList<String> tplist = new ArrayList<String>(); 
-        if (Docker.isDockerHere()) {
+        if (Docker.isDockerHere(properties)) {
             list.removeAll();
             
             ArrayList<String> str = new ArrayList<String>();
-            if (list.equals(D_UI_list))      str = Docker.getImages();
+            if (list.equals(D_UI_list))      str = Docker.getImages(properties);
             else if (list.equals(D_AC_list)) {
-                Docker.cleanInactiveContainers();
-                str = Docker.getActivesContainers();
+                Docker.cleanInactiveContainers(properties);
+                str = Docker.getActivesContainers(properties);
             }
             
             if (str == null || str.isEmpty()) {

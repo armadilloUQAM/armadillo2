@@ -108,15 +108,15 @@ public class EMBOSS_einverted extends RunProgram {
         inputInDo1 = doSharedFolder+File.separator+"INPUTS"+File.separator+input1;
         input1 = Util.getFileName(inputPath1);
 
-        // TEST Docker initialisation
-        doName = Docker.getContainersVal(doName);
-        if (!dockerInit(outputPath,doSharedFolder,doName,doImage)) {
-            Docker.cleanContainer(doName);
-            return false;
+        // Launch Docker
+        if (Docker.isDockerHere(properties)){
+            doName = Docker.getContainerName(properties,doName);
+            if (!dockerInit(outputPath,doSharedFolder,doName,doImage))
+                return false;
         } else {
-            properties.put("DOCKERName",doName);
+            setStatus(status_BadRequirements,"Docker is not found. Please install docker");
+            return false;
         }
-
         return true;
     }
 
@@ -168,8 +168,7 @@ public class EMBOSS_einverted extends RunProgram {
 
     @Override
     public void post_parseOutput() {
-        Util.deleteDir(inputPath);
-        Docker.cleanContainer(doName);
+        Docker.cleanContainer(properties,doName);
         EinvertedFile.saveFile(properties,output1,"EMBOSS_einverted","EinvertedFile");
         FastaFile.saveFile(properties,output2,"EMBOSS_einverted","FastaFile");
         Results.saveResultsPgrmOutput(properties,this.getPgrmOutput(),"EMBOSS_einverted");

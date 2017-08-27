@@ -2046,7 +2046,11 @@ public class BwaMapEditors extends javax.swing.JDialog implements EditorInterfac
         Hashtable<String,String> h = new Hashtable<String,String>();
         String s = "";
         for (File f:dir.listFiles()) {
-            if (f.getName().matches(".*\\.fasta$")){
+            /**
+            Problem if it's a .fa file
+            */
+            //if (f.getName().matches(".*\\.fasta$")){
+            if (f.getName().matches("fasta|fa")){
                 s = f.getName().replaceAll("\\.fasta","");
                 if (!h.containsKey(s)){
                     h.put(s,"");
