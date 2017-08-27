@@ -17,9 +17,7 @@
 *  You should have received a copy of the GNU General Public License
 *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
 package configuration;
-
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -55,6 +53,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.UserPrincipal;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import org.apache.commons.lang.SystemUtils;
+import program.RunProgram;
+import static program.RunProgram.config;
+import static program.RunProgram.status_running;
 
 /**
  * Collection of util command
@@ -76,11 +81,10 @@ public class Docker {
     
     ////////////////////////////////////////////////////////////////////////////
 
-    /**
-     * Test if docker program is installed
-     */
-    public static boolean isDockerHere() {
-        ArrayList<String> s = Util.runSilentUnixCommand("docker --version","./");
+    
+    public static boolean isDockerHereStatic(workflow_properties properties) {
+        String dockerCommand = getOSCommandLine(properties);
+        ArrayList<String> s = Util.runSilentUnixCommand(dockerCommand+" --version","./");
         for (String st:s)
             if (st.contains("Docker version")) {
                 return true;
@@ -91,38 +95,60 @@ public class Docker {
     /**
      * Test if docker image is already present in docker
      */
-    public static boolean isImageNotHere(String img) {
-        ArrayList<String> s = getImages();
+    public static boolean isImageNotHere(workflow_properties properties, String img) {
+        ArrayList<String> s = getImages(properties);
         for (String st:s)
             if (st.contains(img))
                 return false;
         return true;
     }
 
+    ////////////////////////////////////////////////////////////////////////////
+    /// Docker launchers
+
+    public static String getOSCommandLine(workflow_properties properties) {
+        if (config.getBoolean("MacOSX")||SystemUtils.IS_OS_MAC_OSX) {
+            return properties.getExecutableMacOSX();
+        } else if (config.getBoolean("Linux")||SystemUtils.IS_OS_LINUX||SystemUtils.IS_OS_UNIX) {
+            return properties.getExecutableLinux();
+        }
+        return properties.getExecutable();        
+    }
+    
+    
     /**
-     * Test if docker image is already present in docker
+     * Launch and set docker image
      */
-    public static boolean isNameWellWritten(String name) {
-        if (name.contains(kword) && name.matches("\\w*_"+kword+"_\\d+"))
-            return true;
-        else
-            return false;
+    public static void prepareDockerBashFile(workflow_properties properties, String doName, String dockerCli) {
+        String dockerCommand = getOSCommandLine(properties);
+        String s = Util.getCurrentJarPath()+File.separator+"tmp"+File.separator+"dockerBash.sh";
+        Util.CreateFile(s);
+        Path file = Paths.get(s);
+        String userName = Util.getOwnerJar();
+        String grpName = Util.getGroupJar();
+        String dockerAddUser = "useradd "+userName+"";
+        String dockerAddGrp = "groupadd "+grpName+"";
+        String dockerChangeOwner = "chown -R "+userName+":"+grpName+" /data/outputs/";
+        List<String> lines = Arrays.asList("#!/bin/bash", dockerCli, dockerAddUser, dockerAddGrp, dockerChangeOwner, "exit $?");
+        try {
+            Files.write(file, lines);
+        } catch (IOException ex) {
+            Logger.getLogger(Docker.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String c2 = dockerCommand+" cp "+s+" "+doName+":/data/dockerBash.sh";
+        Util.runSilentUnixCommand(c2,"./");
+        Util.deleteFile(s);
+        String c1b = dockerCommand+" exec -i "+doName+" chmod 775 dockerBash.sh";
+        Util.runSilentUnixCommand(c1b,"./");
     }
 
     /**
      * Launch and set docker image
      */
-    public static boolean launchDockerImage(String localpath, String dockerpath, String name, String img) {
-        File f= new File(localpath);
-        try {
-            localpath = f.getCanonicalPath();
-            if (Util.DirExists(localpath)) Util.CreateDir(localpath);
-        }catch (IOException e) {
-            System.out.println("Get Canonical Path Failed!");
-            System.out.println(e);
-            e.printStackTrace();
-        }
-        String c = "docker run -v "+localpath+":"+dockerpath+" --name "+name+" -di "+img;
+    public static boolean launchDockerImage(workflow_properties properties, String localpath, String dockerpath, String name, String img) {
+        String dockerCommand = getOSCommandLine(properties);
+        localpath = Util.getCanonicalPath(localpath);
+        String c = dockerCommand+" run -v "+localpath+":"+dockerpath+" --name "+name+" -di "+img;
         ArrayList<String> sl = Util.runSilentUnixCommand(c,"./");
         if (sl.size()==1 && sl.get(0).matches("\\w+")) {
             return true;
@@ -135,20 +161,58 @@ public class Docker {
     /**
      * Launch and set docker image with shared folder
      */
-    public static boolean launchDockerImgAndSharedFolder(String inputsPath, String outputPath, String doName, String doImg) {
-        File f= new File(inputsPath);
-        try {
-            inputsPath = f.getCanonicalPath();
-            if (Util.DirExists(inputsPath)) Util.CreateDir(inputsPath);
-        }catch (IOException e) {
-            System.out.println("Get Canonical Path Failed!");
-            System.out.println(e);
-            e.printStackTrace();
+    public static boolean launchDockerContainerTest(workflow_properties properties, HashMap<String,String> sharedFolders, String doName, String doImg) {
+        String dockerCommand = getOSCommandLine(properties);
+        String pull = dockerCommand+" pull " +doImg+"";
+        ArrayList<String> slpull = Util.runSilentUnixCommand(pull,"./");
+        HashMap<Integer,String> sharedF = new HashMap<Integer,String>();
+        if (!sharedFolders.isEmpty()){
+            int i = 0;
+            sharedF.put(i,"docker run ");
+            for (String k:sharedFolders.keySet()){
+                i+=1;
+                String p = Util.getCanonicalPath(k);
+                //p = Util.escapeSpaceFromCanonicalPath(p);
+                sharedF.put(i," -v \'"+p+"\':"+sharedFolders.get(k)+"");
+            }
+            sharedF.put(i+=1," --name "+doName);
+            sharedF.put(i+=1," -di "+doImg);
+            String[] b = sharedF.values().toArray(new String[sharedF.values().size()]);
+            for (int y=0;y<b.length;y+=1){
+                b[y]=sharedF.get(y);
+            }
+            Util.pl(Arrays.toString(b));
+            try {
+                boolean sl = runCommand4Docker(b);
+                return sl;
+            } catch (Exception ex) {
+                Logger.getLogger(Docker.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        String c = "docker run -v "+inputsPath+":/data/inputs "
-                + "-v "+outputPath+":/data/outputs "
-                + "--name "+doName+" -dit "+doImg;
-        
+        return false;
+    }
+    
+    /**
+     * Launch and set docker image with shared folder
+     */
+    public static boolean launchDockerContainer(workflow_properties properties,HashMap<String,String> sharedFolders, String doName, String doImg) {
+        String dockerCommand = getOSCommandLine(properties);
+        String pull = dockerCommand+" pull " +doImg+"";
+        ArrayList<String> slpull = Util.runSilentUnixCommand(pull,"./");
+        for (String stmp:slpull)
+            if (stmp.contains("Error response"))
+                return false;
+        String sharedF = "";
+        if (!sharedFolders.isEmpty()){
+            for (String k:sharedFolders.keySet()){
+                String p = Util.getCanonicalPath(k);
+                //p = Util.escapeSpaceFromCanonicalPath(p);
+                sharedF += " -v "+p+":"+sharedFolders.get(k)+"";
+            }
+        }
+        String c = dockerCommand+" run " + sharedF
+                + " --name "+doName+" -di "+doImg;
+        properties.put("CliDockerInit", c);
         ArrayList<String> sl = Util.runSilentUnixCommand(c,"./");
         if ((sl.size()==1 && sl.get(0).matches("\\w+"))||
             (sl.size()> 1 && sl.get(sl.size()-1).matches("\\w+"))) {
@@ -158,55 +222,58 @@ public class Docker {
     }
 
     /**
-     * Get the container name value
-     */
-    public static String getContainersVal(String name) {
-        if (isContainersAlreadyUsed(name)) {
-            String si = name;
-            si = si.replaceAll(".*_(\\d+)$","$1");
-            Integer i = Integer.parseInt(si);
-            si = name.replaceAll("(.*_)\\d+$","$1");
-            name = getContainersNextVal(si,i);
-        }
-        return name;
-    }
-    
-    /**
-     * Get the container name next value
-     */
-    public static String getContainersNextVal(String name, int i) {
-        if (i>100) {
-            //System.out.println("Warnings already 100 containers have been send with this name. Please remove few of them to continue");
-            return name+"_OUT";
-        } else {
-            if (!isContainersAlreadyUsed(name+i)) {
-                return name+i;
-            } else {
-                i=i+1;
-                return getContainersNextVal(name,i);
-            }
-        }
-    }
-    
-    /**
      * Test if docker container is already launch with the same name
      */
-    public static boolean isContainersAlreadyUsed(String name) {
-        String c = "docker ps --filter \"name="+name+
-                   "\" --format {{.Names}}";
-        ArrayList<String> ls = Util.runSilentUnixCommand(c,"./");;
-//        if (ls.size()==1)
-            for (String s:ls)
+    public static boolean isContainersAlreadyUsed(workflow_properties properties, String name) {
+        String dockerCommand = getOSCommandLine(properties);
+        String c = dockerCommand+" ps --filter name="+name+
+                   " --format {{.Names}}";
+        ArrayList<String> ls = Util.runSilentUnixCommand(c,"./");
+        if (ls.size()>=1)
+            for (String s:ls)  
                 if (s.contains(name))
                     return true;
         return false;
     }
 
     /**
+     * Get the container name value
+     */
+    public static String getContainersVal(workflow_properties properties, String name) {
+        if (isContainersAlreadyUsed(properties,name)) {
+            String si = name;
+            si = si.replaceAll(".*_(\\d+)$","$1");
+            int i = Integer.parseInt(si);
+            si = name.replaceAll("(.*_)\\d+$","$1");
+            name = getContainersNextVal(properties,si,i);
+            return name;
+        } else 
+            return name;
+    }
+    
+    /**
+     * Get the container name next value
+     */
+    public static String getContainersNextVal(workflow_properties properties, String name, int i) {
+        if (i>100) {
+            //System.out.println("Warnings already 100 containers have been send with this name. Please remove few of them to continue");
+            return name+"_OUT";
+        } else {
+            if (!isContainersAlreadyUsed(properties,name+i)) {
+                return name+Integer.toString(i);
+            } else {
+                i=i+1;
+                return getContainersNextVal(properties,name,i);
+            }
+        }
+    }
+    
+    /**
      * Get docker images
      */
-    public static ArrayList<String> getImages() {
-        ArrayList<String> s = Util.runSilentUnixCommand("docker images","./");
+    public static ArrayList<String> getImages(workflow_properties properties) {
+        String dockerCommand = getOSCommandLine(properties);
+        ArrayList<String> s = Util.runSilentUnixCommand(dockerCommand+" images","./");
         ArrayList<String> l = new ArrayList<String>();
         for (String st : s)
             if (!(st.contains("REPOSITORY")))// && st.contains(kword))
@@ -217,8 +284,9 @@ public class Docker {
     /**
      * Get docker active containers infos ID Names Image
      */
-    public static ArrayList<String> getActivesContainers() {
-        String c = "docker ps --format {{.ID}}<>{{.Names}}<>{{.Image}}";
+    public static ArrayList<String> getActivesContainers(workflow_properties properties) {
+        String dockerCommand = getOSCommandLine(properties);
+        String c = dockerCommand+" ps --format {{.ID}}<>{{.Names}}<>{{.Image}}";
         ArrayList<String> s = Util.runSilentUnixCommand(c,"./");
         ArrayList<String> val = new ArrayList<String>();
         for(String sa:s)
@@ -230,8 +298,9 @@ public class Docker {
     /**
      * Get all docker containers infos ID Names Image
      */
-    public static ArrayList<String> getAllContainers() {
-        String c = "docker ps -a --format {{.ID}}<>{{.Names}}<>{{.Image}}";
+    public static ArrayList<String> getAllContainers(workflow_properties properties) {
+        String dockerCommand = getOSCommandLine(properties);
+        String c = dockerCommand+" ps -a --format {{.ID}}<>{{.Names}}<>{{.Image}}";
         ArrayList<String> s = Util.runSilentUnixCommand(c,"./");
         ArrayList<String> val = new ArrayList<String>();
         for(String sa:s)
@@ -243,8 +312,37 @@ public class Docker {
     /**
      * Get docker active containers infos ID
      */
-    public static ArrayList<String> getActivesContainersID() {
-        String c = "docker ps --format {{.ID}}<>{{.Names}}";
+    public static ArrayList<String> getActivesContainersID(workflow_properties properties) {
+        String dockerCommand = getOSCommandLine(properties);
+        String c = dockerCommand+" ps --format {{.ID}}<>{{.Names}}";
+        ArrayList<String> s = Util.runSilentUnixCommand(c,"./");
+        ArrayList<String> val = new ArrayList<String>();
+        for(String sa:s)
+            if (sa.contains(kword))
+                val.add(sa.replaceAll("^\\w+<>(\\w+)","$1"));
+        return val;
+    }
+
+    /**
+     * Get docker active containers infos ID
+     */
+    public static ArrayList<String> getActivesContainersName(workflow_properties properties) {
+        String dockerCommand = getOSCommandLine(properties);
+        String c = dockerCommand+" ps --format {{.ID}}<>{{.Names}}";
+        ArrayList<String> s = Util.runSilentUnixCommand(c,"./");
+        ArrayList<String> val = new ArrayList<String>();
+        for(String sa:s)
+            if (sa.contains(kword))
+                val.add(sa);
+        return val;
+    }
+
+    /**
+     * Get all docker containers infos ID
+     */
+    public static ArrayList<String> getAllContainersID(workflow_properties properties) {
+        String dockerCommand = getOSCommandLine(properties);
+        String c = dockerCommand+" ps -a --format {{.ID}}<>{{.Names}}";
         ArrayList<String> s = Util.runSilentUnixCommand(c,"./");
         ArrayList<String> val = new ArrayList<String>();
         for(String sa:s)
@@ -256,24 +354,32 @@ public class Docker {
     /**
      * Get all docker containers infos ID
      */
-    public static ArrayList<String> getAllContainersID() {
-        String c = "docker ps -a --format {{.ID}}<>{{.Names}}";
+    public static ArrayList<String> getAllContainersName(workflow_properties properties) {
+        String dockerCommand = getOSCommandLine(properties);
+        String c = dockerCommand+" ps -a --format {{.Names}}";
         ArrayList<String> s = Util.runSilentUnixCommand(c,"./");
         ArrayList<String> val = new ArrayList<String>();
         for(String sa:s)
             if (sa.contains(kword))
-                val.add(sa.replaceAll("^(\\w+)<>\\w+","$1"));
+                val.add(sa);
         return val;
     }
 
     /**
      * Clean (stop and remove) Docker Containers List
      */
-    public static boolean cleanContainers(ArrayList<String> l) {
-        if (l.isEmpty())
-            return false;
-        else if (stopContainers(l)){
-            ArrayList<String> all = getAllContainersID();
+    public static boolean cleanContainer(workflow_properties properties, String s) {
+        ArrayList<String> a = new ArrayList<String>();
+        a.add(s);
+        return cleanContainers(properties, a);
+    }
+    
+    /**
+     * Clean (stop and remove) Docker Containers List
+     */
+    public static boolean cleanContainers(workflow_properties properties, ArrayList<String> l) {
+        if (!l.isEmpty() && stopContainers(properties,l)){
+            ArrayList<String> all = getAllContainersName(properties);
             ArrayList<String> p = new ArrayList<String>();
             boolean b = false;
             for (String sa : all) {
@@ -287,7 +393,8 @@ public class Docker {
                     p.add(sa);
             }
             if (p.size()>0) {
-                String s = "docker rm "+p.toString().replaceAll("[\\[,\\]]"," ");
+                String dockerCommand = getOSCommandLine(properties);
+                String s = dockerCommand+" rm "+p.toString().replaceAll("[\\[,\\]]"," ");
                 ArrayList<String> v = Util.runSilentUnixCommand(s,"./");
                 return Util.equalArrayLists(v,p);
             } else 
@@ -297,19 +404,11 @@ public class Docker {
     }
     
     /**
-     * Clean (stop and remove) Docker Containers List
-     */
-    public static boolean cleanContainer(String s) {
-        ArrayList<String> a = new ArrayList<String>();
-        a.add(s);
-        return cleanContainers(a);
-    }
-    
-    /**
      * Stop docker Container List
      */
-    private static boolean stopContainers(ArrayList<String> l) {
-        ArrayList<String> ia  = getActivesContainersID();
+    private static boolean stopContainers(workflow_properties properties, ArrayList<String> l) {
+        
+        ArrayList<String> ia  = getActivesContainersID(properties);
         ArrayList<String> p = new ArrayList<String>();
         boolean b = false;
         for (String sa : ia) {
@@ -323,7 +422,8 @@ public class Docker {
                 p.add(sa);
         }
         if (p.size()>0) {
-            String s = "docker stop "+p.toString().replaceAll("[\\[,\\]]"," ");
+            String dockerCommand = getOSCommandLine(properties);
+            String s = dockerCommand+" stop "+p.toString().replaceAll("[\\[,\\]]"," ");
             ArrayList<String> v = Util.runSilentUnixCommand(s,"./");
             return Util.equalArrayLists(v,p);
         } else 
@@ -333,10 +433,10 @@ public class Docker {
     /**
      * Clean Inactives Armadillo containers
      */
-    public static boolean cleanInactiveContainers() {
+    public static boolean cleanInactiveContainers(workflow_properties properties) {
         System.out.println("Clean Inactive Container");
-        ArrayList<String> all = getAllContainersID();
-        ArrayList<String> ia  = getActivesContainersID();
+        ArrayList<String> all = getAllContainersID(properties);
+        ArrayList<String> ia  = getActivesContainersID(properties);
         
         ArrayList<String> ina = new ArrayList<String>();
         boolean b = false;
@@ -350,7 +450,7 @@ public class Docker {
             if (!b)
                 ina.add(sa);
         }
-        if (ina.size()>0 && cleanContainers(ina)) return true;
+        if (ina.size()>0 && cleanContainers(properties,ina)) return true;
         else return false;
     }
     
@@ -358,9 +458,9 @@ public class Docker {
     /**
      * Clean Inactives Armadillo containers
      */
-    public static void removeImages(ArrayList<String> l) {
+    public static void removeImages(workflow_properties properties, ArrayList<String> l) {
         //Find container which used image names and stop, remove them
-        ArrayList<String> cont = Docker.getAllContainers();
+        ArrayList<String> cont = Docker.getAllContainers(properties);
         ArrayList<String> cImg = new ArrayList<String>();
         for (String s:cont) {
             for (String imgName : l) {
@@ -369,9 +469,10 @@ public class Docker {
                 }
             }
         }
-        cleanContainers(cImg);
+        cleanContainers(properties,cImg);
         for (String imgName:l) {
-            ArrayList<String> st = Util.runSilentUnixCommand("docker rmi "+imgName,"./");
+            String dockerCommand = getOSCommandLine(properties);
+            ArrayList<String> st = Util.runSilentUnixCommand(dockerCommand+" rmi "+imgName,"./");
             if (st.toString().contains("Error") && st.toString().contains("container")) {
                 System.out.println("This images is already used out of Armadillo");
             }
@@ -383,7 +484,7 @@ public class Docker {
      */
     public static boolean CleanContainerName(workflow_properties properties) {
         if (properties.isSet("DOCKERName")) {
-            return cleanContainer(properties.get("DOCKERName"));
+            return cleanContainer(properties,properties.get("DOCKERName"));
         }
         return true;
     }
@@ -397,10 +498,11 @@ public class Docker {
     String dd, // Docker directory
     String doName // Docker name
     */
-    public static boolean copyDockerDirToSharedDir (String sd, String dd, String doName) {
-        String s = "docker exec -ti "+doName+" mkdir "+sd+" "
-                + "&& docker exec -ti "+doName+" cp -r "+dd+" "+sd+" "
-                + "&& docker exec -ti "+doName+" chmod -R 777 "+sd+" "
+    public static boolean copyDockerDirToSharedDir (workflow_properties properties, String sd, String dd, String doName) {
+        String dockerCommand = getOSCommandLine(properties);
+        String s = dockerCommand+" exec -ti "+doName+" mkdir "+sd+" "
+                + "&& "+dockerCommand+" exec -ti "+doName+" cp -r "+dd+" "+sd+" "
+                + "&& "+dockerCommand+" exec -ti "+doName+" chmod -R 777 "+sd+" "
                 ;
         ArrayList<String> v = Util.runSilentUnixCommand(s,"./");
         boolean b = false;
@@ -417,23 +519,29 @@ public class Docker {
     /*
         Change output directory owner files
     */
-    public static boolean changeOwnerOutputDir(String doName) {
-        Path jpath = Paths.get(Util.getCurrentJarPath());
-        try {
-            UserPrincipal owner = Files.getOwner(jpath);
-            String userName = owner.getName();
-            String s = "docker exec -ti "+doName+""
-                    + "sh -c \"chown -R "+userName+" /data/output/ \"";
-            ArrayList<String> v = Util.runSilentUnixCommand(s,"./");
-            if (v.isEmpty()){
-                return false;
-            }
-            return true;
-        } catch (IOException ex) {
-            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Directory Owner change Failed!");
-            System.out.println(ex);
+    public static boolean changeOwnerOutputDir(workflow_properties properties, String doName) {
+        String userName = Util.getOwnerJar();
+        String s = "docker exec -i "+doName+""
+                + " sh -c \"chown -R "+userName+" /data/output/ \"";
+        ArrayList<String> v = Util.runSilentUnixCommand(s,"./");
+        if (v.isEmpty()){
             return false;
         }
+        return true;
     }
+    
+    public static boolean runCommand4Docker(String[] commandline) throws Exception {
+        //--Run the thread and catch stdout and stderr
+        ProcessBuilder pb=new ProcessBuilder(commandline);
+        Runtime r = Runtime.getRuntime();
+        Process p;
+        p = r.exec(Util.toString(commandline));
+        int exitvalue=p.waitFor();
+        Util.pl("int>"+p.getInputStream().toString());
+        Util.pl("int>"+p.getErrorStream().toString());
+        Util.pl("int>"+p.getOutputStream().toString());
+        Util.pl("int>"+Integer.toString(exitvalue));
+        return true;
+    }
+    
 }
