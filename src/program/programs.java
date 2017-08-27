@@ -1624,7 +1624,7 @@ public class programs implements ActionListener {
         workflows.setId(0); //--Reset ID for a new workflow
         boolean saved=workflows.saveToDatabase();
         if (saved) {
-            if (work.isWorkboxATest()) {
+            if (work.isWorkboxOnCLuster()) {
                 publish_text("PreRun Successfully saved workflow to database ("+Util.returnCurrentDateAndTime()+")");
             } else {
                 publish_text("Successfully saved workflow to database ("+Util.returnCurrentDateAndTime()+")");

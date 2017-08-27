@@ -82,8 +82,9 @@ public class Docker {
     /**
      * Test if docker program is installed
      */
-    public static boolean isDockerHere() {
-        ArrayList<String> s = Util.runSilentUnixCommand("docker --version","./");
+    public static boolean isDockerHere(workflow_properties properties) {
+        String dockerCommand = getOSCommandLine(properties);
+        ArrayList<String> s = Util.runSilentUnixCommand(dockerCommand+" --version","./");
         for (String st:s)
             if (st.contains("Docker version")) {
                 return true;

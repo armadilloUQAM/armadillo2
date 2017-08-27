@@ -1361,7 +1361,7 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
     
     private void Run_jMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Run_jMenuItemActionPerformed
         this.workbox.resetState();
-        this.workbox.setWorkboxAsTest(false);
+        this.workbox.setWorkboxAsCluster(false);
         this.workbox.Run();
     }//GEN-LAST:event_Run_jMenuItemActionPerformed
     
@@ -1421,7 +1421,7 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
 
     private void RunOnCHP_jMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RunOnCHP_jMenuItemActionPerformed
         this.workbox.resetState();
-        this.workbox.setWorkboxAsTest(true);
+        this.workbox.setWorkboxAsCluster(true);
         this.workbox.Run();
     }//GEN-LAST:event_RunOnCHP_jMenuItemActionPerformed
     

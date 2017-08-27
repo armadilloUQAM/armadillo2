@@ -1131,7 +1131,7 @@ public class Workbox {
     /**
      * @param initialized the initialized to set
      */
-    public void setWorkboxAsTest(boolean tested) {
+    public void setWorkboxAsCluster(boolean tested) {
         workflow_int_frame.setCluster(tested);
     }
     

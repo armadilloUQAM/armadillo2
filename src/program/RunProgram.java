@@ -1690,7 +1690,7 @@ public class RunProgram implements runningThreadInterface {
     * @Obsolete Prefer using dockerInitContainer
     */
     public boolean dockerInit(String localpath, String dockerpath, String name, String img) {
-        if (Docker.isDockerHere() && Docker.isDockerNameWellWritten(name)) {
+        if (Docker.isDockerHere(properties) && Docker.isDockerNameWellWritten(name)) {
             boolean b = Docker.launchDockerImage(properties,localpath,dockerpath,name,img);
             if (!b) {
                 setStatus(status_BadRequirements,"Not able to initiate the docker container");
