@@ -335,6 +335,18 @@ public class RunProgram implements runningThreadInterface {
                     Util.CleanMemory();
                     //--pre run initialization
                     setStatus(status_running,"Initialization...");
+
+
+                    /**
+                     * Jérémy 2017
+                     * NEED TO BE REMOVED WHEN DOCKERIZED PROGRAMS ARE SETTED TO RUN ON DOCKER AND ON CLUSTER
+                    */
+                    if (workbox.isWorkboxOnCLuster()&&Docker.isProgramUseDocker(properties)) {
+                        setStatus(status_running,"WARNING : This program is not yet usable on Cluster");
+                    }
+
+        
+
                     if (init_run()&&!isInterrupted()) {
                         // JG 2015 Start
         /**
@@ -658,15 +670,6 @@ public class RunProgram implements runningThreadInterface {
      * @throws Exception
      */
     public boolean do_run() throws Exception {
-        
-        /**
-         * Jérémy 2017
-         * NEED TO BE REMOVED WHEN DOCKERIZED PROGRAMS ARE SETTED TO RUN ON DOCKER AND ON CLUSTER
-        */
-        if (workbox.isWorkboxOnCLuster()&&Docker.isProgramUseDocker(properties)) {
-            setStatus(status_running,"This program is not yet usable on Cluster");
-        }
-
         
         setStatus(status_running, "\tRunning program...");
         setStatus(status_running,"<-Program Output->");
