@@ -141,7 +141,7 @@ public class bwa_mem extends RunProgram {
         // Create the shared folders between local and docker
         sharedFolders = Docker.createSharedFolders(allInputsPath,doInputs);
         // Create docker inputs for command line
-        allDoInputs = Docker.createAllDockerInputs(pathAndArg,sharedFolders);
+        allDoInputs = Docker.createAllDockerInputs(pathAndArg,allInputsPath,doInputs);
         // Add outputs local and docker in shared folders
         sharedFolders.put(specificPath,doOutputs);
         

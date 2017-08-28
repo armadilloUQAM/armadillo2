@@ -91,6 +91,16 @@ public class Docker {
             }
         return false;
     }
+    
+    /**
+     * Test if docker program is installed
+     */
+    public static boolean isProgramUseDocker(workflow_properties properties) {
+        String dockerCommand = getOSCommandLine(properties);
+        if (dockerCommand.toLowerCase().contains("docker"))
+            return true;
+        return false;
+    }
 
     /**
      * Test if docker image is already present in docker
