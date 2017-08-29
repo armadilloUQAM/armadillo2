@@ -1500,9 +1500,9 @@ public class RunProgram implements runningThreadInterface {
     };
     
     ////////////////////////////////////////////////////////////////////////////
-    /// Test ZONE
+    /// Cluster ZONE
     /*
-     * Test ZONE
+     * Cluster ZONE
      */
     public boolean do_runOnCluster() throws IOException, InterruptedException {
         //--Test August 2011 - For Mac OS X
@@ -1704,6 +1704,8 @@ public class RunProgram implements runningThreadInterface {
         return tab;
     }
     
+    ////////////////////////////////////////////////////////////////////////////
+    /// Docker ZONE
     /*
     * Docker initialisation
     * @Obsolete Prefer using dockerInitContainer
