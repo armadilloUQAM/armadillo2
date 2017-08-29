@@ -23,6 +23,7 @@ package configuration;
 
 import java.io.BufferedReader;
 import java.io.File;
+import static java.io.File.separatorChar;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -543,9 +544,7 @@ public class Util {
     public static String getFileName(String s){
         if (s != "") {
             File f = new File(s);
-            String name = f.getName();
-            int p = name.lastIndexOf(".");
-            return name.substring(0,p);
+            return f.getName();
         }
         return s;
     }
@@ -557,8 +556,11 @@ public class Util {
      */
     public static String getFileNameAndExt(String s){
         if (s != "") {
-            File f = new File(s);
-            return f.getName();
+            String tmp = getCanonicalPath(s);
+            int pos1 = tmp.lastIndexOf(File.separator);
+            int pos2 = tmp.length();
+            if (pos1 > 0 && pos2>pos1+1)
+                return tmp.substring(pos1+1,pos2);
         }
         return s;
     }
@@ -570,14 +572,12 @@ public class Util {
      * @return file name ex: file.f
      */
     public static String getFileExt(String s){
-        String name = getFileNameAndExt(s);
-        if (name != ""){
-            int pos1 = name.lastIndexOf(".");
-            int pos2 = name.length();
+        String tmp = getFileNameAndExt(s);
+        if (tmp != ""){
+            int pos1 = tmp.lastIndexOf(separatorChar);
+            int pos2 = tmp.length();
             if (pos1 > 0 && pos2>pos1)
-                return name.substring(pos1,pos2);
-            else
-                return s;
+                return tmp.substring(pos1,pos2);
         }
         return s;
     }
