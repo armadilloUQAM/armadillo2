@@ -30,6 +30,7 @@ import biologic.OutputText;
 import biologic.Sequence;
 import biologic.Tree;
 import biologic.Unknown;
+import configuration.Cluster;
 import configuration.Config;
 import static configuration.Docker.kword;
 import configuration.Docker;
@@ -692,14 +693,18 @@ public class RunProgram implements runningThreadInterface {
                 //--Runtime (r.exec)
                 if (execution_type.startsWith("runtime")) {
                     //--IF MAC_OSX, group option if UseRuntimeMacOSX
-                    String cmdm="";
+                    String cmdm = Util.toString(commandline);
+                    cmdm = Util.replaceMultiSpacesByOne(cmdm);
+                    cmdm = Util.removeTrailingSpace(cmdm);
+                    /*
                     for (int i=0; i<commandline.length;i++) {
                         if (!commandline[i].equals(""))
                             cmdm+=commandline[i]+" ";
                     }
                     commandline=new String[1];
                     commandline[0]=cmdm;
-                    p = r.exec(Util.toString(commandline));
+                    */
+                    p = r.exec(cmdm);
                 }
                 //--Bash...
                 if (execution_type.startsWith("bash (.sh)")) {
@@ -774,13 +779,17 @@ public class RunProgram implements runningThreadInterface {
                 if (execution_type.startsWith("runtime")) {
                     //System.out.println("Running by runtime...");
                     //--IF MAC_OSX, group option if UseRuntimeMacOSX
-                    String cmdm="";
+                    String cmdm = Util.toString(commandline);
+                    cmdm = Util.replaceMultiSpacesByOne(cmdm);
+                    cmdm = Util.removeTrailingSpace(cmdm);
+                    /*
                     for (int i=0; i<commandline.length;i++) {
                         cmdm+=commandline[i]+" ";
                     }
                     commandline=new String[1];
                     commandline[0]=cmdm;
-                    p = r.exec(Util.toString(commandline));
+                    */
+                    p = r.exec(cmdm);
                 }
                 
                 //--Bash...
@@ -1240,7 +1249,7 @@ public class RunProgram implements runningThreadInterface {
         out.setName(properties.getName()+" -software output ("+Util.returnCurrentDateAndTime()+")");
         out.saveToDatabase();
         if (out.getId()==0) Config.log("Unable to save software ouput with program status "+statusCode);
-        properties.put("output_outputtext_id",out.getId());
+        else properties.put("output_outputtext_id",out.getId());
     }
     
     /**
@@ -1525,7 +1534,7 @@ public class RunProgram implements runningThreadInterface {
             String[] outputScript = call_Python_Process(script,cmd);
 //            Print output command line
 //            if (!outputScript[0].equals(""))
-//                System.out.println("outputScript[0]>"+outputScript[0]);
+//                Util.pl("outputScript[0]>"+outputScript[0]);
 //            if (!outputScript[1].equals(""))
 //                System.out.println("outputScript[1]>"+outputScript[1]);
             

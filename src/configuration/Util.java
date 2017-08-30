@@ -1870,6 +1870,21 @@ public class Util {
         return s.replaceAll(" ","_");
     }
     
+    // Replace space by underscore in a string
+    // Added by JG 2017
+    public static String replaceMultiSpacesByOne(String s){
+        while (s.contains("  "))
+            s = s.replace("  "," ");
+        return s;
+    }
+    
+    // Replace space by underscore in a string
+    // Added by JG 2017
+    public static String removeTrailingSpace(String s){
+        String ns = s.trim();
+        return ns;
+    }
+    
     /**
      * Source https://stackoverflow.com/questions/16520046/how-to-merge-two-arraylists-without-duplicates
      * Added by JG 2017
@@ -1893,9 +1908,8 @@ public class Util {
      * @return the same string but without a duplication of OutputOf_
      */
     public static String onlyOneOutputOf(String s) {
-        while (s.contains("OutputOf_OutputOf_")){
+        while (s.contains("OutputOf_OutputOf_"))
             s = s.replace("OutputOf_OutputOf_","OutputOf_");
-        }
         return s;
     }
     
