@@ -1516,14 +1516,15 @@ public class RunProgram implements runningThreadInterface {
     public boolean do_runOnCluster() throws IOException, InterruptedException {
         //--Test August 2011 - For Mac OS X
         if ((config.getBoolean("MacOSX")||SystemUtils.IS_OS_MAC_OSX)) {
-            macOSX_cmd_Modifications();
+            String cmdm = Cluster.macOSX_cmd_Modifications(properties, commandline);
+            properties.put("Commandline_Running",cmdm);
         }
         
         //Get general properties
         //Script link
         String script          = "./cluster.py";
         //Local properties and remove space in String EOL
-        String commands = get_commands();
+        String commands = Cluster.get_commands(properties,workbox);
         String[] stab = {"-test ","-prepare ","-send ","-launch ","-waitResults ", "-importResults "};
         boolean b = true;
         int i     = 0;
@@ -1531,7 +1532,7 @@ public class RunProgram implements runningThreadInterface {
         
         while (b && i<stab.length) {
             String cmd = stab[i]+""+commands;
-            String[] outputScript = call_Python_Process(script,cmd);
+            String[] outputScript = Cluster.call_Python_Process(script,cmd);
 //            Print output command line
 //            if (!outputScript[0].equals(""))
 //                Util.pl("outputScript[0]>"+outputScript[0]);
@@ -1559,7 +1560,6 @@ public class RunProgram implements runningThreadInterface {
                     }
                     properties.put("ClusterPgrmName",name);
                     properties.put("ClusterPWD",pwd);
-                    commands=get_commands();
                     setStatus(status_running, "\tRunning program on cluster...");
                     setStatus(status_running,"\t<-Program Cluster Status->");
                 }
@@ -1642,7 +1642,7 @@ public class RunProgram implements runningThreadInterface {
         }
         
         if (bLocal) {
-            setStatus(status_running, "\tRunning will run local machine...");
+            setStatus(status_running, "\tRunning will done on the local machine...");
             try {
                 if (do_run()) {
                     setStatus(status_running,"\t<-End Program Output ->");
@@ -1658,59 +1658,6 @@ public class RunProgram implements runningThreadInterface {
             properties.put("ExitValue", exitvalue);
         }
         return true;
-    }
-    
-    
-    private String get_commands() {
-        workflow_properties p2 = workbox.getWorkFlowJInternalFrame().getProperties();
-        String clusterAA       = " -clus "+p2.get("ClusterAccessAddress");
-        String str =properties.getPropertiesToVarStringWithEOL();
-        str = "\'"+str+"\'";
-        str = str.replaceAll(" ", "_____");
-        String commands = " -obj "+str+clusterAA;
-        return commands;
-    }
-    
-    
-    private void macOSX_cmd_Modifications() {
-        String cmdm="";
-        String execution_type=properties.get("RuntimeMacOSX");
-        if (execution_type.startsWith("runtime")) {
-            for (int i=0; i<commandline.length;i++) {
-                cmdm+=commandline[i]+" ";
-            }
-            commandline=new String[1];
-            commandline[0]=cmdm;
-        }
-        properties.put("Commandline_Running",Util.toString(commandline));
-    }
-    
-    private String[] call_Python_Process(String script, String commands)
-            throws IOException, InterruptedException {
-        //System.out.println("Commands>"+commands);
-        String STDoutput = "";
-        String STDError  = "";
-        
-        Process p = Runtime.getRuntime().exec("python "+script+" "+commands);
-        BufferedReader bri = new BufferedReader
-                    (new InputStreamReader(p.getInputStream()));
-        BufferedReader bre = new BufferedReader
-                    (new InputStreamReader(p.getErrorStream()));
-        String line = "";
-
-        // Check Output
-        while ((line = bri.readLine()) != null) {
-            STDoutput += line;
-        }
-        bri.close();
-        while ((line = bre.readLine()) != null) {
-            STDError += line;
-        }
-        bre.close();
-        p.waitFor();
-        
-        String[] tab = {STDoutput,STDError};
-        return tab;
     }
     
     ////////////////////////////////////////////////////////////////////////////
