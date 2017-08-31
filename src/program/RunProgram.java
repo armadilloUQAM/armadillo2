@@ -1520,128 +1520,75 @@ public class RunProgram implements runningThreadInterface {
             properties.put("Commandline_Running",cmdm);
         }
         
-        //Get general properties
-        //Script link
-        String script          = "./cluster.py";
-        //Local properties and remove space in String EOL
-        String commands = Cluster.get_commands(properties,workbox);
-        String[] stab = {"-test ","-prepare ","-send ","-launch ","-waitResults ", "-importResults "};
-        boolean b = true;
-        int i     = 0;
-        boolean bLocal = false;
+        boolean runLocal = false;
+        boolean isRunning = false;
+        boolean cantDownload = false;
         
-        while (b && i<stab.length) {
-            String cmd = stab[i]+""+commands;
-            String[] outputScript = Cluster.call_Python_Process(script,cmd);
-//            Print output command line
-//            if (!outputScript[0].equals(""))
-//                Util.pl("outputScript[0]>"+outputScript[0]);
-//            if (!outputScript[1].equals(""))
-//                System.out.println("outputScript[1]>"+outputScript[1]);
+        if (!Cluster.getAccessToCluster(workbox,properties)){
+            runLocal = true;
+            setStatus(status_running, "\tUnable to access to the server");
+        }
+        
+        if (Cluster.isAClusterTasksNumberHere(properties)&&runLocal==false) {
+            isRunning = true;
+        }
             
-            // -test values
-            if (i==0) {
-                if (outputScript[0].matches(".*NotAbleToDoItOnCluster.*")){
-                    setStatus(status_running, "\tNot able to found the program online");
-                    b = false;
-                    bLocal = true;
-                } else if (outputScript[0].matches(".* password:.*")){
-                    setStatus(status_error, "\tNot able to connect to the server please. Test your connexion");
-                    b = false;
-                    bLocal = true;
-                } else if (outputScript[0].matches(".*ClusterPgrmName<>(\\w+)<>ClusterPWD<>(.+)<>")) {
-                    Pattern pattern = Pattern.compile(".*ClusterPgrmName<>(\\w+)<>ClusterPWD<>(.+)<>");
-                    Matcher match   = pattern.matcher(outputScript[0]);
-                    String name = "";
-                    String pwd  = "";
-                    if (match.find()) {
-                        name = match.group(1);
-                        pwd  = match.group(2);
-                    }
-                    properties.put("ClusterPgrmName",name);
-                    properties.put("ClusterPWD",pwd);
+        
+        if(!isRunning){
+            boolean b = Cluster.isClusterNeedInfoHere(workbox,properties);
+            if (b&&!runLocal){
+                runLocal = true;
+                setStatus(status_running, "\tNot enougth information to run on Cluster");
+            }
+            if (!runLocal)
+                if (!Cluster.isTheProgramOnCluster(workbox,properties)){
+                    runLocal = true;
+                    setStatus(status_running, "\tThe program and it's version has not been found online. Check the program properties");
+                } else {
+                    setStatus(status_running,"\t<-The program is available on the server->");
+                }
+            if (!runLocal)
+                if (!Cluster.createClusterDir(workbox,properties)) {
+                    runLocal = true;
+                    setStatus(status_running, "\tNot able to create a directory on the server.");
+                } else {
+                    setStatus(status_running,"\t<-Directory created on the server->");
+                }
+
+            if (!runLocal)
+                if (!Cluster.sendFilesOnCluster(workbox,properties)) {
+                    runLocal = true;
+                    setStatus(status_running, "\tNot able to send files to the server.");
+                } else {
+                    setStatus(status_running,"\t<-Files sended->");
+                }
+
+            if (!runLocal)
+                if (!Cluster.clusterPbs(workbox,properties)) {
+                    runLocal = true;
+                    setStatus(status_running, "\tNot able to create and send the pbs file to the server.");
+                } else {
                     setStatus(status_running, "\tRunning program on cluster...");
                     setStatus(status_running,"\t<-Program Cluster Status->");
                 }
-            }
-            
-            // -prepare values
-            if (i==1){
-                if (outputScript[0].matches(".*Files Prepared.*")){
-                    setStatus(status_running,"\t<-Files prepared->");
-                } else {
-                    setStatus(status_error,"Files can't be prepared");
-                    b = false;
-                }
-            }
-            
-            // -send values
-            if (i==2){
-                if (outputScript[0].matches(".*Files Sended.*")){
-                    setStatus(status_running,"\t<-Files sended->");
-                } else {
-                    setStatus(status_error,"Files can't be send on the server, please test it manually");
-                    b = false;
-                }
-            }
-            
-            // -launch values
-            if (i==3){
-                if (outputScript[0].matches(".*bash executed.*")){
-                    setStatus(status_running,"\t<-Bash file is executed->");
-                } else {
-                    setStatus(status_error,"Bash files can't be executed on cluster");
-                    b = false;
-                }
-            }
-            
-            // -waitResults values
-            if (i==4){
-                if (outputScript[0].matches(".*results downloaded.*")){
-                    setStatus(status_running,"\t<-Results downloaded from server->");
-                } else {
-                    setStatus(status_error,"Results Files not found, try later");
-                    b = false;
-                }
-            }
-            
-            // -uploadResults in Armadillo
-            if (i==5){
-                if ((outputScript[0].matches(".*<_____>STDOUT<_____>(.*)<_____>STDERROR<_____>(.+)"))){
-                    Pattern pattern = Pattern.compile(".*<_____>STDOUT<_____>(.*)<_____>STDERROR<_____>(.+)");
-                    Matcher match   = pattern.matcher(outputScript[0]);
-                    String name = "";
-                    String pwd  = "";
-                    if (match.find()) {
-                        name = match.group(1);
-                        pwd  = match.group(2);
-                    }
-                    Hashtable<String,String> h = new Hashtable<String,String>() {{
-                        put("<_____>","<>");
-                        put("<__->__>","->");
-                        put("<__n__>","\n");
-                        put("_____"," ");
-                    }};
-                    String[] tab = h.keySet().toArray(new String[h.keySet().size()]);
-                    for(int z=0;z<tab.length;z++) {
-                        name = name.replaceAll(tab[z],h.get(tab[z]));
-                        pwd  = pwd.replaceAll(tab[z],h.get(tab[z]));
-                    }
-                    properties.put("SDOUT",name);
-                    properties.put("STDERROR",pwd);
-                    outputText.add(name+"\n");
-                    outputText.add(pwd+"\n");
-                    setStatus(status_running,"\t<-Intergretated in Armadillo->");
-                    b = false;
-                } else {
-                    setStatus(status_error,"Results Files not found, try later");
-                    b = false;
-                }
-            }
-            if (b) i++;
         }
         
-        if (bLocal) {
+        if (!runLocal)
+            if (!Cluster.isStillRunning(workbox,properties)) {
+                setStatus(status_BadRequirements, "\tThe program is still running. The workflow will stop and you will be able to test it later.");
+                return false;
+            }
+        
+        if (!runLocal)
+            if (!Cluster.downloadResults(workbox,properties)) {
+                cantDownload = true;
+                setStatus(status_BadRequirements, "\tNot able to create and send the pbs file to the server.");
+                return false;
+            } else {
+                setStatus(status_running,"\t<-Results downloaded from server->");
+            }
+
+        if (runLocal){
             setStatus(status_running, "\tRunning will done on the local machine...");
             try {
                 if (do_run()) {
@@ -1651,12 +1598,22 @@ public class RunProgram implements runningThreadInterface {
             } catch (Exception ex) {
                 Logger.getLogger(RunProgram.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else  {
-            int exitvalue=0;
-            if (properties.isSet("NormalExitValue"))
-                exitvalue=Integer.parseInt(properties.get("NormalExitValue"));
-            properties.put("ExitValue", exitvalue);
+        } else {
+            String stdOut = Cluster.getStdoutOutput(workbox,properties);
+            String stdErr = Cluster.getStderrorOutput(workbox,properties);
+            properties.put("SDOUT",stdOut);
+            properties.put("STDERROR",stdErr);
+            outputText.add(stdOut+"\n");
+            outputText.add(stdErr+"\n");
         }
+        if (!cantDownload){
+            properties.remove("ClusterTasksNumber");
+        }
+        
+        int exitvalue=0;
+        if (properties.isSet("NormalExitValue"))
+            exitvalue=Integer.parseInt(properties.get("NormalExitValue"));
+        properties.put("ExitValue", exitvalue);
         return true;
     }
     

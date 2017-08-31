@@ -291,14 +291,9 @@
                 <Component class="javax.swing.JComboBox" name="ClusterNames2_list">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="7">
-                        <StringItem index="0" value="Briaree_nom@briaree.calculquebec.ca"/>
-                        <StringItem index="1" value="Colosse_nom@colosse.calculquebec.ca"/>
-                        <StringItem index="2" value="Cottos_nom@cottos.calculquebec.ca"/>
-                        <StringItem index="3" value="Guillimin_nom@guillimin.hpc.mcgill.ca"/>
-                        <StringItem index="4" value="Mp2_nom@&lt;nom du groupe&gt;-mp2.ccs.usherbrooke.ca"/>
-                        <StringItem index="5" value="Ms2_nom@&lt;nom du groupe&gt;-ms.ccs.usherbrooke.ca"/>
-                        <StringItem index="6" value="Psi_nom@psi.concordia.ca"/>
+                      <StringArray count="2">
+                        <StringItem index="0" value="Mp2_nom@&lt;nom du groupe&gt;-mp2.ccs.usherbrooke.ca"/>
+                        <StringItem index="1" value=" "/>
                       </StringArray>
                     </Property>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">

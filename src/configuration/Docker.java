@@ -83,7 +83,7 @@ public class Docker {
      * Test if docker program is installed
      */
     public static boolean isDockerHere(workflow_properties properties) {
-        String dockerCommand = getOSCommandLine(properties);
+        String dockerCommand = Util.getOSCommandLine(properties);
         ArrayList<String> s = Util.runSilentUnixCommand(dockerCommand+" --version","./");
         for (String st:s)
             if (st.contains("Docker version")) {
@@ -96,7 +96,7 @@ public class Docker {
      * Test if docker program is installed
      */
     public static boolean isProgramUseDocker(workflow_properties properties) {
-        String dockerCommand = getOSCommandLine(properties);
+        String dockerCommand = Util.getOSCommandLine(properties);
         if (dockerCommand.toLowerCase().contains("docker"))
             return true;
         return false;
@@ -159,23 +159,10 @@ public class Docker {
     }
     
     /**
-     * Get the OS executable for docker
-     */
-    public static String getOSCommandLine(workflow_properties properties) {
-        if (config.getBoolean("MacOSX")||SystemUtils.IS_OS_MAC_OSX) {
-            return properties.getExecutableMacOSX();
-        } else if (config.getBoolean("Linux")||SystemUtils.IS_OS_LINUX||SystemUtils.IS_OS_UNIX) {
-            return properties.getExecutableLinux();
-        }
-        return properties.getExecutable();        
-    }
-    
-    
-    /**
      * Prepare the docker bash file
      */
     public static void prepareDockerBashFile(workflow_properties properties, String doName, String dockerCli) {
-        String dockerCommand = getOSCommandLine(properties);
+        String dockerCommand = Util.getOSCommandLine(properties);
         String s = Util.getCurrentJarPath()+File.separator+"tmp"+File.separator+"dockerBash.sh";
         Util.CreateFile(s);
         Path file = Paths.get(s);
@@ -201,7 +188,7 @@ public class Docker {
      * Launch and set docker image
      */
     public static boolean launchDockerImage(workflow_properties properties, String localpath, String dockerpath, String name, String img) {
-        String dockerCommand = getOSCommandLine(properties);
+        String dockerCommand = Util.getOSCommandLine(properties);
         localpath = Util.getCanonicalPath(localpath);
         String c = dockerCommand+" run -v "+localpath+":"+dockerpath+" --name "+name+" -di "+img;
         ArrayList<String> sl = Util.runSilentUnixCommand(c,"./");
@@ -218,7 +205,7 @@ public class Docker {
      * Launch and set docker image with shared folder
      */
     public static boolean launchDockerContainerTest(workflow_properties properties, HashMap<String,String> sharedFolders, String doName, String doImg) {
-        String dockerCommand = getOSCommandLine(properties);
+        String dockerCommand = Util.getOSCommandLine(properties);
         String pull = dockerCommand+" pull " +doImg+"";
         ArrayList<String> slpull = Util.runSilentUnixCommand(pull,"./");
         HashMap<Integer,String> sharedF = new HashMap<Integer,String>();
@@ -252,7 +239,7 @@ public class Docker {
      * Launch and set docker container with shared forlder
      */
     public static boolean launchDockerContainer(workflow_properties properties,HashMap<String,String> sharedFolders, String doName, String doImg) {
-        String dockerCommand = getOSCommandLine(properties);
+        String dockerCommand = Util.getOSCommandLine(properties);
         String pull = dockerCommand+" pull " +doImg+"";
         ArrayList<String> slpull = Util.runSilentUnixCommand(pull,"./");
         for (String stmp:slpull)
@@ -281,7 +268,7 @@ public class Docker {
      * Test if docker container is already launch with the same name
      */
     public static boolean isContainersAlreadyUsed(workflow_properties properties, String name) {
-        String dockerCommand = getOSCommandLine(properties);
+        String dockerCommand = Util.getOSCommandLine(properties);
         String c = dockerCommand+" ps --filter name="+name+
                    " --format {{.Names}}";
         ArrayList<String> ls = Util.runSilentUnixCommand(c,"./");
@@ -296,7 +283,7 @@ public class Docker {
      * Get docker images
      */
     public static ArrayList<String> getImages(workflow_properties properties) {
-        String dockerCommand = getOSCommandLine(properties);
+        String dockerCommand = Util.getOSCommandLine(properties);
         ArrayList<String> s = Util.runSilentUnixCommand(dockerCommand+" images","./");
         ArrayList<String> l = new ArrayList<String>();
         for (String st : s)
@@ -309,7 +296,7 @@ public class Docker {
      * Get docker active containers infos ID Names Image
      */
     public static ArrayList<String> getActivesContainers(workflow_properties properties) {
-        String dockerCommand = getOSCommandLine(properties);
+        String dockerCommand = Util.getOSCommandLine(properties);
         String c = dockerCommand+" ps --format {{.ID}}<>{{.Names}}<>{{.Image}}";
         ArrayList<String> s = Util.runSilentUnixCommand(c,"./");
         ArrayList<String> val = new ArrayList<String>();
@@ -323,7 +310,7 @@ public class Docker {
      * Get all docker containers infos ID Names Image
      */
     public static ArrayList<String> getAllContainers(workflow_properties properties) {
-        String dockerCommand = getOSCommandLine(properties);
+        String dockerCommand = Util.getOSCommandLine(properties);
         String c = dockerCommand+" ps -a --format {{.ID}}<>{{.Names}}<>{{.Image}}";
         ArrayList<String> s = Util.runSilentUnixCommand(c,"./");
         ArrayList<String> val = new ArrayList<String>();
@@ -337,7 +324,7 @@ public class Docker {
      * Get docker active containers infos ID
      */
     public static ArrayList<String> getActivesContainersID(workflow_properties properties) {
-        String dockerCommand = getOSCommandLine(properties);
+        String dockerCommand = Util.getOSCommandLine(properties);
         String c = dockerCommand+" ps --format {{.ID}}<>{{.Names}}";
         ArrayList<String> s = Util.runSilentUnixCommand(c,"./");
         ArrayList<String> val = new ArrayList<String>();
@@ -351,7 +338,7 @@ public class Docker {
      * Get docker active containers infos ID
      */
     public static ArrayList<String> getActivesContainersName(workflow_properties properties) {
-        String dockerCommand = getOSCommandLine(properties);
+        String dockerCommand = Util.getOSCommandLine(properties);
         String c = dockerCommand+" ps --format {{.ID}}<>{{.Names}}";
         ArrayList<String> s = Util.runSilentUnixCommand(c,"./");
         ArrayList<String> val = new ArrayList<String>();
@@ -365,7 +352,7 @@ public class Docker {
      * Get all docker containers infos ID Names
      */
     public static ArrayList<String> getAllContainersID(workflow_properties properties) {
-        String dockerCommand = getOSCommandLine(properties);
+        String dockerCommand = Util.getOSCommandLine(properties);
         String c = dockerCommand+" ps -a --format {{.ID}}<>{{.Names}}";
         ArrayList<String> s = Util.runSilentUnixCommand(c,"./");
         ArrayList<String> val = new ArrayList<String>();
@@ -379,7 +366,7 @@ public class Docker {
      * Get all docker containers infos Name
      */
     public static ArrayList<String> getAllContainersName(workflow_properties properties) {
-        String dockerCommand = getOSCommandLine(properties);
+        String dockerCommand = Util.getOSCommandLine(properties);
         String c = dockerCommand+" ps -a --format {{.Names}}";
         ArrayList<String> s = Util.runSilentUnixCommand(c,"./");
         ArrayList<String> val = new ArrayList<String>();
@@ -428,7 +415,7 @@ public class Docker {
                     p.add(sa);
             }
             if (p.size()>0) {
-                String dockerCommand = getOSCommandLine(properties);
+                String dockerCommand = Util.getOSCommandLine(properties);
                 String s = dockerCommand+" rm "+p.toString().replaceAll("[\\[,\\]]"," ");
                 ArrayList<String> v = Util.runSilentUnixCommand(s,"./");
                 return Util.equalArrayLists(v,p);
@@ -457,7 +444,7 @@ public class Docker {
                 p.add(sa);
         }
         if (p.size()>0) {
-            String dockerCommand = getOSCommandLine(properties);
+            String dockerCommand = Util.getOSCommandLine(properties);
             String s = dockerCommand+" stop "+p.toString().replaceAll("[\\[,\\]]"," ");
             ArrayList<String> v = Util.runSilentUnixCommand(s,"./");
             return Util.equalArrayLists(v,p);
@@ -506,7 +493,7 @@ public class Docker {
         }
         cleanContainers(properties,cImg);
         for (String imgName:l) {
-            String dockerCommand = getOSCommandLine(properties);
+            String dockerCommand = Util.getOSCommandLine(properties);
             ArrayList<String> st = Util.runSilentUnixCommand(dockerCommand+" rmi "+imgName,"./");
             if (st.toString().contains("Error") && st.toString().contains("container")) {
                 System.out.println("This images is already used out of Armadillo");
@@ -524,7 +511,7 @@ public class Docker {
      * String doName // Docker name
      */
     public static boolean copyDockerDirToSharedDir (workflow_properties properties, String sd, String dd, String doName) {
-        String dockerCommand = getOSCommandLine(properties);
+        String dockerCommand = Util.getOSCommandLine(properties);
         String s = dockerCommand+" exec -ti "+doName+" mkdir "+sd+" "
                 + "&& "+dockerCommand+" exec -ti "+doName+" cp -r "+dd+" "+sd+" "
                 + "&& "+dockerCommand+" exec -ti "+doName+" chmod -R 777 "+sd+" "

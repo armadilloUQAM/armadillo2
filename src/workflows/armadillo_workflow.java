@@ -48,6 +48,7 @@ import processing.core.*;
 import processing.pdf.*;
 import editor.propertiesEditorJDialog;
 import biologic.seqclasses.CommentsSequenceJDialog;
+import configuration.Cluster;
 import database.databaseFunction;
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
@@ -3168,6 +3169,7 @@ public class armadillo_workflow extends PApplet implements ActionListener {
                                             int num = (connector_next_indice[c.number]++);
                                             obj.getProperties().put("input_"+type+"_id"+c.number+num,id);
                                             obj.getProperties().put("inputObject_"+type+"_id"+c.number+num+"_properties",st);
+                                            Cluster.addSpecificClusterProperties(o,obj,num);
                                         }
                                     }
                                 } else {
@@ -3177,6 +3179,7 @@ public class armadillo_workflow extends PApplet implements ActionListener {
                                         int num = (connector_next_indice[c.number]++);
                                         obj.getProperties().put("input_"+type+"_id"+c.number+num,id);
                                         obj.getProperties().put("inputObject_"+type+"_id"+c.number+num+"_properties",st);
+                                        Cluster.addSpecificClusterProperties(o,obj,num);
                                         //Config.log(o+"UpdateDependance : "+id+c);
                                         //--delete next input
                                         //obj.getProperties().remove("input_"+type+"_id"+c.number+(connector_next_indice[c.number]));

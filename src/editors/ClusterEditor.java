@@ -165,7 +165,7 @@ public class ClusterEditor extends javax.swing.JDialog implements EditorInterfac
 
         jLabel9.setText("Used");
 
-        ClusterNames2_list.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Briaree_nom@briaree.calculquebec.ca", "Colosse_nom@colosse.calculquebec.ca", "Cottos_nom@cottos.calculquebec.ca", "Guillimin_nom@guillimin.hpc.mcgill.ca", "Mp2_nom@<nom du groupe>-mp2.ccs.usherbrooke.ca", "Ms2_nom@<nom du groupe>-ms.ccs.usherbrooke.ca", "Psi_nom@psi.concordia.ca" }));
+        ClusterNames2_list.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mp2_nom@<nom du groupe>-mp2.ccs.usherbrooke.ca", " " }));
         ClusterNames2_list.setMinimumSize(new java.awt.Dimension(319, 27));
         ClusterNames2_list.setName("ClusterNames2_list"); // NOI18N
         ClusterNames2_list.setPreferredSize(new java.awt.Dimension(319, 27));
@@ -382,6 +382,18 @@ public class ClusterEditor extends javax.swing.JDialog implements EditorInterfac
         // TODO add your handling code here:
         updateValues();
     }//GEN-LAST:event_ClusterNames2_listActionPerformed
+    
+    /*
+     * Other clusters for the futur
+     *     Briaree_nom@briaree.calculquebec.ca
+     *     Colosse_nom@colosse.calculquebec.ca
+     *     Cottos_nom@cottos.calculquebec.ca
+     *     Guillimin_nom@guillimin.hpc.mcgill.ca
+     *     Mp2_nom@<nom du groupe>-mp2.ccs.usherbrooke.ca
+     *     Ms2_nom@<nom du groupe>-ms.ccs.usherbrooke.ca
+     *     Psi_nom@psi.concordia.ca
+     */
+    
     
     /**
      * General Update
