@@ -21,6 +21,7 @@
 package configuration;
 
 
+import static biologic.Workflows.config;
 import java.io.BufferedReader;
 import java.io.File;
 import static java.io.File.separatorChar;
@@ -65,6 +66,7 @@ import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import org.apache.commons.lang.SystemUtils;
 import workflows.workflow_properties;
 
 
@@ -1477,6 +1479,20 @@ public class Util {
         }
     }
     
+    
+    /**
+     * Get the OS executable for docker
+     */
+    
+    public static String getOSCommandLine(workflow_properties properties) {
+        if (config.getBoolean("MacOSX")||SystemUtils.IS_OS_MAC_OSX) {
+            return properties.getExecutableMacOSX();
+        } else if (config.getBoolean("Linux")||SystemUtils.IS_OS_LINUX||SystemUtils.IS_OS_UNIX) {
+            return properties.getExecutableLinux();
+        }
+        return properties.getExecutable();        
+    }
+
     // **************************************************************************
     // * EDITOR AND PROGRAM FUNCTIONS
     // **************************************************************************
