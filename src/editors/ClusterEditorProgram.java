@@ -48,7 +48,7 @@ import workflows.workflow_properties_dictionnary;
  * @author JG
  * @since Feb 2016
  */
-public class ClusterEditor extends javax.swing.JDialog implements EditorInterface {
+public class ClusterEditorProgram extends javax.swing.JDialog implements EditorInterface {
     
     ////////////////////////////////////////////////////////////////////////////
     /// VARIABLES
@@ -64,7 +64,7 @@ public class ClusterEditor extends javax.swing.JDialog implements EditorInterfac
     
     
     /** Creates new form propertiesJDialog */
-    public ClusterEditor(java.awt.Frame parent, armadillo_workflow parent_workflow) {
+    public ClusterEditorProgram(java.awt.Frame parent, armadillo_workflow parent_workflow) {
         super(parent, false);
         this.parent_workflow=parent_workflow;
         frame=parent;
@@ -83,21 +83,33 @@ public class ClusterEditor extends javax.swing.JDialog implements EditorInterfac
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel9 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        ClusterName = new javax.swing.JTextField();
-        ClusterUserName = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        ClusterGroupName = new javax.swing.JTextField();
-        ClusterAccess = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        ClusterNames2_list = new javax.swing.JComboBox();
         clusterEnabled = new javax.swing.JCheckBox();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jSpinner5 = new javax.swing.JSpinner();
+        jLabel8 = new javax.swing.JLabel();
+        jSpinner4 = new javax.swing.JSpinner();
+        jLabel7 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jSpinner3 = new javax.swing.JSpinner();
+        jLabel1 = new javax.swing.JLabel();
+        jSpinner2 = new javax.swing.JSpinner();
+        jLabel3 = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
         ClosejButton = new javax.swing.JButton();
         ClusterInfosUpdate = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -114,81 +126,195 @@ public class ClusterEditor extends javax.swing.JDialog implements EditorInterfac
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jLabel5.setText("Clusters name");
-
-        jLabel6.setText("Selected cluster");
-
-        ClusterName.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        ClusterName.setText("clustername");
-        ClusterName.setName("ClusterName"); // NOI18N
-        ClusterName.setPreferredSize(new java.awt.Dimension(197, 27));
-        ClusterName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClusterNameActionPerformed(evt);
-            }
-        });
-
-        ClusterUserName.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        ClusterUserName.setText("user name");
-        ClusterUserName.setName("ClusterUserName"); // NOI18N
-        ClusterUserName.setPreferredSize(new java.awt.Dimension(197, 27));
-        ClusterUserName.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                ClusterUserNameFocusLost(evt);
-            }
-        });
-
-        jLabel7.setText("User Name");
-
-        jLabel8.setText("Group Name");
-
-        ClusterGroupName.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        ClusterGroupName.setText("group name");
-        ClusterGroupName.setName("ClusterGroupName"); // NOI18N
-        ClusterGroupName.setPreferredSize(new java.awt.Dimension(197, 27));
-        ClusterGroupName.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                ClusterGroupNameFocusLost(evt);
-            }
-        });
-
-        ClusterAccess.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        ClusterAccess.setText("username@(groupName)clustername");
-        ClusterAccess.setMinimumSize(new java.awt.Dimension(276, 27));
-        ClusterAccess.setName("ClusterAccess"); // NOI18N
-        ClusterAccess.setPreferredSize(new java.awt.Dimension(276, 27));
-        ClusterAccess.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClusterAccessActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setText("Used");
-
-        ClusterNames2_list.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mp2_nom@<nom du groupe>-mp2.ccs.usherbrooke.ca", " " }));
-        ClusterNames2_list.setMinimumSize(new java.awt.Dimension(319, 27));
-        ClusterNames2_list.setName("ClusterNames2_list"); // NOI18N
-        ClusterNames2_list.setPreferredSize(new java.awt.Dimension(319, 27));
-        ClusterNames2_list.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClusterNames2_listActionPerformed(evt);
-            }
-        });
-
         clusterEnabled.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         clusterEnabled.setText("Cluster is enabled");
         clusterEnabled.setEnabled(false);
         clusterEnabled.setName("clusterEnabled"); // NOI18N
 
-        jTextField1.setText("insert@your.email.com");
-        jTextField1.setPreferredSize(new java.awt.Dimension(217, 27));
+        jLabel5.setText("Projet");
 
-        jLabel1.setText("Email");
+        jTextField3.setText("jTextField3");
 
-        jLabel2.setText("Rap ID");
+        jLabel6.setText("Nodes");
 
-        jTextField2.setText("insert your RapID");
-        jTextField2.setPreferredSize(new java.awt.Dimension(217, 27));
+        jLabel8.setText("Processors per nodes");
+
+        jLabel7.setText("Job Name");
+
+        jTextField2.setText("jTextField2");
+        jTextField2.setPreferredSize(new java.awt.Dimension(115, 27));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel7))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSpinner5)
+                    .addComponent(jSpinner4)
+                    .addComponent(jTextField3)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+
+        jTabbedPane3.addTab("Basic", jPanel2);
+
+        jLabel9.setText("hours");
+
+        jSpinner3.setPreferredSize(new java.awt.Dimension(115, 28));
+
+        jLabel1.setText("min");
+
+        jSpinner2.setPreferredSize(new java.awt.Dimension(115, 28));
+
+        jLabel3.setText("sec");
+
+        jSpinner1.setPreferredSize(new java.awt.Dimension(115, 28));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSpinner3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSpinner2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+
+        jTabbedPane3.addTab("Walltime", jPanel4);
+
+        jLabel11.setText("address");
+
+        jTextField1.setText("jTextField1");
+        jTextField1.setMinimumSize(new java.awt.Dimension(115, 27));
+        jTextField1.setPreferredSize(new java.awt.Dimension(115, 27));
+
+        jLabel12.setText("reception when");
+
+        jCheckBox1.setText("b - job begins");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox2.setText("e - job ends");
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox3.setText("a - job aborts");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel11))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jCheckBox3)
+                    .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCheckBox2)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 46, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox2)
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox3)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        jTabbedPane3.addTab("Contact", jPanel5);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 312, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("CalculQuébec", jPanel1);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -196,74 +322,21 @@ public class ClusterEditor extends javax.swing.JDialog implements EditorInterfac
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel6)
-                                        .addComponent(jLabel7)
-                                        .addComponent(jLabel8))
-                                    .addGap(8, 8, 8)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(ClusterGroupName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(ClusterUserName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(ClusterName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel9)
-                                        .addComponent(jLabel1))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(ClusterAccess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                            .addComponent(ClusterNames2_list, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(clusterEnabled)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(7, 7, 7)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addComponent(clusterEnabled)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(250, 250, 250))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(clusterEnabled)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ClusterNames2_list, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ClusterName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ClusterUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ClusterGroupName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ClusterAccess, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(83, 83, 83))
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         ClosejButton.setText("<html><b>Close</b></html>");
@@ -273,7 +346,7 @@ public class ClusterEditor extends javax.swing.JDialog implements EditorInterfac
             }
         });
 
-        ClusterInfosUpdate.setText("Update Selected Cluster");
+        ClusterInfosUpdate.setText("Update Cluster Program Information");
         ClusterInfosUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ClusterInfosUpdateActionPerformed(evt);
@@ -287,24 +360,22 @@ public class ClusterEditor extends javax.swing.JDialog implements EditorInterfac
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(ClusterInfosUpdate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                         .addComponent(ClosejButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ClosejButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ClusterInfosUpdate))
+                    .addComponent(ClusterInfosUpdate)
+                    .addComponent(ClosejButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -323,18 +394,20 @@ public class ClusterEditor extends javax.swing.JDialog implements EditorInterfac
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton3)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1))
         );
 
         pack();
@@ -355,33 +428,18 @@ public class ClusterEditor extends javax.swing.JDialog implements EditorInterfac
         HelpEditor help = new HelpEditor(this.frame, false, properties);
         help.setVisible(true);
 }//GEN-LAST:event_jButton3ActionPerformed
-        
-    private void ClusterNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClusterNameActionPerformed
-        
-    }//GEN-LAST:event_ClusterNameActionPerformed
-    
-    private void ClusterUserNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ClusterUserNameFocusLost
-        updateName();
-        updateValues();
-    }//GEN-LAST:event_ClusterUserNameFocusLost
-    
-    private void ClusterGroupNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ClusterGroupNameFocusLost
-        updateGroup();
-        updateValues();
-    }//GEN-LAST:event_ClusterGroupNameFocusLost
-    
-    private void ClusterAccessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClusterAccessActionPerformed
-        
-    }//GEN-LAST:event_ClusterAccessActionPerformed
-    
+                        
     private void ClusterInfosUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClusterInfosUpdateActionPerformed
-        updateValues();
+        //updateValues();
     }//GEN-LAST:event_ClusterInfosUpdateActionPerformed
 
-    private void ClusterNames2_listActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClusterNames2_listActionPerformed
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
         // TODO add your handling code here:
-        updateValues();
-    }//GEN-LAST:event_ClusterNames2_listActionPerformed
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
     
     /*
      * Other clusters for the futur
@@ -398,138 +456,11 @@ public class ClusterEditor extends javax.swing.JDialog implements EditorInterfac
     /**
      * General Update
      */
-    private void updateValues() {
-        ClusterAccess.setEnabled(false);
-        ClusterName.setEnabled(false);
-        
-        int i = this.ClusterNames2_list.getSelectedIndex();
-        String s   = (String)this.ClusterNames2_list.getModel().getElementAt(i).toString();
-        properties.put("ClusterAllName",s);
-        properties.put(ClusterNames2_list.getName(),i);
-        if (s.matches("^Mp2.*")||s.matches("^Ms2.*")){
-            s = s.replaceAll("\\<nom du groupe\\>","");
-            ClusterGroupName.setEnabled(true);
-        } else {
-            ClusterGroupName.setEnabled(false);
-        }
-        s = s.replaceAll("^\\w*_nom@","");
-        properties.put(ClusterName.getName(),s);
-        ClusterName.setText(s);
-        ClusterUserName.setEnabled(true);
-        updateName();
-        updateGroup();
-        updateAccess();
-        updateEnabled();
-    }
-    /**
-     * Name Update
-     */
-    private void updateName() {
-        String s = ClusterUserName.getText();
-        if (s.equals("")||!(properties.isSet(ClusterUserName.getName()))){
-            properties.put(ClusterUserName.getName(),"Add a name");
-            ClusterUserName.setText("Add a name");
-        } else {
-            properties.put(ClusterUserName.getName(),s);
-            ClusterUserName.setText(s);
-        }
-    }
-    /**
-     * Group Update
-     */
-    private void updateGroup() {
-        String s = ClusterGroupName.getText();
-        if (s.equals("")||!(properties.isSet(ClusterGroupName.getName()))){
-            properties.put(ClusterGroupName.getName(),"Add a group");
-            ClusterGroupName.setText("Add a group");
-        } else {
-            properties.put(ClusterGroupName.getName(),s);
-            ClusterGroupName.setText(s);
-        }
-    }
-    /**
-     * Access Update
-     */
-    private void updateAccess() {
-        if (properties.isSet("ClusterAllName")) {
-            String s       = properties.get("ClusterAllName");
-            String group   = "";
-            String name    = properties.get(ClusterUserName.getName());
-            String cluster = properties.get(ClusterName.getName());
-            if (s.matches("^Mp2.*")||s.matches("^Ms2.*"))
-                group = properties.get(ClusterGroupName.getName());
-            String access  = name+"@"+group+cluster;
-            ClusterAccess.setText(access);
-            properties.put(ClusterAccess.getName(),access);
-            properties.put("Description",access);
-        }
-    }
-    
-    /**
-     * Access Update
-     */
-    public void updateEnabled(){
-        Workbox workbox = parent_workflow.getWorkbox();
-        workflow_properties selection = workbox.getWorkFlowJInternalFrame().getProperties();
-        selection.put("ClusterAccessAddress",properties.get("Description"));
-        boolean b = workbox.isWorkboxOnCLuster();
-        if (b) {
-            clusterEnabled.setSelected(true);
-            properties.put(clusterEnabled.getName(),true);
-        } else {
-            clusterEnabled.setSelected(false);
-            properties.remove(clusterEnabled.getName());
-        }
-    }
     
     /**
      * Load Saved Values
      */
     public void loadSavedValues(workflow_properties properties) {
-        ClusterAccess.setEnabled(false);
-        ClusterName.setEnabled(false);
-        ClusterUserName.setEnabled(false);
-        ClusterGroupName.setEnabled(false);
-        if (properties.isSet("ClusterAllName")) {
-            String s = properties.get("ClusterAllName");
-            if (properties.isSet(ClusterName.getName())){
-                String s2 = properties.get(ClusterName.getName());
-                ClusterName.setText(s2);
-            }
-            if (properties.isSet(ClusterUserName.getName())){
-                String s2 = properties.get(ClusterUserName.getName());
-                ClusterUserName.setText(s2);
-                ClusterUserName.setEnabled(true);
-            }
-            if (properties.isSet(ClusterGroupName.getName())){
-                String s2 = properties.get(ClusterGroupName.getName());
-                ClusterGroupName.setText(s2);
-            }
-            if (s.matches("^Mp2.*")||s.matches("^Ms2.*")){
-                ClusterGroupName.setEnabled(true);
-            }
-            if (properties.isSet(ClusterNames2_list.getName())){
-                int i = Integer.parseInt(properties.get(ClusterNames2_list.getName()));
-                ClusterNames2_list.setSelectedIndex(i);
-            }
-            if (properties.isSet(ClusterAccess.getName())){
-                String s2 = properties.get(ClusterAccess.getName());
-                ClusterAccess.setText(s2);
-            }
-            if (properties.isSet(clusterEnabled.getName())){
-                clusterEnabled.setSelected(true);
-            } else {
-                clusterEnabled.setSelected(false);
-            }
-        } else {
-            ClusterNames2_list.setSelectedIndex(0);
-            properties.put(ClusterNames2_list.getName(),0);
-            ClusterName.setText("Select a cluster");
-            ClusterUserName.setText("Add user name");
-            ClusterGroupName.setText("Add group name");
-            clusterEnabled.setSelected(false);
-        }
-        updateEnabled();
     }
     
     /**
@@ -571,25 +502,37 @@ public class ClusterEditor extends javax.swing.JDialog implements EditorInterfac
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ClosejButton;
-    private javax.swing.JTextField ClusterAccess;
-    private javax.swing.JTextField ClusterGroupName;
     private javax.swing.JButton ClusterInfosUpdate;
-    private javax.swing.JTextField ClusterName;
-    private javax.swing.JComboBox ClusterNames2_list;
-    private javax.swing.JTextField ClusterUserName;
     private javax.swing.JCheckBox clusterEnabled;
     private javax.swing.JButton jButton3;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JSpinner jSpinner2;
+    private javax.swing.JSpinner jSpinner3;
+    private javax.swing.JSpinner jSpinner4;
+    private javax.swing.JSpinner jSpinner5;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
