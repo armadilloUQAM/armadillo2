@@ -102,7 +102,7 @@ public class ClusterEditor extends javax.swing.JDialog implements EditorInterfac
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        p2rsa = new javax.swing.JTextField();
+        p2rsa_text = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         ClosejButton = new javax.swing.JButton();
         ClusterInfosUpdate = new javax.swing.JButton();
@@ -210,11 +210,11 @@ public class ClusterEditor extends javax.swing.JDialog implements EditorInterfac
 
         jLabel3.setText("Path to Privatekey");
 
-        p2rsa.setText("path to private key");
-        p2rsa.setMaximumSize(new java.awt.Dimension(179, 27));
-        p2rsa.setMinimumSize(new java.awt.Dimension(179, 27));
-        p2rsa.setName(""); // NOI18N
-        p2rsa.setPreferredSize(new java.awt.Dimension(179, 27));
+        p2rsa_text.setText("path to private key");
+        p2rsa_text.setMaximumSize(new java.awt.Dimension(179, 27));
+        p2rsa_text.setMinimumSize(new java.awt.Dimension(179, 27));
+        p2rsa_text.setName("p2rsa_text"); // NOI18N
+        p2rsa_text.setPreferredSize(new java.awt.Dimension(179, 27));
 
         jButton1.setText("...");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -239,7 +239,7 @@ public class ClusterEditor extends javax.swing.JDialog implements EditorInterfac
                         .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(p2rsa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(p2rsa_text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
@@ -303,7 +303,7 @@ public class ClusterEditor extends javax.swing.JDialog implements EditorInterfac
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(p2rsa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(p2rsa_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addGap(54, 54, 54))
         );
@@ -428,10 +428,10 @@ public class ClusterEditor extends javax.swing.JDialog implements EditorInterfac
         String[] pathP2rsa = Util.simpleSearchBox("f",false,false);
         if (pathP2rsa.length == 1 && pathP2rsa[0] != ""){
             properties.put("PathToRSAFile",pathP2rsa[0]);
-            p2rsa.setText(pathP2rsa[0]);
+            p2rsa_text.setText(pathP2rsa[0]);
         } else {
             properties.remove("PathToRSAFile");
-            p2rsa.setText("path to Private Key");
+            p2rsa_text.setText("path to Private Key");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
     
@@ -582,7 +582,7 @@ public class ClusterEditor extends javax.swing.JDialog implements EditorInterfac
             clusterEnabled.setSelected(false);
         }
         if (properties.isSet("PathToRSAFile")) {
-            p2rsa.setText(properties.get("PathToRSAFile"));
+            p2rsa_text.setText(properties.get("PathToRSAFile"));
         }
 
         updateEnabled();
@@ -649,6 +649,6 @@ public class ClusterEditor extends javax.swing.JDialog implements EditorInterfac
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField p2rsa;
+    private javax.swing.JTextField p2rsa_text;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,6 +6,7 @@
 
 package editors;
 
+import editor.dockerEditor;
 import configuration.Config;
 import editor.EditorInterface;
 import configuration.Util;

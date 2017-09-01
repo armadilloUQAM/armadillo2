@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package editors;
+package editor;
 
 
 import biologic.seqclasses.InformationJDialog;
@@ -36,6 +36,7 @@ import java.awt.Frame;
 import java.awt.Toolkit;
 import editor.EditorInterface;
 import editor.EditorInterface;
+import editors.HelpEditor;
 import editors.HelpEditor;
 import java.awt.Robot;
 import java.awt.image.BufferedImage;

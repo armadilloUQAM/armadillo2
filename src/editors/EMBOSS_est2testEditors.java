@@ -5,6 +5,7 @@
 */
 package editors;
 
+import editor.dockerEditor;
 import configuration.Config;
 import configuration.Util;
 import editor.EditorInterface;
@@ -765,10 +766,10 @@ public class EMBOSS_est2testEditors extends javax.swing.JDialog implements Edito
         this.display(properties);
     }//GEN-LAST:event_reset_jButton_ActionPerformed
 
-    private void name_jTextField_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name_jTextField_ActionPerformed
+    private void name_jTextField_ActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         // TODO add your handling code here:
         properties.put("Name", name_jTextField.getText());
-    }//GEN-LAST:event_name_jTextField_ActionPerformed
+    }                                                
 
     private void name_jTextField_FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_name_jTextField_ActionPerformed
         // TODO add your handling code here:

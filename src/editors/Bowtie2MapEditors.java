@@ -10,6 +10,8 @@
 
 package editors;
 
+import editor.clusterEditorProgram;
+import configuration.Cluster;
 import configuration.Config;
 import configuration.Util;
 import editor.EditorInterface;
@@ -27,6 +29,7 @@ import java.util.Hashtable;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import program.*;
+import static program.RunProgram.workbox;
 import workflows.armadillo_workflow;
 import workflows.workflow_properties;
 import workflows.workflow_properties_dictionnary;
@@ -233,6 +236,7 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
         IDG_Update_button = new javax.swing.JButton();
         IDG_change_button = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        ClusterProgramButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -363,7 +367,7 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
             }
         });
 
-        M_PE_I_value.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+        M_PE_I_value.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         M_PE_I_value.setName("M_PE_I_value"); // NOI18N
         M_PE_I_value.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -371,7 +375,7 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
             }
         });
 
-        M_PE_X_value.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(500), Integer.valueOf(0), null, Integer.valueOf(1)));
+        M_PE_X_value.setModel(new javax.swing.SpinnerNumberModel(500, 0, null, 1));
         M_PE_X_value.setName("M_PE_X_value"); // NOI18N
         M_PE_X_value.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -780,7 +784,7 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
             }
         });
 
-        CM_I_s_value.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+        CM_I_s_value.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         CM_I_s_value.setName("CM_I_s_value"); // NOI18N
         CM_I_s_value.setPreferredSize(new java.awt.Dimension(115, 20));
         CM_I_s_value.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -789,7 +793,7 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
             }
         });
 
-        CM_I_u_value.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(2147483647), Integer.valueOf(0), null, Integer.valueOf(1)));
+        CM_I_u_value.setModel(new javax.swing.SpinnerNumberModel(2147483647, 0, null, 1));
         CM_I_u_value.setName("CM_I_u_value"); // NOI18N
         CM_I_u_value.setPreferredSize(new java.awt.Dimension(115, 20));
         CM_I_u_value.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -798,7 +802,7 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
             }
         });
 
-        CM_I_5_value.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+        CM_I_5_value.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         CM_I_5_value.setName("CM_I_5_value"); // NOI18N
         CM_I_5_value.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -806,7 +810,7 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
             }
         });
 
-        CM_I_3_value.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+        CM_I_3_value.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         CM_I_3_value.setName("CM_I_3_value"); // NOI18N
         CM_I_3_value.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -1089,7 +1093,7 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
             }
         });
 
-        CM_A_dpad_value.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(15), Integer.valueOf(0), null, Integer.valueOf(1)));
+        CM_A_dpad_value.setModel(new javax.swing.SpinnerNumberModel(15, 0, null, 1));
         CM_A_dpad_value.setName("CM_A_dpad_value"); // NOI18N
         CM_A_dpad_value.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -1097,7 +1101,7 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
             }
         });
 
-        CM_A_gbar_value.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(4), Integer.valueOf(0), null, Integer.valueOf(1)));
+        CM_A_gbar_value.setModel(new javax.swing.SpinnerNumberModel(4, 0, null, 1));
         CM_A_gbar_value.setName("CM_A_gbar_value"); // NOI18N
         CM_A_gbar_value.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -1277,7 +1281,7 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
         CM_S_second_label.setText("second");
         CM_S_second_label.setName("CM_S_second_label"); // NOI18N
 
-        CM_S_ma_value.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(2), Integer.valueOf(0), null, Integer.valueOf(1)));
+        CM_S_ma_value.setModel(new javax.swing.SpinnerNumberModel(2, 0, null, 1));
         CM_S_ma_value.setToolTipText("");
         CM_S_ma_value.setName("CM_S_ma_value"); // NOI18N
         CM_S_ma_value.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -1286,7 +1290,7 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
             }
         });
 
-        CM_S_np_value.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(0), null, Integer.valueOf(1)));
+        CM_S_np_value.setModel(new javax.swing.SpinnerNumberModel(1, 0, null, 1));
         CM_S_np_value.setName("CM_S_np_value"); // NOI18N
         CM_S_np_value.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -1294,7 +1298,7 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
             }
         });
 
-        CM_S_rdg1_value.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(5), Integer.valueOf(0), null, Integer.valueOf(1)));
+        CM_S_rdg1_value.setModel(new javax.swing.SpinnerNumberModel(5, 0, null, 1));
         CM_S_rdg1_value.setName("CM_S_rdg1_value"); // NOI18N
         CM_S_rdg1_value.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -1302,7 +1306,7 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
             }
         });
 
-        CM_S_rfg1_value.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(5), Integer.valueOf(0), null, Integer.valueOf(1)));
+        CM_S_rfg1_value.setModel(new javax.swing.SpinnerNumberModel(5, 0, null, 1));
         CM_S_rfg1_value.setName("CM_S_rfg1_value"); // NOI18N
         CM_S_rfg1_value.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -1310,7 +1314,7 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
             }
         });
 
-        CM_S_rdg2_value.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(3), Integer.valueOf(0), null, Integer.valueOf(1)));
+        CM_S_rdg2_value.setModel(new javax.swing.SpinnerNumberModel(3, 0, null, 1));
         CM_S_rdg2_value.setName("CM_S_rdg2_value"); // NOI18N
         CM_S_rdg2_value.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -1318,7 +1322,7 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
             }
         });
 
-        CM_S_rfg2_value.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(3), Integer.valueOf(0), null, Integer.valueOf(1)));
+        CM_S_rfg2_value.setModel(new javax.swing.SpinnerNumberModel(3, 0, null, 1));
         CM_S_rfg2_value.setName("CM_S_rfg2_value"); // NOI18N
         CM_S_rfg2_value.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -1503,7 +1507,7 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
             }
         });
 
-        CM_R_k_value.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(0), null, Integer.valueOf(1)));
+        CM_R_k_value.setModel(new javax.swing.SpinnerNumberModel(1, 0, null, 1));
         CM_R_k_value.setName("CM_R_k_value"); // NOI18N
         CM_R_k_value.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -1544,7 +1548,7 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
 
         CM_Effort_Panel.setName("CM_Effort_Panel"); // NOI18N
 
-        CM_E_D_value.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(15), Integer.valueOf(0), null, Integer.valueOf(1)));
+        CM_E_D_value.setModel(new javax.swing.SpinnerNumberModel(15, 0, null, 1));
         CM_E_D_value.setName("CM_E_D_value"); // NOI18N
         CM_E_D_value.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -1552,7 +1556,7 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
             }
         });
 
-        CM_E_R_value.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(2), Integer.valueOf(0), null, Integer.valueOf(1)));
+        CM_E_R_value.setModel(new javax.swing.SpinnerNumberModel(2, 0, null, 1));
         CM_E_R_value.setName("CM_E_R_value"); // NOI18N
         CM_E_R_value.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -1753,7 +1757,7 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
             }
         });
 
-        CM_P_p_value.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        CM_P_p_value.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         CM_P_p_value.setName("CM_P_p_value"); // NOI18N
         CM_P_p_value.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -1834,7 +1838,7 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
             }
         });
 
-        CM_OO_seed_value.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+        CM_OO_seed_value.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         CM_OO_seed_value.setName("CM_OO_seed_value"); // NOI18N
         CM_OO_seed_value.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -2101,22 +2105,33 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
 
         Bowtie2MapEditor.addTab("Bowtie2 Mapping", jPanel1);
 
+        ClusterProgramButton.setText("Cluster Options");
+        ClusterProgramButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClusterProgramButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ClusterProgramButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(Bowtie2MapEditor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(ClusterProgramButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Bowtie2MapEditor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -2889,6 +2904,12 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
         // TODO add your handling code here:
         Util.boxEventSpinner(properties,CM_E_R_box,CM_E_R_value);
     }//GEN-LAST:event_CM_E_R_boxActionPerformed
+
+    private void ClusterProgramButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClusterProgramButtonActionPerformed
+        // TODO add your handling code here:
+        clusterEditorProgram dock = new clusterEditorProgram(this.frame, false, properties);
+        dock.setVisible(true);
+    }//GEN-LAST:event_ClusterProgramButtonActionPerformed
     
     /**
      * Clean Variables in properties
@@ -3489,6 +3510,12 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
         // Set the program properties
         this.setProperties(properties);
         
+        if (workbox.isWorkboxOnCLuster())
+            ClusterProgramButton.setVisible(true);
+        else
+            ClusterProgramButton.setVisible(false);
+            
+            
         // Update Saved Properties => usp
         this.updateSavedProperties(properties);
         
@@ -3637,6 +3664,7 @@ public class Bowtie2MapEditors extends javax.swing.JDialog implements EditorInte
     private javax.swing.JPanel CM_Scoring_Panel;
     private javax.swing.JTabbedPane CM_TabPanel;
     private javax.swing.JButton ClosejButton6;
+    private javax.swing.JButton ClusterProgramButton;
     private javax.swing.JButton IDG_Update_button;
     private javax.swing.JButton IDG_change_button;
     private javax.swing.JTextField IDG_r_text;
