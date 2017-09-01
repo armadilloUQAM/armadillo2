@@ -22,6 +22,11 @@ package configuration;
 
 
 import static biologic.Workflows.config;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Frame;
+import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import static java.io.File.separatorChar;
@@ -63,7 +68,11 @@ import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipInputStream;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JMenuBar;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import org.apache.commons.lang.SystemUtils;
@@ -1509,6 +1518,52 @@ public class Util {
     // **************************************************************************
     // * EDITOR AND PROGRAM FUNCTIONS
     // **************************************************************************
+    
+    public static JFrame createSearchFrame() {
+        JFrame f = new JFrame();
+        f.pack();
+        f.setSize(new Dimension(1,1));
+        f.setLocationRelativeTo(null);
+        f.setVisible(false);
+        f.setAlwaysOnTop(true);
+        return f;
+    }
+    
+    public static String[] simpleSearchBox (String type,boolean multi, boolean hide) {
+        JFrame f = createSearchFrame();
+        JFileChooser jf;
+        jf=new JFileChooser(config.getExplorerPath());
+        if (type.contains("d")||type.contains("D"))
+            jf.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        else if (type.contains("f")||type.contains("F"))
+            jf.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        else 
+            jf.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        jf.setAcceptAllFileFilterUsed(false);
+        jf.setMultiSelectionEnabled(multi);
+        jf.setFileHidingEnabled(hide);
+        int result=jf.showOpenDialog(f);
+        f.dispose();
+        
+        if (result==JFileChooser.APPROVE_OPTION) {
+            if (multi) {
+                //--Save new filepath and files
+                File[] files=jf.getSelectedFiles();
+                String[] path = new String[files.length];
+                for( int i = 0; i < files.length; i++ ) {
+                    path[i] = getCanonicalPath(files[i].getPath());
+                }
+                return path;
+            } else {
+                File file=jf.getSelectedFile();
+                String[] path = new String[1];
+                path[0] = getCanonicalPath(file.getPath());
+                return path;
+            }
+        }
+        String[] empty = new String[0];
+        return empty;
+    }
     
     // test the type of input
     private static boolean valIsDouble(String str) {
