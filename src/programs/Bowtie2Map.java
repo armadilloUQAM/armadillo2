@@ -133,6 +133,12 @@ public class Bowtie2Map extends RunProgram {
     
     @Override
     public boolean init_checkRequirements() {
+        
+        if (!Util.DirExists(outputPath) && !Util.CreateDir(outputPath)) {
+            setStatus(status_BadRequirements,"Can't create the directory.");
+            return false;
+        }
+
         Vector<Integer>Fastq1    = properties.getInputID("FastqFile",PortInputUP);
         Vector<Integer>Fastq2    = properties.getInputID("FastqFile",PortInputDOWN);
         Vector<Integer>GenomeRef = properties.getInputID("GenomeFile",PortInputDOWN2);
@@ -195,7 +201,7 @@ public class Bowtie2Map extends RunProgram {
         
     @Override
     public String[] init_createCommandLine() {
-        
+
         // Inputs
         Vector<Integer>Fastq1    = properties.getInputID("FastqFile",PortInputUP);
         Vector<Integer>Fastq2    = properties.getInputID("FastqFile",PortInputDOWN);
@@ -221,6 +227,7 @@ public class Bowtie2Map extends RunProgram {
         genomeFileName = Util.getFileName(genomeFile);
         outputFile = outputPath+File.separator+fastqFile1Name+"_"+genomeFileName+".sam";
         
+        properties.put("ClusterLocalOutput_1",outputFile);
         // Programme et options
         String preset  = "";
         String opH     = optionsHash.get(properties.get("Options"));

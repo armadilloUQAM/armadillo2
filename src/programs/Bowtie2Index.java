@@ -72,7 +72,6 @@ public class Bowtie2Index extends RunProgram{
         } else {
             Vector<Integer>Fasta1 = properties.getInputID("FastaFile",PortInputDOWN);
             fastaFile1 = FastaFile.getVectorFilePath(Fasta1);
-            outputPath = outputPath+File.separator+Util.getFileName(fastaFile1);
             if (!Util.DirExists(outputPath) && !Util.CreateDir(outputPath)) {
                 setStatus(status_BadRequirements,"Can't create the specific directory.");
                 return false;
@@ -92,6 +91,7 @@ public class Bowtie2Index extends RunProgram{
         // Inputs
         String optionsChoosed = "";
         outputFile = outputPath+File.separator+Util.getFileName(fastaFile1);
+        properties.put("ClusterLocalOutput_1",outputFile);
         
         if (properties.get("IG_AO_button").equals("true")){
             optionsChoosed = Util.findOptions(indexGenomeTab,properties);
