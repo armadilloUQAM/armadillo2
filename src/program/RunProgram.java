@@ -1524,11 +1524,6 @@ public class RunProgram implements runningThreadInterface {
         boolean isRunning = false;
         boolean cantDownload = false;
         
-        /*
-        NEED TO BE SETTED DURING CLUSTER EDITOR 
-        */
-        properties.put("PathToRSAFile", "/home/truc/.ssh/id_rsa");
-        
         boolean b = Cluster.isClusterNeedInfoHere(workbox,properties);
         if (b){
             runLocal = true;
