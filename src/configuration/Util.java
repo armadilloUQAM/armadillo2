@@ -335,7 +335,7 @@ public class Util {
     
     /**
      * Test if a file exists...
-     * @param filename
+     * @param path
      * @return true if file Exists
      */
     public static boolean CreateFile(String path) {
@@ -348,6 +348,19 @@ public class Util {
             Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+    }
+    
+    /**
+     * Test if a file exists...
+     * @param s
+     * @return true if file Exists
+     */
+    public static boolean testIfFile(String s) {
+        int p1 = s.lastIndexOf(".");
+        int p2 = s.lastIndexOf(File.separator);
+        if (p1<p2)
+            return false;
+        return true;
     }
     
     /**

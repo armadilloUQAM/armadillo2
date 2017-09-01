@@ -1524,22 +1524,28 @@ public class RunProgram implements runningThreadInterface {
         boolean isRunning = false;
         boolean cantDownload = false;
         
-        if (!Cluster.getAccessToCluster(workbox,properties)){
+        /*
+        NEED TO BE SETTED DURING CLUSTER EDITOR 
+        */
+        properties.put("PathToRSAFile", "/home/truc/.ssh/id_rsa");
+        
+        boolean b = Cluster.isClusterNeedInfoHere(workbox,properties);
+        if (b){
             runLocal = true;
-            setStatus(status_running, "\tUnable to access to the server");
+            setStatus(status_running, "\tNot enougth information to run on Cluster");
         }
         
-        if (Cluster.isAClusterTasksNumberHere(properties)&&runLocal==false) {
+        if (!runLocal)
+            if (!Cluster.getAccessToCluster(workbox,properties)){
+                runLocal = true;
+                setStatus(status_running, "\tUnable to access to the server");
+            }
+        
+        if (Cluster.isAClusterTasksNumberHere(properties)&&!runLocal) {
             isRunning = true;
         }
             
-        
         if(!isRunning){
-            boolean b = Cluster.isClusterNeedInfoHere(workbox,properties);
-            if (b&&!runLocal){
-                runLocal = true;
-                setStatus(status_running, "\tNot enougth information to run on Cluster");
-            }
             if (!runLocal)
                 if (!Cluster.isTheProgramOnCluster(workbox,properties)){
                     runLocal = true;
@@ -1582,7 +1588,7 @@ public class RunProgram implements runningThreadInterface {
         if (!runLocal)
             if (!Cluster.downloadResults(workbox,properties)) {
                 cantDownload = true;
-                setStatus(status_BadRequirements, "\tNot able to create and send the pbs file to the server.");
+                setStatus(status_BadRequirements, "\tNot able to download results from the server.");
                 return false;
             } else {
                 setStatus(status_running,"\t<-Results downloaded from server->");
@@ -1599,8 +1605,8 @@ public class RunProgram implements runningThreadInterface {
                 Logger.getLogger(RunProgram.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            String stdOut = Cluster.getStdoutOutput(workbox,properties);
-            String stdErr = Cluster.getStderrorOutput(workbox,properties);
+            String stdOut = Cluster.getPgrmStdoutOutput(workbox,properties);
+            String stdErr = Cluster.getPgrmStderrorOutput(workbox,properties);
             properties.put("SDOUT",stdOut);
             properties.put("STDERROR",stdErr);
             outputText.add(stdOut+"\n");
