@@ -116,6 +116,11 @@ public class Workbox {
             Workbox.project=project;
         }
         workflow_int_frame=new WorkFlowJInternalFrame(frame, workflow);
+        if (this.testClusterPresence()){
+            this.getWorkFlowJInternalFrame().cleanClusterObject();
+            this.getWorkFlowJInternalFrame().setCluster(false);
+            Util.pl("yes");
+        }
     }
     
     ////////////////////////////////////////////////////////////////////////////
@@ -177,6 +182,10 @@ public class Workbox {
     
     public Workflows getCurrentWorkflows() {
         return database_workflow;
+    }
+    
+    public boolean testClusterPresence(){
+        return this.getWorkFlowJInternalFrame().isCluster();
     }
     
     public RunWorkflow getCurrentRunWorkflow() {

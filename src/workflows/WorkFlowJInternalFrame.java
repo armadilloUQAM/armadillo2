@@ -55,7 +55,7 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
     
     ////////////////////////////////////////////////////////////////////////////
     /// Variables
-    private armadillo_workflow work;
+    private armadillo_workflow current_workflow;
     private Workflows database_workflow;
     public RunWorkflow runworkflow=new RunWorkflow();                //--This is the Runworkflow in results
     private workflow_properties selection=new workflow_properties(); //Selected object
@@ -86,10 +86,10 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
     public WorkFlowJInternalFrame(Frame frame, Workflows workflow) {
         //--Set variable
         this.database_workflow=workflow;
-        work=workflow.getWorkflow();
+        current_workflow=workflow.getWorkflow();
         //-- Initialize the workflow
         //-- Note: It is added to the jPanel1 in initComponents
-        work.init(this, false);
+        current_workflow.init(this, false);
         initComponents();
         preferences=new WorkFlowPreferenceJDialog(frame);
         //this.jProgressBar1.setEnabled(false);
@@ -138,8 +138,8 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
         //this.setLocation(toolbox.getDimension().width,0);
         this.setLocation(toolbox_width,0);
         this.repaint();
-        work.force_redraw=true;
-        work.redraw();
+        current_workflow.force_redraw=true;
+        current_workflow.redraw();
         this.setResizable(true);
         this.jScrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         this.jScrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -151,7 +151,7 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
      */
     public void setWorkflowSelected() {
         this.Workflow_jTabbedPane.setSelectedIndex(0);
-        this.work.redraw();
+        this.current_workflow.redraw();
         this.setResizable(true);
         setSelectedWay(RunOptions_jComboBox);
     }
@@ -214,12 +214,12 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        scrollPane1.add(work);
+        scrollPane1.add(current_workflow);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        WorkflowsName.setFont(new java.awt.Font("Tahoma", 1, 11));
+        WorkflowsName.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         WorkflowsName.setToolTipText("Name of this Workflow.");
         WorkflowsName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -465,7 +465,7 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
     private void ExecuteAllWorkflow_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExecuteAllWorkflow_jButtonActionPerformed
         //--Note: To execute only the non-finished object
         //--      Do not reset the state
-        work.resetState();
+        current_workflow.resetState();
         this.Run();
     }//GEN-LAST:event_ExecuteAllWorkflow_jButtonActionPerformed
     
@@ -698,70 +698,77 @@ public class WorkFlowJInternalFrame extends javax.swing.JInternalFrame {
         String s = (String)j.getModel().getElementAt(j.getSelectedIndex());
         if (s.equalsIgnoreCase("local")) {
             cluster = false;
-            selection.put("WF_tested",false);
+            selection.put("WF_Cluster",false);
         } else if (s.equalsIgnoreCase("cluster")) {
             cluster = true;
-            File dir = new File("./tmp/cluster/");
-            if (!dir.exists())
-                dir.mkdir();
+            //File dir = new File("./tmp/cluster/");
+            //if (!dir.exists())
+            //    dir.mkdir();
 //            String wid = String.valueOf(database_workflow.getId());
 //            String sb = "./tmp/cluster/export_num_workflow_before"+wid+".txt";
 //            database_workflow.updateCurrentWorkflow();
 //            database_workflow.saveWorkflow(sb);
-selection.put("WF_tested",true);
-insertClusterObject();
+            selection.put("WF_Cluster",true);
+            insertClusterObject();
         }
         updateClusterObject();
     }
     
     public void insertClusterObject() {
-        boolean b = work.getWorkFlow().testClusterPresence();
+        boolean b = current_workflow.getWorkFlow().testClusterPresence();
         if (!b) {
             workflow_properties tmp=new workflow_properties();
             tmp.load("./src/configuration/CLUSTER.properties");
-            work.createObject(tmp,new Point(95,5));
+            current_workflow.createObject(tmp,new Point(95,5));
             if (tmp==null) {
                 System.out.println("Unable to create object from cluster properties");
             }
         }
-        work.force_redraw=true;
-        work.redraw();
+        current_workflow.force_redraw=true;
+        current_workflow.redraw();
+    }
+    
+    public void cleanClusterObject() {
+        boolean b = current_workflow.getWorkFlow().cleanClusterPresence();
+        if (b){
+            current_workflow.force_redraw=true;
+            current_workflow.redraw();
+        }
     }
     
     public void loadFromSavedCluster(){
-        boolean b = work.getWorkFlow().testClusterPresence();
+        boolean b = current_workflow.getWorkFlow().testClusterPresence();
         if (b) {
-            workflow_object tmp;
-            tmp = work.getWorkFlow().getClusterObject();
+            workflow_object tmp = current_workflow.getWorkFlow().getClusterObject();
             if (tmp!=null){
                 workflow_properties properties = tmp.getProperties();
                 boolean b1 = properties.isSet("clusterEnabled");
                 selection.put("ClusterAccessAddress",properties.get("Description"));
                 if (b1){
                     RunOptions_jComboBox.setSelectedIndex(1);
-                    selection.put("WF_tested",true);
+                    selection.put("WF_Cluster",true);
                     cluster=true;
                 } else {
                     RunOptions_jComboBox.setSelectedIndex(0);
-                    selection.put("WF_tested",false);
+                    selection.put("WF_Cluster",false);
                     cluster=false;
                 }
             } else {
                 System.out.println("Impossible to load Cluster object");
             }
         }
-        work.force_redraw=true;
-        work.redraw();
+        current_workflow.force_redraw=true;
+        current_workflow.redraw();
     }
     
     public void updateClusterObject(){
-        boolean b = work.getWorkFlow().testClusterPresence();
+        boolean b = current_workflow.getWorkFlow().testClusterPresence();
         if (b) {
             workflow_object tmp;
-            tmp = work.getWorkFlow().getClusterObject();
+            tmp = current_workflow.getWorkFlow().getClusterObject();
             //System.out.println(tmp.getProperties().getPropertiesToString());
             if (tmp!=null){
-                boolean b1 = Boolean.parseBoolean(selection.get("WF_tested"));
+                boolean b1 = Boolean.parseBoolean(selection.get("WF_Cluster"));
                 if (b1){
                     tmp.getProperties().put("clusterEnabled",true);
                     tmp.move(225,10);
@@ -773,33 +780,33 @@ insertClusterObject();
                 System.out.println("Impossible to load Cluster object");
             }
         }
-        work.force_redraw=true;
-        work.redraw();
+        current_workflow.force_redraw=true;
+        current_workflow.redraw();
     }
     
     
     public void setSelectedWay(javax.swing.JComboBox j) {
-        if (selection.isSet("WF_tested")){
-            boolean b = Boolean.parseBoolean(selection.get("WF_tested"));
+        if (selection.isSet("WF_Cluster")){
+            boolean b = Boolean.parseBoolean(selection.get("WF_Cluster"));
             if (b) {
                 j.setSelectedIndex(1);
-                File dir = new File("./tmp/cluster/");
-                if (!dir.exists())
-                    dir.mkdir();
+                //File dir = new File("./tmp/cluster/");
+                //if (!dir.exists())
+                //    dir.mkdir();
 //                String wid = String.valueOf(database_workflow.getId());
 //                String sb = "./tmp/cluster/export_num_workflow_before"+wid+".txt";
 //                database_workflow.updateCurrentWorkflow();
 //                database_workflow.saveWorkflow(sb);
             } else {
-                notATest(j);
+                notOnCluster(j);
             }
         } else {
-            notATest(j);
+            notOnCluster(j);
         }
     }
     
-    private void notATest(javax.swing.JComboBox j){
-        selection.put("WF_tested",false);
+    private void notOnCluster(javax.swing.JComboBox j){
+        selection.put("WF_Cluster",false);
         j.setSelectedIndex(0);
     }
     

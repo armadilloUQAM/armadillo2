@@ -2900,6 +2900,7 @@ public class armadillo_workflow extends PApplet implements ActionListener {
         }
         
         public boolean testClusterPresence() {
+            cleanClusterPresence();
             for(int i=0; i<work.size();i++) {
                 workflow_object obj=work.get(i);
                 if (obj.getProperties().get("Name").equals("Cluster") &&
@@ -2908,6 +2909,27 @@ public class armadillo_workflow extends PApplet implements ActionListener {
                     //--debug Config.log(obj.getName());
                     return true;
                 }
+            }
+            return false;
+        }
+        
+        public boolean cleanClusterPresence(){
+            ArrayList<workflow_object> list = new ArrayList<workflow_object>();
+            for(int i=0; i<work.size();i++) {
+                workflow_object obj=work.get(i);
+                if (obj.getProperties().get("Name").equals("Cluster") &&
+                        obj.getProperties().get("ObjectType").equals("Cluster")
+                        ) {
+                    //--debug Config.log(obj.getName());
+                    list.add(obj);
+                }
+            }
+            if (list.size()>1){
+                workflow_object objFinal = list.get(0);
+                list.remove(0);
+                for (workflow_object obj:list)
+                    work.remove(obj);
+                return true;
             }
             return false;
         }
