@@ -1642,8 +1642,8 @@ public class Util {
         uspBoxCombo(properties, listDicts.get(2));
         uspRButSpin(properties, listDicts.get(3));
         uspRButText(properties, listDicts.get(4));
-        
-        Editor_name.setText(properties.getName());
+        if (Editor_name!=null)
+            Editor_name.setText(properties.getName());
     }
         // Update Values
         private static void uspBoxSpinVal(workflow_properties properties, HashMap<JCheckBox,JSpinner> BoxSpin) {

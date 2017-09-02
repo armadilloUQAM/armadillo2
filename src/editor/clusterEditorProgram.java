@@ -37,7 +37,14 @@ import javax.imageio.ImageIO;
 import editor.ConnectorInfoBox;
 import editor.EditorInterface;
 import editors.HelpEditor;
+import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JRadioButton;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
 import program.*;
 import static program.RunProgram.workbox;
 import workflows.Workbox;
@@ -64,7 +71,13 @@ public class clusterEditorProgram extends javax.swing.JDialog implements EditorI
     workflow_properties properties=new workflow_properties();
     armadillo_workflow parent_workflow;
     
-    
+    public static HashMap<JCheckBox,JSpinner> DictMenuCBS0 = new HashMap<JCheckBox,JSpinner>();
+    public static HashMap<JCheckBox,JTextField> DictMenuCBT0 = new HashMap<JCheckBox,JTextField>();
+    public static HashMap<JCheckBox,JComboBox> DictMenuCBC0 = new HashMap<JCheckBox,JComboBox>();
+    public static HashMap<JRadioButton,JSpinner> DictMenuRBS0 = new HashMap<JRadioButton,JSpinner>();
+    public static HashMap<JRadioButton,JTextField> DictMenuRBT0 = new HashMap<JRadioButton,JTextField>();
+    public static ArrayList<HashMap> listDictsMenu0 = new ArrayList<HashMap>();
+
     
     /** Creates new form propertiesJDialog */
     public clusterEditorProgram(java.awt.Frame parent, boolean modal,workflow_properties properties) {
@@ -92,31 +105,30 @@ public class clusterEditorProgram extends javax.swing.JDialog implements EditorI
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jSpinner5 = new javax.swing.JSpinner();
-        jLabel8 = new javax.swing.JLabel();
-        jSpinner4 = new javax.swing.JSpinner();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        BasicBA_text = new javax.swing.JTextField();
+        BasicNodes_spinner = new javax.swing.JSpinner();
+        BasicPPN_spinner = new javax.swing.JSpinner();
+        BasicJN_text = new javax.swing.JTextField();
+        BasicBA_box = new javax.swing.JCheckBox();
+        BasicNodes_box = new javax.swing.JCheckBox();
+        BasicPPN_box = new javax.swing.JCheckBox();
+        BasicJN_box = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jSpinner3 = new javax.swing.JSpinner();
-        jLabel1 = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
-        jLabel3 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        WalltimeHours_spinner = new javax.swing.JSpinner();
+        WalltimeMinutes_spinner = new javax.swing.JSpinner();
+        WalltimeSeconds_spinner = new javax.swing.JSpinner();
+        WalltimeHours_box = new javax.swing.JCheckBox();
+        WalltimeMinutes_box = new javax.swing.JCheckBox();
+        WalltimeSeconds_box = new javax.swing.JCheckBox();
         jPanel5 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        ContactEmail_text = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
+        ContactJobBegins = new javax.swing.JCheckBox();
+        ContactJobEnds = new javax.swing.JCheckBox();
+        ContactJobAbords = new javax.swing.JCheckBox();
+        ContactEmail_box = new javax.swing.JCheckBox();
         ClusterDeleteAllFiles = new javax.swing.JCheckBox();
         ClosejButton = new javax.swing.JButton();
-        ClusterInfosUpdate = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setTitle("Properties");
@@ -143,31 +155,93 @@ public class clusterEditorProgram extends javax.swing.JDialog implements EditorI
 
         jTabbedPane2.setVerifyInputWhenFocusTarget(false);
 
-        jLabel5.setText("Billed account");
+        BasicBA_text.setEnabled(false);
+        BasicBA_text.setMaximumSize(new java.awt.Dimension(115, 27));
+        BasicBA_text.setMinimumSize(new java.awt.Dimension(115, 27));
+        BasicBA_text.setName("BasicBA_text"); // NOI18N
+        BasicBA_text.setPreferredSize(new java.awt.Dimension(115, 27));
+        BasicBA_text.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                BasicBA_textFocusLost(evt);
+            }
+        });
+        BasicBA_text.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                BasicBA_textPropertyChange(evt);
+            }
+        });
 
-        jTextField3.setMaximumSize(new java.awt.Dimension(115, 27));
-        jTextField3.setMinimumSize(new java.awt.Dimension(115, 27));
-        jTextField3.setPreferredSize(new java.awt.Dimension(115, 27));
+        BasicNodes_spinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        BasicNodes_spinner.setEnabled(false);
+        BasicNodes_spinner.setMaximumSize(new java.awt.Dimension(115, 28));
+        BasicNodes_spinner.setMinimumSize(new java.awt.Dimension(115, 28));
+        BasicNodes_spinner.setName("BasicNodes_spinner"); // NOI18N
+        BasicNodes_spinner.setPreferredSize(new java.awt.Dimension(115, 28));
+        BasicNodes_spinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                BasicNodes_spinnerStateChanged(evt);
+            }
+        });
 
-        jLabel6.setText("Nodes");
+        BasicPPN_spinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        BasicPPN_spinner.setEnabled(false);
+        BasicPPN_spinner.setMaximumSize(new java.awt.Dimension(115, 28));
+        BasicPPN_spinner.setMinimumSize(new java.awt.Dimension(115, 28));
+        BasicPPN_spinner.setName("BasicPPN_spinner"); // NOI18N
+        BasicPPN_spinner.setPreferredSize(new java.awt.Dimension(115, 28));
+        BasicPPN_spinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                BasicPPN_spinnerStateChanged(evt);
+            }
+        });
 
-        jSpinner5.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-        jSpinner5.setMaximumSize(new java.awt.Dimension(115, 28));
-        jSpinner5.setMinimumSize(new java.awt.Dimension(115, 28));
-        jSpinner5.setPreferredSize(new java.awt.Dimension(115, 28));
+        BasicJN_text.setEnabled(false);
+        BasicJN_text.setMaximumSize(new java.awt.Dimension(115, 27));
+        BasicJN_text.setMinimumSize(new java.awt.Dimension(115, 27));
+        BasicJN_text.setName("BasicJN_text"); // NOI18N
+        BasicJN_text.setPreferredSize(new java.awt.Dimension(115, 27));
+        BasicJN_text.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                BasicJN_textFocusLost(evt);
+            }
+        });
+        BasicJN_text.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                BasicJN_textPropertyChange(evt);
+            }
+        });
 
-        jLabel8.setText("Processors per nodes");
+        BasicBA_box.setText("Billed account");
+        BasicBA_box.setName("BasicBA_box"); // NOI18N
+        BasicBA_box.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BasicBA_boxActionPerformed(evt);
+            }
+        });
 
-        jSpinner4.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-        jSpinner4.setMaximumSize(new java.awt.Dimension(115, 28));
-        jSpinner4.setMinimumSize(new java.awt.Dimension(115, 28));
-        jSpinner4.setPreferredSize(new java.awt.Dimension(115, 28));
+        BasicNodes_box.setText("Nodes");
+        BasicNodes_box.setName("BasicNodes_box"); // NOI18N
+        BasicNodes_box.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BasicNodes_boxActionPerformed(evt);
+            }
+        });
 
-        jLabel7.setText("Job Name");
+        BasicPPN_box.setText("Processors per nodes");
+        BasicPPN_box.setName("BasicPPN_box"); // NOI18N
+        BasicPPN_box.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BasicPPN_boxActionPerformed(evt);
+            }
+        });
 
-        jTextField2.setMaximumSize(new java.awt.Dimension(115, 27));
-        jTextField2.setMinimumSize(new java.awt.Dimension(115, 27));
-        jTextField2.setPreferredSize(new java.awt.Dimension(115, 27));
+        BasicJN_box.setText("Job Name");
+        BasicJN_box.setName("BasicJN_box"); // NOI18N
+        BasicJN_box.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BasicJN_boxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -176,16 +250,16 @@ public class clusterEditorProgram extends javax.swing.JDialog implements EditorI
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel7))
-                .addGap(18, 18, 18)
+                    .addComponent(BasicBA_box)
+                    .addComponent(BasicNodes_box)
+                    .addComponent(BasicPPN_box)
+                    .addComponent(BasicJN_box))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jSpinner5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSpinner4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(BasicNodes_spinner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BasicPPN_spinner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BasicBA_text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BasicJN_text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -193,45 +267,84 @@ public class clusterEditorProgram extends javax.swing.JDialog implements EditorI
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BasicBA_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BasicBA_box))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BasicNodes_spinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BasicNodes_box))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BasicPPN_spinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BasicPPN_box))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BasicJN_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BasicJN_box))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Basic", jPanel2);
 
-        jLabel9.setText("hours");
+        WalltimeHours_spinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        WalltimeHours_spinner.setEnabled(false);
+        WalltimeHours_spinner.setMaximumSize(new java.awt.Dimension(115, 28));
+        WalltimeHours_spinner.setMinimumSize(new java.awt.Dimension(115, 28));
+        WalltimeHours_spinner.setName("WalltimeHours_spinner"); // NOI18N
+        WalltimeHours_spinner.setPreferredSize(new java.awt.Dimension(115, 28));
+        WalltimeHours_spinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                WalltimeHours_spinnerStateChanged(evt);
+            }
+        });
 
-        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        jSpinner3.setMaximumSize(new java.awt.Dimension(115, 28));
-        jSpinner3.setMinimumSize(new java.awt.Dimension(115, 28));
-        jSpinner3.setPreferredSize(new java.awt.Dimension(115, 28));
+        WalltimeMinutes_spinner.setModel(new javax.swing.SpinnerNumberModel(5, 0, null, 1));
+        WalltimeMinutes_spinner.setEnabled(false);
+        WalltimeMinutes_spinner.setMaximumSize(new java.awt.Dimension(115, 28));
+        WalltimeMinutes_spinner.setMinimumSize(new java.awt.Dimension(115, 28));
+        WalltimeMinutes_spinner.setName("WalltimeMinutes_spinner"); // NOI18N
+        WalltimeMinutes_spinner.setPreferredSize(new java.awt.Dimension(115, 28));
+        WalltimeMinutes_spinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                WalltimeMinutes_spinnerStateChanged(evt);
+            }
+        });
 
-        jLabel1.setText("min");
+        WalltimeSeconds_spinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        WalltimeSeconds_spinner.setEnabled(false);
+        WalltimeSeconds_spinner.setMaximumSize(new java.awt.Dimension(115, 28));
+        WalltimeSeconds_spinner.setMinimumSize(new java.awt.Dimension(115, 28));
+        WalltimeSeconds_spinner.setName("WalltimeSeconds_spinner"); // NOI18N
+        WalltimeSeconds_spinner.setPreferredSize(new java.awt.Dimension(115, 28));
+        WalltimeSeconds_spinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                WalltimeSeconds_spinnerStateChanged(evt);
+            }
+        });
 
-        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(5, 0, null, 1));
-        jSpinner2.setMaximumSize(new java.awt.Dimension(115, 28));
-        jSpinner2.setMinimumSize(new java.awt.Dimension(115, 28));
-        jSpinner2.setPreferredSize(new java.awt.Dimension(115, 28));
+        WalltimeHours_box.setText("hours");
+        WalltimeHours_box.setName("WalltimeHours_box"); // NOI18N
+        WalltimeHours_box.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                WalltimeHours_boxActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setText("sec");
+        WalltimeMinutes_box.setText("min");
+        WalltimeMinutes_box.setName("WalltimeMinutes_box"); // NOI18N
+        WalltimeMinutes_box.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                WalltimeMinutes_boxActionPerformed(evt);
+            }
+        });
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        jSpinner1.setMaximumSize(new java.awt.Dimension(115, 28));
-        jSpinner1.setMinimumSize(new java.awt.Dimension(115, 28));
-        jSpinner1.setPreferredSize(new java.awt.Dimension(115, 28));
+        WalltimeSeconds_box.setText("sec");
+        WalltimeSeconds_box.setName("WalltimeSeconds_box"); // NOI18N
+        WalltimeSeconds_box.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                WalltimeSeconds_boxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -240,59 +353,75 @@ public class clusterEditorProgram extends javax.swing.JDialog implements EditorI
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
+                    .addComponent(WalltimeHours_box)
+                    .addComponent(WalltimeMinutes_box)
+                    .addComponent(WalltimeSeconds_box))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jSpinner3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(119, Short.MAX_VALUE))
+                    .addComponent(WalltimeHours_spinner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(WalltimeMinutes_spinner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(WalltimeSeconds_spinner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(WalltimeHours_spinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(WalltimeHours_box))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(WalltimeMinutes_spinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(WalltimeMinutes_box))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(WalltimeSeconds_spinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(WalltimeSeconds_box))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Walltime", jPanel4);
 
-        jLabel11.setText("address email");
-
-        jTextField1.setMaximumSize(new java.awt.Dimension(115, 27));
-        jTextField1.setMinimumSize(new java.awt.Dimension(115, 27));
-        jTextField1.setPreferredSize(new java.awt.Dimension(115, 27));
+        ContactEmail_text.setEnabled(false);
+        ContactEmail_text.setMaximumSize(new java.awt.Dimension(115, 27));
+        ContactEmail_text.setMinimumSize(new java.awt.Dimension(115, 27));
+        ContactEmail_text.setName("ContactEmail_text"); // NOI18N
+        ContactEmail_text.setPreferredSize(new java.awt.Dimension(115, 27));
 
         jLabel12.setText("reception when");
 
-        jCheckBox1.setText("b - job begins");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        ContactJobBegins.setText("b - job begins");
+        ContactJobBegins.setName("ContactJobBegins"); // NOI18N
+        ContactJobBegins.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                ContactJobBeginsActionPerformed(evt);
             }
         });
 
-        jCheckBox2.setText("e - job ends");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+        ContactJobEnds.setText("e - job ends");
+        ContactJobEnds.setName("ContactJobEnds"); // NOI18N
+        ContactJobEnds.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+                ContactJobEndsActionPerformed(evt);
             }
         });
 
-        jCheckBox3.setText("a - job aborts");
+        ContactJobAbords.setText("a - job aborts");
+        ContactJobAbords.setName("ContactJobAbords"); // NOI18N
+        ContactJobAbords.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContactJobAbordsActionPerformed(evt);
+            }
+        });
+
+        ContactEmail_box.setText("email address");
+        ContactEmail_box.setName("ContactEmail_box"); // NOI18N
+        ContactEmail_box.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContactEmail_boxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -302,31 +431,31 @@ public class clusterEditorProgram extends javax.swing.JDialog implements EditorI
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
-                    .addComponent(jLabel11))
+                    .addComponent(ContactEmail_box))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jCheckBox3)
-                    .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 46, Short.MAX_VALUE))
+                    .addComponent(ContactJobAbords)
+                    .addComponent(ContactJobBegins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ContactJobEnds)
+                    .addComponent(ContactEmail_text, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 56, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ContactEmail_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ContactEmail_box))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ContactJobBegins, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox2)
+                    .addComponent(ContactJobEnds)
                     .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox3)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addComponent(ContactJobAbords)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Contact", jPanel5);
@@ -337,7 +466,7 @@ public class clusterEditorProgram extends javax.swing.JDialog implements EditorI
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
+                .addComponent(jTabbedPane3)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -350,6 +479,7 @@ public class clusterEditorProgram extends javax.swing.JDialog implements EditorI
 
         jTabbedPane2.addTab("CalculQuébec", jPanel1);
 
+        ClusterDeleteAllFiles.setSelected(true);
         ClusterDeleteAllFiles.setText("Delete All files on cluster at the end");
         ClusterDeleteAllFiles.setName("ClusterDeleteAllFiles"); // NOI18N
         ClusterDeleteAllFiles.setVerifyInputWhenFocusTarget(false);
@@ -359,33 +489,6 @@ public class clusterEditorProgram extends javax.swing.JDialog implements EditorI
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(250, 250, 250))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ClusterDeleteAllFiles)
-                    .addComponent(clusterEnabled))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(clusterEnabled)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ClusterDeleteAllFiles)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         ClosejButton.setText("<html><b>Close</b></html>");
         ClosejButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -393,12 +496,39 @@ public class clusterEditorProgram extends javax.swing.JDialog implements EditorI
             }
         });
 
-        ClusterInfosUpdate.setText("Update Cluster Program Information");
-        ClusterInfosUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClusterInfosUpdateActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(ClusterDeleteAllFiles)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(clusterEnabled)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ClosejButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(clusterEnabled))
+                    .addComponent(ClosejButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ClusterDeleteAllFiles)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -406,23 +536,14 @@ public class clusterEditorProgram extends javax.swing.JDialog implements EditorI
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(ClusterInfosUpdate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ClosejButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ClusterInfosUpdate)
-                    .addComponent(ClosejButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -441,19 +562,20 @@ public class clusterEditorProgram extends javax.swing.JDialog implements EditorI
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3))
+                    .addComponent(jTabbedPane1))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -475,23 +597,160 @@ public class clusterEditorProgram extends javax.swing.JDialog implements EditorI
         help.setVisible(true);
 }//GEN-LAST:event_jButton3ActionPerformed
                         
-    private void ClusterInfosUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClusterInfosUpdateActionPerformed
-        //updateValues();
-    }//GEN-LAST:event_ClusterInfosUpdateActionPerformed
-
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
-
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
-
     private void ClusterDeleteAllFilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClusterDeleteAllFilesActionPerformed
         // TODO add your handling code here:
-        Util.boxEventSpinner(properties,ClusterDeleteAllFiles,null);
+        if (ClusterDeleteAllFiles.isSelected()==true){
+            properties.put(ClusterDeleteAllFiles.getName(),true);
+        } else {
+            properties.put(ClusterDeleteAllFiles.getName(),false);
+        }
     }//GEN-LAST:event_ClusterDeleteAllFilesActionPerformed
+
+    private void WalltimeHours_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WalltimeHours_boxActionPerformed
+        // TODO add your handling code here:
+        Util.boxEventSpinner(properties, WalltimeHours_box, WalltimeHours_spinner);
+    }//GEN-LAST:event_WalltimeHours_boxActionPerformed
+
+    private void WalltimeMinutes_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WalltimeMinutes_boxActionPerformed
+        // TODO add your handling code here:
+        Util.boxEventSpinner(properties, WalltimeMinutes_box, WalltimeMinutes_spinner);
+    }//GEN-LAST:event_WalltimeMinutes_boxActionPerformed
+
+    private void ContactJobEndsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContactJobEndsActionPerformed
+        // TODO add your handling code here:
+        Util.boxEventSpinner(properties, ContactJobEnds, null);
+    }//GEN-LAST:event_ContactJobEndsActionPerformed
+
+    private void ContactJobBeginsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContactJobBeginsActionPerformed
+        // TODO add your handling code here:
+        Util.boxEventSpinner(properties, ContactJobBegins, null);
+    }//GEN-LAST:event_ContactJobBeginsActionPerformed
+
+    private void ContactJobAbordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContactJobAbordsActionPerformed
+        // TODO add your handling code here:
+        Util.boxEventSpinner(properties, ContactJobAbords, null);
+    }//GEN-LAST:event_ContactJobAbordsActionPerformed
+
+    private void ContactEmail_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContactEmail_boxActionPerformed
+        // TODO add your handling code here:
+        Util.boxEventText(properties, ContactEmail_box, ContactEmail_text);
+    }//GEN-LAST:event_ContactEmail_boxActionPerformed
+
+    private void WalltimeHours_spinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_WalltimeHours_spinnerStateChanged
+        // TODO add your handling code here:
+        Util.boxEventSpinner(properties, WalltimeHours_box, WalltimeHours_spinner);
+    }//GEN-LAST:event_WalltimeHours_spinnerStateChanged
+
+    private void WalltimeMinutes_spinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_WalltimeMinutes_spinnerStateChanged
+        // TODO add your handling code here:
+        Util.boxEventSpinner(properties, WalltimeMinutes_box, WalltimeMinutes_spinner);
+    }//GEN-LAST:event_WalltimeMinutes_spinnerStateChanged
+
+    private void WalltimeSeconds_spinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_WalltimeSeconds_spinnerStateChanged
+        // TODO add your handling code here:
+        Util.boxEventSpinner(properties, WalltimeSeconds_box, WalltimeSeconds_spinner);
+    }//GEN-LAST:event_WalltimeSeconds_spinnerStateChanged
+
+    private void BasicBA_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BasicBA_boxActionPerformed
+        // TODO add your handling code here:
+        Util.boxEventText(properties, BasicBA_box, BasicBA_text);
+    }//GEN-LAST:event_BasicBA_boxActionPerformed
+
+    private void BasicNodes_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BasicNodes_boxActionPerformed
+        // TODO add your handling code here:
+        Util.boxEventSpinner(properties, BasicNodes_box, BasicNodes_spinner);
+    }//GEN-LAST:event_BasicNodes_boxActionPerformed
+
+    private void BasicPPN_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BasicPPN_boxActionPerformed
+        // TODO add your handling code here:
+        Util.boxEventSpinner(properties, BasicPPN_box, BasicPPN_spinner);
+    }//GEN-LAST:event_BasicPPN_boxActionPerformed
+
+    private void BasicJN_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BasicJN_boxActionPerformed
+        // TODO add your handling code here:
+        Util.boxEventText(properties, BasicJN_box, BasicJN_text);
+    }//GEN-LAST:event_BasicJN_boxActionPerformed
+
+    private void BasicJN_textFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BasicJN_textFocusLost
+        // TODO add your handling code here:
+        Util.boxEventText(properties, BasicJN_box, BasicJN_text);
+    }//GEN-LAST:event_BasicJN_textFocusLost
+
+    private void BasicJN_textPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_BasicJN_textPropertyChange
+        // TODO add your handling code here:
+        Util.boxEventText(properties, BasicJN_box, BasicJN_text);
+    }//GEN-LAST:event_BasicJN_textPropertyChange
+
+    private void BasicPPN_spinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_BasicPPN_spinnerStateChanged
+        // TODO add your handling code here:
+        Util.boxEventSpinner(properties, BasicPPN_box, BasicPPN_spinner);
+    }//GEN-LAST:event_BasicPPN_spinnerStateChanged
+
+    private void BasicNodes_spinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_BasicNodes_spinnerStateChanged
+        // TODO add your handling code here:
+        Util.boxEventSpinner(properties, BasicNodes_box, BasicNodes_spinner);
+    }//GEN-LAST:event_BasicNodes_spinnerStateChanged
+
+    private void BasicBA_textPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_BasicBA_textPropertyChange
+        // TODO add your handling code here:
+        Util.boxEventText(properties, BasicBA_box, BasicBA_text);
+    }//GEN-LAST:event_BasicBA_textPropertyChange
+
+    private void BasicBA_textFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BasicBA_textFocusLost
+        // TODO add your handling code here:
+        Util.boxEventText(properties, BasicBA_box, BasicBA_text);
+    }//GEN-LAST:event_BasicBA_textFocusLost
+
+    private void WalltimeSeconds_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WalltimeSeconds_boxActionPerformed
+        // TODO add your handling code here:
+        Util.boxEventSpinner(properties, WalltimeSeconds_box, WalltimeSeconds_spinner);
+    }//GEN-LAST:event_WalltimeSeconds_boxActionPerformed
     
+    /*******************************************************************
+     * Perpare List Dictionaries
+     ******************************************************************/
+
+    /**
+     * Perpare List of Dictionaries by a general reset
+     * @param properties
+     */
+
+    public void resetDictionaries(workflow_properties properties){
+        Util.dictsReset(listDictsMenu0,DictMenuCBS0,DictMenuCBT0,DictMenuCBC0,DictMenuRBS0,DictMenuRBT0);
+    }
+
+    /*******************************************************************
+     * Perpare Dictionaries
+     * 
+     *     public static HashMap<JCheckBox,JSpinner> DictMenuCBS0 = new HashMap<JCheckBox,JSpinner>();
+    public static HashMap<JCheckBox,JTextField> DictMenuCBT0 = new HashMap<JCheckBox,JTextField>();
+    public static HashMap<JCheckBox,JComboBox> DictMenuCBC0 = new HashMap<JCheckBox,JComboBox>();
+    public static HashMap<JRadioButton,JSpinner> DictMenuRBS0 = new HashMap<JRadioButton,JSpinner>();
+    public static HashMap<JRadioButton,JTextField> DictMenuRBT0 = new HashMap<JRadioButton,JTextField>();
+
+     ******************************************************************/
+
+    /**
+     * Perpare Dictionaries by adding commands
+     * @param properties
+     */
+
+    public void perpareDictionaries(workflow_properties properties){
+        DictMenuCBT0.put(BasicBA_box,BasicBA_text);
+        DictMenuCBT0.put(BasicJN_box,BasicJN_text);
+        DictMenuCBT0.put(ContactEmail_box, ContactEmail_text);
+        DictMenuCBT0.put(BasicBA_box, BasicBA_text);
+        DictMenuCBS0.put(BasicPPN_box,BasicPPN_spinner);
+        DictMenuCBS0.put(WalltimeSeconds_box, WalltimeSeconds_spinner);
+        DictMenuCBS0.put(WalltimeMinutes_box, WalltimeMinutes_spinner);
+        DictMenuCBS0.put(WalltimeHours_box, WalltimeHours_spinner);
+        DictMenuCBS0.put(ContactJobEnds, null);
+        DictMenuCBS0.put(ContactJobBegins, null);
+        DictMenuCBS0.put(ContactJobAbords, null);
+        DictMenuCBS0.put(BasicNodes_box, BasicNodes_spinner);
+        DictMenuCBS0.put(BasicPPN_box, BasicPPN_spinner);
+    }
+
     /*
      * Other clusters for the futur
      *     Briaree_nom@briaree.calculquebec.ca
@@ -512,6 +771,10 @@ public class clusterEditorProgram extends javax.swing.JDialog implements EditorI
      * Load Saved Values
      */
     public void loadSavedValues(workflow_properties properties) {
+        if (properties.isSet(ClusterDeleteAllFiles.getName())){
+            boolean b = Boolean.getBoolean(properties.get(ClusterDeleteAllFiles));
+            ClusterDeleteAllFiles.setSelected(b);
+        }
     }
     
     /**
@@ -520,9 +783,8 @@ public class clusterEditorProgram extends javax.swing.JDialog implements EditorI
      */
     public void setProperties(workflow_properties properties) {
         this.properties=properties;
-        setTitle(properties.getName());
-//        if (properties.isSet("Description")) this.ClusterAccess.setText(properties.get("Description"));
-        loadSavedValues(properties);
+        setTitle("Cluster Local Options");
+        Util.updateSavedProperties(properties,listDictsMenu0,null);
     }
     
     ///////////////////////////////////////////////////////////////////////////
@@ -530,7 +792,7 @@ public class clusterEditorProgram extends javax.swing.JDialog implements EditorI
     
     public void display(workflow_properties properties) {
         initComponents();
-        setProperties(properties);
+        //setProperties(properties);
         // Set position
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension d = getSize();
@@ -539,10 +801,20 @@ public class clusterEditorProgram extends javax.swing.JDialog implements EditorI
         this.setAlwaysOnTop(true);
         this.setVisible(true);
         
+        // Prepare dictionaries
+        this.resetDictionaries(properties);
+        this.perpareDictionaries(properties);
+        this.setProperties(properties);
         if (workbox.isWorkboxOnCLuster()) {
             clusterEnabled.setSelected(true);
         } else {
             clusterEnabled.setSelected(false);
+        }
+
+        this.loadSavedValues(properties);
+        if (!properties.isSet(ClusterDeleteAllFiles.getName())){
+            properties.put(ClusterDeleteAllFiles.getName(), true);
+            ClusterDeleteAllFiles.setSelected(true);
         }
     }
     
@@ -558,39 +830,38 @@ public class clusterEditorProgram extends javax.swing.JDialog implements EditorI
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox BasicBA_box;
+    private javax.swing.JTextField BasicBA_text;
+    private javax.swing.JCheckBox BasicJN_box;
+    private javax.swing.JTextField BasicJN_text;
+    private javax.swing.JCheckBox BasicNodes_box;
+    private javax.swing.JSpinner BasicNodes_spinner;
+    private javax.swing.JCheckBox BasicPPN_box;
+    private javax.swing.JSpinner BasicPPN_spinner;
     private javax.swing.JButton ClosejButton;
     private javax.swing.JCheckBox ClusterDeleteAllFiles;
-    private javax.swing.JButton ClusterInfosUpdate;
+    private javax.swing.JCheckBox ContactEmail_box;
+    private javax.swing.JTextField ContactEmail_text;
+    private javax.swing.JCheckBox ContactJobAbords;
+    private javax.swing.JCheckBox ContactJobBegins;
+    private javax.swing.JCheckBox ContactJobEnds;
+    private javax.swing.JCheckBox WalltimeHours_box;
+    private javax.swing.JSpinner WalltimeHours_spinner;
+    private javax.swing.JCheckBox WalltimeMinutes_box;
+    private javax.swing.JSpinner WalltimeMinutes_spinner;
+    private javax.swing.JCheckBox WalltimeSeconds_box;
+    private javax.swing.JSpinner WalltimeSeconds_spinner;
     private javax.swing.JCheckBox clusterEnabled;
     private javax.swing.JButton jButton3;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JSpinner jSpinner4;
-    private javax.swing.JSpinner jSpinner5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
