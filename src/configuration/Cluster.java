@@ -437,14 +437,41 @@ public class Cluster {
         }
         String stdOut = getClusterFilePath(properties,"stdOutFile");
         String stdErr = getClusterFilePath(properties,"stdErrFile");
-        String walltime = "#PBS -l walltime=00:05:00";
-        String nodes    = "#PBS -l nodes=1:ppn=1";
+        
+        
+        String hours = "00";
+        String minutes = "05";
+        String seconds = "00";
+        String nodesV = "1";
+        String ppn = "1";
+        String emailV = "";
+        if (properties.isSet("WalltimeHours_box"))
+            hours = properties.get("WalltimeHours_box");
+        if (properties.isSet("WalltimeMinutes_box"))
+            minutes = properties.get("WalltimeMinutes_box");
+        if (properties.isSet("WalltimeSeconds_box"))
+            seconds = properties.get("WalltimeSeconds_box");
+        if (properties.isSet("BasicNodes_box"))
+            nodesV = properties.get("BasicNodes_box");
+        if (properties.isSet("BasicPPN_box"))
+            ppn = properties.get("BasicPPN_box");
+        if (properties.isSet("ContactEmail_box"))
+            emailV = properties.get("ContactEmail_box");
+        if (properties.isSet("ContactEmail_box"))
+            seconds = properties.get("ContactEmail_box");
+                
+        
+        String walltime = "#PBS -l walltime="+hours+":"+minutes+":"+seconds+"";
+        String nodes    = "#PBS -l nodes="+nodesV+":ppn="+ppn+"";
         // Need to be setted depending on cluster choosed
         String qwork    = "#PBS -q qwork@mp2";
         String r        = "#PBS -r n";
         String stdDoc   = "#PBS -o "+stdOut+"";
         String stdDec   = "#PBS -e "+stdErr+"";
-        String email    = "#PBS -M email@email.com";
+        String email    = "#PBS -M "+emailV+"";
+        /*
+        WARNINGS ITS ONLY FOR ONE MODULE
+        */
         String module   = "module load "+properties.get("ClusterModuleIs")+"";
         
         // Prepare lines
@@ -455,7 +482,8 @@ public class Cluster {
         lines.add(qwork);
         if (!serverName.contains("mp2")){
             lines.add(r);
-            lines.add(email);
+            if (emailV!="")
+                lines.add(email);
         }
         lines.add(stdDoc);
         lines.add(stdDec);
