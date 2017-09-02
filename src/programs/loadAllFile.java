@@ -98,34 +98,16 @@ public class loadAllFile extends RunProgram {
        // 3. Results
        // 4. Text
        switch(type) {
-           case 0: TextFile txt=new TextFile();
-                    txt.setFile(properties.get("inputname"));
-                    txt.setName(properties.get("inputname"));
-                    txt.saveToDatabase();
-                    properties.put("output_textfile_id", txt.getId());
-                    break;
-           case 1: SOLIDFile solid=new SOLIDFile();
-                    solid.setSolidFile(properties.get("inputname"));
-                    solid.setName(properties.get("inputname"));
-                    solid.saveToDatabase();
-                    properties.put("output_solidfile_id", solid.getId());
-                    break;
-           case 2: FastaFile fasta=new FastaFile();
-                    fasta.setFastaFile(properties.get("inputname"));
-                    fasta.setName(properties.get("inputname"));
-                    fasta.saveToDatabase();
-                     properties.put("output_fastafile_id", fasta.getId());
-                    break;
-           case 3: Results results=new Results(properties.get("inputname"));
-                    results.setName(properties.get("inputname"));
-                    results.saveToDatabase();
-                     properties.put("output_results_id", results.getId());
-                    break;
-            case 4: Text text=new Text(properties.get("inputname"));
-                    text.setName(properties.get("inputname"));
-                    text.saveToDatabase();
-                    properties.put("output_text_id", text.getId());
-                    break;
+            case 0: TextFile.saveFile(properties,properties.get("inputname"),"loadAllFiles","TextFile");
+                break;
+            case 1: SOLIDFile.saveFile(properties,properties.get("inputname"),"loadAllFiles","SOLIDFile");
+                break;
+            case 2: FastaFile.saveFile(properties,properties.get("inputname"),"loadAllFiles","FastaFile");
+                break;
+            case 3: Results.saveResultsPgrmOutput(properties,this.getPgrmOutput(),"loadAllFiles");
+                break;
+            case 4: Text.saveFile(properties,properties.get("inputname"),"loadAllFiles","Text");
+                break;
        }
        
     }

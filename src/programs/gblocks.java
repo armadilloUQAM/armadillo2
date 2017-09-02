@@ -85,9 +85,9 @@ public class gblocks extends RunProgram {
              addOutput(align);
              
              
-        deleteFile(infile);
-        deleteFile(outfile);
-        deleteFile(outfile_results);
+        Util.deleteFile(infile);
+        Util.deleteFile(outfile);
+        Util.deleteFile(outfile_results);
     }
 
     @Override

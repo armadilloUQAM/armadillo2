@@ -39,7 +39,7 @@ public class InfoAlignment extends Alignment {
 
     public InfoAlignment() {}
 
-     public InfoAlignment(int id) {
+    public InfoAlignment(int id) {
        this.loadFromDatabase(id);
     }
 
@@ -49,18 +49,18 @@ public class InfoAlignment extends Alignment {
 
     @Override
     public boolean loadFromDatabase(int id) {
-       InfoAlignment multi=df.getInfoAlignment(id);
+        InfoAlignment multi=df.getInfoAlignment(id);
         if (multi.id>0) {
-        this.name=multi.name;
-        this.id=id;
-        this.note=multi.note;
-        this.program_id=multi.getProgram_id();
-        //==DEPRECATED
-        this.originalSequence_id.clear();
-        this.originalSequence_id.addAll(multi.getOriginalSequence_id());
-        this.Sequence_id.clear();
-        this.Sequence_id.addAll(multi.getSequence_id());        
-        return true;
+            this.name=multi.name;
+            this.id=id;
+            this.note=multi.note;
+            this.program_id=multi.getProgram_id();
+            //==DEPRECATED
+            this.originalSequence_id.clear();
+            this.originalSequence_id.addAll(multi.getOriginalSequence_id());
+            this.Sequence_id.clear();
+            this.Sequence_id.addAll(multi.getSequence_id());        
+            return true;
         } else return false;
     }
 
@@ -116,11 +116,11 @@ public class InfoAlignment extends Alignment {
 
      @Override
     public workflow_properties returnProperties() {
-         workflow_properties tmp=new workflow_properties();
-         if (id==0) this.saveToDatabase();
-             tmp.put("input_alignment_id", this.getId());
-             tmp.put("output_alignment_id", this.getId());
-         return tmp;
+        workflow_properties tmp=new workflow_properties();
+        if (id==0) this.saveToDatabase();
+            tmp.put("input_alignment_id", this.getId());
+            tmp.put("output_alignment_id", this.getId());
+        return tmp;
      }
 
     /**
@@ -140,7 +140,4 @@ public class InfoAlignment extends Alignment {
     public void update() {
         super.updateDatabase();
     }
-
-
-
 }

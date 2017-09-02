@@ -37,21 +37,14 @@ import workflows.workflow_properties;
  * @since 2014
  */
 public class Model extends Text implements Biologic, Iterator, Serializable {
-
-     public Model() {}
-
-     public Model(int id) {
-          this.loadFromDatabase(id);
-     }
-
-     /**
-      * This
-      * @param filename
-      * @param type ("Name of the program")
-      */
-     public Model(String filename, String type) {
+    public Model()       {}
+    public Model(int id) {this.loadFromDatabase(id);}
+    /**
+    * This
+    * @param filename
+    * @param type ("Name of the program")
+    */
+    public Model(String filename, String type) {
         loadFromFile(filename);       
-     }
-
-    
+    }
 }

@@ -61,11 +61,11 @@ public class hgt extends RunProgram {
     @Override
     public void init_createInput() {
         //--Clean-up
-        deleteFile(path+File.separator+"speciesTreeWeb.txt");
-        deleteFile(path+File.separator+"speciesRoot.txt");
-        deleteFile(path+File.separator+"geneTreeWeb.txt");
-        deleteFile(path+File.separator+"geneRoot.txt");
-        deleteFile(path+File.separator+"infile.txt");
+        Util.deleteFile(path+File.separator+"speciesTreeWeb.txt");
+        Util.deleteFile(path+File.separator+"speciesRoot.txt");
+        Util.deleteFile(path+File.separator+"geneTreeWeb.txt");
+        Util.deleteFile(path+File.separator+"geneRoot.txt");
+        Util.deleteFile(path+File.separator+"infile.txt");
         //--Normal
         File f=new File(properties.getExecutable());
         if (properties.getBoolean("MacOSX")) f=new File(properties.getExecutableMacOSX());
@@ -153,11 +153,11 @@ public class hgt extends RunProgram {
         addOutput(matrix);
         properties.put("output_matrix_id",matrix.getId());
         //
-        deleteFile(path+File.separator+"speciesTreeWeb.txt");
-        deleteFile(path+File.separator+"speciesRoot.txt");
-        deleteFile(path+File.separator+"geneTreeWeb.txt");
-        deleteFile(path+File.separator+"geneRoot.txt");
-        deleteFile(path+File.separator+"infile.txt");
+        Util.deleteFile(path+File.separator+"speciesTreeWeb.txt");
+        Util.deleteFile(path+File.separator+"speciesRoot.txt");
+        Util.deleteFile(path+File.separator+"geneTreeWeb.txt");
+        Util.deleteFile(path+File.separator+"geneRoot.txt");
+        Util.deleteFile(path+File.separator+"infile.txt");
     }
 
 

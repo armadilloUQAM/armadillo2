@@ -61,8 +61,8 @@ public class sprit extends RunProgram {
     @Override
     public void init_createInput() {
         //--Clean-up
-        deleteFile(path+File.separator+"speciesTree.txt");        
-        deleteFile(path+File.separator+"geneTree.txt");        
+        Util.deleteFile(path+File.separator+"speciesTree.txt");        
+        Util.deleteFile(path+File.separator+"geneTree.txt");        
         //--Normal
         File f=new File(properties.getExecutable());
         if (properties.getBoolean("MacOSX")) f=new File(properties.getExecutableMacOSX());
@@ -147,8 +147,8 @@ public class sprit extends RunProgram {
             text.setNote("Sprit results created at "+Util.returnCurrentDateAndTime());
             properties.put("output_results_id", text.getId());
         //--Clean-up
-        deleteFile(path+File.separator+"speciesTree.txt");        
-        deleteFile(path+File.separator+"geneTree.txt");  
+        Util.deleteFile(path+File.separator+"speciesTree.txt");        
+        Util.deleteFile(path+File.separator+"geneTree.txt");  
     }
 
 

@@ -113,8 +113,8 @@ public class protTest extends RunProgram {
           loadProtTest();
             //--CheckPoint          
             if (!properties.getBoolean(debug)) {
-               deleteFile(infile);
-               deleteFile(outfile);             
+               Util.deleteFile(infile);
+               Util.deleteFile(outfile);             
             }
     }
 

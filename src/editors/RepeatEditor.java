@@ -1,22 +1,22 @@
 /*
- *  Armadillo Workflow Platform v1.0
- *  A simple pipeline system for phylogenetic analysis
- *  
- *  Copyright (C) 2009-2011  Etienne Lord, Mickael Leclercq
- *
- *  This program is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- * 
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+*  Armadillo Workflow Platform v1.0
+*  A simple pipeline system for phylogenetic analysis
+*
+*  Copyright (C) 2009-2011  Etienne Lord, Mickael Leclercq
+*
+*  This program is free software: you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License as published by
+*  the Free Software Foundation, either version 3 of the License, or
+*  (at your option) any later version.
+*
+*  This program is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*  GNU General Public License for more details.
+*
+*  You should have received a copy of the GNU General Public License
+*  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
 package editors;
 
@@ -40,7 +40,7 @@ import workflows.armadillo_workflow;
 import workflows.workflow_properties_dictionnary;
 
 public class RepeatEditor extends javax.swing.JDialog implements EditorInterface {
-
+    
     databaseFunction df=new databaseFunction();
     Frame frame;
     workflow_properties properties;
@@ -48,10 +48,10 @@ public class RepeatEditor extends javax.swing.JDialog implements EditorInterface
     workflow_properties_dictionnary dic=new workflow_properties_dictionnary();
     ////////////////////////////////////////////////////////////////////////////
     /// SELECTED VARIABLE
-
+    
     ForMutableTreeNode selected=null;
-     Vector<ForMutableTreeNode>dataTree=new Vector<ForMutableTreeNode>();
-     String name="";
+    Vector<ForMutableTreeNode>dataTree=new Vector<ForMutableTreeNode>();
+    String name="";
     ////////////////////////////////////////////////////////////////////////////
     // Constante
     // Search
@@ -63,15 +63,15 @@ public class RepeatEditor extends javax.swing.JDialog implements EditorInterface
     static final int MODE_ALL=4;
     static final int MODE_LENMORE=6;
     static final int MODE_LENLESS=7;
-
-   /////////////////////////////////////////////////////////////////////////////
-   /// Constructor
-
+    
+    /////////////////////////////////////////////////////////////////////////////
+    /// Constructor
+    
     public RepeatEditor(java.awt.Frame parent, armadillo_workflow parent_workflow) {
         this.parent_workflow=parent_workflow;
         frame=parent;
     }
-
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -246,18 +246,18 @@ public class RepeatEditor extends javax.swing.JDialog implements EditorInterface
     }//GEN-LAST:event_ClosejButtonActionPerformed
 
     private void NTimejComboBoxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NTimejComboBoxFocusLost
-       this.Repeat_Object();
+        this.Repeat_Object();
     }//GEN-LAST:event_NTimejComboBoxFocusLost
 
     private void RepeatjCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RepeatjCheckBox1ActionPerformed
-        boolean repeat=this.RepeatjCheckBox1.isSelected();        
+        boolean repeat=this.RepeatjCheckBox1.isSelected();
         properties.put("repeat", this.RepeatjCheckBox1.isSelected());
         this.Repeat_Object();
 
     }//GEN-LAST:event_RepeatjCheckBox1ActionPerformed
 
     private void NTimejComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NTimejComboBoxActionPerformed
-       this.Repeat_Object();
+        this.Repeat_Object();
     }//GEN-LAST:event_NTimejComboBoxActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -269,48 +269,48 @@ public class RepeatEditor extends javax.swing.JDialog implements EditorInterface
 }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-       HelpEditor help = new HelpEditor(this.frame, false, properties);
+        HelpEditor help = new HelpEditor(this.frame, false, properties);
         help.setVisible(true);
 }//GEN-LAST:event_jButton7ActionPerformed
-
+    
     void updateUI() {
-        if (!properties.getBoolean("repeat")) {            
+        if (!properties.getBoolean("repeat")) {
             if (selected!=null&&selected.isLeaf()) {
                 this.name=(selected.getProperties().getName()+"."+selected.getName());
-            } 
-        } 
+            }
+        }
     }
-
-
+    
+    
     public void Repeat_Object() {
         boolean repeat=properties.getBoolean(("repeat"));
         //--Clear previous repeat
         Vector<String>keys=new Vector<String>();
-           for (Object k:properties.keySet()) keys.add((String)k);
-           for(String key:keys) {
-               if (key.startsWith("For_")) properties.remove(key);
-           }
+        for (Object k:properties.keySet()) keys.add((String)k);
+        for(String key:keys) {
+            if (key.startsWith("For_")) properties.remove(key);
+        }
         properties.remove("ForObjectID");
-
+        
         if (repeat) {
             try {
                 int ntime=Integer.valueOf((String)this.NTimejComboBox.getSelectedItem());
                 for (int i=0; i<ntime;i++) {
                     properties.put("For_"+i,"");
-
+                    
                 }
                 name=("Repeat "+ntime+" times");
                 properties.put("ntime", ntime);
             } catch(Exception e) {
             }
             properties.put("ForObjectID", properties.getID());
-        } else {           
-           name="";
+        } else {
+            name="";
         }
         updateUI();
         parent_workflow.updateCurrentWorkflow(properties);
     }
-
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -327,22 +327,22 @@ public class RepeatEditor extends javax.swing.JDialog implements EditorInterface
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
-
+    
     /**
      * 1. Create the tree model from the database table.
      * 2. Set the properties
      * tree1 is the first parent, tree2 the first child, etc..
      */
     public void seProperties(){
-       
+        
         this.RepeatjCheckBox1.setSelected(properties.getBoolean("repeat"));
         if(properties.isSet("ntime")) this.NTimejComboBox.setSelectedItem(properties.get("ntime"));
-
-    }    
+        
+    }
     
     public void display(workflow_properties properties) {
-       this.properties=properties;
-        initComponents();    
+        this.properties=properties;
+        initComponents();
         //excelAdapterTable myAd = new excelAdapterTable(jTable1);
         this.seProperties();
         //if (properties.isSet("Description")) this.Notice.setText(properties.get("Description"));
@@ -351,20 +351,20 @@ public class RepeatEditor extends javax.swing.JDialog implements EditorInterface
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension d = getSize();
         setLocation((screenSize.width-d.width)/2,
-					(screenSize.height-d.height)/2);
+                (screenSize.height-d.height)/2);
         this.setAlwaysOnTop(true);
         this.setVisible(true);
     }
-
+    
     public void saveImage(String filename) {
         BufferedImage bi;
         try {
-            bi = new Robot().createScreenCapture(this.getBounds()); 
+            bi = new Robot().createScreenCapture(this.getBounds());
             ImageIO.write(bi, "png", new File(filename));
             this.setVisible(false);
         } catch (Exception ex) {
-           Config.log("Unable to save "+filename+" dialog image");
-        }            
+            Config.log("Unable to save "+filename+" dialog image");
+        }
     }
     
 }

@@ -29,19 +29,11 @@ import java.io.Serializable;
  */
 public class Outgroup extends Sequence implements Serializable {
 
-    public Outgroup() {super();}
-
-    public Outgroup(int id) {
-        super(id);
-    }
+    public Outgroup()       {super();}
+    public Outgroup(int id) {super(id);}
 
     @Override
     public String getBiologicType() {
         return "Outgroup";
     }
-
-    public String getExtendedString() {
-        return toString();
-    }
-
 }

@@ -163,8 +163,8 @@ public class PhyloNet extends RunProgram {
 //            }
         }
             if (!properties.getBoolean(debug)) {
-               deleteFile(infile);
-               deleteFile(outfile);             
+               Util.deleteFile(infile);
+               Util.deleteFile(outfile);             
             }
     }
 

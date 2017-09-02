@@ -170,8 +170,8 @@ public class bionj extends RunProgram {
       // for (Tree t:tree.getTree()) properties.put("output_tree_id", t.getId());
       properties.put("output_multipletrees_id",tree.getId());
         if (!properties.getBoolean("debug")) {          
-            deleteFile("outfile_bionj");
-            deleteFile("infile_bionj");
+            Util.deleteFile("outfile_bionj");
+            Util.deleteFile("infile_bionj");
         }
     }
   

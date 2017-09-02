@@ -28,10 +28,10 @@ import configuration.Config;
 import biologic.Alignment;
 import biologic.MultipleSequences;
 import configuration.Config;
+import configuration.Util;
 import uk.ac.ebi.webservices.WSMafftClient;
 import uk.ac.ebi.webservices.wsmafft.*;
 import workflows.workflow_properties;
-import configuration.Util.*;
 import program.RunProgram;
 
 
@@ -167,7 +167,7 @@ public class MafftWebEBI extends RunProgram {
                                             newmulti.setNote(filename);
                                             newmulti.saveToDatabase();
                                             addOutput(newmulti);
-                                            deleteFile(filename);
+                                            Util.deleteFile(filename);
                                             properties.put("output_alignment_id", newmulti.getId());
                                         }
                                     }
@@ -216,7 +216,7 @@ public class MafftWebEBI extends RunProgram {
                                 newmulti.setName(properties.getName()+" ("+configuration.Util.returnCurrentDateAndTime()+")");
                                 newmulti.setNote(filename);
                                 newmulti.saveToDatabase();
-                                //deleteFile(filename);
+                                //Util.deleteFile(filename);
                                 properties.put("output_alignment_id", newmulti.getId());
                             }
                         }

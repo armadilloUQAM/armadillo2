@@ -63,8 +63,8 @@ public class PIRN extends RunProgram {
     @Override
     public void init_createInput() {
         //--Clean-up
-        deleteFile(path+File.separator+"speciesTree.txt");        
-        deleteFile(path+File.separator+"geneTree.txt");        
+        Util.deleteFile(path+File.separator+"speciesTree.txt");        
+        Util.deleteFile(path+File.separator+"geneTree.txt");        
         //--Normal
         File f=new File(properties.getExecutable());
         if (properties.getBoolean("MacOSX")) f=new File(properties.getExecutableMacOSX());
@@ -223,7 +223,7 @@ public class PIRN extends RunProgram {
             }
             
         //--Clean-up
-        deleteFile(path+File.separator+"speciesTree.txt");        
+        Util.deleteFile(path+File.separator+"speciesTree.txt");        
  
     }
 

@@ -114,7 +114,7 @@ public class scriptree extends RunProgram {
     @Override
     public void init_createInput() {
          //--Pre-Run initialization
-       this.deleteFile(infile);
+       Util.deleteFile(infile);
        int tree_id=properties.getInputID("input_tree_id");
        Tree tree=new Tree(tree_id);
        tree.outputNewick(tree.getCompatibleName()+".nh");
@@ -182,9 +182,9 @@ public class scriptree extends RunProgram {
         result.saveToDatabase();
         properties.put("output_results_id",result.getId());
         //--Delete not needed files
-        deleteFile(outfile+".ps");
-        deleteFile(outfile+".nh");
-        deleteFile(outfile+".out.svg");
+        Util.deleteFile(outfile+".ps");
+        Util.deleteFile(outfile+".nh");
+        Util.deleteFile(outfile+".out.svg");
         if (Util.FileExists("script")) Util.deleteFile("script");
         if (Util.FileExists("annotation")) Util.deleteFile("annotation");
     }

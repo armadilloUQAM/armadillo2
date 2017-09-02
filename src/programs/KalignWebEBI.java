@@ -23,10 +23,10 @@ package programs;
 import biologic.Alignment;
 import biologic.MultipleSequences;
 import configuration.Config;
+import configuration.Util;
 import uk.ac.ebi.webservices.WSKalignClient;
 import uk.ac.ebi.webservices.wskalign.*;
 import workflows.workflow_properties;
-import configuration.Util.*;
 import program.RunProgram;
 
 public class KalignWebEBI extends RunProgram {
@@ -152,7 +152,7 @@ public class KalignWebEBI extends RunProgram {
                                             newmulti.setName(properties.getName()+" ("+configuration.Util.returnCurrentDateAndTime()+")");
                                             newmulti.setNote(filename);
                                             newmulti.saveToDatabase();
-                                            deleteFile(filename);
+                                            Util.deleteFile(filename);
                                             addOutput(newmulti);
                                             properties.put("output_alignment_id", newmulti.getId());
                                         }
@@ -202,7 +202,7 @@ public class KalignWebEBI extends RunProgram {
                                 newmulti.setName(properties.getName()+" ("+configuration.Util.returnCurrentDateAndTime()+")");
                                 newmulti.setNote(filename);
                                 newmulti.saveToDatabase();
-                                deleteFile(filename);
+                                Util.deleteFile(filename);
                                 properties.put("output_alignment_id", newmulti.getId());
                             }
                         }

@@ -314,6 +314,16 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Run_jMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="RunOnCHP_jMenuItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Run on CHP"/>
+                <Property name="toolTipText" type="java.lang.String" value="This is the default execution. Run all program on  the workflow even if already executed."/>
+                <Property name="name" type="java.lang.String" value="RunOnCHP_jMenuItem" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RunOnCHP_jMenuItemActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="RunSelected_jMenuItem7">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Run (unfinished only)"/>

@@ -148,16 +148,10 @@ public class convertSVGtoPNG extends RunProgram {
 
     @Override
     public void post_parseOutput() {
-       File f=new File(outfile);
-       if (f.exists()) {
-           ImageFile img=new ImageFile();
-           img.setFile(outfile);
-          img.setName(outfile);
-          img.setRunProgram_id(this.getId());
-           img.setNote("PNG file created from SVG "+infile+" ("+Util.returnCurrentDateAndTime()+")");
-           img.saveToDatabase();
-              properties.put("output_imagefile_id", img.getId());       
-       }      
+        File fi=new File(outfile);
+        if (fi.exists()) {
+            ImageFile.saveFile(properties, outfile, "PNG file created from SVG"+infile,"ImageFile");
+        } else System.out.println("WARNING : Image file "+outfile+" not found");
     }
 
  

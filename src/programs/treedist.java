@@ -70,9 +70,9 @@ public class treedist extends RunProgram {
     @Override
     public void init_createInput() {
         //--Pre-Run initialization
-       this.deleteFile(infile);
-       this.deleteFile(outfile);
-       this.deleteFile("outtree");
+       Util.deleteFile(infile);
+       Util.deleteFile(outfile);
+       Util.deleteFile("outtree");
        //--Create infile
         Util util=new Util("intree");
         Vector<Integer>MultipleTreesDOWN=properties.getInputID("multipletrees",PortInputDOWN);
@@ -116,10 +116,10 @@ public class treedist extends RunProgram {
         properties.put("output_results_id", text.getId());       
         //
         if (!properties.getBoolean("debug")) {
-                deleteFile("intree");
-                deleteFile(outfile);
-                deleteFile("outtree");
-                deleteFile("treedist.params");
+                Util.deleteFile("intree");
+                Util.deleteFile(outfile);
+                Util.deleteFile("outtree");
+                Util.deleteFile("treedist.params");
          }
     }
 

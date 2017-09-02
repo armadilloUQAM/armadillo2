@@ -167,9 +167,9 @@ public class IfProgramClass extends RunProgram {
             addOutput(text);
             text.saveToDatabase();
             properties.put("output_results_id", text.getId());
-            if (!debug) deleteFile(output);
+            if (!debug) Util.deleteFile(output);
         }
-        deleteFile("source.class");
+        Util.deleteFile("source.class");
         setStatus(status_done,"");
     }
 

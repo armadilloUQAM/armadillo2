@@ -80,7 +80,7 @@ public class concat extends RunProgram {
         //--Find the output type (the DOWN type)
         // CASE 1. We create a MultipleSequences as output
         if (SequenceDOWN.size()>1||MultipleSequencesDOWN.size()>1) {
-            //MultipleSequences tmp=new MultipleSequences()
+
 
 
 

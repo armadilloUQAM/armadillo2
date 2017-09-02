@@ -76,8 +76,8 @@ public class muscle extends RunProgram {
         align.saveToDatabase();
         properties.put("output_alignment_id", align.getId());
         addOutput(align);
-        deleteFile(infile);
-        deleteFile(outfile);
+        Util.deleteFile(infile);
+        Util.deleteFile(outfile);
     }
 
     @Override

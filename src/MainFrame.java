@@ -1,22 +1,22 @@
 /*
- *  Armadillo Workflow Platform v1.0
- *  A simple pipeline system for phylogenetic analysis
- *  
- *  Copyright (C) 2009-2011  Etienne Lord, Mickael Leclercq
- *
- *  This program is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- * 
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+*  Armadillo Workflow Platform v1.0
+*  A simple pipeline system for phylogenetic analysis
+*
+*  Copyright (C) 2009-2011  Etienne Lord, Mickael Leclercq
+*
+*  This program is free software: you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License as published by
+*  the Free Software Foundation, either version 3 of the License, or
+*  (at your option) any later version.
+*
+*  This program is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*  GNU General Public License for more details.
+*
+*  You should have received a copy of the GNU General Public License
+*  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
 import biologic.Alignment;
 import biologic.Matrix;
@@ -80,50 +80,50 @@ import tutorial.Ancestrale_Sequence_JIternalFrame;
  * @author Alix Boc, Etienne Lord, Mickael Leclercq, Abdoulaye Baniré Diallo, Vladimir Makarenkov
  * @since July 2009
  */
-public class MainFrame extends javax.swing.JFrame implements WindowListener,                                           
-                                            WindowStateListener {
-
-        Config config;                  // Note: Contain some icon, etc.
-        Toolbox toolbox;                //Note: Main toolbox with database
-        Databasebox2 databasebox;       //Note: Database editor
-        Databasebox2 databasebox2;      //Note: Database query box
+public class MainFrame extends javax.swing.JFrame implements WindowListener,
+        WindowStateListener {
+    
+    Config config;                  // Note: Contain some icon, etc.
+    Toolbox toolbox;                //Note: Main toolbox with database
+    Databasebox2 databasebox;       //Note: Database editor
+    Databasebox2 databasebox2;      //Note: Database query box
 //       FilesJInternalFrame filebox;
-        editor.MainFrame editor;        // Note: object editor
-        Workbox workbox;                // Note: currently only one workflow object per Project
-        Project project;                // Note: Current loaded project
-        propertiesEditorBox editorbox;  // Note: Editor for the workflow object (available in developper mode)
-        LoadSequenceFrame loadSequence; // Note: LoadSequence Popup
-        LoadTreeFrame loadTree;         // Note: LoadTree Popup
-        LoadAlignmentFrame loadAlignment; //Note:LoadAlingment Popup 
-        ChooseWorkflowJDialog chooseWorkflowJDialog;
-        WorkflowExplorerJFrame workflowexplorer;
-        
-        //--Tutorial
-         Ancestrale_Sequence_JIternalFrame tutorial_ancestrale_sequence;
-         
+    editor.MainFrame editor;        // Note: object editor
+    Workbox workbox;                // Note: currently only one workflow object per Project
+    Project project;                // Note: Current loaded project
+    propertiesEditorBox editorbox;  // Note: Editor for the workflow object (available in developper mode)
+    LoadSequenceFrame loadSequence; // Note: LoadSequence Popup
+    LoadTreeFrame loadTree;         // Note: LoadTree Popup
+    LoadAlignmentFrame loadAlignment; //Note:LoadAlingment Popup
+    ChooseWorkflowJDialog chooseWorkflowJDialog;
+    WorkflowExplorerJFrame workflowexplorer;
 
-         public static InformationJDialog loading; //--Loading JDialog when generating report
-        //resultsSaveFrame results = new resultsSaveFrame();
-        boolean defaultWorkflow=true; //Tag to know is we can directly save the workflow...
-        JFrame frame;
-        WelcomeMessage_JInternalFrame wmessage; //Welcome message
-
+    //--Tutorial
+    Ancestrale_Sequence_JIternalFrame tutorial_ancestrale_sequence;
+    
+    
+    public static InformationJDialog loading; //--Loading JDialog when generating report
+    //resultsSaveFrame results = new resultsSaveFrame();
+    boolean defaultWorkflow=true; //Tag to know is we can directly save the workflow...
+    JFrame frame;
+    WelcomeMessage_JInternalFrame wmessage; //Welcome message
+    
     /** Creates new form MainFrame */
     public MainFrame() {
-      
+        
         frame=this;
         initComponents();
-
-
+        
+        
         //0. Entry message
         Config.log("\nArmadillo Workflow Platform (c) 2009-"+Util.returnCurrentYear());
         Config.log("Starting "+Util.returnCurrentDateAndTime());
         Config.log("Initializing...");
         System.out.println("Armadillo Workflow Platform (c) 2009-"+Util.returnCurrentYear());
-        System.out.println("Initializing...");        
+        System.out.println("Initializing...");
         //--Initialise some icons, path...
         config=new Config();
-
+        
         //-- Setting some icons
         Config.log("Loading icons.");
         this.GenerateReportjButton.setIcon(config.getIcon("Report"));
@@ -148,7 +148,7 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
         this.Run_jMenuItem.setIcon(config.getIcon("play"));
         this.RunSelected_jMenuItem7.setIcon(config.getIcon("play"));
         this.Stop_jMenuItem.setIcon(config.getIcon("stopred"));
-        this.chooseWorkflowJDialog=new ChooseWorkflowJDialog(this.frame); 
+        this.chooseWorkflowJDialog=new ChooseWorkflowJDialog(this.frame);
         
         //1. Database and Project creation and Armadillo_workflow
         //-- Note: The method create the database connection
@@ -160,20 +160,20 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
         } else {
             Config.log("Creating new project.");
             projectpath=NewProject("");
-        }        
+        }
         Config.log("Loading workbox.");
         //2. Workbox
         //--Note: Contains the armadillo_workflow...
         workbox=new Workbox(this, projectpath,project);
         //3. Toolbox
-         Config.log("Loading toolbox.");
+        Config.log("Loading toolbox.");
         toolbox=new Toolbox();
         //4. Misc.
-         Config.log("Loading databasebox.");
+        Config.log("Loading databasebox.");
         databasebox=new Databasebox2(); //--Test my table Query
         //databasebox2=new Databasebox2();
-         Config.log("Loading Editors.");
-         Config.log("Creating propertiesEditorBox.");
+        Config.log("Loading Editors.");
+        Config.log("Creating propertiesEditorBox.");
         editorbox=new  propertiesEditorBox(this);
         Config.log("Creating Main Armadillo Workflow.");
         editor=new editor.MainFrame();
@@ -187,24 +187,24 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
         //--Note: not needed since it's done in project...
         //         Config.log("Connection to database.");
         //        databaseFunction df=new databaseFunction();
-         Config.log("Loading database.");
-         toolbox.reloadDatabaseTree();
-         
-         ///////////////////////////////////////////////////////////////////////
-         //--Workflow found?
-         if (!config.getBoolean("ForceOpen")) {
-             int workflow_id=project.df.getNextWorkflowsID()-1;
-             if (workflow_id>0) {
-                  Config.log("Loading last workbox with ID ["+workflow_id+"].");
-                 workbox.loadWorkflowFromDatabase(workflow_id);
-             }
-         } else {
-             Config.log("Warning. Force Open of Armadillo found. Will skip loading workflow...");
-         }
-         
-         
-         ///////////////////////////////////////////////////////////////////////
-         //--Some menu...
+        Config.log("Loading database.");
+        toolbox.reloadDatabaseTree();
+        
+        ///////////////////////////////////////////////////////////////////////
+        //--Workflow found?
+        if (!config.getBoolean("ForceOpen")) {
+            int workflow_id=project.df.getNextWorkflowsID()-1;
+            if (workflow_id>0) {
+                Config.log("Loading last workbox with ID ["+workflow_id+"].");
+                workbox.loadWorkflowFromDatabase(workflow_id);
+            }
+        } else {
+            Config.log("Warning. Force Open of Armadillo found. Will skip loading workflow...");
+        }
+        
+        
+        ///////////////////////////////////////////////////////////////////////
+        //--Some menus...
         Config.log("Loading sequence manager.");
         loadSequence= new LoadSequenceFrame(LoadSequenceFrame.MODE_NORMAL);
         Config.log("Loading tree manager.");
@@ -215,11 +215,11 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
         ////////////////////////////////////////////////////////////////////////
         /// Developper mode
         
-        if (config.isDevelopperMode()) {           
+        if (config.isDevelopperMode()) {
             //--DeveloperMode?
             this.ObjectEditor_jMenuItem.setEnabled(true);
             this.Generate_applications_report_jMenuItem.setEnabled(true);
-            this.ResetDevelopperStatejMenuItem5.setEnabled(true);   
+            this.ResetDevelopperStatejMenuItem5.setEnabled(true);
             this.Generate_applications_run_report_jMenuItem.setEnabled(true);
         }
         
@@ -239,27 +239,27 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
         this.setTitle(config.get("applicationName")+" "+config.get("version")+" - "+projectpath);
         
         ////////////////////////////////////////////////////////////////////////
-        /// Tutorial (2011) - TO DO 
+        /// Tutorial (2011) - TO DO
         
         tutorial_ancestrale_sequence=new Ancestrale_Sequence_JIternalFrame(this);
         this.jDesktopPane.add(tutorial_ancestrale_sequence);
-       
+        
         ////////////////////////////////////////////////////////////////////////
         /// Sample
         Vector<JMenuItem>sample_menu=new Vector<JMenuItem>();
-        //--Create menu item for each sample 
+        //--Create menu item for each sample
         for (String filename:Config.listDir("examples")) {
             if (filename.endsWith("db")) {
-                 File f=new File(filename);
+                File f=new File(filename);
                 if (config.getBoolean("MacOSX")&&f.getName().startsWith("LocalBlast.db")) {
                     //--TO DO... Special exclustion here...
-                } else {                                   
+                } else {
                     JMenuItem sample=new JMenuItem(f.getName());
                     sample.addActionListener(new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        SampleMenuActionPerformed(evt);
-                    }
-                    });                
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                            SampleMenuActionPerformed(evt);
+                        }
+                    });
                     sample_menu.add(sample);
                     this.Sample_jMenu.add(sample);
                 }
@@ -268,18 +268,23 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
         
         ////////////////////////////////////////////////////////////////////////
         /// Add some Windows listener
-        addWindowListener(this);        
-        addWindowStateListener(this);       
+        addWindowListener(this);
+        addWindowStateListener(this);
         //ava.awt.Frame parent, boolean modal, String title, String page
         wmessage=new WelcomeMessage_JInternalFrame(this, true, "text", "");
         this.jDesktopPane.add(wmessage);
         //--We display a Start Page?
         if (!config.getBoolean("DisplayStartPage"))  showWorkflow_and_Toolbox();
-
+        
+        ////////////////////////////////////////////////////////////////////////
+        /// Cluster (cloud) options
+        Config.log("Setting Cluster options if present.");
+        System.out.println("Setting Cluster options if present.");
+        workbox.getWorkFlowJInternalFrame().loadFromSavedCluster();
     }
-
-
-
+    
+    
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -335,6 +340,7 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         Run_jMenuItem = new javax.swing.JMenuItem();
+        RunOnCHP_jMenuItem = new javax.swing.JMenuItem();
         RunSelected_jMenuItem7 = new javax.swing.JMenuItem();
         RunIterationjMenuItem = new javax.swing.JMenuItem();
         Stop_jMenuItem = new javax.swing.JMenuItem();
@@ -734,6 +740,16 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
         });
         jMenu1.add(Run_jMenuItem);
 
+        RunOnCHP_jMenuItem.setText("Run on CHP");
+        RunOnCHP_jMenuItem.setToolTipText("This is the default execution. Run all program on  the workflow even if already executed.");
+        RunOnCHP_jMenuItem.setName("RunOnCHP_jMenuItem"); // NOI18N
+        RunOnCHP_jMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RunOnCHP_jMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu1.add(RunOnCHP_jMenuItem);
+
         RunSelected_jMenuItem7.setText("Run (unfinished only)");
         RunSelected_jMenuItem7.setToolTipText("Run only the un-executed programs or those with error state.");
         RunSelected_jMenuItem7.setName("RunSelected_jMenuItem7"); // NOI18N
@@ -910,100 +926,100 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-         if (workbox.getCurrentWorkflows().isChanged()) {
-                String msg="<html>Warning, workflow not saved.<br><br>Do you want to save the workflow before exiting?</html>";
-                Object[] options = {"Yes","No","Cancel"};
-                int n = JOptionPane.showOptionDialog(this,msg,"Save workflow before exit...",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,options, options[2]);
-                switch(n) {
-                    case 0:  workbox.saveWorkflowToDatabase("Save on "+Util.returnCurrentDateAndTime());
-                              //A pause so user can see the message before
-                            //the window actually closes.
-                            ActionListener task = new ActionListener() {
-                                boolean alreadyDisposed = false;
-                                public void actionPerformed(ActionEvent e) {
-                                    if (!alreadyDisposed) {
-                                        alreadyDisposed = true;
-                                        frame.dispose();
-                                        System.exit(0);
-                                    }
-                                }
-                            };
-                            Timer timer = new Timer(500, task); //fire every half second
-                            timer.setInitialDelay(0);        //first delay 2 seconds
-                            timer.setRepeats(false);
-                            timer.start();
-                           break;
-                    case 1:
-                         ActionListener task2 = new ActionListener() {
-                                boolean alreadyDisposed = false;
-                                public void actionPerformed(ActionEvent e) {
-                                    if (!alreadyDisposed) {
-                                        alreadyDisposed = true;
-                                        frame.dispose();
-                                        System.exit(0);
-                                    }
-                                }
-                            };
-                            Timer timer2 = new Timer(500, task2); //fire every half second
-                            timer2.setInitialDelay(0);        //first delay 2 seconds
-                            timer2.setRepeats(false);
-                            timer2.start();
-                           break;
-                    default:
-
-                }
+        if (workbox.getCurrentWorkflows().isChanged()) {
+            String msg="<html>Warning, workflow not saved.<br><br>Do you want to save the workflow before exiting?</html>";
+            Object[] options = {"Yes","No","Cancel"};
+            int n = JOptionPane.showOptionDialog(this,msg,"Save workflow before exit...",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,options, options[2]);
+            switch(n) {
+                case 0:  workbox.saveWorkflowToDatabase("Save on "+Util.returnCurrentDateAndTime());
+                //A pause so user can see the message before
+                //the window actually closes.
+                ActionListener task = new ActionListener() {
+                    boolean alreadyDisposed = false;
+                    public void actionPerformed(ActionEvent e) {
+                        if (!alreadyDisposed) {
+                            alreadyDisposed = true;
+                            frame.dispose();
+                            System.exit(0);
+                        }
+                    }
+                };
+                Timer timer = new Timer(500, task); //fire every half second
+                timer.setInitialDelay(0);        //first delay 2 seconds
+                timer.setRepeats(false);
+                timer.start();
+                break;
+                case 1:
+                    ActionListener task2 = new ActionListener() {
+                        boolean alreadyDisposed = false;
+                        public void actionPerformed(ActionEvent e) {
+                            if (!alreadyDisposed) {
+                                alreadyDisposed = true;
+                                frame.dispose();
+                                System.exit(0);
+                            }
+                        }
+                    };
+                    Timer timer2 = new Timer(500, task2); //fire every half second
+                    timer2.setInitialDelay(0);        //first delay 2 seconds
+                    timer2.setRepeats(false);
+                    timer2.start();
+                    break;
+                default:
+                    
+            }
         } else {
-           frame.dispose();
-           System.exit(0);
+            frame.dispose();
+            System.exit(0);
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
+    
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         this.toolbox.mazimizeSize();
         this.toolbox.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-
+    
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         this.workbox.mazimizeSize();
         this.workbox.setWorkflowVisible();
         this.workbox.getCurrentArmadilloWorkflow().redraw();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
-
+    
     private void Toolbox_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Toolbox_jButtonActionPerformed
         this.toolbox.mazimizeSize();
         this.toolbox.setVisible(true);
     }//GEN-LAST:event_Toolbox_jButtonActionPerformed
-
+    
     private void Workflow_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Workflow_jButtonActionPerformed
         this.workbox.mazimizeSize();
         this.workbox.setWorkflowVisible();
         this.workbox.getCurrentArmadilloWorkflow().redraw();
     }//GEN-LAST:event_Workflow_jButtonActionPerformed
-
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       this.workbox.mazimizeSize();
+        this.workbox.mazimizeSize();
         workbox.setScriptVisible();
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    
     private void ObjectEditor_jMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ObjectEditor_jMenuItemActionPerformed
         editor.setVisible(true); 
     }//GEN-LAST:event_ObjectEditor_jMenuItemActionPerformed
-
+    
     private void SequenceManagerjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SequenceManagerjMenuItemActionPerformed
         loadSequence.display();
     }//GEN-LAST:event_SequenceManagerjMenuItemActionPerformed
-
+    
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-       workbox.ShowPreferences();
+        workbox.ShowPreferences();
     }//GEN-LAST:event_jMenuItem12ActionPerformed
-
+    
     private void ReportjMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportjMenuItem14ActionPerformed
         //--TO DO: Menu with application
         generateReport();
     }//GEN-LAST:event_ReportjMenuItem14ActionPerformed
-
+    
     private void SaveAs_jMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveAs_jMenuItemActionPerformed
         JFileChooser jf=new JFileChooser(config.getExplorerPath());
         jf.setFileFilter(new WorkflowFilter());
@@ -1033,7 +1049,7 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
         }
         //
 }//GEN-LAST:event_SaveAs_jMenuItemActionPerformed
-
+    
     private void OpenWorkflow_jMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpenWorkflow_jMenuItemActionPerformed
         JFileChooser jf=new JFileChooser(config.projectsDir());
         jf.setFileFilter(new WorkflowFilter());
@@ -1042,13 +1058,13 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
         int result=jf.showOpenDialog(this);
         if (result==JFileChooser.APPROVE_OPTION) {
             tmpfile=jf.getSelectedFile().getAbsolutePath();
-             String path=jf.getSelectedFile().getPath();
-             config.setExplorerPath(path);
-             config.Save();
+            String path=jf.getSelectedFile().getPath();
+            config.setExplorerPath(path);
+            config.Save();
             databaseFunction df=new databaseFunction();
-             
+            
             //--CASE 1. Test file type
-             if (isTextFile(tmpfile)) {
+            if (isTextFile(tmpfile)) {
                 if (workbox.loadWorkflowAsTxt(tmpfile)) {
                     //workbox.getCurrentArmadilloWorkflow().setName(workflowname);
                     workbox.getCurrentArmadilloWorkflow().setName(tmpfile);
@@ -1058,161 +1074,161 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                 } else  {
                     JOptionPane.showMessageDialog(this,"Unable to load Workflow from "+tmpfile,"Warning!",JOptionPane.ERROR_MESSAGE);
                 }
-            //--CASE 2. Normal db
-             } else {
-             if (df.Open(tmpfile)) {
-                toolbox.reloadDatabaseTree();
-                int workflow_id=df.getNextWorkflowsID()-1;
-                if (workflow_id>0) {
-                     workbox.loadWorkflowFromDatabase(workflow_id);
-                     //workbox.getCurrentArmadilloWorkflow().setName(workflowname);
-                     workbox.getCurrentArmadilloWorkflow().setName(tmpfile);
-                    
-                      setTitle(config.get("applicationName")+" "+config.get("version")+" - "+tmpfile);
-        
-            
-                     //--Enable saving to the Save-Menu
-                    this.Save_jMenuItem.setEnabled(true);
-                    config.setLastWorkflow(tmpfile);
-                    config.Save();
-                }               
-             } else {
-                 JOptionPane.showMessageDialog(this,"Unable to load Workflow from "+tmpfile,"Warning!",JOptionPane.ERROR_MESSAGE);
-             }
-             }            
+                //--CASE 2. Normal db
+            } else {
+                if (df.Open(tmpfile)) {
+                    toolbox.reloadDatabaseTree();
+                    int workflow_id=df.getNextWorkflowsID()-1;
+                    if (workflow_id>0) {
+                        workbox.loadWorkflowFromDatabase(workflow_id);
+                        //workbox.getCurrentArmadilloWorkflow().setName(workflowname);
+                        workbox.getCurrentArmadilloWorkflow().setName(tmpfile);
+                        
+                        setTitle(config.get("applicationName")+" "+config.get("version")+" - "+tmpfile);
+                        
+                        
+                        //--Enable saving to the Save-Menu
+                        this.Save_jMenuItem.setEnabled(true);
+                        config.setLastWorkflow(tmpfile);
+                        config.Save();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this,"Unable to load Workflow from "+tmpfile,"Warning!",JOptionPane.ERROR_MESSAGE);
+                }
+            }
         }
         //
 }//GEN-LAST:event_OpenWorkflow_jMenuItemActionPerformed
-
+    
     public boolean isTextFile(String filename) {
         try {
             BufferedReader b=new BufferedReader(new FileReader(new File(filename)));
             String line=b.readLine();
             if (line==null) return false;
             if (!line.startsWith("#")) return false;
-        } catch(Exception e) {return false;}    
+        } catch(Exception e) {return false;}
         return true;
     }
-
+    
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         AboutJDialog about=new AboutJDialog(this, true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
+    
     private void Save_jMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Save_jMenuItemActionPerformed
-        //--TO do embed in correct method        
-        workbox.getCurrentWorkflows().setId(0); 
+        //--TO do embed in correct method
+        workbox.getCurrentWorkflows().setId(0);
         workbox.saveWorkflowToDatabase("Save on "+Util.returnCurrentDateAndTime());
 }//GEN-LAST:event_Save_jMenuItemActionPerformed
-
+    
     private void SaveImagejMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveImagejMenuItemActionPerformed
         JFileChooser jf=new JFileChooser(config.getExplorerPath());
         jf.addChoosableFileFilter(new ImageFilter());
         jf.setAcceptAllFileFilterUsed(false);
         jf.setName("Saving Image to ...");
         int result=jf.showSaveDialog(this);
-           if (result==JFileChooser.APPROVE_OPTION) {
-               String filename=jf.getSelectedFile().getAbsolutePath();
-               String path=jf.getSelectedFile().getPath();
-               config.setExplorerPath(path);
-               config.Save();
-               if (filename.toLowerCase().endsWith("pdf")) {
-                   workbox.getCurrentArmadilloWorkflow().savePDF(filename);
-               } else workbox.getCurrentArmadilloWorkflow().saveImage(filename);
-            }
+        if (result==JFileChooser.APPROVE_OPTION) {
+            String filename=jf.getSelectedFile().getAbsolutePath();
+            String path=jf.getSelectedFile().getPath();
+            config.setExplorerPath(path);
+            config.Save();
+            if (filename.toLowerCase().endsWith("pdf")) {
+                workbox.getCurrentArmadilloWorkflow().savePDF(filename);
+            } else workbox.getCurrentArmadilloWorkflow().saveImage(filename);
+        }
     }//GEN-LAST:event_SaveImagejMenuItemActionPerformed
-
+    
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         JFileChooser jf=new JFileChooser(config.getExplorerPath());
         jf.setFileFilter(new WorkflowImportExportFilter());
         jf.setName("Saving Workflow as text file to ...");
         int result=jf.showSaveDialog(this);
-           if (result==JFileChooser.APPROVE_OPTION) {
-               String filename=jf.getSelectedFile().getAbsolutePath();
-               String path=jf.getSelectedFile().getPath();
-               config.setExplorerPath(path);
-               config.Save();
-               workbox.saveWorkflowAsTxt(filename);
-            }
+        if (result==JFileChooser.APPROVE_OPTION) {
+            String filename=jf.getSelectedFile().getAbsolutePath();
+            String path=jf.getSelectedFile().getPath();
+            config.setExplorerPath(path);
+            config.Save();
+            workbox.saveWorkflowAsTxt(filename);
+        }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
-
+    
     private void TreeManagerjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TreeManagerjMenuItemActionPerformed
-       loadTree.display();
+        loadTree.display();
     }//GEN-LAST:event_TreeManagerjMenuItemActionPerformed
-
+    
     private void NewProject_jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewProject_jMenuItem8ActionPerformed
-
+        
         Object[] options = {"Yes","No","Cancel"};
         int result=JOptionPane.showOptionDialog(this, "Do you want to migrate everything to your new project?","", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,null,options, options[2]);
         switch(result) {
             case JOptionPane.YES_OPTION:
-                   //--Same as SaveAs...+Load
-                   CreateOrRenameWorkflowJDialog rp=new CreateOrRenameWorkflowJDialog(this, "New_Untitled","Create New Project");
-                    rp.setVisible(true);
-                     if (!rp.projectName.equals("")) {
-                        //workbox.newWorkflowWithMigration(config.projectsDir()+File.separator+rp.projectName, rp.projectName);
-                        //--Copy to new filename 
-                         databaseFunction df=new databaseFunction();
-                         df.Close();                         
-                         try {
-                            String destination=config.projectsDir()+File.separator+rp.projectName; 
-                            String source=this.workbox.getCurrentWorkflowFilename();
-                            Util.copy(source, destination);                              
-                            config.setLastWorkflow(destination);
-                            config.Save();
-                              if (df.Open(destination)) {
-                                toolbox.reloadDatabaseTree();
-                                toolbox.reloadWorkflowsTree();
-                                int workflow_id=df.getNextWorkflowsID()-1;
-                                if (workflow_id>0) {
-                                     workbox.loadWorkflowFromDatabase(workflow_id);                                 
-                                     workbox.getCurrentArmadilloWorkflow().setName(destination);
-                                    //--Enable saving to the Save-Menu
-                                    this.Save_jMenuItem.setEnabled(true);
-                                     setTitle(destination);
-                                }
-                              }
-                         } catch(Exception e) {
-                            workbox.MessageError("Unable to create new project as "+rp.projectName+"...","");
-                            
-                         }
+                //--Same as SaveAs...+Load
+                CreateOrRenameWorkflowJDialog rp=new CreateOrRenameWorkflowJDialog(this, "New_Untitled","Create New Project");
+                rp.setVisible(true);
+                if (!rp.projectName.equals("")) {
+                    //workbox.newWorkflowWithMigration(config.projectsDir()+File.separator+rp.projectName, rp.projectName);
+                    //--Copy to new filename
+                    databaseFunction df=new databaseFunction();
+                    df.Close();
+                    try {
+                        String destination=config.projectsDir()+File.separator+rp.projectName;
+                        String source=this.workbox.getCurrentWorkflowFilename();
+                        Util.copy(source, destination);
+                        config.setLastWorkflow(destination);
+                        config.Save();
+                        if (df.Open(destination)) {
+                            toolbox.reloadDatabaseTree();
+                            toolbox.reloadWorkflowsTree();
+                            int workflow_id=df.getNextWorkflowsID()-1;
+                            if (workflow_id>0) {
+                                workbox.loadWorkflowFromDatabase(workflow_id);
+                                workbox.getCurrentArmadilloWorkflow().setName(destination);
+                                //--Enable saving to the Save-Menu
+                                this.Save_jMenuItem.setEnabled(true);
+                                setTitle(destination);
+                            }
+                        }
+                    } catch(Exception e) {
+                        workbox.MessageError("Unable to create new project as "+rp.projectName+"...","");
                         
-//                      
-                         //--Enable saving to the Save-Menu
-                        this.Save_jMenuItem.setEnabled(true);
-                     }
-                 break;
+                    }
+                    
+//
+                    //--Enable saving to the Save-Menu
+                    this.Save_jMenuItem.setEnabled(true);
+                }
+                break;
             case JOptionPane.NO_OPTION:
-                    rp=new CreateOrRenameWorkflowJDialog(this, "New_Untitled","Create New Project");
-                    rp.setVisible(true);                  
-                   if (!rp.projectName.equals("")) {
-                        //workbox.newWorkflowWithMigration(config.projectsDir()+File.separator+rp.projectName, rp.projectName);
-                        //--Copy to new filename 
-                         databaseFunction df=new databaseFunction();
-                         df.Close();                         
-                         try {
-                            String destination=config.projectsDir()+File.separator+rp.projectName; 
-                            String source=config.dataPath()+File.separator+"New_Untitled_default.db";
-                            Util.copy(source, destination);                              
-                            config.setLastWorkflow(destination);
-                            config.Save();
-                              if (df.Open(destination)) {
-                                toolbox.reloadDatabaseTree();
-                                int workflow_id=df.getNextWorkflowsID()-1;
-                                if (workflow_id>0) {
-                                     workbox.loadWorkflowFromDatabase(workflow_id);                                 
-                                     workbox.getCurrentArmadilloWorkflow().setName(destination);
-                                    //--Enable saving to the Save-Menu
-                                    this.Save_jMenuItem.setEnabled(true);
-                                     setTitle(destination);
-                                }
-                              }
-                         
-                         } catch(Exception e) {
-                            workbox.MessageError("Unable to create new project as "+rp.projectName+"...","");                       
-                         }
-                   }
-                 break;
-
+                rp=new CreateOrRenameWorkflowJDialog(this, "New_Untitled","Create New Project");
+                rp.setVisible(true);
+                if (!rp.projectName.equals("")) {
+                    //workbox.newWorkflowWithMigration(config.projectsDir()+File.separator+rp.projectName, rp.projectName);
+                    //--Copy to new filename
+                    databaseFunction df=new databaseFunction();
+                    df.Close();
+                    try {
+                        String destination=config.projectsDir()+File.separator+rp.projectName;
+                        String source=config.dataPath()+File.separator+"New_Untitled_default.db";
+                        Util.copy(source, destination);
+                        config.setLastWorkflow(destination);
+                        config.Save();
+                        if (df.Open(destination)) {
+                            toolbox.reloadDatabaseTree();
+                            int workflow_id=df.getNextWorkflowsID()-1;
+                            if (workflow_id>0) {
+                                workbox.loadWorkflowFromDatabase(workflow_id);
+                                workbox.getCurrentArmadilloWorkflow().setName(destination);
+                                //--Enable saving to the Save-Menu
+                                this.Save_jMenuItem.setEnabled(true);
+                                setTitle(destination);
+                            }
+                        }
+                        
+                    } catch(Exception e) {
+                        workbox.MessageError("Unable to create new project as "+rp.projectName+"...","");
+                    }
+                }
+                break;
+                
             default: return;
         }
         //--Update the visual information...
@@ -1221,70 +1237,70 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
         
         
     }//GEN-LAST:event_NewProject_jMenuItem8ActionPerformed
-
+    
     private void DatabaseExplorer_jMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatabaseExplorer_jMenuItemActionPerformed
         this.databasebox.setVisible(true);
     }//GEN-LAST:event_DatabaseExplorer_jMenuItemActionPerformed
-
+    
     private void GenerateReportjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateReportjButtonActionPerformed
-      generateReport();
+        generateReport();
     }//GEN-LAST:event_GenerateReportjButtonActionPerformed
-
+    
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
-         String msg="<html>Are you sure you want to delete <b>all objects in workflow</b>?</html>";
-                    Object[] options = {"Cancel","Delete All"};
-                    int o = JOptionPane.showOptionDialog(this,msg,"Warning! Deleting All objects in workflow",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,options, options[0]);
-                    switch (o) {
-                        //0. Cancel
-                        case 0: break;
-                        //1. Delete All
-                        case 1:
-                             workbox.getCurrentArmadilloWorkflow().workflow.selectAll();
-                                workbox.getCurrentArmadilloWorkflow().workflow.deleteSelected();
-                                workbox.getCurrentArmadilloWorkflow().force_redraw=true;
-                                workbox.getCurrentArmadilloWorkflow().redraw();
-                                break;
-                      }
-
-       
+        String msg="<html>Are you sure you want to delete <b>all objects in workflow</b>?</html>";
+        Object[] options = {"Cancel","Delete All"};
+        int o = JOptionPane.showOptionDialog(this,msg,"Warning! Deleting All objects in workflow",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,options, options[0]);
+        switch (o) {
+            //0. Cancel
+            case 0: break;
+                //1. Delete All
+            case 1:
+                workbox.getCurrentArmadilloWorkflow().workflow.selectAll();
+                workbox.getCurrentArmadilloWorkflow().workflow.deleteSelected();
+                workbox.getCurrentArmadilloWorkflow().force_redraw=true;
+                workbox.getCurrentArmadilloWorkflow().redraw();
+                break;
+        }
+        
+        
     }//GEN-LAST:event_jMenuItem17ActionPerformed
-
+    
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         workbox.getCurrentArmadilloWorkflow().copySelection();
     }//GEN-LAST:event_jMenuItem15ActionPerformed
-
+    
     private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
         workbox.getCurrentArmadilloWorkflow().pasteSelection();
         workbox.getCurrentArmadilloWorkflow().force_redraw=true;
         workbox.getCurrentArmadilloWorkflow().redraw();
     }//GEN-LAST:event_jMenuItem16ActionPerformed
-
+    
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
-       workbox.getCurrentArmadilloWorkflow().resetState();
+        workbox.getCurrentArmadilloWorkflow().resetState();
         workbox.getCurrentArmadilloWorkflow().force_redraw=true;
         workbox.getCurrentArmadilloWorkflow().redraw();
     }//GEN-LAST:event_jMenuItem13ActionPerformed
-
+    
     private void ImportSequences_jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportSequences_jMenuItem10ActionPerformed
         this.importSequenceFromDisk();
     }//GEN-LAST:event_ImportSequences_jMenuItem10ActionPerformed
-
+    
     private void ImportTrees_jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportTrees_jMenuItem9ActionPerformed
         this.importTreeFromDisk();
     }//GEN-LAST:event_ImportTrees_jMenuItem9ActionPerformed
-
+    
     private void ImportAlignmentjMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportAlignmentjMenu1ActionPerformed
         this.importAlignmentFromDisk();
     }//GEN-LAST:event_ImportAlignmentjMenu1ActionPerformed
-
+    
     private void ImportAlignment_jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportAlignment_jMenuItem18ActionPerformed
-         this.importAlignmentFromDisk();
+        this.importAlignmentFromDisk();
     }//GEN-LAST:event_ImportAlignment_jMenuItem18ActionPerformed
-
+    
     private void NewWorkflow_jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewWorkflow_jMenuItem11ActionPerformed
         workbox.newWorkflow();
     }//GEN-LAST:event_NewWorkflow_jMenuItem11ActionPerformed
-
+    
     private void ImportWorkflow_jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportWorkflow_jMenuItem19ActionPerformed
         JFileChooser jf=new JFileChooser(config.projectsDir());
         jf.setFileFilter(new WorkflowImportExportFilter());
@@ -1294,13 +1310,13 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
         if (result==JFileChooser.APPROVE_OPTION) {
             tmpfile=jf.getSelectedFile().getAbsolutePath();
             String workflowname=jf.getSelectedFile().getName();
-             String path=jf.getSelectedFile().getPath();
-             config.setExplorerPath(path);
-             config.Save();
+            String path=jf.getSelectedFile().getPath();
+            config.setExplorerPath(path);
+            config.Save();
             databaseFunction df=new databaseFunction();
-
+            
             //--CASE 1. Test file type
-             if (isTextFile(tmpfile)) {
+            if (isTextFile(tmpfile)) {
                 if (workbox.loadWorkflowAsTxt(tmpfile)) {
                     //workbox.getCurrentArmadilloWorkflow().setName(workflowname);
                     workbox.getCurrentArmadilloWorkflow().setName(tmpfile);
@@ -1310,88 +1326,89 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                 } else  {
                     JOptionPane.showMessageDialog(this,"Unable to load Workflow from "+tmpfile,"Warning!",JOptionPane.ERROR_MESSAGE);
                 }
-            //--CASE 2. Normal db
-             } else {
-             if (df.Open(tmpfile)) {
-                toolbox.reloadDatabaseTree();
-                int workflow_id=df.getNextWorkflowsID()-1;
-                if (workflow_id>0) {
-                     workbox.loadWorkflowFromDatabase(workflow_id);
-                     //workbox.getCurrentArmadilloWorkflow().setName(workflowname);
-                     workbox.getCurrentArmadilloWorkflow().setName(tmpfile);
-                     //--Enable saving to the Save-Menu
-                    this.Save_jMenuItem.setEnabled(true);
-                    config.setLastWorkflow(tmpfile);
-                    config.Save();
+                //--CASE 2. Normal db
+            } else {
+                if (df.Open(tmpfile)) {
+                    toolbox.reloadDatabaseTree();
+                    int workflow_id=df.getNextWorkflowsID()-1;
+                    if (workflow_id>0) {
+                        workbox.loadWorkflowFromDatabase(workflow_id);
+                        //workbox.getCurrentArmadilloWorkflow().setName(workflowname);
+                        workbox.getCurrentArmadilloWorkflow().setName(tmpfile);
+                        //--Enable saving to the Save-Menu
+                        this.Save_jMenuItem.setEnabled(true);
+                        config.setLastWorkflow(tmpfile);
+                        config.Save();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this,"Unable to load Workflow from "+tmpfile,"Warning!",JOptionPane.ERROR_MESSAGE);
                 }
-             } else {
-                 JOptionPane.showMessageDialog(this,"Unable to load Workflow from "+tmpfile,"Warning!",JOptionPane.ERROR_MESSAGE);
-             }
-             }
+            }
         }
     }//GEN-LAST:event_ImportWorkflow_jMenuItem19ActionPerformed
-
+    
     private void ImportTextResultsjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportTextResultsjMenuItemActionPerformed
-          this.importTextFromDisk();
+        this.importTextFromDisk();
     }//GEN-LAST:event_ImportTextResultsjMenuItemActionPerformed
-
+    
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         displayHTML( "http://bioinfo.uqam.ca/armadillo/");
     }//GEN-LAST:event_jMenuItem8ActionPerformed
-
+    
     private void AlignmentManagerjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlignmentManagerjMenuItemActionPerformed
-       loadAlignment.display();
+        loadAlignment.display();
     }//GEN-LAST:event_AlignmentManagerjMenuItemActionPerformed
-
+    
     private void Run_jMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Run_jMenuItemActionPerformed
         this.workbox.resetState();
+        this.workbox.setWorkboxAsCluster(false);
         this.workbox.Run();
     }//GEN-LAST:event_Run_jMenuItemActionPerformed
-
+    
     private void Stop_jMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Stop_jMenuItemActionPerformed
         this.workbox.Stop();
     }//GEN-LAST:event_Stop_jMenuItemActionPerformed
-
+    
     private void Generate_applications_report_jMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Generate_applications_report_jMenuItemActionPerformed
         generateApplicationsReport();
         //this.workbox.CreateScreenShot(config.resultsDir());
     }//GEN-LAST:event_Generate_applications_report_jMenuItemActionPerformed
-
+    
     private void RunSelected_jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RunSelected_jMenuItem7ActionPerformed
         this.workbox.Run();
     }//GEN-LAST:event_RunSelected_jMenuItem7ActionPerformed
-
+    
     private void SequenceManager_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SequenceManager_jButtonActionPerformed
         loadSequence.display();
     }//GEN-LAST:event_SequenceManager_jButtonActionPerformed
-
+    
     private void TreeManager_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TreeManager_jButtonActionPerformed
-         loadTree.display();
+        loadTree.display();
     }//GEN-LAST:event_TreeManager_jButtonActionPerformed
-
+    
     private void AlignmentManager_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlignmentManager_jButtonActionPerformed
-         loadAlignment.display();
+        loadAlignment.display();
     }//GEN-LAST:event_AlignmentManager_jButtonActionPerformed
-
+    
     private void ResetDevelopperStatejMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetDevelopperStatejMenuItem5ActionPerformed
         workbox.getCurrentArmadilloWorkflow().resetAllState();
         workbox.getCurrentArmadilloWorkflow().force_redraw=true;
         workbox.getCurrentArmadilloWorkflow().redraw();
     }//GEN-LAST:event_ResetDevelopperStatejMenuItem5ActionPerformed
-
+    
     private void Generate_applications_run_report_jMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Generate_applications_run_report_jMenuItemActionPerformed
         generateApplicationRunReport();
         
     }//GEN-LAST:event_Generate_applications_run_report_jMenuItemActionPerformed
-
+    
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         chooseWorkflowJDialog.display();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
-
+    
     private void ImportMatrix_jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMatrix_jMenuItem7ActionPerformed
-       this.importMatrixFromDisk();
+        this.importMatrixFromDisk();
     }//GEN-LAST:event_ImportMatrix_jMenuItem7ActionPerformed
-
+    
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
        this.workflowexplorer.display();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
@@ -1401,27 +1418,33 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
         dialog.setVisible(true);
         
     }//GEN-LAST:event_RunIterationjMenuItemActionPerformed
+
+    private void RunOnCHP_jMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RunOnCHP_jMenuItemActionPerformed
+        this.workbox.resetState();
+        this.workbox.setWorkboxAsCluster(true);
+        this.workbox.Run();
+    }//GEN-LAST:event_RunOnCHP_jMenuItemActionPerformed
     
     ////////////////////////////////////////////////////////////////////////////
     /// Generate Application report
     
     private void generateApplicationsReport() {
-        report re=new report();        
+        report re=new report();
         displayHTML(re.generate_Application_Report());
     }
     
     //--See the swing workfer...
 //     private void generateApplicationsRunReport() {
-//        report re=new report();        
+//        report re=new report();
 //        displayHTML(re.generate_ApplicationRun_Report());
 //    }
     
     ////////////////////////////////////////////////////////////////////////////
     /// SAMPLE Menu
-   
+    
     /**
      * Open the sample in the menu...
-     * @param evt 
+     * @param evt
      */
     private void  SampleMenuActionPerformed(java.awt.event.ActionEvent evt) {
         String command=evt.getActionCommand();
@@ -1430,24 +1453,24 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
         int count=0;
         while(Util.FileExists(destination)) {
             destination=config.projectsDir()+File.separator+(count++)+command;
-        }  
+        }
         //filename=config.dataPath()+File.separator+"help"+File.separator+f.getName();
         //--Open the workflow
         try {
             Util.copy(filename, destination);
         } catch(Exception e) {
-           Config.log("Unable to copy workflow (.db) - "+filename+" to "+destination); 
+            Config.log("Unable to copy workflow (.db) - "+filename+" to "+destination);
         }
         Config.log("Loading the workflow "+filename);
         
-        databaseFunction df=new databaseFunction();     
-        if (df.Open(destination)) {      
+        databaseFunction df=new databaseFunction();
+        if (df.Open(destination)) {
             setTitle(config.get("applicationName")+" "+config.get("version")+" - "+destination);
             toolbox.reloadDatabaseTree();
             int workflow_id=df.getNextWorkflowsID()-1;
             if (workflow_id>0) {
-                 workbox.loadWorkflowFromDatabase(workflow_id);
-                 workbox.getCurrentArmadilloWorkflow().setName(destination);
+                workbox.loadWorkflowFromDatabase(workflow_id);
+                workbox.getCurrentArmadilloWorkflow().setName(destination);
                 config.setLastWorkflow(destination);
                 config.Save();
             }
@@ -1459,15 +1482,15 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
     
     ////////////////////////////////////////////////////////////////////////////
     /// Project creation
-
+    
     /**
      * This will either load or create a new Project...
      * @param database
      * @return
      */
     private String NewProject(String databaseFilename) {
-
-
+        
+        
         //--Load normally...
         this.Save_jMenuItem.setEnabled(true);
         //--Set the database to be loaded
@@ -1477,42 +1500,42 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
         //--Load the project description
         int projectid=df.getNextProjectID()-1;
         if (projectid>0) {
-                project=new Project(projectid);
+            project=new Project(projectid);
         } else {
             project=new Project();
             project.saveToDatabase();
         }
-        databaseFilename=config.get("databasePath"); 
-        //--Return the dataseFilename 
+        databaseFilename=config.get("databasePath");
+        //--Return the dataseFilename
         return databaseFilename;
     }
-
+    
     /**
      * This display the workflow...
      */
     public void showWorkflow() {
-            this.toolbox.mazimizeSize();
-            this.toolbox.setVisible(true);
-            this.workbox.mazimizeSize();
-            this.workbox.setWorkflowVisible();
+        this.toolbox.mazimizeSize();
+        this.toolbox.setVisible(true);
+        this.workbox.mazimizeSize();
+        this.workbox.setWorkflowVisible();
     }
-
+    
     /**
      * This will create a report of the currently displayed workflow and
      * displayed it in the "Report" Pane of the WorkflowJInternalPane
      */
-     private void generateReport() {
-
-         SwingWorker<Boolean, String> infoSwingWorker=new SwingWorker<Boolean, String>()  {
-
-       @Override
-        protected Boolean doInBackground() throws Exception {
-                 boolean status=false;
-                 //--TO DO... Divide the report generator in different part...
-                 setProgress(25);
-                 setProgress(50);
-                 setProgress(75);
-                  //--Generate report
+    private void generateReport() {
+        
+        SwingWorker<Boolean, String> infoSwingWorker=new SwingWorker<Boolean, String>()  {
+            
+            @Override
+            protected Boolean doInBackground() throws Exception {
+                boolean status=false;
+                //--TO DO... Divide the report generator in different part...
+                setProgress(25);
+                setProgress(50);
+                setProgress(75);
+                //--Generate report
                 //results result=new results();
                 report result=new report();
                 final String reportFile=result.generate_Report(workbox.getProject(), workbox.getCurrentWorkflows());
@@ -1521,7 +1544,7 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                 setProgress(100);
                 return true;
             }
-
+            
             //On update notre Table avec les resultats partiels
             @Override
             protected void process(List<String> chunks) {
@@ -1533,126 +1556,126 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                     }
                 }
             }
-
-
-           @Override
-           protected void done(){
-               setProgress(100);
-               loading.setVisible(false);
-           }
-
+            
+            
+            @Override
+            protected void done(){
+                setProgress(100);
+                loading.setVisible(false);
+            }
+            
         }; //End SwingWorker declaration
-
+        
         infoSwingWorker.addPropertyChangeListener(
-                 new PropertyChangeListener() {
+                new PropertyChangeListener() {
                     public  void propertyChange(PropertyChangeEvent evt) {
-                     if ("progress".equals(evt.getPropertyName())) {
+                        if ("progress".equals(evt.getPropertyName())) {
                             SwingWorker o = (SwingWorker)evt.getSource();
                             if (!o.isDone()) {
                                 int progress=(Integer)evt.getNewValue();
                                 loading.setProgress(progress);
                             }
                             else if (o.isDone()&&!o.isCancelled()) {
-                               //Handled in done() fucntion in SwingWorker
+                                //Handled in done() function in SwingWorker
                             }
                         }//End progress update
-                 } //End populateNetworkPropertyChange
-                 });
+                    } //End populateNetworkPropertyChange
+                });
         loading=new InformationJDialog(this, false, infoSwingWorker, "Generating Report for current workflow");
         loading.setProgress(0); //Put 0% as the start progress
         loading.Message("Generating...", "");
-        infoSwingWorker.execute();               
-      }
-
-      /**
+        infoSwingWorker.execute();
+    }
+    
+    /**
      * This will create a report of the currently displayed workflow and
      * displayed it in the "Report" Pane of the WorkflowJInternalPane
      */
-     private void generateWorkflow_List_Report() {
-
-         SwingWorker<Boolean, String> infoSwingWorker=new SwingWorker<Boolean, String>()  {
-
-       @Override
-        protected Boolean doInBackground() throws Exception {
-                 boolean status=false;
-                 //--TO DO... Divide the report generator in different part...
-                 setProgress(25);
-                 setProgress(50);
-                 setProgress(75);
-                  //--Generate report
+    private void generateWorkflow_List_Report() {
+        
+        SwingWorker<Boolean, String> infoSwingWorker=new SwingWorker<Boolean, String>()  {
+            
+            @Override
+            protected Boolean doInBackground() throws Exception {
+                boolean status=false;
+                //--TO DO... Divide the report generator in different part...
+                setProgress(25);
+                setProgress(50);
+                setProgress(75);
+                //--Generate report
                 //results result=new results();
                 report_list_workflows result=new report_list_workflows();
                 final String reportFile=result.generateResults(workbox.getProject(), workbox.getCurrentWorkflows());
                 //--Try to display it in Browser...
                 displayHTML(reportFile);
-                 setProgress(100);
-
-                 return true;
+                setProgress(100);
+                
+                return true;
             }
-
+            
             //On update notre Table avec les resultats partiels
             @Override
             protected void process(List<String> chunks) {
                 for (String data:chunks) {
                     if (data.startsWith("Error")||data.startsWith("Unable")) {
-
+                        
                     } else {
-
+                        
                     }
                 }
             }
-
-
-           @Override
-           protected void done(){
-               setProgress(100);
-               loading.setVisible(false);
-           }
-
+            
+            
+            @Override
+            protected void done(){
+                setProgress(100);
+                loading.setVisible(false);
+            }
+            
         }; //End SwingWorker declaration
-
+        
         infoSwingWorker.addPropertyChangeListener(
-                 new PropertyChangeListener() {
+                new PropertyChangeListener() {
                     public  void propertyChange(PropertyChangeEvent evt) {
-                     if ("progress".equals(evt.getPropertyName())) {
+                        if ("progress".equals(evt.getPropertyName())) {
                             SwingWorker o = (SwingWorker)evt.getSource();
                             if (!o.isDone()) {
                                 int progress=(Integer)evt.getNewValue();
                                 loading.setProgress(progress);
                             }
                             else if (o.isDone()&&!o.isCancelled()) {
-                               //Handled in done() fucntion in SwingWorker
+                                //Handled in done() function in SwingWorker
                             }
                         }//End progress update
-                 } //End populateNetworkPropertyChange
-                 });
+                    } //End populateNetworkPropertyChange
+                });
         loading=new InformationJDialog(this, false, infoSwingWorker, "Generating Report for current workflow");
         loading.setProgress(0); //Put 0% as the start progress
         loading.Message("Generating...", "");
-        infoSwingWorker.execute();               
-      }
-     
-     
-     
-      /**
+        infoSwingWorker.execute();
+    }
+    
+    
+    
+    /**
      * This will create a report of the currently displayed workflow and
      * displayed it in the "Report" Pane of the WorkflowJInternalPane
      */
-     private void generateApplicationRunReport() {
-
-         SwingWorker<Boolean, String> infoSwingWorker=new SwingWorker<Boolean, String>()  {
-
-       @Override
-        protected Boolean doInBackground() throws Exception {                
-                 //--TO DO... Divide the report generator in different part...
-                  report result=new report();
-                  final String reportFile=result.generate_ApplicationRun_Report();                 
+    private void generateApplicationRunReport() {
+        
+        SwingWorker<Boolean, String> infoSwingWorker=new SwingWorker<Boolean, String>()  {
+            
+            @Override
+            protected Boolean doInBackground() throws Exception {
+                //--TO DO... Divide the report generator in different part...
+                report result=new report();
+                final String reportFile=result.generate_ApplicationRun_Report();
                 //--Try to display it in Browser...
                 displayHTML(reportFile);
                 
                 return true;
             }
-
+            
             //On update notre Table avec les resultats partiels
             @Override
             protected void process(List<String> chunks) {
@@ -1660,79 +1683,79 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                     
                 }
             }
-
-
-           @Override
-           protected void done(){
-               setProgress(100);
-               //loading.setVisible(false);
-           }
-
+            
+            
+            @Override
+            protected void done(){
+                setProgress(100);
+                //loading.setVisible(false);
+            }
+            
         }; //End SwingWorker declaration
-
+        
         infoSwingWorker.addPropertyChangeListener(
-                 new PropertyChangeListener() {
+                new PropertyChangeListener() {
                     public  void propertyChange(PropertyChangeEvent evt) {
-                     if ("progress".equals(evt.getPropertyName())) {
+                        if ("progress".equals(evt.getPropertyName())) {
                             SwingWorker o = (SwingWorker)evt.getSource();
                             if (!o.isDone()) {
                                 int progress=(Integer)evt.getNewValue();
                                 //loading.setProgress(progress);
                             }
                             else if (o.isDone()&&!o.isCancelled()) {
-                               //Handled in done() fucntion in SwingWorker
+                                //Handled in done() function in SwingWorker
                             }
                         }//End progress update
-                 } //End populateNetworkPropertyChange
-                 });
+                    } //End populateNetworkPropertyChange
+                });
 //        loading=new InformationJDialog(this, false, infoSwingWorker, "Generating Report for current workflow");
 //        loading.setProgress(0); //Put 0% as the start progress
 //        loading.Message("Generating...", "");
-        infoSwingWorker.execute();               
-      }
-
-     public void displayHTML(final String reportFile) {
-         if (!reportFile.startsWith("http")) workbox.Message("Report generated in "+reportFile, reportFile);
-         try{
-                if (Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)){
-                    new Thread() {
-                     @Override
-                     public void run() {
-                                try {
-                                    if (reportFile.startsWith("http")) {                                        
-                                        Desktop.getDesktop().browse(URI.create(reportFile));
-                                    } else {
-                                        File f=new File(reportFile);
-                                        Desktop.getDesktop().browse(f.toURI());
-                                    }
-                                } catch (Exception ex) {                                   
-                                }
+        infoSwingWorker.execute();
+    }
+    
+    public void displayHTML(final String reportFile) {
+        if (!reportFile.startsWith("http")) workbox.Message("Report generated in "+reportFile, reportFile);
+        try{
+            if (Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)){
+                new Thread() {
+                    @Override
+                    public void run() {
+                        try {
+                            if (reportFile.startsWith("http")) {
+                                Desktop.getDesktop().browse(URI.create(reportFile));
+                            } else {
+                                File f=new File(reportFile);
+                                Desktop.getDesktop().browse(f.toURI());
+                            }
+                        } catch (Exception ex) {
                         }
-                    }.start();
-                    } else {
-                        JOptionPane.showMessageDialog(this,"Unable to display report : "+reportFile,"",JOptionPane.ERROR_MESSAGE);
                     }
-            }catch (Exception e){
-                e.printStackTrace();
+                }.start();
+            } else {
                 JOptionPane.showMessageDialog(this,"Unable to display report : "+reportFile,"",JOptionPane.ERROR_MESSAGE);
             }
-     }
-
-      /**
+        }catch (Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this,"Unable to display report : "+reportFile,"",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    /**
      * Simple thread to load file into the project
      */
     private void loadTreeFiles(final File[] files, final String groupname, final String note) {
         final LinkedList<File> toLoad=new LinkedList<File>();
         final int totalToLoad=files.length;
         for(File f:files) toLoad.add(f);
-
+        
         SwingWorker<Integer, Object> loadSwingWorker2=new SwingWorker<Integer, Object>() {
             String filename="";
-
+            
             @Override
             protected Integer doInBackground() throws Exception {
                 //We dont check for cancelled
-
+                
                 while (!isCancelled()&&toLoad.size()>0) {
                     File f=toLoad.pollFirst();
                     filename=f.getName();
@@ -1748,10 +1771,10 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                     } else {
                         publish("Successfully imported tree(s) from "+filename);
                     }
-                 }
+                }
                 return 0;
             }
-
+            
             @Override
             public void process(List<Object> chunk) {
                 for (Object o:chunk) {
@@ -1762,21 +1785,21 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                         } else {
                             loading.Message(s,"");
                         } //--End Unable
-                     } //--End instance of String
+                    } //--End instance of String
                 } //--End list of Object
             } //End process
-
+            
             @Override
             public void done() {
                 loading.setVisible(false);
                 //Update UI by reloading alll sequences... (to be sure)...
                 toolbox.reloadDatabaseTree();
             }
-
+            
         }; //End SwingWorker definition
-
+        
         loadSwingWorker2.addPropertyChangeListener(
-                 new PropertyChangeListener() {
+                new PropertyChangeListener() {
                     public  void propertyChange(PropertyChangeEvent evt) {
                         if ("progress".equals(evt.getPropertyName())) {
                             SwingWorker o = (SwingWorker)evt.getSource();
@@ -1785,18 +1808,18 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                                 loading.setProgress(progress);
                             }
                             else if (o.isDone()&&!o.isCancelled()) {
-                               //Handled in done() fucntion in SwingWorker
+                                //Handled in done() function in SwingWorker
                             }
                         }//End progress update
-                 } //End populateNetworkPropertyChange
-                 });
+                    } //End populateNetworkPropertyChange
+                });
         //Finally. Show a load dialog :: Warning Work-In-Progress
         loading=new InformationJDialog(this, false, loadSwingWorker2,"");
         loading.setProgress(0); //Put 0% as the start progress
         loading.Message("Loading "+files.length+" files...", "");
         loadSwingWorker2.execute();
     }
-
+    
     /**
      * Simple thread to load file into the project
      */
@@ -1804,10 +1827,10 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
         final LinkedList<File> toLoad=new LinkedList<File>();
         final int totalToLoad=files.length;
         for(File f:files) toLoad.add(f);
-
+        
         SwingWorker<Integer, Object> loadSwingWorker2=new SwingWorker<Integer, Object>() {
             String filename="";
-
+            
             @Override
             protected Integer doInBackground() throws Exception {
                 //We dont check for cancelled
@@ -1821,20 +1844,20 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                     publish("Loading MultipleSequences from "+filename+"... ["+currentSize+"/"+totalToLoad+"]");
                     //--This is a duplicate of the code from MultipleSequence.loadSequenceFromFasta...
                     //--First. Conversion to fasta if not using ReadSeq
-               
-                MultipleSequences multi=new MultipleSequences(); 
-                try {
-                   multi.loadFromFile(filename);
-                   if (groupname.length()>1) {
-                       multi.setName(groupname+"_"+filename);
-                   } else {
-                       multi.setName(filename);
-                   }
-                   multi.setNote(note);
-                } catch(Exception e) {
-                    Config.log("Error. Unable to load MultipleSequence(s) from "+filename);
-                }   
-                   
+                    
+                    MultipleSequences multi=new MultipleSequences();
+                    try {
+                        multi.loadFromFile(filename);
+                        if (groupname.length()>1) {
+                            multi.setName(groupname+"_"+filename);
+                        } else {
+                            multi.setName(filename);
+                        }
+                        multi.setNote(note);
+                    } catch(Exception e) {
+                        Config.log("Error. Unable to load MultipleSequence(s) from "+filename);
+                    }
+                    
 //                    if (!filename.toLowerCase().endsWith("fasta")) {
 //                        publish("Converting to fasta...");
 //                        try {
@@ -1910,7 +1933,7 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
 //                      br.close();
 //                   } catch(Exception e) {e.printStackTrace();Config.log("Error with "+filename);}
                     Config.log("done");
-                   publish("Saving to database...");
+                    publish("Saving to database...");
                     multi.saveToDatabase();
                     setProgress((totalToLoad-toLoad.size())*100/totalToLoad);
                     if (multi.getId()==0) {
@@ -1919,10 +1942,10 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                         publish("Successfully imported MultipleSequence(s) from "+filename);
                     }
                     currentSize++;
-                 }
+                }
                 return 0;
             }
-
+            
             @Override
             public void process(List<Object> chunk) {
                 for (Object o:chunk) {
@@ -1933,21 +1956,21 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                         } else {
                             loading.Message(s,"");
                         } //--End Unable
-                     } //--End instance of String
+                    } //--End instance of String
                 } //--End list of Object
             } //End process
-
+            
             @Override
             public void done() {
                 loading.setVisible(false);
                 //Update UI by reloading alll sequences... (to be sure)...
                 toolbox.reloadDatabaseTree();
             }
-
+            
         }; //End SwingWorker definition
-
+        
         loadSwingWorker2.addPropertyChangeListener(
-                 new PropertyChangeListener() {
+                new PropertyChangeListener() {
                     public  void propertyChange(PropertyChangeEvent evt) {
                         if ("progress".equals(evt.getPropertyName())) {
                             SwingWorker o = (SwingWorker)evt.getSource();
@@ -1956,33 +1979,33 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                                 loading.setProgress(progress);
                             }
                             else if (o.isDone()&&!o.isCancelled()) {
-                               //Handled in done() fucntion in SwingWorker
+                                //Handled in done() function in SwingWorker
                             }
                         }//End progress update
-                 } //End populateNetworkPropertyChange
-                 });
+                    } //End populateNetworkPropertyChange
+                });
         //Finally. Show a load dialog :: Warning Work-In-Progress
         loading=new InformationJDialog(this, false, loadSwingWorker2,"Loading files...");
         loading.setProgress(0); //Put 0% as the start progress
         loading.Message("Loading "+files.length+" files...", "");
         loadSwingWorker2.execute();
     }
-
-     /**
+    
+    /**
      * Simple thread to load file into the project
      */
     public void loadAlignmentFiles(final File[] files, final String groupname, final String note, final String type) {
         final LinkedList<File> toLoad=new LinkedList<File>();
         final int totalToLoad=files.length;
         for(File f:files) toLoad.add(f);
-
+        
         SwingWorker<Integer, Object> loadSwingWorker2=new SwingWorker<Integer, Object>() {
             String filename="";
-
+            
             @Override
             protected Integer doInBackground() throws Exception {
                 //We dont check for cancelled
-
+                
                 while (!isCancelled()&&toLoad.size()>0) {
                     File f=toLoad.pollFirst();
                     filename=f.getAbsolutePath();
@@ -1990,23 +2013,23 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                     //--This is a duplicate of the code from MultipleSequence.loadSequenceFromFasta...
                     //--First. Conversion to fasta if not using ReadSeq
                     setProgress(0);
-                   Alignment multi=new Alignment();                   
-                   try {
-                       multi.loadFromFile(filename);
-                       if (groupname.length()>1) {
-                           multi.setName(groupname+"_"+filename);
-                       } else {
-                           multi.setName(filename);
-                       }
-                     multi.setNote(note);
-                } catch(Exception e) {
-                    Config.log("Error. Unable to load Alignment sequence(s) from "+filename);
-                }   
-                   
-                   
-                   
-                   
-                  
+                    Alignment multi=new Alignment();
+                    try {
+                        multi.loadFromFile(filename);
+                        if (groupname.length()>1) {
+                            multi.setName(groupname+"_"+filename);
+                        } else {
+                            multi.setName(filename);
+                        }
+                        multi.setNote(note);
+                    } catch(Exception e) {
+                        Config.log("Error. Unable to load Alignment sequence(s) from "+filename);
+                    }
+                    
+                    
+                    
+                    
+                    
 //                    if (!filename.toLowerCase().endsWith("fasta")) {
 //                        publish("Converting to fasta...");
 //                        try {
@@ -2082,7 +2105,7 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
 //                      br.close();
 //                   } catch(Exception e) {e.printStackTrace();Config.log("Error with "+filename);}
                     Config.log("done");
-                   publish("Saving to database...");
+                    publish("Saving to database...");
                     multi.saveToDatabase();
                     setProgress((totalToLoad-toLoad.size())*100/totalToLoad);
                     if (multi.getId()==0) {
@@ -2090,10 +2113,10 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                     } else {
                         publish("Successfully imported Alignment sequence(s) from "+filename);
                     }
-                 }
+                }
                 return 0;
             }
-
+            
             @Override
             public void process(List<Object> chunk) {
                 for (Object o:chunk) {
@@ -2104,21 +2127,21 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                         } else {
                             loading.Message(s,"");
                         } //--End Unable
-                     } //--End instance of String
+                    } //--End instance of String
                 } //--End list of Object
             } //End process
-
+            
             @Override
             public void done() {
                 loading.setVisible(false);
                 //Update UI by reloading alll sequences... (to be sure)...
                 toolbox.reloadDatabaseTree();
             }
-
+            
         }; //End SwingWorker definition
-
+        
         loadSwingWorker2.addPropertyChangeListener(
-                 new PropertyChangeListener() {
+                new PropertyChangeListener() {
                     public  void propertyChange(PropertyChangeEvent evt) {
                         if ("progress".equals(evt.getPropertyName())) {
                             SwingWorker o = (SwingWorker)evt.getSource();
@@ -2127,39 +2150,39 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                                 loading.setProgress(progress);
                             }
                             else if (o.isDone()&&!o.isCancelled()) {
-                               //Handled in done() fucntion in SwingWorker
+                                //Handled in done() function in SwingWorker
                             }
                         }//End progress update
-                 } //End populateNetworkPropertyChange
-                 });
+                    } //End populateNetworkPropertyChange
+                });
         //Finally. Show a load dialog :: Warning Work-In-Progress
         loading=new InformationJDialog(this, false, loadSwingWorker2,"Loading files...");
         loading.setProgress(0); //Put 0% as the start progress
         loading.Message("Loading "+files.length+" files...", "");
         loadSwingWorker2.execute();
     }
-
-     /**
+    
+    /**
      * Simple thread to load file into the project
      */
     private void loadTextFiles(final File[] files, final String groupname, final String note) {
         final LinkedList<File> toLoad=new LinkedList<File>();
         final int totalToLoad=files.length;
         for(File f:files) toLoad.add(f);
-
+        
         SwingWorker<Integer, Object> loadSwingWorker2=new SwingWorker<Integer, Object>() {
             String filename="";
-
+            
             @Override
             protected Integer doInBackground() throws Exception {
                 //We dont check for cancelled
-
+                
                 while (!isCancelled()&&toLoad.size()>0) {
                     File f=toLoad.pollFirst();
                     filename=f.getName();
                     publish("Loading "+filename);
                     Unknown multi=new Unknown(f.getAbsolutePath());
-                    multi.setName(groupname+"_"+filename);                   
+                    multi.setName(groupname+"_"+filename);
                     multi.setNote(note);
                     multi.saveToDatabase();
                     setProgress((totalToLoad-toLoad.size())*100/totalToLoad);
@@ -2168,10 +2191,10 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                     } else {
                         publish("Successfully imported text from "+filename);
                     }
-                 }
+                }
                 return 0;
             }
-
+            
             @Override
             public void process(List<Object> chunk) {
                 for (Object o:chunk) {
@@ -2182,21 +2205,21 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                         } else {
                             loading.Message(s,"");
                         } //--End Unable
-                     } //--End instance of String
+                    } //--End instance of String
                 } //--End list of Object
             } //End process
-
+            
             @Override
             public void done() {
                 loading.setVisible(false);
                 //Update UI by reloading alll sequences... (to be sure)...
                 toolbox.reloadDatabaseTree();
             }
-
+            
         }; //End SwingWorker definition
-
+        
         loadSwingWorker2.addPropertyChangeListener(
-                 new PropertyChangeListener() {
+                new PropertyChangeListener() {
                     public  void propertyChange(PropertyChangeEvent evt) {
                         if ("progress".equals(evt.getPropertyName())) {
                             SwingWorker o = (SwingWorker)evt.getSource();
@@ -2205,39 +2228,39 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                                 loading.setProgress(progress);
                             }
                             else if (o.isDone()&&!o.isCancelled()) {
-                               //Handled in done() fucntion in SwingWorker
+                                //Handled in done() function in SwingWorker
                             }
                         }//End progress update
-                 } //End populateNetworkPropertyChange
-                 });
+                    } //End populateNetworkPropertyChange
+                });
         //Finally. Show a load dialog :: Warning Work-In-Progress
         loading=new InformationJDialog(this, false, loadSwingWorker2,"");
         loading.setProgress(0); //Put 0% as the start progress
         loading.Message("Loading "+files.length+" files...", "");
         loadSwingWorker2.execute();
     }
-
-       /**
+    
+    /**
      * Simple thread to load file into the project
      */
     private void loadMatrixFiles(final File[] files, final String groupname, final String note) {
         final LinkedList<File> toLoad=new LinkedList<File>();
         final int totalToLoad=files.length;
         for(File f:files) toLoad.add(f);
-
+        
         SwingWorker<Integer, Object> loadSwingWorker2=new SwingWorker<Integer, Object>() {
             String filename="";
-
+            
             @Override
             protected Integer doInBackground() throws Exception {
                 //We dont check for cancelled
-
+                
                 while (!isCancelled()&&toLoad.size()>0) {
                     File f=toLoad.pollFirst();
                     filename=f.getName();
                     publish("Loading "+filename);
                     Matrix multi=new Matrix(f.getAbsolutePath());
-                    multi.setName(groupname+"_"+filename);                   
+                    multi.setName(groupname+"_"+filename);
                     multi.setNote(note);
                     multi.saveToDatabase();
                     setProgress((totalToLoad-toLoad.size())*100/totalToLoad);
@@ -2246,10 +2269,10 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                     } else {
                         publish("Successfully imported matrix from "+filename);
                     }
-                 }
+                }
                 return 0;
             }
-
+            
             @Override
             public void process(List<Object> chunk) {
                 for (Object o:chunk) {
@@ -2260,21 +2283,21 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                         } else {
                             loading.Message(s,"");
                         } //--End Unable
-                     } //--End instance of String
+                    } //--End instance of String
                 } //--End list of Object
             } //End process
-
+            
             @Override
             public void done() {
                 loading.setVisible(false);
                 //Update UI by reloading alll sequences... (to be sure)...
                 toolbox.reloadDatabaseTree();
             }
-
+            
         }; //End SwingWorker definition
-
+        
         loadSwingWorker2.addPropertyChangeListener(
-                 new PropertyChangeListener() {
+                new PropertyChangeListener() {
                     public  void propertyChange(PropertyChangeEvent evt) {
                         if ("progress".equals(evt.getPropertyName())) {
                             SwingWorker o = (SwingWorker)evt.getSource();
@@ -2283,29 +2306,29 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                                 loading.setProgress(progress);
                             }
                             else if (o.isDone()&&!o.isCancelled()) {
-                               //Handled in done() fucntion in SwingWorker
+                                //Handled in done() function in SwingWorker
                             }
                         }//End progress update
-                 } //End populateNetworkPropertyChange
-                 });
+                    } //End populateNetworkPropertyChange
+                });
         //Finally. Show a load dialog :: Warning Work-In-Progress
         loading=new InformationJDialog(this, false, loadSwingWorker2,"");
         loading.setProgress(0); //Put 0% as the start progress
         loading.Message("Loading "+files.length+" files...", "");
         loadSwingWorker2.execute();
     }
-
+    
     public void importSequenceFromDisk(){
         JFileChooser jf=new JFileChooser(config.getExplorerPath());
         jf.setMultiSelectionEnabled(true);
         jf.addChoosableFileFilter(new SequenceFilter());
         jf.setAcceptAllFileFilterUsed(false);
         int result=jf.showOpenDialog(this);
-
+        
         //CAS 1: We have a file
         if (result==JFileChooser.APPROVE_OPTION) {
-             String path=jf.getSelectedFile().getPath();
-             config.setExplorerPath(path);
+            String path=jf.getSelectedFile().getPath();
+            config.setExplorerPath(path);
             File[] files=jf.getSelectedFiles();
             if (files.length>0) {
                 String filename="";
@@ -2320,20 +2343,20 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                     loadSequenceFiles(files,jd.getCollectionName(),jd.getComments(), jd.getSequenceType());//load Files using a Swing worker
                 }
             }
-       } //End file
+        } //End file
     }
-
-    public void importAlignmentFromDisk(){       
+    
+    public void importAlignmentFromDisk(){
         JFileChooser jf=new JFileChooser(config.getExplorerPath());
         jf.setMultiSelectionEnabled(true);
         jf.addChoosableFileFilter(new SequenceFilter());
         jf.setAcceptAllFileFilterUsed(false);
         int result=jf.showOpenDialog(this);
-
+        
         //CAS 1: We have a file
         if (result==JFileChooser.APPROVE_OPTION) {
-             String path=jf.getSelectedFile().getPath();
-             config.setExplorerPath(path);
+            String path=jf.getSelectedFile().getPath();
+            config.setExplorerPath(path);
             File[] files=jf.getSelectedFiles();
             if (files.length>0) {
                 String filename="";
@@ -2348,10 +2371,10 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
                     loadAlignmentFiles(files,jd.getCollectionName(),jd.getComments(), jd.getSequenceType());//load Files using a Swing worker
                 }
             }
-       } //End file
+        } //End file
     }
-
-
+    
+    
     public void importTreeFromDisk() {
         JFileChooser jf=new JFileChooser(config.getExplorerPath());
         jf.setMultiSelectionEnabled(true);
@@ -2360,8 +2383,8 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
         int result=jf.showOpenDialog(this);
         //CAS 1: On reussi a choisir un fichier
         if (result==JFileChooser.APPROVE_OPTION) {
-             String path=jf.getSelectedFile().getPath();
-             config.setExplorerPath(path);
+            String path=jf.getSelectedFile().getPath();
+            config.setExplorerPath(path);
             File[] files=jf.getSelectedFiles();
             if (files.length>0) {
                 String filename="";
@@ -2378,15 +2401,15 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
             }
         }
     }
-
-      public void importTextFromDisk() {
+    
+    public void importTextFromDisk() {
         JFileChooser jf=new JFileChooser(config.getExplorerPath());
-        jf.setMultiSelectionEnabled(true);       
+        jf.setMultiSelectionEnabled(true);
         int result=jf.showOpenDialog(this);
         //CAS 1: On reussi a choisir un fichier
         if (result==JFileChooser.APPROVE_OPTION) {
-             String path=jf.getSelectedFile().getPath();
-             config.setExplorerPath(path);
+            String path=jf.getSelectedFile().getPath();
+            config.setExplorerPath(path);
             File[] files=jf.getSelectedFiles();
             if (files.length>0) {
                 String filename="";
@@ -2403,15 +2426,15 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
             }
         }
     }
-
-       public void importMatrixFromDisk() {
+    
+    public void importMatrixFromDisk() {
         JFileChooser jf=new JFileChooser(config.getExplorerPath());
-        jf.setMultiSelectionEnabled(true);       
+        jf.setMultiSelectionEnabled(true);
         int result=jf.showOpenDialog(this);
         //CAS 1: On reussi a choisir un fichier
         if (result==JFileChooser.APPROVE_OPTION) {
-             String path=jf.getSelectedFile().getPath();
-             config.setExplorerPath(path);
+            String path=jf.getSelectedFile().getPath();
+            config.setExplorerPath(path);
             File[] files=jf.getSelectedFiles();
             if (files.length>0) {
                 String filename="";
@@ -2428,17 +2451,17 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
             }
         }
     }
-      
+    
     /**
      * This show the toolbox and workbox
      */
     public void showWorkflow_and_Toolbox() {
-         ////////////////////////////////////////////////////////////////////////
-         /// Fire action to open workflow
-                    Toolbox_jButton.doClick(1);
-                    Workflow_jButton.doClick(1);
+        ////////////////////////////////////////////////////////////////////////
+        /// Fire action to open workflow
+        Toolbox_jButton.doClick(1);
+        Workflow_jButton.doClick(1);
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AlignmentManager_jButton;
     private javax.swing.JMenuItem AlignmentManagerjMenuItem;
@@ -2460,6 +2483,7 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
     private javax.swing.JMenuItem ReportjMenuItem14;
     private javax.swing.JMenuItem ResetDevelopperStatejMenuItem5;
     private javax.swing.JMenuItem RunIterationjMenuItem;
+    private javax.swing.JMenuItem RunOnCHP_jMenuItem;
     private javax.swing.JMenuItem RunSelected_jMenuItem7;
     private javax.swing.JMenuItem Run_jMenuItem;
     private javax.swing.JMenu Sample_jMenu;
@@ -2505,76 +2529,76 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
     private javax.swing.JPopupMenu.Separator jSeparator7;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
-
+    
     public void windowOpened(WindowEvent e) {
-
+        
     }
-
-    public void windowClosing(WindowEvent e) {        
+    
+    public void windowClosing(WindowEvent e) {
         if (workbox.getCurrentWorkflows().isChanged()) {
-                String msg="<html>Warning, workflow not saved.<br><br>Do you want to save the workflow before exiting?</html>";
-                Object[] options = {"Yes","No","Cancel"};
-                int n = JOptionPane.showOptionDialog(this,msg,"Save workflow before exit...",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,options, options[2]);
-                switch(n) {
-                    case 0:  workbox.saveWorkflowToDatabase("Save on "+Util.returnCurrentDateAndTime());
-                              //A pause so user can see the message before
-                            //the window actually closes.
-                            ActionListener task = new ActionListener() {
-                                boolean alreadyDisposed = false;
-                                public void actionPerformed(ActionEvent e) {
-                                    if (!alreadyDisposed) {
-                                        alreadyDisposed = true;
-                                        frame.dispose();
-                                        System.exit(0);
-                                    }
-                                }
-                            };
-                            Timer timer = new Timer(500, task); //fire every half second
-                            timer.setInitialDelay(0);        //first delay 2 seconds
-                            timer.setRepeats(false);
-                            timer.start();
-                           break;
-                    case 1:
-                         ActionListener task2 = new ActionListener() {
-                                boolean alreadyDisposed = false;
-                                public void actionPerformed(ActionEvent e) {
-                                    if (!alreadyDisposed) {
-                                        alreadyDisposed = true;
-                                        frame.dispose();
-                                        System.exit(0);
-                                    }
-                                }
-                            };
-                            Timer timer2 = new Timer(500, task2); //fire every half second
-                            timer2.setInitialDelay(0);        //first delay 2 seconds
-                            timer2.setRepeats(false);
-                            timer2.start();
-                           break;
-                    default:
-                        break;
-                }
+            String msg="<html>Warning, workflow not saved.<br><br>Do you want to save the workflow before exiting?</html>";
+            Object[] options = {"Yes","No","Cancel"};
+            int n = JOptionPane.showOptionDialog(this,msg,"Save workflow before exit...",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,options, options[2]);
+            switch(n) {
+                case 0:  workbox.saveWorkflowToDatabase("Save on "+Util.returnCurrentDateAndTime());
+                //A pause so user can see the message before
+                //the window actually closes.
+                ActionListener task = new ActionListener() {
+                    boolean alreadyDisposed = false;
+                    public void actionPerformed(ActionEvent e) {
+                        if (!alreadyDisposed) {
+                            alreadyDisposed = true;
+                            frame.dispose();
+                            System.exit(0);
+                        }
+                    }
+                };
+                Timer timer = new Timer(500, task); //fire every half second
+                timer.setInitialDelay(0);        //first delay 2 seconds
+                timer.setRepeats(false);
+                timer.start();
+                break;
+                case 1:
+                    ActionListener task2 = new ActionListener() {
+                        boolean alreadyDisposed = false;
+                        public void actionPerformed(ActionEvent e) {
+                            if (!alreadyDisposed) {
+                                alreadyDisposed = true;
+                                frame.dispose();
+                                System.exit(0);
+                            }
+                        }
+                    };
+                    Timer timer2 = new Timer(500, task2); //fire every half second
+                    timer2.setInitialDelay(0);        //first delay 2 seconds
+                    timer2.setRepeats(false);
+                    timer2.start();
+                    break;
+                default:
+                    break;
+            }
         } else {
-           frame.dispose();
-           System.exit(0);
+            frame.dispose();
+            System.exit(0);
         }
     }
-
+    
     public void windowClosed(WindowEvent e) {
         
     }
-
+    
     public void windowIconified(WindowEvent e) {
-
+        
     }
-
+    
     public void windowDeiconified(WindowEvent e) {
-
+        
     }
-
+    
     public void windowActivated(WindowEvent e) {
         
     }
-
+    
     public void windowDeactivated(WindowEvent e) {
         
     }
@@ -2582,5 +2606,5 @@ public class MainFrame extends javax.swing.JFrame implements WindowListener,
     public void windowStateChanged(WindowEvent e) {
         
     }
-
+    
 }

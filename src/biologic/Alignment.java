@@ -152,24 +152,24 @@ import workflows.workflow_properties;
         loadSequences(filename);
         //--Remove empty sequences
         for (int i=this.getNbSequence()-1;i>-1;i--) {
-          Sequence s=this.getSequences().get(i);
-          if (s.getName().trim().isEmpty()&&s.getSequence().trim().isEmpty()) this.getSequences().remove(i);
+            Sequence s=this.getSequences().get(i);
+            if (s.getName().trim().isEmpty()&&s.getSequence().trim().isEmpty()) this.getSequences().remove(i);
         }        
         if (getNbSequence()>0) {
             for (Sequence s:getSequences()) {
                 try {
-                   String sname=(s.getName().startsWith("AZ")?s.getName().substring(2):s.getName());
-                   int original_sequence_id=Integer.valueOf(sname);
-                   InfoSequence info=df.getInfoSequence(original_sequence_id);
-                   //System.out.println(info);
-                   s.setName(info.getName());
-                   s.setGi(info.getGi());
-                   s.setAccession(info.getAccession());
-                   s.setAccession_referee(info.getAccession_referee());
-                   s.setAbbreviate(info.getAbbreviate());
-                   s.setSequence_type(info.getSequence_type());
-                   s.setOriginal_id(original_sequence_id);
-                   //System.out.println(s.getAbbreviate());
+                    String sname=(s.getName().startsWith("AZ")?s.getName().substring(2):s.getName());
+                    int original_sequence_id=Integer.valueOf(sname);
+                    InfoSequence info=df.getInfoSequence(original_sequence_id);
+                    //System.out.println(info);
+                    s.setName(info.getName());
+                    s.setGi(info.getGi());
+                    s.setAccession(info.getAccession());
+                    s.setAccession_referee(info.getAccession_referee());
+                    s.setAbbreviate(info.getAbbreviate());
+                    s.setSequence_type(info.getSequence_type());
+                    s.setOriginal_id(original_sequence_id);
+                    //System.out.println(s.getAbbreviate());
                 } catch(Exception e) {}
             }
             return true;
@@ -190,18 +190,18 @@ import workflows.workflow_properties;
         if (getNbSequence()>0) {
             for (Sequence s:getSequences()) {
                 try {
-                   String sname=(s.getName().startsWith("AZ")?s.getName().substring(2):s.getName());
-                   int original_sequence_id=Integer.valueOf(sname);
-                   InfoSequence info=df.getInfoSequence(original_sequence_id);
-                   //System.out.println(info);
-                   s.setName(info.getName());
-                   s.setGi(info.getGi());
-                   s.setAccession(info.getAccession());
-                   s.setAccession_referee(info.getAccession_referee());
-                   s.setAbbreviate(info.getAbbreviate());
-                   s.setSequence_type(info.getSequence_type());
-                   s.setOriginal_id(original_sequence_id);
-                   //System.out.println(s.getAbbreviate());
+                    String sname=(s.getName().startsWith("AZ")?s.getName().substring(2):s.getName());
+                    int original_sequence_id=Integer.valueOf(sname);
+                    InfoSequence info=df.getInfoSequence(original_sequence_id);
+                    //System.out.println(info);
+                    s.setName(info.getName());
+                    s.setGi(info.getGi());
+                    s.setAccession(info.getAccession());
+                    s.setAccession_referee(info.getAccession_referee());
+                    s.setAbbreviate(info.getAbbreviate());
+                    s.setSequence_type(info.getSequence_type());
+                    s.setOriginal_id(original_sequence_id);
+                    //System.out.println(s.getAbbreviate());
                 } catch(Exception e) {}
             }
             return true;
@@ -264,38 +264,36 @@ import workflows.workflow_properties;
             return seqConsensus;
     }
   
-     public String readAncestorFromFasta(String filename) {
-      String ancestor=""; //the returned ancestor
-      String ids="";      //Not returned but the parent sequence
-      try {
-         BufferedReader br =new BufferedReader(new FileReader(new File(filename)));
-         Vector<String> stri=new Vector<String>();
-         //Read the file
-         while (br.ready()) {
-              stri.add(br.readLine());
-          }
-          br.close();
-          //Process :: We read like a fasta file
-          int len=0; //length of the greatest fasta identifier::Should be the one
-          for (int i=0; i<stri.size(); i++) {
-              if (stri.get(i).startsWith(">")) {
-                  //We have a fasta definition, we check the len
-                  //Bigger than before, we add...
-                  if (stri.get(i).length()>len) {
+    public String readAncestorFromFasta(String filename) {
+        String ancestor=""; //the returned ancestor
+        String ids="";      //Not returned but the parent sequence
+        try {
+            BufferedReader br =new BufferedReader(new FileReader(new File(filename)));
+            Vector<String> stri=new Vector<String>();
+            //Read the file
+            while (br.ready()) {
+                stri.add(br.readLine());
+            }
+            br.close();
+            //Process :: We read like a fasta file
+            int len=0; //length of the greatest fasta identifier::Should be the one
+            for (int i=0; i<stri.size(); i++) {
+                //We have a fasta definition, we check the len
+                //Bigger than before, we add...
+                if (stri.get(i).startsWith(">")
+                    && stri.get(i).length()>len) {
                     len=stri.get(i).length();
                     ids=stri.get(i);
                     i++;
                     ancestor=stri.get(i);
-                  }
-              }
-          } //end for
-      } catch(Exception e) {Config.log("Error with "+filename); return "";} 
-      return ancestor;
+                }
+            } //end for
+        } catch(Exception e) {Config.log("Error with "+filename); return "";} 
+        return ancestor;
   }
 
 
-        boolean outputAncestor(String filename) {
-
+    boolean outputAncestor(String filename) {
         try {
             PrintWriter pw = new PrintWriter(new FileWriter(new File(filename)));
             pw.println(getSeqAncestrale());
@@ -316,245 +314,239 @@ import workflows.workflow_properties;
         return true;
     }
 
-    
- 
+    ////////////////////////////////////////////////////////////////////
+    /// Random Alignment fonction
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// Random Alignment fonction
-
-        /**
-         * Main function to generate the random Alignment
-         */
-        public void generateRandomSequence(int mode) {
-            if (debug) Config.log("Creating "+seqNumber+" random sequence of "+seqMaxLength+" bp. ");
-          
-            if (seqMaxLength<11) {
-                System.out.println("Warnning. Unable to generate for sequences smaller than 11.");
-                return;
-            }
-            seqAncestrale=Sequence.randomDNA(seqMaxLength-10);            
-           seq.clear();
-           seqr=new String[seqNumber];
-           //Config.log(this.seqNumber+" "+this.seqMaxLength);
-           //Seq
-            for (int i=0; i<seqNumber;i++) {
-                seqr[i]=seqAncestrale;
-            }
-           while (seqr[0].length()!=seqMaxLength) {
-                randomINDELSUB(mode);
-           }
-
-           for (int index=0; index<seqr.length;index++) {
-                Sequence tmp=new Sequence();
-                tmp.setName("RAND"+index);                
-                tmp.setAbbreviate("RAND"+index);
-                tmp.setSequence(seqr[index]);
-                tmp.setOrientation("+");
-                seq.add(tmp);
-           }
-           //Destroy tmp array
-           seqr=new String[0];
-           if (debug) Config.log("done. "+seqAncestrale+" "+seqAncestrale.length()+" bp");
-            
+    /**
+     * Main function to generate the random Alignment
+     */
+    public void generateRandomSequence(int mode) {
+        if (debug) Config.log("Creating "+seqNumber+" random sequence of "+seqMaxLength+" bp. ");
+      
+        if (seqMaxLength<11) {
+            System.out.println("Warnning. Unable to generate for sequences smaller than 11.");
+            return;
         }
-
-
-        /**
-         * Add a random INDEL ou SUB ou GAP
-         * to some of the Alignment
-         */
-        void randomINDELSUB(int mode) {
-            Random r = new Random();
-            String mask=randomMask(); //LES SEQUENCE A EDITÉ
-            int position_in_sequence=r.nextInt(seqr[0].length()); //LA POSITION DANS LES SEQUENCE
-            //Switch MODE:
-            // 1: INSERTION seulement
-            // 2: INSERTION+DELETION
-            // 3: INSERTION+DELETION+SUBSTITUTION
-            // 4: INSERTION+DELETION+SUBSTITUTION+GAP (random)
-              
-            switch(r.nextInt(mode)) {
-                case 0:       //INSERTION
-                        String IN=Sequence.randomDNA(1);
-                        int index=0;        //index de la Alignment
-                        for (char ch:mask.toCharArray()) {
-                            try {
-                            String before=seqr[index].substring(0,position_in_sequence);
-                            String after=seqr[index].substring(position_in_sequence);
-                            seqr[index]=before+(ch=='.'?IN:"-")+after;
-                            } catch (Exception e) {}
-                            index++;
-
-                        }
-                        break;
-                case 1: //DELETION
-                        index=0;        //index de la Alignment
-                        for (char ch:mask.toCharArray()) {
-                            try {
-                            String before=seqr[index].substring(0,position_in_sequence);
-                            String after=seqr[index].substring(position_in_sequence);
-                            if (ch=='.') seqr[index]=before+after.substring(1)+"-";
-                            }catch (Exception e) {}
-                            index++;
-                        }
-                        break;
-                case 2:       //SUBSITUTION SANS MATRICE!
-                        String SUB=Sequence.randomDNA(1);
-                        index=0;        //index de la Sequence
-                        for (char ch:mask.toCharArray()) {
-                            try {
-                            String before=seqr[index].substring(0,position_in_sequence);
-                            String after=seqr[index].substring(position_in_sequence);
-                            seqr[index]=before+(ch=='.'?SUB:after.charAt(0))+after.substring(1);
-                            } catch(Exception e) {}
-                            index++;
-                        }
-                        break;
-                case 3:       //GAP
-                        index=0;        //index de la Sequence
-                        for (char ch:mask.toCharArray()) {
-                            try {
-                            String before=seqr[index].substring(0,position_in_sequence);
-                            String after=seqr[index].substring(position_in_sequence);
-                            seqr[index]=before+"-"+after;
-                            } catch (Exception e) {}
-                            index++;
-                        }
-                        break;
-            } //End switch mode
-
+        seqAncestrale=Sequence.randomDNA(seqMaxLength-10);            
+       seq.clear();
+       seqr=new String[seqNumber];
+       //Config.log(this.seqNumber+" "+this.seqMaxLength);
+       //Seq
+        for (int i=0; i<seqNumber;i++) {
+            seqr[i]=seqAncestrale;
         }
-
-        /**
-         * Generate a random mask of editing Sequence
-         * we have a . if we need to edit this Sequence
-         * USED BY randomINDELSUB
-         * @return a mask String
-         */
-        String randomMask() {
-            Random r = new Random();
-            String mask="";
-            for (int i=0; i<seqNumber;i++) {
-                mask+=(r.nextInt(2)==0?" ":".");
-            }
-            return  mask;
-        }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// Distance d'édition (en programmation dynamique)
-
-        /**
-         * Calculate the distance from ancestral Alignment
-         * @param seqTrouve
-         * @return
-         */
-        int distance(String seqTrouve) {
-            String seq1=getSeqAncestrale();
-            String seq2=seqTrouve;
-            int len1;
-            int len2;
-            int[][] m; //matrice edition
-            len1=seq1.length();
-            len2=seq2.length();
-
-              m = new int[len1+1][len2+1];
-
-              for (int i=0; i<len1+1; i++) {
-                m[i][0]=i;
-                }
-              for (int j=0; j<len2+1; j++) {
-                m[0][j]=j;
-                }
-                for (int i=1; i<len1+1;i++) {
-                  for (int j=1; j<len2+1; j++) {
-
-                    int d=m[i-1][j-1];
-                    if (seq1.charAt(i-1)!=seq2.charAt(j-1)&&seq2.charAt(j-1)!='N') { //I added N since its ambigious
-                      d++;
-                      }
-                    int u=m[i][j-1]+1;
-                    int l=m[i-1][j ]+1;
-                    int value=Math.min(Math.min(d,u), l);
-                    m[i][j]=value;
-                   }
-                }
-                return m[len1][len2];
-            }//End distance
-        
-        /**
-         * Calculate the distance d'étition de différentes séquences
-         * @param seqSource 
-         * @param seqTrouve
-         * @return distance calculated
-         */
-        int distance(String seqSource, String seqTrouve) {
-            String seq1=seqSource;
-            String seq2=seqTrouve;
-            int len1;
-            int len2;
-            int[][] m; //matrice edition
-            len1=seq1.length();
-            len2=seq2.length();
-
-              m = new int[len1+1][len2+1];
-
-              for (int i=0; i<len1+1; i++) {
-                m[i][0]=i;
-                }
-              for (int j=0; j<len2+1; j++) {
-                m[0][j]=j;
-                }
-                for (int i=1; i<len1+1;i++) {
-                  for (int j=1; j<len2+1; j++) {
-
-                    int d=m[i-1][j-1];
-                    if (seq1.charAt(i-1)!=seq2.charAt(j-1)&&seq2.charAt(j-1)!='N') { //I added N since its ambigious
-                      d++;
-                      }
-                    int u=m[i][j-1]+1;
-                    int l=m[i-1][j ]+1;
-                    int value=Math.min(Math.min(d,u), l);
-                    m[i][j]=value;
-                   }
-                }
-                return m[len1][len2];
-            }//End distance
-
-        void computeConcensus() {
-            seqConsensus="";
-            //Iterate over each character of eachs sequences
-            for (int seqchar=0; seqchar<getSequenceSize();seqchar++) {
-                float A=0;
-                float T=0;
-                float G=0;
-                float C=0;
-                float gap=0;
-                for (int seqn=0; seqn<getNbSequence();seqn++) {
-                     char c=seq.get(seqn).getSequence().charAt(seqchar);
-                     //We omit gap and N
-                     switch(c) {
-                         case 'A': A++; break;
-                         case 'T': T++; break;
-                         case 'G': G++; break;
-                         case 'C': C++; break;
-                         case '-': gap++; break;
-                     }
-                 }
-            //stat
-                A=A/seqMaxLength;
-                T=T/seqMaxLength;
-                G=G/seqMaxLength;
-                C=C/seqMaxLength;
-                gap=gap/seqMaxLength;
-                char ret='N';
-                if (A>T&&A>G&&A>C) ret='A';
-                if (T>A&&T>G&&T>C) ret='T';
-                if (G>T&&G>A&&G>C) ret='G';
-                if (C>T&&C>G&&C>A) ret='C';
-                if (gap>A&&gap>T&&gap>G&&gap>C) ret='-'; //by default, gap is less important
-                seqConsensus+=ret;
-            }
+       while (seqr[0].length()!=seqMaxLength) {
+            randomINDELSUB(mode);
        }
+
+       for (int index=0; index<seqr.length;index++) {
+            Sequence tmp=new Sequence();
+            tmp.setName("RAND"+index);                
+            tmp.setAbbreviate("RAND"+index);
+            tmp.setSequence(seqr[index]);
+            tmp.setOrientation("+");
+            seq.add(tmp);
+       }
+       //Destroy tmp array
+       seqr=new String[0];
+       if (debug) Config.log("done. "+seqAncestrale+" "+seqAncestrale.length()+" bp");
+        
+    }
+
+    /**
+     * Add a random INDEL ou SUB ou GAP
+     * to some of the Alignment
+     */
+    void randomINDELSUB(int mode) {
+        Random r = new Random();
+        String mask=randomMask(); //LES SEQUENCE A EDITÉ
+        int position_in_sequence=r.nextInt(seqr[0].length()); //LA POSITION DANS LES SEQUENCE
+        //Switch MODE:
+        // 1: INSERTION seulement
+        // 2: INSERTION+DELETION
+        // 3: INSERTION+DELETION+SUBSTITUTION
+        // 4: INSERTION+DELETION+SUBSTITUTION+GAP (random)
+          
+        switch(r.nextInt(mode)) {
+            case 0:       //INSERTION
+                    String IN=Sequence.randomDNA(1);
+                    int index=0;        //index de la Alignment
+                    for (char ch:mask.toCharArray()) {
+                        try {
+                        String before=seqr[index].substring(0,position_in_sequence);
+                        String after=seqr[index].substring(position_in_sequence);
+                        seqr[index]=before+(ch=='.'?IN:"-")+after;
+                        } catch (Exception e) {}
+                        index++;
+
+                    }
+                    break;
+            case 1: //DELETION
+                    index=0;        //index de la Alignment
+                    for (char ch:mask.toCharArray()) {
+                        try {
+                        String before=seqr[index].substring(0,position_in_sequence);
+                        String after=seqr[index].substring(position_in_sequence);
+                        if (ch=='.') seqr[index]=before+after.substring(1)+"-";
+                        }catch (Exception e) {}
+                        index++;
+                    }
+                    break;
+            case 2:       //SUBSITUTION SANS MATRICE!
+                    String SUB=Sequence.randomDNA(1);
+                    index=0;        //index de la Sequence
+                    for (char ch:mask.toCharArray()) {
+                        try {
+                        String before=seqr[index].substring(0,position_in_sequence);
+                        String after=seqr[index].substring(position_in_sequence);
+                        seqr[index]=before+(ch=='.'?SUB:after.charAt(0))+after.substring(1);
+                        } catch(Exception e) {}
+                        index++;
+                    }
+                    break;
+            case 3:       //GAP
+                    index=0;        //index de la Sequence
+                    for (char ch:mask.toCharArray()) {
+                        try {
+                        String before=seqr[index].substring(0,position_in_sequence);
+                        String after=seqr[index].substring(position_in_sequence);
+                        seqr[index]=before+"-"+after;
+                        } catch (Exception e) {}
+                        index++;
+                    }
+                    break;
+        } //End switch mode
+
+    }
+
+    /**
+     * Generate a random mask of editing Sequence
+     * we have a . if we need to edit this Sequence
+     * USED BY randomINDELSUB
+     * @return a mask String
+     */
+    String randomMask() {
+        Random r = new Random();
+        String mask="";
+        for (int i=0; i<seqNumber;i++) {
+            mask+=(r.nextInt(2)==0?" ":".");
+        }
+        return  mask;
+    }
+
+    ////////////////////////////////////////////////////////////////////
+    /// Distance d'édition (en programmation dynamique)
+
+    /**
+     * Calculate the distance from ancestral Alignment
+     * @param seqTrouve
+     * @return
+     */
+    int distance(String seqTrouve) {
+        String seq1=getSeqAncestrale();
+        String seq2=seqTrouve;
+        int len1;
+        int len2;
+        int[][] m; //matrice edition
+        len1=seq1.length();
+        len2=seq2.length();
+
+        m = new int[len1+1][len2+1];
+
+        for (int i=0; i<len1+1; i++) {
+            m[i][0]=i;
+        }
+        for (int j=0; j<len2+1; j++) {
+            m[0][j]=j;
+        }
+        for (int i=1; i<len1+1;i++) {
+            for (int j=1; j<len2+1; j++) {
+                int d=m[i-1][j-1];
+                if (seq1.charAt(i-1)!=seq2.charAt(j-1)&&seq2.charAt(j-1)!='N') { //I added N since its ambigious
+                    d++;
+                }
+                int u=m[i][j-1]+1;
+                int l=m[i-1][j ]+1;
+                int value=Math.min(Math.min(d,u), l);
+                m[i][j]=value;
+            }
+        }
+        return m[len1][len2];
+        }//End distance
+    
+    /**
+     * Calculate the distance d'étition de différentes séquences
+     * @param seqSource 
+     * @param seqTrouve
+     * @return distance calculated
+     */
+    int distance(String seqSource, String seqTrouve) {
+        String seq1=seqSource;
+        String seq2=seqTrouve;
+        int len1;
+        int len2;
+        int[][] m; //matrice edition
+        len1=seq1.length();
+        len2=seq2.length();
+
+        m = new int[len1+1][len2+1];
+
+        for (int i=0; i<len1+1; i++) {
+            m[i][0]=i;
+        }
+        for (int j=0; j<len2+1; j++) {
+            m[0][j]=j;
+        }
+        for (int i=1; i<len1+1;i++) {
+            for (int j=1; j<len2+1; j++) {
+                int d=m[i-1][j-1];
+                if (seq1.charAt(i-1)!=seq2.charAt(j-1)&&seq2.charAt(j-1)!='N') { //I added N since its ambigious
+                    d++;
+                }
+                int u=m[i][j-1]+1;
+                int l=m[i-1][j ]+1;
+                int value=Math.min(Math.min(d,u), l);
+                m[i][j]=value;
+           }
+        }
+        return m[len1][len2];
+    }//End distance
+
+    void computeConcensus() {
+        seqConsensus="";
+        //Iterate over each character of eachs sequences
+        for (int seqchar=0; seqchar<getSequenceSize();seqchar++) {
+            float A=0;
+            float T=0;
+            float G=0;
+            float C=0;
+            float gap=0;
+            for (int seqn=0; seqn<getNbSequence();seqn++) {
+                char c=seq.get(seqn).getSequence().charAt(seqchar);
+                //We omit gap and N
+                switch(c) {
+                    case 'A': A++; break;
+                    case 'T': T++; break;
+                    case 'G': G++; break;
+                    case 'C': C++; break;
+                    case '-': gap++; break;
+                }
+            }
+        //stat
+            A=A/seqMaxLength;
+            T=T/seqMaxLength;
+            G=G/seqMaxLength;
+            C=C/seqMaxLength;
+            gap=gap/seqMaxLength;
+            char ret='N';
+            if (A>T&&A>G&&A>C) ret='A';
+            if (T>A&&T>G&&T>C) ret='T';
+            if (G>T&&G>A&&G>C) ret='G';
+            if (C>T&&C>G&&C>A) ret='C';
+            if (gap>A&&gap>T&&gap>G&&gap>C) ret='-'; //by default, gap is less important
+            seqConsensus+=ret;
+        }
+    }
 
     /**
      * @return the seqAncestrale
@@ -563,27 +555,26 @@ import workflows.workflow_properties;
         return seqAncestrale;
     }
 
-////////////////////////////////////////////////////////////////////////////////
-/// Load function
+    ////////////////////////////////////////////////////////////////////
+    /// Load function
 
- boolean readAncestor (String filename) {
-       try {
+    boolean readAncestor (String filename) {
+        try {
             BufferedReader br = new BufferedReader(new FileReader(new File(filename)));
             String stri=br.readLine();
             seqAncestrale=stri;
             br.close();
-       } catch(Exception e) {return false;}
-       return true;
-   } //end 
+        } catch(Exception e) {return false;}
+        return true;
+    } //end 
 
-   
     @Override
     public workflow_properties returnProperties() {
-         workflow_properties tmp=new workflow_properties();
-         if (id==0) this.saveToDatabase();
-             tmp.put("input_alignment_id", this.getId()); 
-             tmp.put("output_alignment_id", this.getId());
-         return tmp;
+        workflow_properties tmp=new workflow_properties();
+        if (id==0) this.saveToDatabase();
+        tmp.put("input_alignment_id", this.getId()); 
+        tmp.put("output_alignment_id", this.getId());
+        return tmp;
      }
 
     public String getBiologicType() {
@@ -593,14 +584,17 @@ import workflows.workflow_properties;
     public String getNameId(int id) {
         return df.getAlignmentName(id);
     }
-
+    
+    public String getFileNameId(int id) {
+        return "";
+    }
+    
     /**
      * This will delete all colonne containning the number of minimum Gap
      * ex. 0: remove all colonne containing gap, 1: permit 1 gap...
      */
     public void removeGapFromAlignment(int minimumGap) {
         //--Compute length        
-        
     }
 
     public void setData(String data) {
@@ -617,7 +611,7 @@ import workflows.workflow_properties;
         StringBuilder st=new StringBuilder();
         report r = new report();
 
-         st.append("<b>Alignment "+getName()+" with ID ["+getId()+"]</b><br>");
+        st.append("<b>Alignment "+getName()+" with ID ["+getId()+"]</b><br>");
         char nuc=':'; //--Not used caracter for starting point...
         char oldnuc=':'; //--Not used caracter for starting point...
 
@@ -631,33 +625,33 @@ import workflows.workflow_properties;
         }
         st.append("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>");
         for (Sequence S:this.getSequences()) {
-          String tmp=S.getSequence();
-          st.append("<tr><td>"+S.getName().substring(0,Math.min(55, S.getName().length()))+"</td><td>");
-          st.append("<span class=\"paml\">");
-          if (S.getSequence_type().equals("AA")){
-              for (int i=0;i<tmp.length();i++){
-                   nuc=tmp.charAt(i);
-                  if (oldnuc!=nuc) {
-                      oldnuc=nuc;
-                      st.append("</span>");
-                      st.append("<span class=\"prot"+nuc+"\">");
-                  }
-                  st.append(nuc);
-              }
-              st.append("</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-          } else {
-              for (int i=0;i<tmp.length();i++){
-              nuc=tmp.charAt(i);
-               if (oldnuc!=nuc) {
-                      oldnuc=nuc;
-                      st.append("</span>");
-                      st.append("<span class=\"nuc"+nuc+"\">");
-                  }
-                  st.append(nuc);
-              }
-              st.append("</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");           
-          }
-          st.append("</td></tr>");
+            String tmp=S.getSequence();
+            st.append("<tr><td>"+S.getName().substring(0,Math.min(55, S.getName().length()))+"</td><td>");
+            st.append("<span class=\"paml\">");
+            if (S.getSequence_type().equals("AA")){
+                for (int i=0;i<tmp.length();i++){
+                    nuc=tmp.charAt(i);
+                    if (oldnuc!=nuc) {
+                        oldnuc=nuc;
+                        st.append("</span>");
+                        st.append("<span class=\"prot"+nuc+"\">");
+                    }
+                    st.append(nuc);
+                }
+                st.append("</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+            } else {
+                for (int i=0;i<tmp.length();i++){
+                    nuc=tmp.charAt(i);
+                    if (oldnuc!=nuc) {
+                        oldnuc=nuc;
+                        st.append("</span>");
+                        st.append("<span class=\"nuc"+nuc+"\">");
+                    }
+                    st.append(nuc);
+                }
+                st.append("</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");           
+            }
+            st.append("</td></tr>");
         } //--End for
         st.append("</tbody></table>");
         st.append("Total "+this.getNbSequence()+" sequence(s) with len "+this.getSequenceSize()+"\n");
@@ -668,7 +662,7 @@ import workflows.workflow_properties;
      * Return a fasta representation of the alignment
      * @return
      */
-   public String getFasta() {
+    public String getFasta() {
         return this.outputFasta();
     }
 
@@ -807,9 +801,6 @@ import workflows.workflow_properties;
 //  return (id / cols);
 //
 //}
-
-         
-
 
 } //END ALIGNMENT
 

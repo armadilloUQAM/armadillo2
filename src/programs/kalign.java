@@ -116,8 +116,8 @@ public class kalign extends RunProgram {
         properties.put("output_alignment_id", align.getId());
         addOutput(align);
         if (!properties.getBoolean("debug")) {
-            deleteFile("input.fasta");
-            deleteFile("outfile.fasta");
+            Util.deleteFile("input.fasta");
+            Util.deleteFile("outfile.fasta");
         }
     }
      

@@ -78,20 +78,10 @@ public class Sequence implements Serializable, Biologic, Iterator  {
     public boolean loadFromDatabase(int id) {
         Sequence seq=df.getSequence(id);
         if (seq.getId()>0) {
-           this.setName(seq.getName());
-           this.setGi(seq.getGi());
-           this.setAccession(seq.getAccession());
-           this.setAccession_referee(seq.getAccession_referee());
-           this.setAbbreviate(seq.getAbbreviate());
-           this.setSequence(seq.getSequence());
-           this.setLen(seq.getLen());
-           this.setNote(seq.getNote());
-           this.setOriginal_id(seq.getOriginal_id());
-           this.setTimeAdded(seq.getTimeAdded());
-           this.setSequence_type(seq.getSequence_type());
+            updateSequenceInfos(this);
 //           this.setSequenceStats_id(seq.getSequenceStats_id());
-           this.id=id;
-        return true;
+            this.id=id;
+            return true;
         } else return false;
     }
 
@@ -109,28 +99,33 @@ public class Sequence implements Serializable, Biologic, Iterator  {
         return df.updateSequence(this);
     }
 
+
+    private void updateSequenceInfos (Sequence seq) {
+        this.setName(seq.getName());
+        this.setGi(seq.getGi());
+        this.setAccession(seq.getAccession());
+        this.setAccession_referee(seq.getAccession_referee());
+        this.setAbbreviate(seq.getAbbreviate());
+        this.setSequence(seq.getSequence());
+        this.setLen(seq.getLen());
+        this.setNote(seq.getNote());
+        this.setOriginal_id(seq.getOriginal_id());
+        this.setTimeAdded(seq.getTimeAdded());
+        this.setSequence_type(seq.getSequence_type());
+    }
     /**
      * 
      * @param filename
      * @return
      */
+     
     public boolean loadFromFile(String filename) {
         MultipleSequences multi=new MultipleSequences();
         boolean b=multi.loadSequences(filename);
         if (b) {
             Sequence seq=multi.getSequences().get(0);
             if (seq!=null) {
-               this.setName(seq.getName());
-               this.setGi(seq.getGi());
-               this.setAccession(seq.getAccession());
-               this.setAccession_referee(seq.getAccession_referee());
-               this.setAbbreviate(seq.getAbbreviate());
-               this.setSequence(seq.getSequence());
-               this.setLen(seq.getLen());
-               this.setNote(seq.getNote());
-               this.setOriginal_id(seq.getOriginal_id());
-               this.setTimeAdded(seq.getTimeAdded());
-               this.setSequence_type(seq.getSequence_type());
+                updateSequenceInfos(this);
             }
               return true;
         } else {
@@ -208,21 +203,20 @@ public class Sequence implements Serializable, Biologic, Iterator  {
             //1. replace | char
             String tmp=replaceByTab(this.name, '|');
             //2. We found id?
-               String[] data=tmp.split("\t"); //split with tab
-                if (data!=null&&data.length>1) {
-                   //HANDLE ENsembl
-                    //Config.log(data[0]+data[1]+data[2]);
-                    if (data[1].startsWith("ENS")) {
-                            this.setAccession_referee(data[0]);
-                            this.setAccession(data[1]);
-                            this.setName(data[0]+" "+data[2]); //We want the db in the name
-                            this.setGi(data[1]);
-
-                     } else {
-                     //Note assume the name is the last token
+            String[] data=tmp.split("\t"); //split with tab
+            if (data!=null&&data.length>1) {
+               //HANDLE ENsembl
+                //Config.log(data[0]+data[1]+data[2]);
+                if (data[1].startsWith("ENS")) {
+                    this.setAccession_referee(data[0]);
+                    this.setAccession(data[1]);
+                    this.setName(data[0]+" "+data[2]); //We want the db in the name
+                    this.setGi(data[1]);
+                } else {
+                    //Note assume the name is the last token
                     this.name=data[data.length-1].trim(); //We remove starting and ending space
                     for (int i=0; i<data.length-1;i++) {
-                       if (nextGi) {
+                        if (nextGi) {
                             nextGi=false;
                             this.setGi(data[i]);
                         }
@@ -237,12 +231,11 @@ public class Sequence implements Serializable, Biologic, Iterator  {
                             this.setAccession_referee(data[i]);
                             nextAccession=true;
                         }
-                        
-                        }
-                     } //End while
-                } //End else
-                //--This will try to generate an abbreviation from the name
-                if (this.getAbbreviate().isEmpty()) this.GenerateAbbreviate();
+                    }
+                }
+            }
+            //--This will try to generate an abbreviation from the name
+            if (this.getAbbreviate().isEmpty()) this.GenerateAbbreviate();
         }
 
             /**
@@ -252,17 +245,17 @@ public class Sequence implements Serializable, Biologic, Iterator  {
              * @return a String containing tab inst
              */
             public static String replaceByTab(String stri, char toReplace) {
-            String tmp="";
-            for (int i=0; i<stri.length();i++) {
-                char c=stri.charAt(i);
-                if (c==toReplace) {
-                    tmp+="\t";
-                } else {
-                    tmp+=c;
+                String tmp="";
+                for (int i=0; i<stri.length();i++) {
+                    char c=stri.charAt(i);
+                    if (c==toReplace) {
+                        tmp+="\t";
+                    } else {
+                        tmp+=c;
+                    }
                 }
+                return tmp;
             }
-            return tmp;
-        }
 
            /**
              * Helper methode to replace a char by a tab
@@ -272,18 +265,18 @@ public class Sequence implements Serializable, Biologic, Iterator  {
              * @return a String containing tab inst
              */
             public static String replaceChar(String stri, char toReplace, char toChar) {
-            if (stri.isEmpty()||stri==null) return stri;
-            String tmp="";
-            for (int i=0; i<stri.length();i++) {
-                char c=stri.charAt(i);
-                if (c==toReplace) {
-                    tmp+=toChar;
-                } else {
-                    tmp+=c;
+                if (stri.isEmpty()||stri==null) return stri;
+                String tmp="";
+                for (int i=0; i<stri.length();i++) {
+                    char c=stri.charAt(i);
+                    if (c==toReplace) {
+                        tmp+=toChar;
+                    } else {
+                        tmp+=c;
+                    }
                 }
+                return tmp;
             }
-            return tmp;
-        }
 
 ////////////////////////////////////////////////////////////////////////////////
 /// Getter / Setter
@@ -344,18 +337,14 @@ public class Sequence implements Serializable, Biologic, Iterator  {
      * @return string representation of sequence
      */
     public String getSequenceClipping(int start, int end) {
-
         //String tmpseq=sequence.toString();
         if (start!=0&&end==0&&start>-1&&start<sequence.length()) {
             return sequence.substring(start,sequence.length());
-        } else
-        if (start==0&&end!=0&&end>-1&&end<sequence.length()) {
+        } else if (start==0&&end!=0&&end>-1&&end<sequence.length()) {
             return sequence.substring(0,end);
-        } else
-        if (start!=0&&end!=0&&start<end&&start>-1&&end<sequence.length()) {
+        } else if (start!=0&&end!=0&&start<end&&start>-1&&end<sequence.length()) {
             return sequence.substring(start,end);
-        } else
-        if (start<sequence.length()&&end>sequence.length()) {
+        } else if (start<sequence.length()&&end>sequence.length()) {
             return sequence.substring(start,sequence.length());
         } else {
             return sequence.toString();
@@ -609,42 +598,41 @@ public class Sequence implements Serializable, Biologic, Iterator  {
         this.displayed = displayed;
     }
 
- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- /// Biological information
+////////////////////////////////////////////////////////////////////////
+/// Biological information
 
+    /**
+     * Methode renvoyant des statistiques sur la sequence.
+     * 
+     * @return une String sous la forme (100% A 100% T %100 G 100% C)
+     *         representant le % de chaque nucleotide dans la sequence
+     */
+    String getStat() {
+       int a=0;
+       int t=0;
+       int g=0;
+       int c=0;
+       int n=0;
 
-        /**
-         * Methode renvoyant des statistiques sur la sequence.
-         * 
-         * @return une String sous la forme (100% A 100% T %100 G 100% C)
-         *         representant le % de chaque nucleotide dans la sequence
-         */
-        String getStat() {
-               int a=0;
-               int t=0;
-               int g=0;
-               int c=0;
-               int n=0;
+       int total=sequence.length();
+       for (char ch:sequence.toString().toUpperCase().toCharArray()) {
+           switch (ch) {
+               case 'A':a++; break;
+               case 'T':t++; break;
+               case 'G':g++; break;
+               case 'C':c++; break;    //LOL
+               case 'N':n++; break;
+               case '-':n++; break;
+               //On ne calcul pas les autres caractères car ils sont normalement absent.
+           }
+       } //end for
+       a*=100;t*=100;g*=100;c*=100;n*=100;
+       a/=total;t/=total;g/=total;c/=total;n/=total;
+       return String.format("Stats: %d pb (%2d%% A %2d%% T %2d%% G %2d%% C %2d%% N)",total,a,t,g,c,n);
+    }
 
-               int total=sequence.length();
-               for (char ch:sequence.toString().toUpperCase().toCharArray()) {
-                   switch (ch) {
-                       case 'A':a++; break;
-                       case 'T':t++; break;
-                       case 'G':g++; break;
-                       case 'C':c++; break;    //LOL
-                       case 'N':n++; break;
-                       case '-':n++; break;
-                       //On ne calcul pas les autres caractères car ils sont normalement absent.
-                   }
-               } //end for
-               a*=100;t*=100;g*=100;c*=100;n*=100;
-               a/=total;t/=total;g/=total;c/=total;n/=total;
-               return String.format("Stats: %d pb (%2d%% A %2d%% T %2d%% G %2d%% C %2d%% N)",total,a,t,g,c,n);
-        }
-
-    ///////////////////////////////////////////////////////////////////////
-    /// Clone
+////////////////////////////////////////////////////////////////////////
+/// Clone
 
     @Override
     public Sequence clone() {
@@ -664,7 +652,7 @@ public class Sequence implements Serializable, Biologic, Iterator  {
     /**
      * Helper function to generate a Sequence abbreviate
      */
-      public String GenerateAbbreviate() {
+    public String GenerateAbbreviate() {
         String[] s=this.getName().split(" ");
         String n="";
         int count=0;
@@ -816,52 +804,51 @@ public class Sequence implements Serializable, Biologic, Iterator  {
              tmp.put("output_sequence_id", this.getId());
          return tmp;
      }
-	 
-	 /**
-	  * Output a fasta representation of this sequence
-	  */
-	 public String outputFasta() {
-				char special='|';
-				String sname=">";
-                if (!getGi().equals("")) sname+="gi"+special+getGi()+special;
-                if (!getAccession().equals("")) sname+=getAccession_referee()+special+getAccession()+special;
-                sname+=getName()+"\n"+getSequence();
-                return sname;
-	 }
 
-     public int distance(String sequence2) {
-            String seq1=this.getSequence();
-            String seq2=sequence2;
-            int len1;
-            int len2;
-            int[][] m; //matrice edition
-            len1=seq1.length();
-            len2=seq2.length();
+    /**
+    * Output a fasta representation of this sequence
+    */
+    public String outputFasta() {
+        char special='|';
+        String sname=">";
+        if (!getGi().equals("")) sname+="gi"+special+getGi()+special;
+        if (!getAccession().equals("")) sname+=getAccession_referee()+special+getAccession()+special;
+        sname+=getName()+"\n"+getSequence();
+        return sname;
+    }
 
-              m = new int[len1+1][len2+1];
+    public int distance(String sequence2) {
+        String seq1=this.getSequence();
+        String seq2=sequence2;
+        int len1;
+        int len2;
+        int[][] m; //matrice edition
+        len1=seq1.length();
+        len2=seq2.length();
 
-              for (int i=0; i<len1+1; i++) {
-                m[i][0]=i;
+        m = new int[len1+1][len2+1];
+
+        for (int i=0; i<len1+1; i++) {
+            m[i][0]=i;
+        }
+        for (int j=0; j<len2+1; j++) {
+            m[0][j]=j;
+        }
+
+        for (int i=1; i<len1+1;i++) {
+            for (int j=1; j<len2+1; j++) {
+                int d=m[i-1][j-1];
+                if (seq1.charAt(i-1)!=seq2.charAt(j-1)) {
+                    d++;
                 }
-              for (int j=0; j<len2+1; j++) {
-                m[0][j]=j;
-               }
-
-              for (int i=1; i<len1+1;i++) {
-                  for (int j=1; j<len2+1; j++) {
-
-                    int d=m[i-1][j-1];
-                    if (seq1.charAt(i-1)!=seq2.charAt(j-1)) {
-                      d++;
-                      }
-                    int u=m[i][j-1]+1;
-                    int l=m[i-1][j ]+1;
-                    int value=Math.min(Math.min(d,u), l);
-                    m[i][j]=value;
-                   }
-                }
-                return m[len1][len2];
-            }//End distance
+                int u=m[i][j-1]+1;
+                int l=m[i-1][j ]+1;
+                int value=Math.min(Math.min(d,u), l);
+                m[i][j]=value;
+            }
+        }
+        return m[len1][len2];
+    }//End distance
 
     /**
      * @return the RunProgram_id
@@ -883,64 +870,66 @@ public class Sequence implements Serializable, Biologic, Iterator  {
 
     @Override
     public String toHtml() {
-          StringBuilder st=new StringBuilder();
-          report r = new report();
-          char nuc=':'; //--Not used caracter for starting point...
-          char oldnuc=':'; //--Not used caracter for starting point...
-          String tmp=getSequence();
-          //st.append(results.getColorsNucProtStyle());
-          //st.append("<span class=\"SeqName"+getName()+"</span><br>");
-          //st.append("<b>"+">"+getName()+"</b><br>\n");
+        StringBuilder st=new StringBuilder();
+        report r = new report();
+        char nuc=':'; //--Not used caracter for starting point...
+        char oldnuc=':'; //--Not used caracter for starting point...
+        String tmp=getSequence();
+        //st.append(results.getColorsNucProtStyle());
+        //st.append("<span class=\"SeqName"+getName()+"</span><br>");
+        //st.append("<b>"+">"+getName()+"</b><br>\n");
 
-          st.append("<br><b>"+"Lenght: "+this.getLen()+" "+this.getUnit()+"</b><br>\n");
-          st.append("<span class=\"paml\">");
-          if (this.getSequence_type().equals("AA")){
-              for (int i=0;i<tmp.length();i++){
-                   nuc=tmp.charAt(i);
-                  if (oldnuc!=nuc) {
-                      oldnuc=nuc;
-                      st.append("</span>");
-                      st.append("<span class=\"prot"+nuc+"\">");
-                  }
-                  st.append(nuc);
-              }
-              st.append("</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-          } else {
-              for (int i=0;i<tmp.length();i++){
-              nuc=tmp.charAt(i);
-               if (oldnuc!=nuc) {
-                      oldnuc=nuc;
-                      st.append("</span>");
-                      st.append("<span class=\"nuc"+nuc+"\">");
-                  }
-                  st.append(nuc);
-              }
-              st.append("</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-          }
-                    
-          return st.toString();
+        st.append("<br><b>"+"Lenght: "+this.getLen()+" "+this.getUnit()+"</b><br>\n");
+        st.append("<span class=\"paml\">");
+        if (this.getSequence_type().equals("AA")){
+            for (int i=0;i<tmp.length();i++){
+                nuc=tmp.charAt(i);
+                if (oldnuc!=nuc) {
+                    oldnuc=nuc;
+                    st.append("</span>");
+                    st.append("<span class=\"prot"+nuc+"\">");
+                }
+                st.append(nuc);
+            }
+            st.append("</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+        } else {
+            for (int i=0;i<tmp.length();i++){
+                nuc=tmp.charAt(i);
+                if (oldnuc!=nuc) {
+                    oldnuc=nuc;
+                    st.append("</span>");
+                    st.append("<span class=\"nuc"+nuc+"\">");
+                }
+                st.append(nuc);
+            }
+            st.append("</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+        }
+        return st.toString();
     }
 
     public String getNameId(int id) {
         return df.getSequenceName(id);
     }
-
+    
+    public String getFileNameId(int id) {
+        return "";
+    }
+    
     public void setData(String data) {
         this.setSequence(data);
      }
 
      public String outputPhylip() {
-            //            10     20
-            //        seq0       -GTA-GCGCT -T--C-----
-            //        seq1       TGTA-TTGC- CTG--C-T--
-           StringBuffer pw=new StringBuffer();
-
-           pw.append("1"+"        "+this.getSize()+"\n");
-                String sname="";
-                sname=getName()+"             *";
-                sname=sname.substring(0,9);
-                pw.append(sname+" "+this.getSequence()+"\n");
-            return pw.toString();
+        //            10     20
+        //        seq0       -GTA-GCGCT -T--C-----
+        //        seq1       TGTA-TTGC- CTG--C-T--
+        StringBuffer pw=new StringBuffer();
+        pw.append("1"+"        "+this.getSize()+"\n");
+        String sname="";
+        sname=getName()+"             *";
+        sname=sname.substring(0,9);
+        pw.append(sname+" "+this.getSequence()+"\n");
+        return pw.toString();
     }
 
     public String getFasta() {

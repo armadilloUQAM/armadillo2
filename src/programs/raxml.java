@@ -149,10 +149,10 @@ public class raxml extends RunProgram {
                     //properties.put("output_unrootedtree_id", tree.getId());
                 }
             }
-               deleteFile(infile);
-               deleteFile("outfile");
-               deleteFile("treefile."+filenameIndex);
-               deleteFile("checkpoint."+filenameIndex);
+               Util.deleteFile(infile);
+               Util.deleteFile("outfile");
+               Util.deleteFile("treefile."+filenameIndex);
+               Util.deleteFile("checkpoint."+filenameIndex);
     }
 
 

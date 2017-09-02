@@ -220,9 +220,9 @@ public class paml extends RunProgram {
         text.setNote("PAML outfile (MLC) created on "+Util.returnCurrentDateAndTime());
         text.saveToDatabase();
         properties.put("output_results_id", text.getId());
-        deleteFile(infile);
-        //deleteFile(infiletree);
-        deleteFile(outfile);
+        Util.deleteFile(infile);
+        //Util.deleteFile(infiletree);
+        Util.deleteFile(outfile);
     }
 
     @Override

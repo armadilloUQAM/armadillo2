@@ -146,9 +146,9 @@ public class latrans extends RunProgram {
             text.setName(properties.getName()+"_input_trees.txt");
             addOutput(text);
             text.saveToDatabase();
-            if (!properties.getBoolean("debug")) deleteFile("input_trees.txt");
+            if (!properties.getBoolean("debug")) Util.deleteFile("input_trees.txt");
             properties.put("output_textfile_id", text.getId());
-            deleteFile("input_trees.txt");
+            Util.deleteFile("input_trees.txt");
         }
         if (Util.FileExists("input_trees.txt.out")) {
             Results text=new Results("input_trees.txt.out");
@@ -156,9 +156,9 @@ public class latrans extends RunProgram {
             text.setName(properties.getName()+"_Results_"+Util.returnCurrentDateAndTime());
             addOutput(text);
             text.saveToDatabase();
-            if (!properties.getBoolean("debug")) deleteFile("input_trees.txt.out");
+            if (!properties.getBoolean("debug")) Util.deleteFile("input_trees.txt.out");
             properties.put("output_results_id", text.getId());
-            deleteFile("input_trees.txt.out");
+            Util.deleteFile("input_trees.txt.out");
         }
     }
 

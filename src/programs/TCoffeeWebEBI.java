@@ -173,7 +173,7 @@ public class TCoffeeWebEBI extends RunProgram {
                                                 unknown.saveToDatabase();
                                                 properties.put("output_text_id", unknown.getId());
                                             }
-                                           if (!properties.getBoolean("debug")) deleteFile(filename);
+                                           if (!properties.getBoolean("debug")) Util.deleteFile(filename);
 
                                         }
                                     }
@@ -246,7 +246,7 @@ public class TCoffeeWebEBI extends RunProgram {
                                                 addOutput(unknown);
                                                 properties.put("output_text_id", unknown.getId());
                                             }
-                                            if (!properties.getBoolean("debug")) deleteFile(filename);
+                                            if (!properties.getBoolean("debug")) Util.deleteFile(filename);
                             }
                         }
                          setStatus(Config.status_done,"Done");

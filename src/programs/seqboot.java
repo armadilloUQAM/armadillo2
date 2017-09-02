@@ -121,9 +121,9 @@ public class seqboot extends RunProgram {
             properties.put("output_Phylip_Seqboot_id", unknown.getId());
         }
         
-        deleteFile("seqboot.params");
-        deleteFile("outfile");
-        deleteFile("infile");
+        Util.deleteFile("seqboot.params");
+        Util.deleteFile("outfile");
+        Util.deleteFile("infile");
     }
 
    ////////////////////////////////////////////////////////////////////////////

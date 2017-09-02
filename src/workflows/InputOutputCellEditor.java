@@ -38,6 +38,7 @@ public class InputOutputCellEditor extends JComboBox {
         addItem("Connector1");
         addItem("Connector2");
         addItem("Connector3");
+        addItem("Connector4");
         addItem("True");
         addItem("False");
     }

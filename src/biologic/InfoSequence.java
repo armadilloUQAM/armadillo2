@@ -80,17 +80,17 @@ public class InfoSequence extends Sequence implements Comparable, Serializable {
 
     @Override
     public boolean loadFromDatabase(int id) {
-       InfoSequence seq=df.getInfoSequence(id);
+        InfoSequence seq=df.getInfoSequence(id);
         if (seq.getId()>0) {
-           this.setName(seq.getName());
-           this.setGi(seq.getGi());
-           this.setAccession(seq.getAccession());
-           this.setAccession_referee(seq.getAccession_referee());
-           this.setAbbreviate(seq.getAbbreviate());
-           this.setLen(seq.getLen());
-           this.setType(seq.getType());           
-           this.id=id;
-        return true;
+            this.setName(seq.getName());
+            this.setGi(seq.getGi());
+            this.setAccession(seq.getAccession());
+            this.setAccession_referee(seq.getAccession_referee());
+            this.setAbbreviate(seq.getAbbreviate());
+            this.setLen(seq.getLen());
+            this.setType(seq.getType());           
+            this.id=id;
+            return true;
         } else return false;
     }
 
@@ -114,16 +114,19 @@ public class InfoSequence extends Sequence implements Comparable, Serializable {
     }
 
 //    Utilisé dans la liste
-       @Override
-   public int compareTo(Object o) {
+    @Override
+    public int compareTo(Object o) {
         InfoSequence tmp=(InfoSequence)o;
         //Note: there is no break since we want to check all possiblitity
         //Note: we don't check for description since it can be the same
         switch (this.getType()) {
-            case type_HGNC:               if (!this.getHgncid().equals("")) return (this.getHgncid().compareTo(tmp.getHgncid()));
-            case type_Ensembl:            if (!this.getEnsemblid().equals("")) return (this.getEnsemblid().compareTo(tmp.getEnsemblid()));
-            default:                      if (!this.getGi().equals("")) return (this.getGi().compareTo(tmp.getGi()));
-                                          if (!this.getAccession().equals("")) return (this.getAccession().compareTo(tmp.getAccession()));
+            case type_HGNC:
+                if (!this.getHgncid().equals("")) return (this.getHgncid().compareTo(tmp.getHgncid()));
+            case type_Ensembl:
+                if (!this.getEnsemblid().equals("")) return (this.getEnsemblid().compareTo(tmp.getEnsemblid()));
+            default:
+                if (!this.getGi().equals("")) return (this.getGi().compareTo(tmp.getGi()));
+                if (!this.getAccession().equals("")) return (this.getAccession().compareTo(tmp.getAccession()));
         }
         //Config.log("Error in compare");
         return 0; //Pas d'acession et pas de gi, pas de EnsemblId donc equals
@@ -131,12 +134,12 @@ public class InfoSequence extends Sequence implements Comparable, Serializable {
 
 
     @Override
-   public boolean equals(Object o) {
-       if (o==null) return false;
-       if (!o.getClass().equals(this.getClass())) return false;
-       InfoSequence tmp=(InfoSequence)o;
-       return (this.compareTo(tmp)==0?true:false);
-   }
+    public boolean equals(Object o) {
+        if (o==null) return false;
+        if (!o.getClass().equals(this.getClass())) return false;
+        InfoSequence tmp=(InfoSequence)o;
+        return (this.compareTo(tmp)==0?true:false);
+    }
 
     @Override
     public String toString() {
@@ -354,11 +357,11 @@ public class InfoSequence extends Sequence implements Comparable, Serializable {
      * @param sequence the sequence to set
      */
     public void setInfoSequence(Sequence sequence) {
-     this.gi=sequence.getGi();
-     this.accession=sequence.getAccession();
+        this.gi=sequence.getGi();
+        this.accession=sequence.getAccession();
         this.setAccession_referee(sequence.getAccession_referee());
-     this.len=sequence.getLen();
-     this.name=sequence.getName();
+        this.len=sequence.getLen();
+        this.name=sequence.getName();
         this.setOrientation(sequence.getOrientation());
     }
 

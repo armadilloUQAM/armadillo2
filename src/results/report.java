@@ -1395,10 +1395,10 @@ public class report {
                                 tree.parseNewick(t.getTree());
                                 printInFile.println(tree.PrintOut());
                             } catch(Exception e){}
-                            //mg.Output(config.resultsDir()+File.separator+projectName+File.separator+"tree_"+img.hashCode()+".svg");
-                            //printInFile.println("<div style=\"border-top: 0px solid rgb(255, 255, 255); border-left: 0em solid rgb(170, 170, 170); border-bottom: 1px solid rgb(170, 170, 170); padding: 0px 0px 0px 0em; white-space: nowrap; font-weight: normal; font-size: 1.2em; margin-top: 2em; margin-bottom: 1em; color: rgb(51, 51, 51);\">Input tree</div>");
-                            //printInFile.println("<br>Created with ScripTree v1.7 <a href=\"http://phylo.lirmm.fr/scriptree/\">Website</a>");
-                            //printInFile.println("<embed src=\""+config.resultsDir()+File.separator+projectName+File.separator+"tree_"+img.hashCode()+".svg"+"\" width=\"600\" height=\"1200\" type=\"image/svg+xml\" pluginspage=\"http://www.adobe.com/svg/viewer/install/\" />");
+//                            img.Output(config.resultsDir()+File.separator+projectName+File.separator+"tree_"+img.hashCode()+".svg");
+//                            printInFile.println("<div style=\"border-top: 0px solid rgb(255, 255, 255); border-left: 0em solid rgb(170, 170, 170); border-bottom: 1px solid rgb(170, 170, 170); padding: 0px 0px 0px 0em; white-space: nowrap; font-weight: normal; font-size: 1.2em; margin-top: 2em; margin-bottom: 1em; color: rgb(51, 51, 51);\">Input tree</div>");
+//                            printInFile.println("<br>Created with ScripTree v1.7 <a href=\"http://phylo.lirmm.fr/scriptree/\">Website</a>");
+//                            printInFile.println("<embed src=\""+config.resultsDir()+File.separator+projectName+File.separator+"tree_"+img.hashCode()+".svg"+"\" width=\"600\" height=\"1200\" type=\"image/svg+xml\" pluginspage=\"http://www.adobe.com/svg/viewer/install/\" />");
                         }
                     }
 

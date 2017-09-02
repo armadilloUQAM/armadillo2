@@ -70,21 +70,7 @@ public class rmapper extends RunProgram {
     public void init_createInput() {
         
     }
-
     
-    @Override
-    public void post_parseOutput() {
-        int fastafile_id=properties.getInputID("FastaFile");
-        FastaFile fasta=new FastaFile(fastafile_id);
-        TextFile text=new TextFile();
-        text.setRunProgram_id(this.getId());
-        text.setFile(fasta.getFastaFile()+".out");
-        text.setName("Shrimp rmapper output ("+Util.returnCurrentDateAndTime()+")");
-        text.setNote("Shrimp rmapper output ("+Util.returnCurrentDateAndTime()+")");
-        text.saveToDatabase();
-        properties.put("output_textfile_id", text.getId());
-    }
-
     @Override
     public String[] init_createCommandLine() {
         int fastafile_id=properties.getInputID("FastaFile");
@@ -100,9 +86,9 @@ public class rmapper extends RunProgram {
            com[1]="/C";
            com[2]=properties.getExecutable();
            com[3]="-P";
-           com[4]=solid.getSolidFile();
-           com[5]=fasta.getFastaFile();
-           com[6]=">"+fasta.getFastaFile()+".out";
+           com[4]=solid.getFile();
+           com[5]=fasta.getFile();
+           com[6]=">"+fasta.getFile()+".out";
            return com;
     }
 
@@ -125,4 +111,13 @@ public class rmapper extends RunProgram {
         return true;
     }
 
+    @Override
+    public void post_parseOutput() {
+        int fastafile_id=properties.getInputID("FastaFile");
+        FastaFile fasta=new FastaFile(fastafile_id);
+        TextFile.saveFile(properties,fasta.getFile()+".out","Shrimp rmapper","TextFile");
+    }
+
+
+    
 }

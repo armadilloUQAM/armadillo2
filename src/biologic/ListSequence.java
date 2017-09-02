@@ -121,7 +121,7 @@ public abstract class ListSequence implements Serializable {
            this.setFilename(filename);
            try {
                 File tmp=new File(filename);
-               file=new BufferedReader(new FileReader(tmp));
+                file=new BufferedReader(new FileReader(tmp));
                 if (file!=null) {
                     file_length=tmp.length();
                     file_open=true;
@@ -132,10 +132,10 @@ public abstract class ListSequence implements Serializable {
 
        public void close() {
            try {
-            if (file_open) {
-                file.close();
-                file_open=false;
-            }
+                if (file_open) {
+                    file.close();
+                    file_open=false;
+                }
            } catch(Exception e){Config.log("*** Error: Unable to close "+getFilename());}
        }
 
@@ -144,7 +144,7 @@ public abstract class ListSequence implements Serializable {
        }
 
 
-  /**
+      /**
        * get the Next Sequence in the MultipleSequences files
        * @return the next mafcontig or null if not found
        */
@@ -179,7 +179,6 @@ public abstract class ListSequence implements Serializable {
            return null;
           } catch(Exception e) {if (isDebug()) e.printStackTrace();return null;}
        }
-
 
        public boolean hasNextSequence() {
            return file_open;
@@ -221,17 +220,13 @@ public abstract class ListSequence implements Serializable {
                     }
                     orientation=striv[index];
                     sequence.append(striv[striv.length-1]);
-                    //
                     Sequence tmp = new Sequence();
                     tmp.setName(desc);
                     tmp.setOrientation(orientation);
                     tmp.setSequence(sequence.toString());
                     getSequences().add(tmp);
-
                  }
-
                } //End while
-
            br.close();
        } catch(Exception e) {return false;}
        return true;
@@ -496,21 +491,21 @@ public abstract class ListSequence implements Serializable {
     * @param filename
     * @return
     */
-   public boolean readSequenceFromFastaNew(String filename) {
-       open(filename);
-       seq.clear();
-       Config.log("Reading fasta:"+filename+":");
-       while(this.hasNextSequence()) {
-           Sequence sequence=this.getNextSequence();
-           if (sequence!=null) {
-               seq.add(sequence);
-           }
-           //--Counter
-           if ((this.file_read_length*100/this.file_length)%5==0) Config.log("*");
-       }
-       Config.log("done.");
-       return true;
-   }
+    public boolean readSequenceFromFastaNew(String filename) {
+        open(filename);
+        seq.clear();
+        Config.log("Reading fasta:"+filename+":");
+        while(this.hasNextSequence()) {
+            Sequence sequence=this.getNextSequence();
+            if (sequence!=null) {
+                seq.add(sequence);
+            }
+            //--Counter
+            if ((this.file_read_length*100/this.file_length)%5==0) Config.log("*");
+        }
+        Config.log("done.");
+        return true;
+    }
 
    /**
     *
@@ -523,152 +518,141 @@ public abstract class ListSequence implements Serializable {
 //          if (debug) Config.log("Fasta file "+filename+" is too big");
 //          return false;
 //      }
-       this.name=filename;
-      try {
-          seq.clear(); //Clear the sequence vector and open the file
-          BufferedReader br =new BufferedReader(new FileReader(new File(filename)));
-          //VARIABLES
-          boolean sequenceMode=false;   
-          Sequence tmp = new Sequence();                        //Temp sequence
-          StringBuilder tmpsequence=new StringBuilder();        //Temp sequence string
-          String stri="";                                       //Temp read line
-          boolean fastq_info=false;
-          //Read the file in a buffer an parse at the same time
-         //Process :: We read like a fasta file
-          Config.log("Reading fasta:"+filename+":");
-          int count=0;
-          while (br.ready()) {
-              stri=br.readLine();
-              //Config.log(stri);
-              //--Special tag for fastq
-              if (stri.equals("+")) {
-                  fastq_info=true;                
-              } else               
-              if (sequenceMode&&(stri.equals("")||stri.startsWith(">"))) {
-                  tmp.setSequence(tmpsequence.toString());
-                  tmp.loadInfoFromName();
-                  //Add sequence if not empty
-                  if (tmp.getSequence().length()>0) seq.add(tmp);
-                  tmp=new Sequence();
-                  tmpsequence=new StringBuilder();
-                  sequenceMode=false;
-              } 
-              if (sequenceMode&&!fastq_info) {
-                  tmpsequence.append(stri);
-                  count++;
-                  if (count%10000==0) Config.log("*");
-              } 
-              if (stri.startsWith(">")) {
+        this.name=filename;
+        try {
+            seq.clear(); //Clear the sequence vector and open the file
+            BufferedReader br =new BufferedReader(new FileReader(new File(filename)));
+            //VARIABLES
+            boolean sequenceMode=false;   
+            Sequence tmp = new Sequence();                        //Temp sequence
+            StringBuilder tmpsequence=new StringBuilder();        //Temp sequence string
+            String stri="";                                       //Temp read line
+            boolean fastq_info=false;
+            //Read the file in a buffer an parse at the same time
+            //Process :: We read like a fasta file
+            Config.log("Reading fasta:"+filename+":");
+            int count=0;
+            while (br.ready()) {
+                stri=br.readLine();
+                //Config.log(stri);
+                //--Special tag for fastq
+                if (stri.equals("+")) {
+                    fastq_info=true;                
+                } else if (sequenceMode&&(stri.equals("")||stri.startsWith(">"))) {
+                    tmp.setSequence(tmpsequence.toString());
+                    tmp.loadInfoFromName();
+                    //Add sequence if not empty
+                    if (tmp.getSequence().length()>0) seq.add(tmp);
+                    tmp=new Sequence();
+                    tmpsequence=new StringBuilder();
+                    sequenceMode=false;
+                } 
+                if (sequenceMode&&!fastq_info) {
+                    tmpsequence.append(stri);
+                    count++;
+                    if (count%10000==0) Config.log("*");
+                } 
+                if (stri.startsWith(">")) {
                     //We have a fasta definition
                     tmp.setName(stri.substring(1)); //remove >
                     sequenceMode=true;
                     fastq_info=false;
-              }
-
-          } //end while
-          //Add last read
-          if (sequenceMode) {
-              tmp.setSequence(tmpsequence.toString());
-              tmp.loadInfoFromName();
-              if (tmp.getSequence().length()>0) seq.add(tmp);
-              tmp=new Sequence();
-          }
-          br.close();
-          if (seq.size()==0) {
-              if (isDebug()) Config.log("not fasta...");
-              return false;
-          }
-       } catch(Exception e) { if (isDebug()) e.printStackTrace();Config.log("Error with "+filename); return false;}
+                }
+            } //end while
+            //Add last read
+            if (sequenceMode) {
+                tmp.setSequence(tmpsequence.toString());
+                tmp.loadInfoFromName();
+                if (tmp.getSequence().length()>0) seq.add(tmp);
+                tmp=new Sequence();
+            }
+            br.close();
+            if (seq.size()==0) {
+                if (isDebug()) Config.log("not fasta...");
+                return false;
+            }
+        } catch(Exception e) { if (isDebug()) e.printStackTrace();Config.log("Error with "+filename); return false;}
         if (isDebug()) Config.log("done");
-      return true;
-  }
+        return true;
+    }
 
-  public boolean readFasta(String fasta) {
-      Util u=new Util();
-      String tmpfilename="tmp"+Util.returnCount();
-      u.open(tmpfilename);
-      u.println(fasta);
-      u.close();
-      this.readSequenceFromFasta(tmpfilename);
-      u.deleteFile(tmpfilename);
-      return true;
-  }
+    public boolean readFasta(String fasta) {
+        Util u=new Util();
+        String tmpfilename="tmp"+Util.returnCount();
+        u.open(tmpfilename);
+        u.println(fasta);
+        u.close();
+        this.readSequenceFromFasta(tmpfilename);
+        u.deleteFile(tmpfilename);
+        return true;
+    }
   
   
    public boolean readSequenceFromFastq(String filename) {
-  
-       this.name=filename;
-      try {
-          seq.clear(); //Clear the sequence vector and open the file
-          BufferedReader br =new BufferedReader(new FileReader(new File(filename)));
-          //VARIABLES
-          boolean sequenceMode=false;   
-          Sequence tmp = new Sequence();                        //Temp sequence
-          StringBuilder tmpsequence=new StringBuilder();        //Temp sequence string
-          String stri="";                                       //Temp read line
+        this.name=filename;
+        try {
+            seq.clear(); //Clear the sequence vector and open the file
+            BufferedReader br =new BufferedReader(new FileReader(new File(filename)));
+            //VARIABLES
+            boolean sequenceMode=false;   
+            Sequence tmp = new Sequence();                        //Temp sequence
+            StringBuilder tmpsequence=new StringBuilder();        //Temp sequence string
+            String stri="";                                       //Temp read line
 
-          //Read the file in a buffer an parse at the same time
-         //Process :: We read like a fasta file
-          Config.log("Reading fastq:"+filename+":");
-          int count=0;
-          while (br.ready()) {
-              stri=br.readLine();
-              //Config.log(stri);
-              if (sequenceMode&&(stri.equals("")||stri.startsWith("@"))) {
-                  tmp.setSequence(tmpsequence.toString());
-                  tmp.loadInfoFromName();
-                  //Add sequence if not empty
-                  if (tmp.getSequence().length()>0) seq.add(tmp);
-                  tmp=new Sequence();
-                  tmpsequence=new StringBuilder();
-                  sequenceMode=false;
-              } 
-              if (sequenceMode) {
-                  tmpsequence.append(stri);
-                  count++;
-                  if (count%10000==0) Config.log("*");
-              } 
-              if (stri.startsWith("@")) {
+            //Read the file in a buffer an parse at the same time
+            //Process :: We read like a fasta file
+            Config.log("Reading fastq:"+filename+":");
+            int count=0;
+            while (br.ready()) {
+                stri=br.readLine();
+                //Config.log(stri);
+                if (sequenceMode&&(stri.equals("")||stri.startsWith("@"))) {
+                    tmp.setSequence(tmpsequence.toString());
+                    tmp.loadInfoFromName();
+                    //Add sequence if not empty
+                    if (tmp.getSequence().length()>0) seq.add(tmp);
+                    tmp=new Sequence();
+                    tmpsequence=new StringBuilder();
+                    sequenceMode=false;
+                } 
+                if (sequenceMode) {
+                    tmpsequence.append(stri);
+                    count++;
+                    if (count%10000==0) Config.log("*");
+                } 
+                if (stri.startsWith("@")) {
                     //We have a fasta definition
                     tmp.setName(stri.substring(1)); //remove >
                     sequenceMode=true;
-              }
-
-          } //end while
-          //Add last read
-          if (sequenceMode) {
-              tmp.setSequence(tmpsequence.toString());
-              tmp.loadInfoFromName();
-              if (tmp.getSequence().length()>0) seq.add(tmp);
-              tmp=new Sequence();
-          }
-          br.close();
-          if (seq.size()==0) {
-              if (isDebug()) Config.log("not fasta...");
-              return false;
-          }
-       } catch(Exception e) { if (isDebug()) e.printStackTrace();Config.log("Error with "+filename); return false;}
+                }
+            } //end while
+            //Add last read
+            if (sequenceMode) {
+                tmp.setSequence(tmpsequence.toString());
+                tmp.loadInfoFromName();
+                if (tmp.getSequence().length()>0) seq.add(tmp);
+                tmp=new Sequence();
+            }
+            br.close();
+            if (seq.size()==0) {
+                if (isDebug()) Config.log("not fasta...");
+                return false;
+            }
+        } catch(Exception e) { if (isDebug()) e.printStackTrace();Config.log("Error with "+filename); return false;}
         if (isDebug()) Config.log("done");
-      return true;
-  }
+        return true;
+    }
 
-
-  
-  
-  
-  
-  
-  
-   public boolean readPhylip(String phylip) {
-      Util u=new Util();
-      String tmpfilename="tmp"+Util.returnCount();
-      u.open(tmpfilename);
-      u.println(phylip);
-      u.close();
-      readSequenceFromPhylip(tmpfilename);
-      u.deleteFile(tmpfilename);
-      return true;
-  }
+    public boolean readPhylip(String phylip) {
+        Util u=new Util();
+        String tmpfilename="tmp"+Util.returnCount();
+        u.open(tmpfilename);
+        u.println(phylip);
+        u.close();
+        readSequenceFromPhylip(tmpfilename);
+        u.deleteFile(tmpfilename);
+        return true;
+    }
 
    /**
     * We read the sequence but we replace then the sequence Name, Gi, etc.
@@ -684,80 +668,76 @@ public abstract class ListSequence implements Serializable {
 //          return false;
 //      }
        this.name=filename;
-      try {
-          seq.clear(); //Clear the sequence vector and open the file
-          BufferedReader br =new BufferedReader(new FileReader(new File(filename)));
+        try {
+            seq.clear(); //Clear the sequence vector and open the file
+            BufferedReader br =new BufferedReader(new FileReader(new File(filename)));
+    
+            //VARIABLES
+            boolean sequenceMode=false;   
+            Sequence tmp = new Sequence();                        //Temp sequence
+            StringBuilder tmpsequence=new StringBuilder();        //Temp sequence string
+            String stri="";                                       //Temp read line
 
-          //VARIABLES
-          boolean sequenceMode=false;   
-          Sequence tmp = new Sequence();                        //Temp sequence
-          StringBuilder tmpsequence=new StringBuilder();        //Temp sequence string
-          String stri="";                                       //Temp read line
-
-          //Read the file in a buffer an parse at the same time
-         //Process :: We read like a fasta file
-          if (isDebug()) Config.log("Reading fasta:"+filename+":");
-          int count=0;
-          while (br.ready()) {
-              stri=br.readLine();
-              if (sequenceMode&&(stri.equals("")||stri.startsWith(">"))) {
-                  tmp.setSequence(tmpsequence.toString());
-                  tmp.loadInfoFromName();
-                  //Add sequence
-                  seq.add(tmp);
-                  tmp=new Sequence();
-                  tmpsequence=new StringBuilder();
-                  sequenceMode=false;
-              }
-              if (sequenceMode) {
-                  tmpsequence.append(stri);
-                  count++;
-                  if (isDebug()&&count%10000==0) Config.log("*");
-              }
-              if (stri.startsWith(">")) {
-                  //We have a fasta definition
+            //Read the file in a buffer an parse at the same time
+            //Process :: We read like a fasta file
+            if (isDebug()) Config.log("Reading fasta:"+filename+":");
+            int count=0;
+            while (br.ready()) {
+                stri=br.readLine();
+                if (sequenceMode&&(stri.equals("")||stri.startsWith(">"))) {
+                    tmp.setSequence(tmpsequence.toString());
+                    tmp.loadInfoFromName();
+                    //Add sequence
+                    seq.add(tmp);
+                    tmp=new Sequence();
+                    tmpsequence=new StringBuilder();
+                    sequenceMode=false;
+                }
+                if (sequenceMode) {
+                    tmpsequence.append(stri);
+                    count++;
+                    if (isDebug()&&count%10000==0) Config.log("*");
+                }
+                if (stri.startsWith(">")) {
+                    //We have a fasta definition
                     
                     tmp.setName(stri.substring(1)); //remove >
                     sequenceMode=true;
-              }
+                }
 
-          } //end while
-          //Add last read
-          if (sequenceMode) {
-              tmp.setSequence(tmpsequence.toString());
-              tmp.loadInfoFromName();
-              seq.add(tmp);
-              tmp=new Sequence();
-          }
-          br.close();
-         //Replace tmpname with full name and other annotation
+            } //end while
+            //Add last read
+            if (sequenceMode) {
+                tmp.setSequence(tmpsequence.toString());
+                tmp.loadInfoFromName();
+                seq.add(tmp);
+                tmp=new Sequence();
+            }
+            br.close();
+            //Replace tmpname with full name and other annotation
 
-          for (int j=0; j<seq.size();j++) {
-              Sequence tmpseq=seq.get(j);
-              String tmpname=tmpseq.getName().trim();
-              if (tmpname.startsWith("AZ")) {
-                  //Get the sequenceNumber
-                  Config.log(tmpname+" ");
-                  tmpname=tmpname.substring(2);
-                   try {
-                      
-                      int i=Integer.valueOf(tmpname);
-                      Config.log(tmpname+" "+i);
-                      Sequence seqname=sequenceName.get(i);
-                      tmpseq.setName(seqname.getName());
-                      tmpseq.setGi(seqname.getGi());
-                      tmpseq.setAccession(seqname.getAccession());
-                      tmpseq.setAccession_referee(seqname.getAccession_referee());
-                  } catch(Exception ex) {}
-              }
-          }
-
-
-
-       } catch(Exception e) {e.printStackTrace();Config.log("Error with "+filename); return false;}
+            for (int j=0; j<seq.size();j++) {
+                Sequence tmpseq=seq.get(j);
+                String tmpname=tmpseq.getName().trim();
+                if (tmpname.startsWith("AZ")) {
+                    //Get the sequenceNumber
+                    Config.log(tmpname+" ");
+                    tmpname=tmpname.substring(2);
+                    try {
+                        int i=Integer.valueOf(tmpname);
+                        Config.log(tmpname+" "+i);
+                        Sequence seqname=sequenceName.get(i);
+                        tmpseq.setName(seqname.getName());
+                        tmpseq.setGi(seqname.getGi());
+                        tmpseq.setAccession(seqname.getAccession());
+                        tmpseq.setAccession_referee(seqname.getAccession_referee());
+                    } catch(Exception ex) {}
+                }
+            }
+        } catch(Exception e) {e.printStackTrace();Config.log("Error with "+filename); return false;}
         if (isDebug()) Config.log("done");
-      return true;
-  }
+        return true;
+    }
 
    /**
     *

@@ -130,7 +130,7 @@ public class consense extends RunProgram {
        text.saveToDatabase();
        properties.put("output_text_id", text.getId());
        suredelete();
-       deleteFile("consense.params");
+       Util.deleteFile("consense.params");
     }
     
    ////////////////////////////////////////////////////////////////////////////
@@ -145,12 +145,6 @@ public class consense extends RunProgram {
         try {
             PrintWriter pw = new PrintWriter(new FileWriter(new File(filename)));
             pw.println("0");
-            if (properties.isSet("consensus")) {
-                for (int i=0; i<properties.getInt("consensus");i++) pw.println("C");
-            }
-            if (properties.isSet("rooted")) {
-                pw.println("R");
-            }
              if (properties.isSet("CustomPhylipCommand")) {
                 pw.println(properties.get("CustomPhylipCommand"));
             }

@@ -32,32 +32,12 @@ import java.io.Serializable;
  */
 public class BlastDB extends Text implements Serializable {
 
-    public BlastDB() {super();}
-
-    public BlastDB(String filename) {
-        super(filename);
-    }
-
-    public BlastDB(int id) {
-        super(id);
-    }
-
-    public void setBlastDB(String filename) {
-        this.setFilename(filename);
-        this.setUnknownType("BlastDB");
-        this.setText("BlastDB : "+filename+"\nSelected on: "+Util.returnCurrentDateAndTime());
-    }
-
-    public String getBlastDB() {
-        return this.getFilename();
-    }
+    public BlastDB()                {super();}
+    public BlastDB(String filename) {super(filename);}
+    public BlastDB(int id)          {super(id);}
 
     @Override
     public String getBiologicType() {
         return "BlastDB";
-    }
-
-    public String getExtendedString() {
-        return toString();
     }
 }

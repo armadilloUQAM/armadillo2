@@ -88,8 +88,8 @@ public class randtree extends RunProgram {
         for (Tree t:multi.getTree()) {
             properties.put("output_tree_id", t.getId());
         }       
-        deleteFile("outfile");
-        deleteFile("output");
+        Util.deleteFile("outfile");
+        Util.deleteFile("output");
     }
 
     

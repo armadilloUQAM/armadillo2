@@ -44,12 +44,11 @@ public class Ancestor extends Alignment implements Serializable,Biologic, Iterat
 
     @Override
     public boolean hasNext() {
-
-       if (next.size()==0) {
-           next=df.getAllAncestorID();
-           maxid=next.size();
-       }
-       return (this.counter<maxid);
+        if (next.size()==0) {
+            next=df.getAllAncestorID();
+            maxid=next.size();
+        }
+        return (this.counter<maxid);
     }
 
     @Override
@@ -71,7 +70,6 @@ public class Ancestor extends Alignment implements Serializable,Biologic, Iterat
     ////////////////////////////////////////////////////////////////////////////
     ///
 
-
     @Override
     public String getBiologicType() {
         return "Ancestor";
@@ -82,4 +80,7 @@ public class Ancestor extends Alignment implements Serializable,Biologic, Iterat
         return toString();
     }
 
+    public String getFileNameId(int id) {
+        return "";
+    }
 }

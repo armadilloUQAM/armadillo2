@@ -21,7 +21,10 @@
 package biologic;
 
 import configuration.Util;
+import java.io.File;
 import java.io.Serializable;
+import java.util.Vector;
+import workflows.workflow_properties;
 
 /**
  *
@@ -42,13 +45,5 @@ public class SOLIDFile extends Text implements Serializable {
         this.setFilename(filename);
         this.setUnknownType("Solid Reads File");
         this.setText("Solid Reads File : "+filename+"\nSelected on: "+Util.returnCurrentDateAndTime());
-    }
-
-    public String getSolidFile() {
-        return this.getFilename();
-    }
-
-    public String getExtendedString() {
-        return toString();
     }
 }

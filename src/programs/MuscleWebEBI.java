@@ -23,10 +23,10 @@ package programs;
 import biologic.Alignment;
 import biologic.MultipleSequences;
 import configuration.Config;
+import configuration.Util;
 import uk.ac.ebi.webservices.WSMuscleClient;
 import uk.ac.ebi.webservices.wsmuscle.*;
 import workflows.workflow_properties;
-import configuration.Util.*;
 import program.RunProgram;
 
 
@@ -139,7 +139,7 @@ public class MuscleWebEBI extends RunProgram {
                                             newmulti.setNote(filename);
                                             newmulti.saveToDatabase();
                                             addOutput(newmulti);
-                                            if (!properties.getBoolean("debug")) deleteFile(filename);
+                                            if (!properties.getBoolean("debug")) Util.deleteFile(filename);
                                             properties.put("output_alignment_id", newmulti.getId());
                                         }
                                     }
@@ -188,7 +188,7 @@ public class MuscleWebEBI extends RunProgram {
                                 newmulti.setName(properties.getName()+" ("+configuration.Util.returnCurrentDateAndTime()+")");
                                 newmulti.setNote(filename);
                                 newmulti.saveToDatabase();
-                                //deleteFile(filename);
+                                //Util.deleteFile(filename);
                                 properties.put("output_alignment_id", newmulti.getId());
                             }
                         }

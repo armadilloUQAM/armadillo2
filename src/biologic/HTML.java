@@ -22,31 +22,48 @@
 package biologic;
 
 import configuration.Util;
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
+import workflows.workflow_properties;
 
 /**
  * This is really a mock for handling in the Armadillo Workflow
  *
  * @author Etienne Lord
+ * @author JG 2016
  */
 public class HTML extends Unknown implements Serializable {
 
-    public HTML() {super();}
-
-    public HTML(String filename) {
-        super(filename);
+    public HTML()                {super();}
+    public HTML(String filename) {super(filename);}
+    public HTML(int id)          {super(id);}
+    
+    public String[] getExtensionTab() {
+        String[] t = {".htm",".html"};
+        return t;
     }
 
-    public HTML(int id) {
-        super(id);
+    public static void saveFile (workflow_properties p, String s, String pgrmName, String type) {
+        s = Util.relativeToAbsoluteFilePath(s);
+        Text f=new Text();
+        f.setFilename(s);
+        f.setName(Util.getFileNameAndExt(s)+" ("+Util.returnCurrentDateAndTime()+")");
+        f.setNote(pgrmName+"_stats ("+Util.returnCurrentDateAndTime()+")");
+        f.setText(type+" is here \n"+s+"\n\nSelected on: "+Util.returnCurrentDateAndTime()+"\nLoaded From program: "+pgrmName);
+        f.setUnknownType(type);
+        String typedb = type.toLowerCase();
+        boolean b = f.saveToDatabase();
+        if (b){
+            p.put("output_"+typedb+"_id", f.getId());
+            p.put("output_"+typedb+"_fileName", s);
+        }
+        else System.out.println(type+" file not saved");
     }
 
+    
     @Override
     public String getBiologicType() {
         return "HTML";
-    }
-
-    public String getExtendedString() {
-        return toString();
     }
 }

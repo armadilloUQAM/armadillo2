@@ -275,9 +275,9 @@ public Vector<Alignment> Create_Group_Sequences(Alignment align) {
           properties.put("output_text_id", text.getId());
           addOutput(text);
           
-          deleteFile(outfile_sequence);
-          deleteFile(group_sequence);
-          deleteFile(infile_sequence);
+          Util.deleteFile(outfile_sequence);
+          Util.deleteFile(group_sequence);
+          Util.deleteFile(infile_sequence);
     }
 
 

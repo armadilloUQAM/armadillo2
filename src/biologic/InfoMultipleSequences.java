@@ -34,35 +34,31 @@ public class InfoMultipleSequences extends MultipleSequences implements Serializ
 
     private static final long serialVersionUID = 200904263L;
 
-
     ////////////////////////////////////////////////////////////////////////////////
     /// CONSTRUCTOR
     
     public InfoMultipleSequences() {}
-
+    
     public InfoMultipleSequences(int id) {
        this.loadFromDatabase(id);
     }
-
 
     ////////////////////////////////////////////////////////////////////////////////
     // Database function
 
     @Override
     public boolean loadFromDatabase(int id) {
-       InfoMultipleSequences multi=df.getInfoMultipleSequence(id);
+        InfoMultipleSequences multi=df.getInfoMultipleSequence(id);
         if (multi.id>0) {
-        this.name=multi.name;
-        this.id=id;
-        this.note=multi.note;
-        this.seq.clear();
-        this.seq.addAll(multi.getSequences());
-        return true;
+            this.name=multi.name;
+            this.id=id;
+            this.note=multi.note;
+            this.seq.clear();
+            this.seq.addAll(multi.getSequences());
+            return true;
         } else return false;
     }
-   
-   
-
+    
     @Override
     public String toString() {
         String s="MultipleSequences "+getName()+" with ID ["+getId()+"]\n";
@@ -75,12 +71,10 @@ public class InfoMultipleSequences extends MultipleSequences implements Serializ
 
     @Override
     public workflow_properties returnProperties() {
-         workflow_properties tmp=new workflow_properties();
-         if (id==0) this.saveToDatabase();
-             tmp.put("input_multiplesequences_id", this.getId());
-             tmp.put("output_ multiplesequences_id", this.getId());
-         return tmp;
-     }
-
-   
+        workflow_properties tmp=new workflow_properties();
+        if (id==0) this.saveToDatabase();
+            tmp.put("input_multiplesequences_id", this.getId());
+            tmp.put("output_ multiplesequences_id", this.getId());
+        return tmp;
+    }
 }

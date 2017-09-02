@@ -73,9 +73,9 @@ public class dnaml extends RunProgram {
     @Override
     public void init_createInput() {
         //--Pre-Run initialization
-       this.deleteFile(infile);
-       this.deleteFile(outfile);
-       this.deleteFile("outtree");
+       Util.deleteFile(infile);
+       Util.deleteFile(outfile);
+       Util.deleteFile("outtree");
        //--Create infile
        int align_id=properties.getInputID("alignment");
        int seqboot_id=properties.getInputID("Phylip_Seqboot");
@@ -128,10 +128,10 @@ public class dnaml extends RunProgram {
             properties.put("output_results_id",text.getId());
             //--delete
             if (!properties.getBoolean("debug")) {
-                deleteFile(infile);
-                deleteFile(outfile);
-                deleteFile("outtree");
-                deleteFile("dnaml.params");
+                Util.deleteFile(infile);
+                Util.deleteFile(outfile);
+                Util.deleteFile("outtree");
+                Util.deleteFile("dnaml.params");
             }
     }
 

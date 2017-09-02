@@ -1,2 +1,10 @@
 /build/
 /dist/
+executable/
+results/
+test/
+/nbproject/private/
+Armadillo.jar
+armadillo.log
+config.dat
+nbproject/private/

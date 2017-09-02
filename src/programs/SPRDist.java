@@ -60,8 +60,8 @@ public class SPRDist extends RunProgram {
     @Override
     public void init_createInput() {
         //--Clean-up
-        deleteFile(path+File.separator+"speciesTree.txt");        
-        deleteFile(path+File.separator+"geneTree.txt");        
+        Util.deleteFile(path+File.separator+"speciesTree.txt");        
+        Util.deleteFile(path+File.separator+"geneTree.txt");        
         //--Normal
         File f=new File(properties.getExecutable());
         if (properties.getBoolean("MacOSX")) f=new File(properties.getExecutableMacOSX());
@@ -158,8 +158,8 @@ public class SPRDist extends RunProgram {
            if (matrix!=null) properties.put("output_matrix_id", matrix.getId());
             
         //--Clean-up
-        deleteFile(path+File.separator+"speciesTree.txt");        
-        deleteFile(path+File.separator+"geneTree.txt");  
+        Util.deleteFile(path+File.separator+"speciesTree.txt");        
+        Util.deleteFile(path+File.separator+"geneTree.txt");  
     }
 
 }

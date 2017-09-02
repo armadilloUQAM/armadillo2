@@ -138,9 +138,9 @@ public class weighbor extends RunProgram {
       // for (Tree t:tree.getTree()) properties.put("output_tree_id", t.getId());
       properties.put("output_multipletrees_id",tree.getId());
         if (!properties.getBoolean("debug")) {                     
-            deleteFile("outfile");
-            deleteFile("infile");
-            deleteFile("weighbor.params");
+            Util.deleteFile("outfile");
+            Util.deleteFile("infile");
+            Util.deleteFile("weighbor.params");
         }
     }
   
