@@ -18,7 +18,7 @@
 *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package editors;
+package editor;
 
 
 import editor.DatabaseSQLite3_cellRenderer;
@@ -36,6 +36,7 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import editor.ConnectorInfoBox;
 import editor.EditorInterface;
+import editors.HelpEditor;
 import java.awt.Component;
 import java.util.Arrays;
 import javax.swing.DefaultComboBoxModel;
@@ -340,7 +341,7 @@ public class ClusterEditor extends javax.swing.JDialog implements EditorInterfac
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 345, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ClusterInfosUpdate)
@@ -524,6 +525,7 @@ public class ClusterEditor extends javax.swing.JDialog implements EditorInterfac
         Workbox workbox = parent_workflow.getWorkbox();
         workflow_properties selection = workbox.getWorkFlowJInternalFrame().getProperties();
         selection.put("ClusterAccessAddress",properties.get("Description"));
+        selection.put("PathToRSAFile",properties.get("PathToRSAFile"));
         boolean b = workbox.isWorkboxOnCLuster();
         if (b) {
             clusterEnabled.setSelected(true);

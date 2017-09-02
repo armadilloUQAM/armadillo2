@@ -1594,10 +1594,13 @@ public class RunProgram implements runningThreadInterface {
         }
             
         if (properties.isSet("ClusterDeleteAllFiles"))
-            if (Boolean.parseBoolean((properties.get("ClusterDeleteAllFiles"))))
+            if (Boolean.parseBoolean((properties.get("ClusterDeleteAllFiles")))){
                 Cluster.removeFilesFromCluster(workbox,properties);
-            else
+                setStatus(status_running,"\t<-Sorry, Deleted files on cluster is not yet available->");
+            } else {
                 Cluster.savePathOfFilesOnCluster(properties);
+                setStatus(status_running,"\t<-Sorry, Keep files on cluster is not yet available->");
+            }
             /*
             
             REMOVE FILES ON CLUSTER !

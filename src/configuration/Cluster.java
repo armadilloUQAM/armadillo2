@@ -104,10 +104,12 @@ public class Cluster {
     
     public static boolean getAccessToCluster(Workbox workbox, workflow_properties properties){
         String c = "pwd";
-        String p2rsa = getP2Rsa(properties);
+        String p2rsa = getP2Rsa(workbox);
+        Util.pl("youyou");
         ArrayList<String> tab = runSshCommand(workbox,p2rsa,c);
         if (tab.size()==2 && isASimpleUnixPath(tab.get(0))){
             properties.put("ClusterPWD",tab.get(0));
+            Util.pl("youyou");
             return true;
         }
         return false;
@@ -121,6 +123,11 @@ public class Cluster {
     public static String clusterAccessAddress(Workbox workbox) {
         workflow_properties p2 = workbox.getWorkFlowJInternalFrame().getProperties();
         return p2.get("ClusterAccessAddress");
+    }
+    
+    public static boolean clusterAccessAddressHere(Workbox workbox) {
+        workflow_properties p2 = workbox.getWorkFlowJInternalFrame().getProperties();
+        return p2.isSet("ClusterAccessAddress");
     }
     
     public static String clusterSeverAddress(Workbox workbox) {
@@ -139,9 +146,10 @@ public class Cluster {
      * Test if needed informations are here
      */
     public static boolean isClusterNeedInfoHere(Workbox workbox, workflow_properties properties) {
-        String c1 = clusterAccessAddress(workbox);
-        if (c1 != ""){
-            List<String> lines = Arrays.asList("ClusterLocalOutput_","ClusterLocalInput_", "ClusterProgramName", "Version", "ObjectID", "PathToRSAFile", "ExecutableCluster");
+        boolean b1 = clusterAccessAddressHere(workbox);
+        boolean b2 = isP2RsaHere(workbox);
+        if (b1&&b2){
+            List<String> lines = Arrays.asList("ClusterLocalOutput_","ClusterLocalInput_", "ClusterProgramName", "Version", "ObjectID", "ExecutableCluster");
             for (String l :lines){
                 Enumeration<Object> e = properties.keys();
                 boolean b = true;
@@ -151,8 +159,9 @@ public class Cluster {
                         if (properties.get(key)!="")
                             b = false;
                 }
-                if (b)
+                if (b){
                     return true;
+                }
             }
             return false;
         } else {
@@ -173,9 +182,22 @@ public class Cluster {
         return false;
     }
     
-    public static String getP2Rsa(workflow_properties properties){
-        return properties.get("PathToRSAFile");
+    public static String getP2Rsa(Workbox workbox){
+        workflow_properties p2 = workbox.getWorkFlowJInternalFrame().getProperties();
+        return p2.get("PathToRSAFile");
     }
+
+    public static boolean isP2RsaHere(Workbox workbox){
+        workflow_properties p2 = workbox.getWorkFlowJInternalFrame().getProperties();
+        if (p2.isSet("PathToRSAFile")){
+            String s = p2.get("PathToRSAFile");
+            if (!s.contains("path to private key")){
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Useless?
      * @param properties
@@ -451,7 +473,7 @@ public class Cluster {
             Logger.getLogger(Docker.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-        String p2rsa = getP2Rsa(properties);
+        String p2rsa = getP2Rsa(workbox);
         String clusterDir = getClusterDirPath(properties);
         boolean b = runUploadFile(workbox,p2rsa,fBash,clusterDir);
         if (!b){
@@ -490,7 +512,7 @@ public class Cluster {
     public static boolean createClusterDir(Workbox workbox, workflow_properties properties) {
         String clusterDir = getClusterDirPath(properties)+"/outputs";
         String program = "mkdir -p";
-        String p2rsa = getP2Rsa(properties);
+        String p2rsa = getP2Rsa(workbox);
         ArrayList<String> tab = runSshCommand(workbox,p2rsa, program+" "+clusterDir);
         if (tab.size()==1)
             if(tab.get(0).contains("ExitCode: >0<")||tab.get(0).contains("ExitCode: >null<"))
@@ -506,7 +528,7 @@ public class Cluster {
      */
     public static boolean sendFilesOnCluster(Workbox workbox, workflow_properties properties) {
         String clusterDir = getClusterDirPath(properties);
-        String p2rsa = getP2Rsa(properties);
+        String p2rsa = getP2Rsa(workbox);
         Enumeration<Object> e = properties.keys();
         boolean b = true;
         while(e.hasMoreElements() && b==true) {
@@ -538,7 +560,7 @@ public class Cluster {
         }
         if (taskId!=""){
             Integer[] l = {60,60,60,60,60,60,120,240,480,960,1920};
-            String p2rsa = getP2Rsa(properties);
+            String p2rsa = getP2Rsa(workbox);
             String command = "qstat -f "+taskId+"";
             boolean b = false;
             int i = 0;
@@ -568,7 +590,7 @@ public class Cluster {
      * @return true or false
      */
     public static boolean downloadResults(Workbox workbox, workflow_properties properties) {
-        String p2rsa = getP2Rsa(properties);
+        String p2rsa = getP2Rsa(workbox);
         Enumeration<Object> e = properties.keys();
         while(e.hasMoreElements()) {
             String key=(String)e.nextElement();
@@ -598,7 +620,7 @@ public class Cluster {
     }
     
     public static String getPgrmStdoutOutput(Workbox workbox, workflow_properties properties){
-        String p2rsa = getP2Rsa(properties);
+        String p2rsa = getP2Rsa(workbox);
         String fClus = getClusterFilePath(properties,"stdOutFile");
         ArrayList<String> tab = runSshCommand(workbox,p2rsa,"cat "+fClus);
         if (tab.size()==1 && tab.get(0).contains("cat"))
@@ -613,7 +635,7 @@ public class Cluster {
     }
     
     public static String getPgrmStderrorOutput(Workbox workbox, workflow_properties properties){
-        String p2rsa = getP2Rsa(properties);
+        String p2rsa = getP2Rsa(workbox);
         String fClus  = getClusterFilePath(properties,"stdErrFile");
         ArrayList<String> tab = runSshCommand(workbox,p2rsa,"cat "+fClus);
         if (tab.size()==1 && tab.get(0).contains("cat"))
@@ -649,6 +671,16 @@ public class Cluster {
             return true;
         }
         return false;
+    }
+    
+    public static boolean removeFilesFromCluster(Workbox workbox, workflow_properties properties){
+        
+        return true;
+    }
+    
+    public static boolean savePathOfFilesOnCluster(workflow_properties properties){
+        
+        return true;
     }
     
     /**
